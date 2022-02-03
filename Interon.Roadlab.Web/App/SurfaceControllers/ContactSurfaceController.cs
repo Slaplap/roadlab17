@@ -38,7 +38,7 @@ public class ContactSurfaceController : Umbraco.Web.Mvc.SurfaceController
         //honeypot
         if (!string.IsNullOrEmpty(model.Surname))
         {
-            TempData["Result"] = "Thanks for your enquiry a consultant will be conting you shortly";
+            TempData["Result"] = "Thank you for your enquiry. A consultant will be contacting you shortly.";
             TempData["script"] = "document.getElementById(\"ContactFormPlaceHolder\").scrollIntoView();";
             return RedirectToCurrentUmbracoPage();
         }
