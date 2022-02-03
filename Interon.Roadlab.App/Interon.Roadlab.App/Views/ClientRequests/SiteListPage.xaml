@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Interon.Roadlab.App.Views.ClientRequests.SiteListPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:Interon.Roadlab.App.Core.ViewModels;assembly=Interon.Roadlab.App"
+    xmlns:controls="clr-namespace:Flex.Controls;assembly=Flex"
+    xmlns:icons="clr-namespace:Interon.Roadlab.App.Core;assembly=Interon.Roadlab.App"
+    mc:Ignorable="d"
+    x:Name="Page">
+
+    <ContentPage.Resources>
+        <StyleSheet Source="../../Styles.css" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Padding="20,0,20,0" VerticalOptions="StartAndExpand">
+            <StackLayout Orientation="Horizontal">
+                <Image
+                    HorizontalOptions="Center"
+                    Source="logo.jpg"
+                    VerticalOptions="Start"
+                    WidthRequest="100" />
+                <Label
+                    FontSize="Title"
+                    HorizontalOptions="Center"
+                    Text="Search For Sites"
+                    VerticalOptions="Center" />
+            </StackLayout>
+            <FlexLayout
+                Direction="Row"   AlignContent="SpaceBetween" JustifyContent="SpaceBetween">
+            
+                <Entry Placeholder="Search for site" x:Name="SiteSearch" TextChanged="SiteSearch_OnTextChanged" Text="{Binding SearchString}" ></Entry>
+                <controls:FlexButton  FlexLayout.AlignSelf="End" IsEnabled="{Binding IsSearcButtonEnabled}"
+                                      ClickedCommand="{Binding Source={x:Reference Page}, Path=BindingContext.Commands[SiteSearchCommand]}"
+                                      CornerRadius="38"
+                                      x:Name="SearchButton"
+                                      FontFamily="{StaticResource MaterialFontFamily}"
+                                      BackgroundColor="#074F71"
+                                      ForegroundColor="White"
+                                      HeightRequest="45"
+                                      HighlightBackgroundColor="#074F71"
+                                      HighlightForegroundColor="#FFC107"
+                                              
+                                      HorizontalOptions="End"
+                                      Text="{Binding Source={x:Static icons:IconFont.Search}}"
+                                      WidthRequest="88" />
+            </FlexLayout>
+            <CollectionView
+                AbsoluteLayout.LayoutBounds="0,1.5,1,.8"
+                AbsoluteLayout.LayoutFlags="All"
+                ItemsLayout="VerticalList"
+                ItemsSource="{Binding Sites}">
+
+                <CollectionView.ItemTemplate>
+
+                    <DataTemplate>
+
+                        <Frame
+                            BorderColor="LightGray"
+                            CornerRadius="20"
+                            HorizontalOptions="FillAndExpand">
+
+                            <FlexLayout Direction="Row" JustifyContent="Start" AlignItems="Start" Wrap="NoWrap">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="Default"
+                                    WidthRequest="300"
+                                    Text="{Binding Text}"
+                                    VerticalOptions="Start" />
+                              
+                                
+                                
+                                <Button
+                                    BackgroundColor="White"
+                                    BorderColor="White"
+                                    BorderRadius="10"
+                                    WidthRequest="140"
+                                    BorderWidth="2"
+                                    Command="{Binding Source={x:Reference Page}, Path=BindingContext.Commands[SiteSelectedCommand]}"
+                                    CommandParameter="{Binding Id}"
+                                    FontSize="Default"
+                                    HorizontalOptions="Center"
+                                    Text="Select"
+                                    TextColor="#074F71" />
+                            </FlexLayout>
+
+                        </Frame>
+
+
+
+
+
+
+
+
+
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

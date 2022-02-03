@@ -1,0 +1,25 @@
+﻿{
+
+  "propertyEditors": [
+    {
+
+      "alias": "Roadlab.NotificationSender",
+
+      "name": "Roadlab NotificationSender",
+      
+      "icon": "icon-code",
+      
+      "group": "Custom Editors",
+      
+      "editor": {
+        "view": "~/App_Plugins/NotificationSender/Backoffice/notificationSender.html"
+      }
+    }
+  ],
+  // array of files we want to inject into the application on app_start
+  "javascript": [
+    "~/App_Plugins/NotificationSender/Controllers/notificationsender.controller.js",
+    "~/App_Plugins/NotificationSender/Services/notificationsender.api.service.js"
+
+  ]
+}

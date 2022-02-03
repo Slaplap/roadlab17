@@ -1,0 +1,109 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.AboutPage>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "MasterPage.cshtml";
+}
+
+<section class="hero">
+    <div class=" hero__shadow hero__pad">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-12 hero__space">
+                    <div class="hero__container">
+                        <h4 class="hero__container--sub-heading">@Model.Value("heroSmallHeading")</h4>
+                        <h1 class="hero__container--main-heading ">@Model.Value("heroLargeHeading")</h1>
+                        <hr class="hero__hr2">
+                        <p class="hero__container--content-sub">@Model.Value("heroShortDescription")</p>
+                        <div class="hero__container--content">
+                            <p>@Model.Value("heroContent")</p>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="col-md-5 col-sm-12">
+				<iframe class=" video__about" src="https://www.youtube.com/embed/_JG75oKcZ8A" title="Yabout video" frameborder="0" controls=0 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen ></iframe>
+				</div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="about-team">
+	<div class="about-team__background">
+		<div class="products__heading paral paralsec">
+			<div class="container">
+				<div class="row products__heading-container">
+					<div class="col-md-11 col-sm-12 products__heading--line products__heading--space">
+						<p class="about-team__container--sub-heading">@Model.PageHeadingTop</p>
+						<h2 class="about-team__container--main-heading">@Model.PageHeadingBottom</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container about-team__sub-container">
+
+			<div class="row">
+
+				@foreach (var item in Model.TeamMember)
+				{
+					<div class="col-lg-4 col-md-6 col-sm-12 about-text about-team__sub-container--box">
+						<img class="about-team__sub-container--img" src="@(item.TeamMemberPhoto?.Url??"/images/nh.jpg")" alt="@item.TeamImageAlt">
+						<h5 class="about-team__sub-container--name">@item.TeamMemberName</h5>
+						<h6 class="about-team__sub-container--title">@item.TeamMemberPosition</h6>
+						<div class="about-team__sub-container--content ft-cont">
+							<p>@item.TeamMemberDescription</p>
+						</div>
+					</div>
+				}
+			</div>
+
+			<hr>
+		</div>
+
+	</div>
+</section>
+<section>
+	
+	<div class="photo-gallery">
+		<div class="container">
+				<h5 class="about-team__sub-container--name">Our National Operations Team</h5>
+			<div class="row photos">
+				<div class="col-sm-6 col-md-4  item"><a href="/images/g1.jpg" data-lightbox="photos"><img class="img-fluid" src="/images/g1.jpg"></a></div>
+				<div class="col-sm-6 col-md-4  item"><a href="/images/g2.jpg" data-lightbox="photos"><img class="img-fluid" src="/images/g2.jpg"></a></div>
+				<div class="col-sm-6 col-md-4  item"><a href="/images/g3.jpg" data-lightbox="photos"><img class="img-fluid" src="/images/g3.jpg"></a></div>
+				<div class="col-sm-6 col-md-4  item"><a href="/images/g4.jpg" data-lightbox="photos"><img class="img-fluid" src="/images/g4.jpg"></a></div>
+				<div class="col-sm-6 col-md-4  item"><a href="/images/g5.jpg" data-lightbox="photos"><img class="img-fluid" src="/images/g5.jpg"></a></div>
+				<div class="col-sm-6 col-md-4  item"><a href="/images/g6.jpg" data-lightbox="photos"><img class="img-fluid" src="/images/g6.jpg"></a></div>
+				<div class="col-sm-6 col-md-4  item"><a href="/images/g7.jpg" data-lightbox="photos"><img class="img-fluid" src="/images/g7.jpg"></a></div>
+				<div class="col-sm-6 col-md-4  item"><a href="/images/g8.jpg" data-lightbox="photos"><img class="img-fluid" src="/images/g8.jpg"></a></div>
+				<div class="col-sm-6 col-md-4  item"><a href="/images/g9.jpg" data-lightbox="photos"><img class="img-fluid" src="/images/g9.jpg"></a></div>
+			</div>
+		</div>
+	</div>
+
+	<div class="brag paral paralsec">
+		<div class="container about-brag__container">
+			<div class="row">
+				<div class="col-md-2 col-sm-12">
+					<img src="/images/logo2.png" alt="Roadlab Logo">
+				</div>
+				<div class="col">
+					<h3 class="about-brag__heading">WANT TO HEAR MORE?</h3>
+					<h4 class="about-brag__sub-heading">Don’t hesitate. Give us a call!</h4>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</section>
+
+<!-- Call to action -->
+<section class="cta">
+    <div class="cta__background cta__container">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <h4 class="cta__text"><span class="u-bold">TEAM UP WITH THE FRIENDLY EXPERTS. </span> REACH OUT TO US TODAY.</h4><a class="btn btn-white-l" href="/head-office/" role="button"></i>GO</a>
+            </div>
+        </div>
+    </div>
+</section>

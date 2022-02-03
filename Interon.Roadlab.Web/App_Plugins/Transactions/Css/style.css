@@ -1,0 +1,20 @@
+﻿.umb-table.no-border {
+    border: none
+}
+
+#tab1 .umb-table-inner label {
+    text-align: left !important
+}
+
+.control-group--left {
+    float: left;
+}
+
+.control-group .image {
+    display: inline-block;
+    border: 1px solid #dedede;
+    max-width: 400px;
+    min-height: 100px;
+    border-radius: 4px;
+    padding: 24px;
+}

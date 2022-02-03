@@ -23,10 +23,10 @@ x86/
 [Aa][Rr][Mm]/
 [Aa][Rr][Mm]64/
 bld/
-[Bb]in/
+
 [Oo]bj/
 [Ll]og/
-
+[Bb]in/
 # Visual Studio 2015/2017 cache/options directory
 .vs/
 # Uncomment if you have tasks that create the project's static files in wwwroot
@@ -338,3 +338,24 @@ ASALocalRun/
 
 # BeatPulse healthcheck temp database
 healthchecksdb
+/Interon.Roadlab.Web/App_Data/Logs
+/Interon.Roadlab.Web/App_Data/TEMP/ClientDependency
+/Interon.Roadlab.Web/App_Data/TEMP/DistCache
+/Interon.Roadlab.Web/App_Data/TEMP/ExamineIndexes
+/Interon.Roadlab.Web/App_Data/TEMP/NuCache
+/Interon.Roadlab.Web/App_Data/TEMP/TypesCache
+/Interon.Roadlab.Web/App_Data/cache
+/Interon.Roadlab.Web/App_Data/Models
+/Interon.Roadlab.Web/App_Data/Properties/PublishProfiles
+/Interon.Roadlab.Web/App_Data/Properties/ServiceDependencies
+/Interon.Roadlab.Web/App_Data/Properties/serviceDependencies.json
+
+
+
+/Interon.Roadlab.Web/Properties/serviceDependencies.json
+/Interon.Roadlab.Web/Properties/ServiceDependencies
+
+Interon.Roadlab.Web/bin/
+obj/
+/Interon.Roadlab.Web/Media
+bin/

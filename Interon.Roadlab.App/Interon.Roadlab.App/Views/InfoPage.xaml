@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Interon.Roadlab.App.Views.InfoPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:icons="clr-namespace:Interon.Roadlab.App.Core;assembly=Interon.Roadlab.App"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <ContentPage.Resources>
+        <StyleSheet Source="../../Styles.css" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+            <Label
+                FontAttributes="Bold"
+                FontFamily="{DynamicResource MaterialFontFamily}"
+                FontSize="200"
+                HorizontalOptions="CenterAndExpand"
+                Text="{x:Static icons:IconFont.Info}"
+                TextColor="#074F71"
+                VerticalOptions="CenterAndExpand" />
+            <Label
+                Margin="20,0,10,0"
+                FontAttributes="Bold"
+                FontSize="Large"
+                HorizontalOptions="CenterAndExpand"
+                Text="{Binding Message}"
+                TextColor="DarkOrange"
+                VerticalOptions="CenterAndExpand" />
+            <Button
+                x:Name="btnClose"
+                Margin="50"
+                Command="{Binding Commands[Close]}"
+                FontSize="Default"
+                Text="Close" />
+        </StackLayout>
+
+    </ContentPage.Content>
+</ContentPage>

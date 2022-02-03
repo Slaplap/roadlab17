@@ -1,0 +1,36 @@
+# ASP.NET
+# Build and test ASP.NET projects.
+# Add steps that publish symbols, save build artifacts, deploy, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/apps/aspnet/build-aspnet-4
+
+trigger:
+- master
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  solution: '**/Interon.Roadlab.Web.sln'
+  buildPlatform: 'Any CPU'
+  buildConfiguration: 'Release'
+
+steps:
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '$(solution)'
+
+- task: VSBuild@1
+  inputs:
+    solution: '$(solution)'
+    msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:PackageLocation="$(System.DefaultWorkingDirectory)"'
+    platform: '$(buildPlatform)'
+    configuration: '$(buildConfiguration)'
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'PublishProfile'
+    PublishProfilePath: '$(System.DefaultWorkingDirectory)/**/Interon.Roadlab.Web/Properties/PublishProfiles/RoadlabProduction - Web Deploy1.pubxml'
+    PublishProfilePassword: 'AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAAdakC5gMBrU+gIGQem7cDiQAAAAACAAAAAAAQZgAAAAEAACAAAACRDdGc/c7PU00kr5V5fI+JIkwwyEvG1R0aVGk7ejlcawAAAAAOgAAAAAIAACAAAACuzsQSrAdRHfvS3uDHHaG7wcoQLrotXCYn/GYHBwI8wYAAAACi+YwDaS+vjcNCz7eGzSFGF8nEbpBwPUcj2YU8WThnqu39RIWgYN9I9okB5BNA0k4Hg3OLh0XtIK8tAzk7AWGg54UYKoQDJ43rZFXgxTpB7apjk89vcSLKoMGBex1OeDvIBYcet0MSXwaYkhOc/aNLMdNUiMb1DipgT6ypbI6i1UAAAAAN6ktbmtyp2bVnyJL/Ds6z9Y/xC2qxNmDS9mSdofa/3nmtVor7mIa03+oW6a2jP4EBwjWXj6KS4Rmmn7njg9ht'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'

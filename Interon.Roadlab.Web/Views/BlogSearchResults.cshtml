@@ -1,0 +1,98 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Interon.Roadlab.Web.App.mvcControllers.SearchRenderModel>
+@using Our.Umbraco.FullTextSearch.Helpers
+@using ContentModels = Umbraco.Web.PublishedModels;
+ 
+@{
+    Layout = "MasterPage.cshtml";
+   
+    
+}
+
+
+<section class="hero">
+    <div class=" hero__shadow hero__pad">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-12 hero__space">
+                    <div class="hero__container">
+                        <h4 class="hero__container--sub-heading">@Model.Model.Value("heroSmallHeading")</h4>
+                        <h1 class="hero__container--main-heading ">@Model.Model.Value("heroLargeHeading")</h1>
+                        <hr class="hero__hr2">
+                        <p class="hero__container--content-sub">@Model.Model.Value("heroShortDescription")</p>
+                        <div class="hero__container--content">
+                            <p>@Model.Model.Value("heroContent")</p>
+                        </div>
+
+                    </div>
+
+                </div><div class="col-md-5 col-sm-12"><img class="about-team__img" src="/media/zmffny3g/manb.png" alt="team"></div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="about-team">
+    <div class="about-team__background">
+        <div class="products__heading paral" style="background-image: url(/images/rockface3.jpg);">
+            <div class="container">
+                <div class="row products__heading-container">
+                    <div class="col-md-11 col-sm-12 products__heading--line products__heading--space">
+
+                        <h2 class="about-team__container--main-heading">Search Results</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container ">
+            <div class="row"></div>
+            <div class="row blog-container">
+                <div class="col-lg-8 col-md-6 col-sm-12">
+                    @if (  Model.FullTextSearchResult.Results.Any())
+                    {
+                        foreach (var item in Model.FullTextSearchResult.Results)
+                        {
+                            try
+                            {
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h6 class="about-team__sub-container--title"></h6>
+                                        <h5 class="blog__sub-container--name">@item.Title</h5>
+                                        <p>
+                                            @item.Summary
+                                            <a href="@item.Url()"> read more</a>
+                                        </p>
+                                    </div>
+                                </div>
+                                <hr>
+                            }
+                            catch
+                            {
+
+                            }
+                        }
+                    }
+                    else
+                    {
+                        <p>Empty search result</p>
+                    }
+
+                </div>
+                <!-- Side Bar Right-->
+                <div class="col blog-sidebar">
+                    <h5 class="blog__sub-container--name my-3 mb-3">SEARCH</h5>
+                    <div>
+                        <form class="blog my-3 mb-3" action="">
+                            <input type="text" placeholder="Search" name="search">
+                            <button type="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                    <div>
+
+                            @*@Html.Partial("_RenderCategoryList",Model.Model)
+
+                            @Html.Partial("_RenderRecentArticleList",Model.Model)*@
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

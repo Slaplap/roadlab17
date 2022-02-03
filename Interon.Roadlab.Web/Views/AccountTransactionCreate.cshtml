@@ -1,0 +1,38 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<AccountTransactionCreateContentModel>
+@using Interon.Roadlab.Web.App.Models
+@using Interon.Roadlab.Web.App.ViewModels
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "MasterPage.cshtml";
+}
+<section>
+    <div class="row" style="background-image:url(/images/rockface3.jpg);margin-top:3rem;">
+        <div class="container">
+            <div class="login__head">
+                <div class="branch__head--line">
+							
+                    <h4 class="branch__sub-heading">Accounts</h4>
+                    <h2 class="branch__main-heading">Home</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container branch__container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                @Html.Partial("_RenderAdminMenu","#order")
+
+            </div>
+            <div class="col-md-12 col-sm-12">
+                @Html.Partial("_RenderAccountTransactionCreateForm",new TransactionViewModel())
+					 
+            </div>
+
+
+        </div>
+    </div>
+
+    @Html.Partial("_RenderBrag")
+</section>
+@Html.Partial("_RenderCTA")

@@ -1,0 +1,114 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Interon.Roadlab.Web.App.ViewModels.AccountTransactionListContentModel>
+@using Interon.Roadlab.Web.App.Models
+@using Interon.Roadlab.Web.App.ViewModels
+@using Syncfusion.EJ2
+@using Syncfusion.EJ2.DropDowns
+@{
+    Layout = "MasterPage.cshtml";
+    var children = new List<TransactionLine>();
+    foreach (var modelTransaction in Model.Transactions)
+    {
+        foreach (var transactionLine in modelTransaction.TransactionLine)
+        {
+                children.Add(transactionLine);
+        }
+    }
+
+
+}
+<section>
+    <div class="row" style="background-image:url(/images/rockface3.jpg);margin-top:3rem;">
+        <div class="container">
+            <div class="login__head">
+                <div class="branch__head--line">
+
+                    <h4 class="branch__sub-heading">Transaction</h4>
+                    <h2 class="branch__main-heading">History</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container branch__container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                @Html.Partial("_RenderAdminMenu", "#transactions")
+
+            </div>
+            <div class="col-md-12 col-sm-12">
+
+                <div class="control-section">
+                    <div class="dropmenu_space">
+                        <select id="selectCM" class="dropmenu">
+                            <option value="All" >Company Transactions</option>
+                            <option value="My" >My Transactions</option>
+                        </select>
+                    </div>
+                    @Html.EJS().Grid("LocalData").DataSource(Model.Transactions).AllowTextWrap().AllowFiltering(true).AllowSorting(true).AllowSelection(true).Columns(col =>
+                    {
+
+                        col.Field("Project").HeaderText("Project").Width("70").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+                        col.Field("BranchName").HeaderText("Branch").Width("70").Add();
+                        col.Field("RequestedByName").HeaderText("By").Width("70").Add();
+                        col.Field("ContactPerson").HeaderText("Contact").Width("70").Add();
+                        //col.Field("ContactPersonNumber").HeaderText("CP Number").Width("70").Add();
+                        //col.Field("ContactPersonEmail").HeaderText("CP Email").Width("70").Add();
+                        //col.Field("SiteLocationAddress").HeaderText("Site").Width("70").Add();
+                        col.Field("Status").HeaderText("Status").Width("70").Add();
+                        col.Field("CreateDate").HeaderText("Create Date").Width("65").Format("yMd").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+                        col.Field("UpdateDate").HeaderText("Update Date").Width("65").Format("yMd").TextAlign(Syncfusion.EJ2.Grids.TextAlign.Right).Add();
+                        col.Template("<button onclick='onGridClick(this)' class='e-control e-btn e-lib openDetails' id='${Key}' data-key='${Key}' type='button' >Detail</button>").AllowEditing(false).Width(70).Add();
+
+
+                    }).AllowPaging().PageSettings(page => page.PageCount(5)).Render()
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+    @Html.Partial("_RenderBrag")
+</section>
+<div class="modal fade" id="detailsModal" role="dialog">
+    <div class="modal-dialog">
+ 
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Transaction Information</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+ 
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-orange" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Html.Partial("_RenderCTA")
+
+<style>
+    .e-rowcell {
+        font-size: 9px !important;
+    }
+    th {
+        background-color: #FF8116
+    }
+    .e-grid .e-headercell,
+    .e-grid .e-detailheadercell {
+        background-color: #FF8116;
+        border-color: #e0e0e0;
+      
+    }
+    e-headertext {
+        font-size: 9px !important;
+    }
+    .e-grid .e-headercelldiv {
+        font-size: 9px !important;
+    }
+</style>

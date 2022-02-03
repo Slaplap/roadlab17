@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Interon.Roadlab.App.Views.Settings.SettingsPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:controls="clr-namespace:Interon.Roadlab.App.Controls;assembly=Interon.Roadlab.App"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:Interon.Roadlab.App.Core.ViewModels;assembly=Interon.Roadlab.App"
+    Shell.NavBarIsVisible="false"
+    mc:Ignorable="d">
+    <ContentPage.BindingContext>
+        <viewModels:SettingsViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Resources>
+        <StyleSheet Source="../../Styles.css" />
+        <StyleSheet>
+            <![CDATA[
+            Label {
+                padding-right: 10;
+            }
+            ]]>
+        </StyleSheet>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+
+            <controls:Header Title="Settings" ShowDeep="True" />
+            <ScrollView>
+                <Grid
+                    Padding="15"
+                    AbsoluteLayout.LayoutBounds=".5,0.6,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    VerticalOptions="Center">
+                    <StackLayout Orientation="Vertical" VerticalOptions="Center">
+
+                        <StackLayout Orientation="Horizontal" />
+                        <Frame BorderColor="LightGray" CornerRadius="20">
+                            <StackLayout Orientation="Vertical">
+
+                                <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                                    <Label Text="Show Favourites" />
+                                    <Switch
+                                        IsToggled="{Binding ShowFavourites}"
+                                        OnColor="Orange"
+                                        ThumbColor="Gray" />
+                                </FlexLayout>
+                                <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                                    <Label Text="Show Bookings" />
+                                    <Switch
+                                        IsToggled="{Binding ShowBookings}"
+                                        OnColor="Orange"
+                                        ThumbColor="Gray" />
+                                </FlexLayout>
+                                <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                                    <Label Text="Show Bookings" />
+                                    <Switch
+                                        IsToggled="{Binding ShowQuotes}"
+                                        OnColor="Orange"
+                                        ThumbColor="Gray" />
+                                </FlexLayout>
+                                <FlexLayout Direction="Row" JustifyContent="SpaceBetween">
+                                    <Label Text="Receive Notifications" />
+                                    <Switch
+                                        IsToggled="{Binding ShowNotifications}"
+                                        OnColor="Orange"
+                                        ThumbColor="Gray" />
+                                </FlexLayout>
+                            </StackLayout>
+                        </Frame>
+
+
+                    </StackLayout>
+                </Grid>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

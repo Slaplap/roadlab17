@@ -1,0 +1,31 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage
+@using System
+@using ClientDependency.Core.Mvc
+@using Syncfusion.EJ2
+@using ContentModels = Umbraco.Web.PublishedModels;
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en">
+<head>
+    @Html.Partial("_RenderHead")
+    @RenderSection("topscripts", false)
+    @Html.Partial("_RenderTopScripts") 
+</head>
+<body>
+    <!-- Facebook plugin START-->
+    <div id="fb-root"></div>
+
+   @Html.Partial("_RenderHeader");
+    <section class="static">
+        @RenderBody()
+    </section>
+  @Html.Partial("_RenderFooter")
+
+    @Html.RenderJsHere()
+@{Html.RequiresJsBundle("main");}
+
+@Html.Partial("_RenderBottomScripts")
+@RenderSection("scripts", false)
+  
+</body>
+</html>

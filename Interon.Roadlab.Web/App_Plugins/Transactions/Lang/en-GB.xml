@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+
+<language alias="en" intName="English (ZA)" localName="English (ZA)" lcid="" culture="en-ZA">
+  <area alias="sections">
+    <key alias="Transactions">Transactions</key>
+  </area>
+  
+</language>

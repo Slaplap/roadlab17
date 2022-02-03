@@ -1,0 +1,46 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.Vacancies>
+	@using ContentModels = Umbraco.Web.PublishedModels;
+	@{
+	Layout = "MasterPage.cshtml";
+	}
+
+	<section>
+		<div class="row branch__back-image" style="background-image:url('/images/vacancies.jpg');">
+			<div class="container">
+				<div class="branch__head">
+					<div class="branch__head--line">
+						<h4 class="branch__sub-heading">Current</h4>
+						<h2 class="branch__main-heading">vacancies</h2>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="container branch__container">
+			<div class="row">
+				<div class="col-md-8 col-sm-12">
+                    <div id="VacancyFormPlaceHolder">
+                        @Html.Partial("_RenderVacancyForm",new VacancyModel())
+                    </div>
+				</div>
+				<div class="col-md-4 col-sm-12">
+					<h5 class="branch__text-title branch__vacancies-title">@Model.Value("jobTitle")</h5>
+					<hr class="branch__hr">
+					<div class="branch__small-container">
+						<p>@Model.Value("jobDescription")</p><a class="u-pdf-link" target="_blank" href="@Model.Value("uploadJobSpec")"><i class="fas fa-external-link-alt btn-fa fa-link-space"></i>Download job specifications</a>
+						<p>Interested candidates can apply by filling in the fields to the left.</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Call to action -->
+	<section class="cta">
+		<div class="cta__background cta__container">
+			<div class="container">
+				<div class="row d-flex justify-content-center">
+					<h4 class="cta__text"><span class="u-bold">TEAM UP WITH THE FRIENDLY EXPERTS. </span> REACH OUT TO US TODAY.</h4><a class="btn btn-white-l" href="/head-office/" role="button"></i>GO</a>
+				</div>
+			</div>
+		</div>
+	</section>

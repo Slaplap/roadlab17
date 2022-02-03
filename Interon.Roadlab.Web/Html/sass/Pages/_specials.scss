@@ -1,0 +1,42 @@
+.specials {
+	
+	&__back-image {
+		background-image: linear-gradient(to top, rgba($light-blue, .75), rgba($dark-blue, .75)), url("../images/nelspruit-branch.png");
+		background-size: 100%;
+		background-repeat: no-repeat;
+		padding-bottom: 20rem;
+
+	}
+
+		&__back {
+		background: $dark-blue;
+		
+
+	}
+
+		&__container {
+		background-color: white;
+		//padding-bottom: 100px;
+		position: relative;
+		padding: 3%;
+	}
+
+		&__img {
+		width: 100%;
+		padding: 2%;
+	}
+		&__description {
+			max-width: 50%;
+		}
+
+		&__heading {
+			font-size: 4rem;
+			font-weight: 700;
+			color: $dark-blue;
+			text-transform: uppercase;
+			line-height: .9;
+		}
+		&__space {
+			padding-top: 3%;
+		}
+}

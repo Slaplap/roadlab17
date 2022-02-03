@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="Interon.Roadlab.App.Views.Registration.NewRegisterPage">
+    <ContentPage.Resources>
+        <StyleSheet Source="../../Styles.css" />
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <AbsoluteLayout>
+            <Image x:Name="img1"  AbsoluteLayout.LayoutBounds="0,-.25,0.5,0.5"  AbsoluteLayout.LayoutFlags="PositionProportional,SizeProportional"   Source="logo.png"  ></Image>
+            <Image x:Name="img2"  AbsoluteLayout.LayoutBounds="1.05,-.22,.5,.5" Rotation="180" AbsoluteLayout.LayoutFlags="PositionProportional,SizeProportional"   Source="rockface.png" ></Image>
+            <Grid AbsoluteLayout.LayoutBounds=".5,1" AbsoluteLayout.LayoutFlags="PositionProportional">
+            <ScrollView >
+                    <StackLayout  >
+                    
+                    <Label VerticalOptions="Start" HorizontalOptions="CenterAndExpand" x:Name="lblHeading" />
+
+                    <StackLayout Orientation="Vertical" >
+                        <StackLayout Orientation="Vertical" >
+                                <Entry Focused="FocusEvent" Unfocused="FocusEvent" FontSize="Default" Placeholder="Please enter Name" x:Name="txtName"></Entry>
+                             <Label   x:Name="txtNameError" FontSize="Small" TextColor="Red"></Label>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" >
+                                <Entry Focused="FocusEvent" Unfocused="FocusEvent"  FontSize="Default" Placeholder="Please enter Surname" x:Name="txtSurname"></Entry>
+                            <Label x:Name="txtSurnameError" FontSize="Small" TextColor="Red"></Label>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" >
+                                <Entry Focused="FocusEvent" Unfocused="FocusEvent"  FontSize="Default" Placeholder="Please enter Cell No e.g. 0831103333" Keyboard="Telephone" x:Name="txtCellNo"></Entry>
+                            <Label x:Name="txtCellNoError" FontSize="Small" TextColor="Red"></Label>
+                        </StackLayout>
+                        <StackLayout Orientation="Vertical" >
+                                <Entry  Focused="FocusEvent" Unfocused="FocusEvent" FontSize="Default" Placeholder="Please enter Account Number" x:Name="txtAccountNumber"></Entry>
+                            <Label x:Name="txtAccountNumberError" FontSize="Small" TextColor="Red"></Label>
+                        </StackLayout>
+                        <StackLayout  Orientation="Vertical" >
+                                <Entry Focused="FocusEvent" Unfocused="FocusEvent"  FontSize="Default" Placeholder="Create a password" x:Name="txtPassword"></Entry>
+                            <Label x:Name="txtPasswordError" FontSize="Small" TextColor="Red"></Label>
+                        </StackLayout>
+                        <Button FontSize="Default" x:Name="btnCancel"  VerticalOptions="EndAndExpand" Text="Cancel" Clicked="BtnCancel_OnClicked"  ></Button>
+                        <Button FontSize="Default" x:Name="btnContinue"  VerticalOptions="End" Text="Submit"  Clicked="BtnContinue_OnClicked"  ></Button>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <ActivityIndicator x:Name="ActivityIndicator" VerticalOptions="Center" HorizontalOptions="Center" Color="OrangeRed" IsRunning="{Binding IsBusy}"></ActivityIndicator>
+        </Grid>
+            </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

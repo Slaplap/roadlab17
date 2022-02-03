@@ -1,0 +1,16 @@
+﻿{
+  "sections": [
+    {
+      "alias": "Notifications",
+      "name": "Quotes,Orders,Bookings and Tests"
+
+    }
+  ],
+  "javascript": [
+    "~/App_Plugins/Notifications/Controllers/NotificationController.js",
+    "~/App_Plugins/Notifications/Controllers/NotificationsController.js",
+    "~/App_Plugins/Notifications/Resources/NotificationResource.js",
+    "~/App_Plugins/Notifications/Resources/NotificationsResource.js"
+  ]
+
+}

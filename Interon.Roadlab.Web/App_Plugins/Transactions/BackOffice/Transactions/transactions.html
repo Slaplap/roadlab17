@@ -1,0 +1,148 @@
+﻿<div ng-controller="TransactionsController">
+    <umb-panel >
+        <h1>Transactions</h1>
+
+        <umb-load-indicator ng-if="loading"></umb-load-indicator>
+        <div class="umb-panel-body umb-scrollable row-fluid">
+
+            <div class="umb-sub-header">
+
+
+
+
+                <form class="form-search pull-right ng-pristine ng-valid" novalidate="">
+
+                    <div class="inner-addon left-addon pull-left" style="margin-right:10px">
+                        <select class="form-control ng-pristine ng-valid" ng-model="statusFilter" style="width:150px" ng-change="filter(statusFilter)" no-dirty-check="">
+                            <option value="">All Statuses</option>
+
+                            <option value="Quote Open">Quote Open</option>
+                            <option value="Quote Pending">Quote Pending</option>
+                            <option value="Quote Ready">Quote Ready</option>
+                            <option value="Quote Accepted">Quote Accepted</option>
+                            <option value="Quote Rejected">Quote Rejected</option>
+                            <option value="Quote Cancelled">Quote Cancelled</option>
+                            <option value="Quote Closed">Quote Closed</option>
+
+                            <option value="Booking Open">Booking Open</option>
+                            <option value="Booking Pending">Booking Pending</option>
+                            <option value="Booking Ready">Booking Ready</option>
+                            <option value="Booking Accepted">Booking Accepted</option>
+                            <option value="Booking Rejected">Booking Rejected</option>
+                            <option value="Booking Cancelled">Booking Cancelled</option>
+                            <option value="Booking Closed">Booking Closed</option>
+
+                            <option value="Order Open">Order Open</option>
+                            <option value="Orner Pending">Order Pending</option>
+                            <option value="Order Cancelled">Order Cancelled</option>
+
+                            <option value="Test Open">Test Open</option>
+                            <option value="Test Pending">Test Pending</option>
+                            <option value="Test Cancelled">Test Cancelled</option>
+                        </select>
+                    </div>
+                    <div class="inner-addon left-addon pull-right">
+                        <i class="icon icon-search"></i>
+                        <input type="text" class="form-control ng-pristine ng-valid" placeholder="Type to search..." style="width:150px" ng-model="searchFilter" prevent-enter-submit="" no-dirty-check="" ng-change="search(searchFilter)">
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="umb-listview" ng-if="!loading">
+                <h2>Table</h2>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td style="width: 35px"></td>
+                            <td>
+                                <a href="#" prevent-default class="sortable" ng-click="order('RequestedByName')">Requested By</a>
+                                <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'RequestedByName'"></i>
+                            </td>
+                            <td>
+                                Comapny Name
+                            </td>
+                            <td>
+                                <a href="#" prevent-default class="sortable" ng-click="order('Company')">Branch Id</a>
+                                <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'CompanyId'"></i>
+                            </td>
+                            <td>
+                                Branch Name
+                            </td>
+                            <td>
+                                <a href="#" prevent-default class="sortable" ng-click="order('Project')">Project</a>
+                                <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'Project'"></i>
+                            </td>
+                            <td>
+                                <a href="#" prevent-default class="sortable" ng-click="order('Status')">Status</a>
+                                <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'Status'"></i>
+                            </td>
+                            <td>
+                                <a href="#" prevent-default class="sortable" ng-click="order('SyncDate')">Sync Date</a>
+                                <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'SyncDate'"></i>
+                            </td>
+                            <td>
+                                <a href="#" prevent-default class="sortable" ng-click="order('UpdateDate')">Update Date</a>
+                                <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'UpdateDate'"></i>
+                            </td>
+                            <td></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr ng-repeat="p in data">
+                            <!--<td style="width: 35px">
+        <i class="icon icon-edit"></i>
+        <input type="checkbox" name="selectedItems[]" value="{{p.id}}" ng-checked="isRowSelected(p.id)" ng-click="toggleSelection(p.id)"/>
+    </td>-->
+                            <td></td>
+                            <td>{{p.RequestedByName}}</td>
+                            <td>
+                                {{p.CompanyName}}
+                            </td>
+                            <td>{{p.BranchId}}</td>
+                            <td>{{p.BranchName}}</td>
+                            <td>{{p.Project}}</td>
+                            <td>{{p.Status}}</td>
+                            <td>{{p.SyncDate}}</td>
+                            <td>{{p.UpdateDate}}</td>
+                            <td>{{p.CreateDate}}</td>
+                            <td>{{p.ActionDate}}</td>
+                            <td>{{p.ClosedDate}}</td>
+                            <td>
+                                <a class="btn" href="#/Transactions/Transactions/transaction?transactionId={{p.Key}}">View</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tfoot ng-show="totalPages > 1">
+                        <tr>
+                            <th colspan="6">
+                                <div class="pagination pagination-right">
+                                    <ul>
+                                        <li ng-class="{disabled: currentPage == 1}">
+                                            <a href ng-click="prevPage()">Prev</a>
+                                        </li>
+                                        <li ng-repeat="i in getNumber(totalPages) track by $index" ng-click="setPage($index+1)"><span>{{$index+1}}</span></li>
+                                        <li ng-class="{disabled: currentPage == totalPages}">
+                                            <a href ng-click="nextPage()">Next</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <table class="table table-striped" ng-if="data.length==0">
+                    <thead>
+                        <tr>
+                            <td>No Transactions Request Found.</td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+
+    </umb-panel>
+</div>

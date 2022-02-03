@@ -1,0 +1,58 @@
+trigger:
+- masterAndroid
+
+pool:
+  vmImage: 'windows-latest'
+
+variables:
+  buildConfiguration: 'Release'
+  outputDirectory: '$(build.binariesDirectory)/$(buildConfiguration)'
+  solution: '**/*.sln'
+  buildPlatform: 'Any CPU'
+steps:
+- task: NuGetToolInstaller@1
+
+- task: NuGetCommand@2
+  inputs:
+    restoreSolution: '**/*.sln'
+- task: MagicChunks@2
+  inputs:
+    sourcePath: 'appsettings.json'
+    sourcePathRecurse: true
+    fileType: 'Json'
+    targetPathType: 'source'
+    transformationType: 'json'
+    transformations: |
+      {
+        "BaseUrl": "https://roadlabweb.azurewebsites.net"
+      }
+- task: XamarinAndroid@1
+  inputs:
+    projectFile: '**/*droid*.csproj'
+    configuration: '$(buildConfiguration)'
+    msbuildArguments: /p:JavaSdkDirectory="$(JAVA_HOME)/"
+
+- task: AndroidSigning@3
+  inputs:
+    apkFiles: '**/*.apk'
+    apksignerKeystoreFile: 'debug.keystore'
+    apksignerKeystorePassword: 'android'
+    apksignerKeystoreAlias: 'androiddebugkey'
+    apksignerKeyPassword: 'android'
+    zipalign: true
+
+
+
+- task: AppCenterDistribute@3
+  inputs:
+    serverEndpoint: 'Roadlab'
+    appSlug: 'Roadlab/Roadlab-Xamarin-Android'
+    appFile: 'Interon.Roadlab.App\Interon.Roadlab.App.Android\bin\Release\com.Interon.Roadlab.App.apk'
+    symbolsOption: 'Android'
+    releaseNotesOption: 'input'
+    releaseNotesInput: 'Test Release'
+    isMandatory: true
+    destinationType: 'groups' 
+
+ 
+

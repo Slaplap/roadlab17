@@ -1,0 +1,23 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.AccountLogin>
+@using Interon.Roadlab.Web.App.ViewModels
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = "MasterPage.cshtml";
+    ViewBag.RedirectUrl = Request.Url.AbsoluteUri;
+}
+<section>
+    <div class="row" style="background-image:url(/images/rockface3.jpg);margin-top:3rem;">
+        <div class="container">
+            <div class="login__head">
+                <div class="branch__head--line">
+
+                    <h2 class="branch__main-heading">Log In</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+    @Html.Partial("_Renderloginform",new LoginViewModel())
+    @Html.Partial("_RenderBrag")
+</section>
+
+@Html.Partial("_RenderCTA")

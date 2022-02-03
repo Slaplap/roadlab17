@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Interon.Roadlab.App.Views.Registration.ReRegisterPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:models="clr-namespace:Interon.Roadlab.App.Core.Models;assembly=Interon.Roadlab.App"
+    mc:Ignorable="d">
+    <ContentPage.Resources>
+        <StyleSheet Source="../../Styles.css" />
+    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <models:ReRegisterViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+
+
+        <AbsoluteLayout>
+
+            <Image  x:Name="img1"  
+                    AbsoluteLayout.LayoutBounds="0,-.25,0.5,0.5"
+                    AbsoluteLayout.LayoutFlags="PositionProportional,SizeProportional"
+                    Source="logo.png" />
+            <Image  x:Name="img2"  
+                    AbsoluteLayout.LayoutBounds="1.05,-.22,.5,.5"
+                    AbsoluteLayout.LayoutFlags="PositionProportional,SizeProportional"
+                    Rotation="180"
+                    Source="rockface.png" />
+            <Grid
+                Padding="15"
+                AbsoluteLayout.LayoutBounds="0,0.1,1,1"
+                AbsoluteLayout.LayoutFlags="All"
+                VerticalOptions="Center">
+                <ScrollView>
+                    <StackLayout>
+
+                        <Label
+                            FontSize="Default"
+                            HorizontalOptions="CenterAndExpand"
+                            Text="{Binding Name}"
+                            VerticalOptions="Start" />
+                        <Label
+                            Margin="0,50,0,0"
+                            FontSize="Default"
+                            Text="Please enter password" />
+                        <Entry x:Name="txtPassword" Text="{Binding Password}" Focused="FocusEvent" Unfocused="FocusEvent" />
+                        <FlexLayout
+                            AlignContent="SpaceAround"
+                            AlignItems="Stretch"
+                            AlignSelf="Stretch"
+                            Direction="Row"
+                            WidthRequest="400">
+
+                            <Button
+                                x:Name="btnCancel"
+                                Margin="0,0,10,0"
+                                Command="{Binding Commands[CommandCancel]}"
+                                FontSize="Default"
+                                Text="Cancel"
+                                VerticalOptions="Start"
+                                WidthRequest="230" />
+                            <Button
+                                x:Name="btnForget"
+                                Margin="10,0,0,0"
+                                Command="{Binding Commands[CommandForget]}"
+                                FontSize="Default"
+                                Text="Forgot"
+                                VerticalOptions="Start"
+                                WidthRequest="230" />
+                        </FlexLayout>
+
+                        <Button
+                            x:Name="btnContinue"
+                            Command="{Binding Commands[CommandSubmit]}"
+                            FontSize="Default"
+                            Text="Submit"
+                            VerticalOptions="End" />
+                    </StackLayout>
+                </ScrollView>
+                <ActivityIndicator
+                    x:Name="ActivityIndicator"
+                    HorizontalOptions="Center"
+                    IsRunning="{Binding IsBusy}"
+                    VerticalOptions="Center"
+                    Color="OrangeRed" />
+            </Grid>
+
+        </AbsoluteLayout>
+    </ContentPage.Content>
+</ContentPage>

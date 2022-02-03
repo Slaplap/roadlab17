@@ -1,0 +1,99 @@
+.projects {
+
+	&__item {
+		font-weight: 200;
+		font-size: 10rem;
+		line-height: 9rem;
+	}
+
+	&__heading {
+	color: white;
+
+		&--container {
+		padding: 8rem 0 3rem;
+		}
+
+		&--space {
+		padding-left: 2rem;
+		}
+
+		&--heading {
+		font-size: 4.3rem;
+		font-weight: 700;
+		line-height: 4.7rem;
+		text-transform: uppercase;
+		}
+	}
+
+	&__hr {
+	height: .4rem;
+	border: none;
+	color: $light-orange;
+	background-color: $light-orange;
+	width: 10%;
+	text-align: left;
+	margin: 2rem auto 0 0;
+	//visibility: hidden;
+	}
+
+	&--sub-heading {
+	font-size: 2.5rem;
+	font-weight: 300;
+	text-transform: uppercase;
+	margin-top: 2rem;
+	}
+
+	&--sub-heading-2 {
+	font-size: 3.5rem;
+	font-weight: 700;
+	text-transform: uppercase;
+	margin-top: 2rem;
+	color: $medium-blue;
+	}
+
+	&__container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+	}
+
+	&__container {
+	width:141rem;
+}
+	
+	&__table {
+		font-size: 1.6rem;
+		width:30rem;
+		color: $medium-blue;
+	}
+
+	&__table td{
+	padding-right: 2rem;
+	padding:.5rem .5rem .5rem 0;
+	vertical-align: text-top;
+	line-height: 1;
+	border:none;
+	background-color: none;
+	}
+
+	&__table tr {
+		padding-top: 3.5rem;
+	}
+
+	&__table tr:nth-of-type(odd) { 
+  		background: white; 
+	}
+	&__images img {
+		max-width: 100%;
+		overflow: hidden;
+		padding: 3rem 0 3rem 0;
+	}
+	
+	&__hero-img {
+		position: absolute;
+		max-width: 100%;
+		padding-left: 3rem;
+	}
+}

@@ -1,0 +1,72 @@
+﻿@using Interon.Roadlab.Web.App.SurfaceControllers
+@inherits UmbracoViewPage<Interon.Roadlab.Web.App.ViewModels.TransactionViewModel>
+
+<h1> Create @Request.QueryString["Type"]</h1>
+
+@using (Html.BeginUmbracoForm<TransactionsSurfaceController>("Create", FormMethod.Post, new { @class = "form branch__form" }))
+{
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+    @Html.TextBoxFor(x => x.Project, new { placeholder = "Project" })
+    @Html.ValidationMessageFor(x => x.Project)
+    @*if you need to add a class to the dropdown use @class*@
+    @Html.DropDownListFor(x => x.BranchId, new SelectList(ViewBag.Branches, "Id", "BranchName"), "--Select Branch--")
+    @Html.TextBoxFor(x => x.ContactPerson, new { placeholder = "Contact Person" })
+    @Html.ValidationMessageFor(x => x.ContactPerson)
+    @Html.TextBoxFor(x => x.ContactPersonEmail, new { placeholder = "Contact Email" })
+    @Html.ValidationMessageFor(x => x.ContactPersonEmail)
+    @Html.TextBoxFor(x => x.ContactPersonNumber, new { placeholder = "Contact Number" })
+    @Html.ValidationMessageFor(x => x.ContactPersonNumber)
+    @Html.TextBoxFor(x => x.SiteLocationAddress, new { placeholder = "Site Location" })
+    @Html.ValidationMessageFor(x => x.SiteLocationAddress)
+    @Html.TextBoxFor(x => x.OrderNumber, new { placeholder = "Order Number" })
+    @Html.ValidationMessageFor(x => x.OrderNumber)
+    @Html.TextBoxFor(x => x.SpecialInstructions, new { placeholder = "Special Instructions" })
+    <h2>Test Required</h2>
+    <ul id="testList">
+
+        @for (var i = 0; i < Model.TransactionLine.Count; i++)
+        {
+            <li>@Model.TransactionLine[i].Category - @Model.TransactionLine[i].Test X @Model.TransactionLine[i].Qty</li>
+        }
+
+    </ul>
+    <div class="container h-100">
+        <div class="row h-100 justify-content-center align-items-center">
+            <div id="addTestButton" class="btn"> <i class="fas fa-plus-circle  fa-5x"></i></div>
+        </div>
+    </div>
+    <div class="container h-100">
+        <div class="row h-100 justify-content-end align-items-center">
+            <button type="submit" class="btn btn-dark">SUBMIT</button>
+        </div>
+    </div>
+
+}
+
+<div class="modal fade" id="testModal" role="dialog">
+    <div class="modal-dialog">
+
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Add Tests</h2>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body form">
+                <h1>Select Service</h1>
+
+
+                <select id="dropdownCategory"></select>
+                <select id="dropdownTest"></select>
+                <input id="qty" type="number" width="30" min="1" value="1" maxlength="10" />
+                <button id="buttonAdd" class="btn btn-orange" type="button" value="Add">Add</button>
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

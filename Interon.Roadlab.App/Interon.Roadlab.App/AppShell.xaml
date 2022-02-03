@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="Interon.Roadlab.App.AppShell"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:ClientRequests="clr-namespace:Interon.Roadlab.App.Views.ClientRequests;assembly=Interon.Roadlab.App"
+    xmlns:branches="clr-namespace:Interon.Roadlab.App.Views.Branches;assembly=Interon.Roadlab.App"
+    xmlns:controls="clr-namespace:Interon.Roadlab.App.Controls"
+    xmlns:core="clr-namespace:Interon.Roadlab.App.Core;assembly=Interon.Roadlab.App"
+    xmlns:developer="clr-namespace:Interon.Roadlab.App.Views.Developer;assembly=Interon.Roadlab.App"
+    xmlns:items="clr-namespace:Interon.Roadlab.App.Views.Items;assembly=Interon.Roadlab.App"
+    xmlns:local="clr-namespace:Interon.Roadlab.App.Views;assembly=Interon.Roadlab.App"
+    xmlns:profile="clr-namespace:Interon.Roadlab.App.Views.Profile;assembly=Interon.Roadlab.App"
+    xmlns:registration="clr-namespace:Interon.Roadlab.App.Views.Registration;assembly=Interon.Roadlab.App"
+    xmlns:settings="clr-namespace:Interon.Roadlab.App.Views.Settings;assembly=Interon.Roadlab.App"
+    xmlns:transactions="clr-namespace:Interon.Roadlab.App.Views.ClientRequests;assembly=Interon.Roadlab.App"
+    xmlns:views="clr-namespace:Interon.Roadlab.App.Views"
+    BackgroundColor="#041C2C"
+    FlyoutHeaderBehavior="CollapseOnScroll"
+    Visual="Material">
+
+    <Shell.Resources>
+
+        <!--<StyleSheetExtension  x:Key="MainShell" Source="Styles.css" />-->
+
+        <Style x:Key="BaseStyle" TargetType="Element">
+            <Setter Property="Shell.BackgroundColor" Value="#EDEDED" />
+            <Setter Property="Shell.ForegroundColor" Value="White" />
+            <Setter Property="Shell.TitleColor" Value="White" />
+            <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+            <Setter Property="Shell.UnselectedColor" Value="#95FFFFFF" />
+
+        </Style>
+        <Style BasedOn="{StaticResource BaseStyle}" TargetType="ShellItem" />
+        <Style
+            x:Key="MainShell"
+            BasedOn="{StaticResource BaseStyle}"
+            TargetType="Element">
+            <Setter Property="Shell.BackgroundColor" Value="#fa9117" />
+        </Style>
+        <Style x:Key="MyBaseStyle" TargetType="Element">
+
+            <Setter Property="Shell.ForegroundColor" Value="White" />
+            <Setter Property="Shell.TitleColor" Value="White" />
+            <Setter Property="Shell.DisabledColor" Value="White" />
+            <Setter Property="Shell.UnselectedColor" Value="White" />
+            <Setter Property="Shell.TabBarBackgroundColor" Value="#041C2C" />
+            <Setter Property="Shell.TabBarForegroundColor" Value="White" />
+            <Setter Property="Shell.TabBarUnselectedColor" Value="White" />
+            <Setter Property="Shell.TabBarTitleColor" Value="White" />
+        </Style>
+
+        <Style BasedOn="{StaticResource MyBaseStyle}" TargetType="ShellSection" />
+    </Shell.Resources>
+    <Shell.FlyoutHeader>
+        <controls:FlyoutHeader />
+    </Shell.FlyoutHeader>
+
+    <Shell.FlyoutBackgroundColor>#EDEDED</Shell.FlyoutBackgroundColor>
+     
+    <FlyoutItem Title="Home" Route="Home">
+
+        <FlyoutItem.Icon>
+            <FontImageSource
+                FontFamily="{DynamicResource MaterialFontFamily}"
+                Glyph="{x:Static core:IconFont.Home}"
+                Color="#041C2C" />
+        </FlyoutItem.Icon>
+        <ShellContent ContentTemplate="{DataTemplate local:HomePage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Profile">
+        <FlyoutItem.Icon>
+            <FontImageSource
+                FontFamily="{DynamicResource MaterialFontFamily}"
+                Glyph="{x:Static core:IconFont.AccountCircle}"
+                Color="#041C2C" />
+        </FlyoutItem.Icon>
+        <ShellContent ContentTemplate="{DataTemplate profile:ProfilePage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Settings">
+        <FlyoutItem.Icon>
+            <FontImageSource
+                FontFamily="{DynamicResource MaterialFontFamily}"
+                Glyph="{x:Static core:IconFont.Settings}"
+                Color="#041C2C" />
+        </FlyoutItem.Icon>
+        <ShellContent ContentTemplate="{DataTemplate settings:SettingsPage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="About">
+        <FlyoutItem.Icon>
+            <FontImageSource
+                FontFamily="{DynamicResource MaterialFontFamily}"
+                Glyph="{x:Static core:IconFont.Info}"
+                Color="#041C2C" />
+        </FlyoutItem.Icon>
+        <ShellContent ContentTemplate="{DataTemplate developer:DeveloperPage}" />
+    </FlyoutItem>
+    <FlyoutItem Title="Log Out">
+        <FlyoutItem.Icon>
+            <FontImageSource
+                FontFamily="{DynamicResource MaterialFontFamily}"
+                Glyph="{x:Static core:IconFont.Lock}"
+                Color="#041C2C" />
+        </FlyoutItem.Icon>
+        <ShellContent ContentTemplate="{DataTemplate registration:LogOut}" />
+
+    </FlyoutItem>
+
+    
+
+</Shell>

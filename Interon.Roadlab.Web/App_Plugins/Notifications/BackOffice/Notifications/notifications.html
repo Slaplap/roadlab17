@@ -1,0 +1,139 @@
+﻿<div ng-controller="NotificationsController">
+    <umb-panel >
+        <h1>Notifications</h1>
+
+        <umb-load-indicator ng-if="loading"></umb-load-indicator>
+        <div class="umb-panel-body umb-scrollable row-fluid">
+
+            <div class="umb-sub-header">
+
+
+
+
+                <form class="form-search pull-right ng-pristine ng-valid" novalidate="">
+
+                    <div class="inner-addon left-addon pull-left" style="margin-right:10px">
+                        <select class="form-control ng-pristine ng-valid" ng-model="statusFilter" style="width:150px" ng-change="filter(statusFilter)" no-dirty-check="">
+                            <option value="">All</option>
+
+                            
+                        </select>
+                    </div>
+                    <div class="inner-addon left-addon pull-right">
+                        <i class="icon icon-search"></i>
+                        <input type="text" class="form-control ng-pristine ng-valid" placeholder="Type to search..." style="width:150px" ng-model="searchFilter" prevent-enter-submit="" no-dirty-check="" ng-change="search(searchFilter)">
+                    </div>
+                </form>
+
+            </div>
+
+            <div class="umb-listview" ng-if="!loading">
+                <h2>Table</h2>
+
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <td style="width: 35px"></td>
+                            <td>
+                                <a href="#" prevent-default class="sortable" ng-click="order('MemberId')">MemberId</a>
+                                <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'MemberId'"></i>
+                            </td>
+                            <td>
+                                <a href="#" prevent-default class="sortable" ng-click="order('Title')">Title</a>
+                                <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'Title'"></i>
+                            </td>
+                            <td>
+                                <a href="#" prevent-default class="sortable" ng-click="order('Message')">Message</a>
+                                <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'Message'"></i>
+                            </td>
+                            <td>
+                                <a href="#" prevent-default class="sortable" ng-click="order('Link')">Link</a>
+                                <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'Link'"></i>
+                            </td>
+                            <td>
+                                <a href="#" prevent-default class="sortable" ng-click="order('Data')">Data</a>
+                                <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'Data'"></i>
+                            </td>
+                            <td>
+                                <a href="#" prevent-default class="sortable" ng-click="order('NotificationType')">NotificationType</a>
+                                <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'NotificationType'"></i>
+                            </td>
+                            <td>
+                                <a href="#" prevent-default class="sortable" ng-click="order('PushOutcome')">Result</a>
+                                <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'PushOutcome'"></i>
+                            </td>
+                            <td>
+                                <a href="#" prevent-default class="sortable" ng-click="order('ReadDate')">ReadDate</a>
+                                <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'ReadDate'"></i>
+                            </td>
+                            <td>
+                                <a href="#" prevent-default class="sortable" ng-click="order('SyncDate')">SyncDate</a>
+                                <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'SyncDate'"></i>
+                            </td>
+                            <td>
+                                <a href="#" prevent-default class="sortable" ng-click="order('UpdateDate')">UpdateDate</a>
+                                <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'UpdateDate'"></i>
+                            </td>
+                            <td>
+                                <a href="#" prevent-default class="sortable" ng-click="order('CreateDate')">CreateDate</a>
+                                <i class="icon" ng-class="{'icon-navigation-up': reverse, 'icon-navigation-down': !reverse}" ng-show="predicate == 'CreateDate'"></i>
+                            </td>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr ng-repeat="p in data">
+                            <!--<td style="width: 35px">
+        <i class="icon icon-edit"></i>
+        <input type="checkbox" name="selectedItems[]" value="{{p.id}}" ng-checked="isRowSelected(p.id)" ng-click="toggleSelection(p.id)"/>
+    </td>-->
+                            <td></td>
+                            <td>{{p.MemberId}}</td>
+                            <td>
+                                {{p.Title}}
+                            </td>
+                            <td>{{p.Message}}</td>
+                            <td>{{p.Link}}</td>
+                            <td>{{p.Data}}</td>
+                            <td>{{p.NotificationType}}</td>
+                            <td>{{p.PushOutcome}}</td>
+                            <td>{{p.ReadDate}}</td>
+                            <td>{{p.SyncDate}}</td>
+                            <td>{{p.UpdateDate}}</td>
+                            <td>{{p.CreateDate}}</td>
+                            <!--<td>
+                                <a class="btn" href="#/Notifications/Orders/order?orderId={{p.Id}}">View</a>
+                            </td>-->
+                        </tr>
+                    </tbody>
+                    <tfoot ng-show="totalPages > 1">
+                        <tr>
+                            <th colspan="6">
+                                <div class="pagination pagination-right">
+                                    <ul>
+                                        <li ng-class="{disabled: currentPage == 1}">
+                                            <a href ng-click="prevPage()">Prev</a>
+                                        </li>
+                                        <li ng-repeat="i in getNumber(totalPages) track by $index" ng-click="setPage($index+1)"><span>{{$index+1}}</span></li>
+                                        <li ng-class="{disabled: currentPage == totalPages}">
+                                            <a href ng-click="nextPage()">Next</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </th>
+                        </tr>
+                    </tfoot>
+                </table>
+
+                <table class="table table-striped" ng-if="data.length==0">
+                    <thead>
+                        <tr>
+                            <td>No Notifications Request Found.</td>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+
+    </umb-panel>
+</div>

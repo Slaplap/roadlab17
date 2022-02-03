@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "740273797977",
+    "firebase_url": "https://roadlab-e7714.firebaseio.com",
+    "project_id": "roadlab-e7714",
+    "storage_bucket": "roadlab-e7714.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:740273797977:android:589920977ea57fe2",
+        "android_client_info": {
+          "package_name": "co.za.roadlab.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "740273797977-r0hm4gmp0e14l2gnf34n2evkg5kmp8o5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATGPp8Y51Q8mmbzcDAihCU5qG5dA-moIQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "740273797977-r0hm4gmp0e14l2gnf34n2evkg5kmp8o5.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "740273797977-94a2leahts1v489dib8sgmslpm0sq6if.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "co.za.roadlab.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

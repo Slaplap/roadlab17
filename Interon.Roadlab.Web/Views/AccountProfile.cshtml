@@ -1,0 +1,57 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.AccountProfile>
+@using Syncfusion.EJ2
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    var _member = Services.MemberService.GetById(Members.GetCurrentMemberId());
+    Layout = "MasterPage.cshtml";
+    var member = Members.GetCurrentMember();
+
+    var company = (Company)Members.GetCurrentMember().GetProperty("company").Value();
+
+}
+<section>
+    <div class="row" style="background-image:url(/images/rockface3.jpg);margin-top:3rem;">
+        <div class="container">
+            <div class="login__head">
+                <div class="branch__head--line">
+
+                    <h4 class="branch__sub-heading">Accounts</h4>
+                    <h2 class="branch__main-heading">Profile</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container branch__container">
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                @Html.Partial("_RenderAdminMenu", "#profile")
+
+            </div>
+            <div class="col-md-12 col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <p><span class="u-bold">Name:</span>@Members.GetCurrentMember().GetProperty("firstName").Value()</p>
+                        <p><span class="u-bold">Surname :</span>@Members.GetCurrentMember().GetProperty("surname").Value()</p>
+                        <p><span class="u-bold">Cell Number :</span>@Members.GetCurrentMember().GetProperty("mobileNumber").Value()</p>
+                        <p><span class="u-bold">Email :</span>@_member.Email</p>
+                        <p><span class="u-bold">Company Name:</span> @company.CompanyName</p>
+                        <a href="/account/secure-area/change-password/">Change Password</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+    @Html.Partial("_RenderBrag")
+</section>
+@Html.Partial("_RenderCTA")
+@section scripts{
+    @Html.EJS().ScriptManager()
+}
+@section topscripts{
+    <link rel="stylesheet" href="https://cdn.syncfusion.com/ej2/material.css" />
+    <script src="https://cdn.syncfusion.com/ej2/dist/ej2.min.js"></script>
+}

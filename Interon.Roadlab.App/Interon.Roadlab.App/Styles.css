@@ -1,0 +1,38 @@
+﻿^ContentPage {
+     background-color: #EDEDED;
+     
+
+ }
+navigationpage {
+    -xf-bar-background-color: lightgray;
+}
+^Button {
+     background-color: #fa9117;
+     color: white;
+     border-radius: 10;
+     font-size: large;
+     font-weight: bold;
+}
+
+^Entry {
+    border-color:  #f75c0a;
+     border-style: dotted;
+}
+^Tab {
+     -xf-shell-tabbar-foreground: black;
+     -xf-shell-tabbar-title: black;
+ }
+.tabitem {
+    -xf-shell-tabbar-foreground: black;
+    -xf-shell-tabbar-title: red;
+}
+^ShellSection {
+     margin: 20%;
+ }
+^ContentPage.Content {
+     margin-top: 5%;
+}
+.title {
+    color: #041C2C;
+    font-size: 30px;
+}

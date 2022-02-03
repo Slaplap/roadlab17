@@ -1,0 +1,229 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.HomePage>
+@using Interon.Roadlab.Web.App.ViewModels
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+	Layout = "MasterPage.cshtml";
+}
+
+<main>
+	<section >
+		<img class="hidden-mobile" src="~/images/dbanner.jpg"  style="width:100%;">
+		<img class="visible-mobile" src="~/images/mbanner.jpg"  style="width:100%;">
+	</section>
+<!-- BENEFITS -->
+	<section>
+		<div class="paral paralsec">
+			<div class="container">
+				<div class="row benefits__content">
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-md-4">
+								<img class="benefits__img" src="./images/afrd.png" alt="materials testing lab">
+							</div>
+							<div class="col-md-8">
+								<h2 class="benefits__heading"><span class="u-bold">AFRICA’S LEADING </span></h2>
+								<h3 class="benefits__sub-heading">MATERIALS <strong>TESTING SERVICE</strong> PROVIDER</h3><br />
+								<h4 class="benefits__sub-heading" style="font-style: italic;">
+									Helping make incredible projects happen in more Our Clients Choosethan 20 countries across Africa since 1965.
+								</h4>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="row">
+							<div class="col-md-3">
+
+								<img class="benefits__img" src="./images/4.png" alt="materials testing lab">
+							</div>
+							<div class="col-md-9 benefits__head">
+								<h1 class="">REASONS WHY</h1>
+								<div style="display:inline-flex">
+									<h3 class=""><strong>OUR CLIENTS CHOOSE</strong> </h3>
+									<img style="margin-left:1rem;max-height:30px;" src="/images/rwhite.png" />
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section><!-- BENEFITS BLOCKS -->
+	<section class="benefits-blocks container">
+
+		<!-- Start Feature 1 -->
+		<div>
+			<div class="row benefits-blocks__container">
+				<div class="col-md-6 col-sm-12 benefits-blocks__divider">
+					<iframe class="benefits-blocks__img" width="389" height="219"
+							src="https://www.youtube.com/embed/_JG75oKcZ8A" title="YouTube video player" frameborder="0" controls=0 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+				<div class="col-md-6 col-sm-12 benefits-blocks__right-box">
+					<div class="col">
+
+						<div class="row" style="display: inline-block;">
+							<h3 class="benefits-blocks__heading">TRACK RECORD</h3>
+							<p class="benefits-blocks__sub-heading">OVER 50 YEARS EXPERIENCE</p>
+						</div>
+					</div>
+					<div class="benefits-blocks__text">
+						<p>
+							Our experience is in everything that could impact the success of your project. We see the whole picture, and with us you will too.
+						</p>
+					</div><a class="btn btn-orange" href="/projects/" role="button"><i class="fas fa-angle-right u-btn-fa"></i>OUR PROJECTS</a>
+				</div>
+			</div>
+			<hr>
+		</div><!-- End Feature 1 -->
+		<!-- Start Feature 2 -->
+		<div>
+			<div class="row benefits-blocks__container">
+				<div class="col-md-6 col-sm-12 benefits-blocks__divider"><img class="benefits-blocks__img" width="389" height="219" src="./images/feature2.png" alt="Nationwide coverage"></div>
+				<div class="col-md-6 col-sm-12 benefits-blocks__right-box">
+					<div class="col benefits-blocks__left-box">
+						<div class="row">
+							<h3 class="benefits-blocks__heading">NATIONWIDE COVERAGE</h3>
+							<p class="benefits-blocks__sub-heading">
+								AT YOUR SITE, NO MATTER	WHERE
+							</p>
+						</div>
+					</div>
+					<div class="benefits-blocks__text">
+						<p>With a fleet of over 100 vehicles and widespread coverage across Africa, Roadlab is your go-to partner for materials testing, regardless of the location.</p>
+					</div>
+					<a class="btn btn-orange" href="/head-office/#network" role="button"><i class="fas fa-angle-right u-btn-fa"></i>OUR NETWORK</a>
+				</div>
+			</div>
+			<hr>
+		</div>
+		<!-- End Feature 2
+	<!-- Start Feature 3 -->
+		<div>
+			<div class="row benefits-blocks__container">
+				<div class="col-md-6 col-sm-12 benefits-blocks__divider">
+					<iframe class="benefits-blocks__img" width="389" height="219"
+							src="https://www.youtube.com/embed/F_uRx0uP6JI" title="YouTube video player" frameborder="0" controls=0 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</div>
+				<div class="col-md-6 col-sm-12 benefits-blocks__right-box">
+					<div class="col benefits-blocks__left-box">
+						<div class="row">
+							<h3 class="benefits-blocks__heading">STATE OF THE ART</h3>
+							<p class="benefits-blocks__sub-heading">
+								TESTING EQUIPMENT, PERSONNEL & PROCEDURES
+							</p>
+						</div>
+					</div>
+					<div class="benefits-blocks__text">
+						<p>
+							Our machines, technicians and methods are highly accredited, allowing us to	deliver results you can trust on the widest range of materials.
+						</p>
+					</div>
+					<a class="btn btn-orange" href="#" role="button"><i class="fas fa-angle-right u-btn-fa"></i>TAKE A LOOK</a>
+				</div>
+			</div>
+			<hr>
+		</div>
+		<!-- End Feature 3 -->
+		<!-- Start Feature 4 -->
+		<div>
+
+			<div class="row benefits-blocks__container" >
+				<div class="col-md-6 col-sm-12 benefits-blocks__divider">
+					<div class="benefits-block__left-text left-benefits-block" >
+						<div class="col">
+							<div class="row" style="display:block;">
+								<h3 class="benefits-blocks__heading">LEVEL 1 BBBEE</h3>
+								<p class="benefits-blocks__sub-heading">Construction Scorecard</p>
+							</div>
+						</div>
+						<div class="benefits-blocks__text">
+							<p>
+								We have been proud Level 1 BBBEE contributors since 2019.
+							</p>
+						</div><a class="btn btn-orange" href="/images/beeCert.pdf" target="_blank" role="button"><i class="fas fa-angle-right u-btn-fa"></i>OUR CERTIFICATE</a>
+					</div>
+
+				</div>
+				<div class="col-md-6 col-sm-12 benefits-blocks__right-box">
+					<div class="col benefits-blocks__left-box">
+						<div class="row">
+							<h3 class="benefits-blocks__heading">FULLY ACCREDITED</h3>
+							<p class="benefits-blocks__sub-heading">BY THE HIGHEST ENGINEERING STANDARDS</p>
+						</div>
+					</div>
+					<div class="benefits-blocks__text">
+						<p>
+							We maintain international accreditations and standards of quality to provide our clients with the utmost security and peace of mind.
+						</p>
+					</div><a class="btn btn-orange" href="https://www.sanas.co.za/pages/index.aspx?page=CAB" target="_blank" role="button"><i class="fas fa-angle-right u-btn-fa"></i>OUR CERTIFICATES</a>
+				</div>
+
+			</div>
+		</div>
+	</section>
+	<!-- REACH -->
+	<section class="reach">
+		<div class="reach__background">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-4 col-md-6 col-sm-12">
+						<h4 class="reach__heading">
+							DON'T HASSLE. <span class="u-bold">REACH OUT TO</span><br>
+							<span class="reach__heading-2">THE EXPERTS.</span>
+						</h4>
+						<div id="ContactFormPlaceHolder">
+							@Html.Partial("_RenderContactForm", new ContactModel() {BranchName = "Home Page - Head Office"})
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 col-sm-12 cp-text reach__aligner">
+						<div>
+							<h4 class="reach__option">---- OR ----</h4>
+							<h5 class="u-bold reach__cta">Visit your local branch</h5>
+							<p class="cp-just">We love doing business in person and our friendly staff is always eager to hear about your project. Let's have a chat!</p><a class="btn btn-blue__small" href="/head-office/" role="button"></i>CONTACT US</a>
+						</div>
+					</div>
+					<div class="col-lg-4 col-md-6 col-sm-12 reach__img-hide"><img class="reach__bottom " src="/media/zmffny3g/manb.png" alt="Roadlab Man"></div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!--DISCOVER -->
+	<section class="discover">
+		<div class="paral paralsec">
+			<div class="container">
+				<div class="row discover__container--headline">
+					<div class="col-md-6 col-sm-12">
+						<h4 class="discover__heading-2">ROADLAB <span class="u-bold">APP</span></h4>
+						<div class="row discover__container">
+							<div class="col-md-4 col-sm-12 hide"><img alt="Mobile Testing" class="discover__container--app" src="./images/phone.jpg"></div>
+							<div class="col-md-8 col-sm-12 discover__container--content">
+								<p>Experience the Convenience and power of our new mobile app. Book Tests, track progress and view reports right on your phone. Available for iOS and Android.</p>
+								<div class="row">
+									<div class="col"><img class="discover__container--image" src="./images/qr.jpg" alt="QR Code"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-sm-12">
+						<h4 class="discover__heading-2">LATEST <span class="u-bold">NEWS</span></h4>
+						<div class="discover__facebook">
+							<!--facebook feed-->
+							<div class="fb-page" data-href="https://www.facebook.com/Roadlablaboratories/" data-tabs="timeline" data-width="320" data-height="" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true">
+								<blockquote cite="https://www.facebook.com/Roadlablaboratories/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/Roadlablaboratories/">Roadlab</a></blockquote>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="cta">
+		<div class="cta__background cta__container">
+			<div class="container">
+				<div class="row d-flex justify-content-center">
+					<h4 class="cta__text"><span class="u-bold">TEAM UP WITH THE FRIENDLY EXPERTS. </span> REACH OUT TO US TODAY.</h4><a class="btn btn-white-l" href="#" role="button">GO</a>
+				</div>
+			</div>
+		</div>
+	</section>
+</main>

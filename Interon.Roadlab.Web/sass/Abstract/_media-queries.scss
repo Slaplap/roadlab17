@@ -1,0 +1,233 @@
+// HERO //
+
+/* Tablet:768px. */
+@media (max-width: 768px) {
+ .hero__container--main-heading-2  {
+   font-size: 5rem; 
+  }
+}
+@media (max-width: 768px) {
+.hero__container--main-heading {
+   font-size: 3rem; 
+  }
+}
+
+@media (max-width: 768px) {
+ .hero__container  {
+    border: none;
+    padding: 0 2rem;
+  }
+}
+@media (max-width: 768px) {
+ .hero__space  {
+padding-top: 26%;
+  }
+}
+
+@media (max-width: 768px) {
+ .u-icon  {
+visibility: hidden;
+  }
+}
+
+@media (max-width: 768px) {
+ .hero__link-space--small  {
+padding-top: 1rem;
+  }
+}
+
+
+
+// FOOTER //
+@media (max-width: 768px) {
+ .footer__spacer--left,
+ .footer__spacer--middle,
+ .footer__spacer--right   {
+    padding: 2rem 1.5rem;
+    border: none;
+  }
+
+}
+
+// HOME//
+
+@media (max-width: 992px) {
+	.features-box h3 {
+		text-align: center;
+	}
+}
+
+
+@media (max-width: 768px) {
+.benefits__heading {
+	text-align: center;
+	}
+}
+@media (max-width: 768px) {
+.benefits__line {
+	border: none;
+	}
+}
+
+@media (max-width: 768px) {
+.benefits__sub-heading {
+	text-align: center;
+	}
+}
+
+@media (max-width: 768px) {
+.discover__container {
+	padding-bottom: 2rem;  
+	}
+}
+
+@media (max-width: 768px) {
+.discover__container--content {
+  padding-right: 2rem;  
+  }
+}
+
+
+@media (max-width: 768px) {
+.reach__heading {
+	font-size:  2rem;  
+	}
+}
+@media (max-width: 768px) {
+.reach__heading-2 {
+	font-size:  4rem;  
+	}
+}
+
+@media (max-width: 768px) {
+.reach__cta {
+	font-size:  2.3rem;  
+	}
+}
+
+@media (max-width: 768px) {
+.reach__aligner {
+	margin-bottom: .16rem; 
+	}
+}
+@media (max-width: 768px) {
+.benefits-blocks__divider {
+	border: none; 
+	}
+}
+
+@media (max-width: 768px) {
+.benefits-blocks__heading {
+	font-size:  2.5rem;  
+	}
+}
+
+@media (max-width: 768px) {
+.benefits-blocks__right-box {
+	padding-left: 3rem;  
+	}
+}
+
+@media (max-width: 768px) {
+.hide {
+  display: none;
+  }
+}
+
+
+
+// PRODUCTS //
+
+@media (max-width: 768px) {
+ .products__space  {
+   padding-right: 1.6rem; 
+  }
+}
+
+@media (max-width: 768px) {
+ .products__back  {
+   padding-bottom: 10rem; 
+  }
+}
+
+@media (max-width: 768px) {
+ .products__back  {
+   padding-bottom: 10rem; 
+  }
+}
+
+// ABOUT  //
+
+@media (max-width: 768px) {
+ .about-team__background  {
+   padding-bottom: 1rem; 
+  }
+}
+
+// CONTACT //
+@media (max-width: 768px) {
+ .branch__name {
+   font-size: 4rem; 
+  }
+}
+@media (max-width: 768px) {
+.branch__headoffice-head  {
+    padding-top: 30%;
+  }
+}
+
+@media (max-width: 768px) {
+.branch__headoffice-main-heading  {
+    font-size: 4rem; 
+  }
+}
+
+@media (max-width: 768px) {
+.branch__box {
+    border: none;
+  }
+}
+@media (max-width: 768px) {
+.branch__background-color {
+    padding-bottom: 0;
+  }
+}
+
+@media (max-width: 768px) {
+.branch__head {
+    padding-top: 2rem;
+  }
+}
+
+// Specialised Services
+
+@media (max-width: 768px) {
+.specials__description {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+.specials__back-image {
+    padding-bottom: 0;
+  }
+}
+
+// ABOUT
+
+@media (max-width: 768px){
+  .about-brag__container {
+    display: inline-block;
+    text-align: center;
+  }
+}
+@media (max-width: 768px){
+.about-team__img-2 {
+  display: none;
+}
+}
+@media (max-width: 1440px){
+.projects__container {
+width:100%;
+}
+}

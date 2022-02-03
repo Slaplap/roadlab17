@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Interon.Roadlab.App.Views.Developer.DeveloperPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:appCenter="clr-namespace:Microsoft.AppCenter;assembly=Microsoft.AppCenter"
+    xmlns:controls="clr-namespace:Interon.Roadlab.App.Controls;assembly=Interon.Roadlab.App"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:essentials="clr-namespace:Xamarin.Essentials;assembly=Xamarin.Essentials"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:services="clr-namespace:Interon.Roadlab.App.Core.Services;assembly=Interon.Roadlab.App"
+    Shell.NavBarIsVisible="false"
+    mc:Ignorable="d">
+
+    <ContentPage.Resources>
+        <StyleSheet Source="../../Styles.css" />
+        <StyleSheet>
+            <![CDATA[
+            Label {
+                padding-right: 10;
+            }
+            ]]>
+        </StyleSheet>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout>
+
+            <controls:Header Title="About" ShowDeep="True" />
+            <ScrollView>
+                <Grid
+                    Padding="15"
+                    AbsoluteLayout.LayoutBounds=".5,0.6,1,1"
+                    AbsoluteLayout.LayoutFlags="All"
+                    VerticalOptions="Center">
+
+
+                    <StackLayout Orientation="Horizontal" />
+                    <Frame BorderColor="LightGray" CornerRadius="20">
+                        <FlexLayout Direction="Column" />
+                    </Frame>
+                    <Frame BorderColor="LightGray" CornerRadius="20">
+
+
+
+
+                        <StackLayout>
+                            <Label x:Name="entVersion" Text="Version : 0.00" />
+                            <Label x:Name="entBuild" Text="Build : 0" />
+                            <Label x:Name="entDeviceInfo" Text="" />
+                            <Label Text="Server Info " />
+                            <Label
+                                x:Name="url"
+                                FontSize="Micro"
+                                HorizontalOptions="Center"
+                                Text="www.interon.co.za"
+                                VerticalOptions="Start">
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding IncreaseTapsCommand}" />
+                                </Label.GestureRecognizers>
+                            </Label>
+
+
+                            <Label Text="Support contact : 0800000000" />
+                            <Label Text="Website : https://www.roadlab.co.za" />
+
+                            <Label Text="Email : support@roadlab.co.za" />
+                            <StackLayout x:Name="developerStack">
+
+
+                                <Label Text="Secure Storage" />
+                                <Entry x:Name="entAccessToken" />
+                                <Entry x:Name="entRefreshToken" />
+                                <Entry x:Name="entExpireDate" />
+                                <Entry x:Name="entUsername" />
+                                <Entry x:Name="entPassword" />
+
+                                <Button
+                                    x:Name="btnDeleteSecureStorage"
+                                    Clicked="BtnDeleteSecureStorage_OnClicked"
+                                    FontSize="Default"
+                                    Text="Delete Secure Storage" />
+                                <Label Text="MemberDto Table" />
+                                <Entry x:Name="entMemberName" />
+                                <Entry x:Name="entMemberSurname" />
+                                <Entry x:Name="entMemberEmail" />
+                                <Entry x:Name="entMemberCellNo" />
+                                <Entry x:Name="entMemberCompanies" />
+                                <Entry x:Name="entMemberId" />
+                                <Label Text="Device Info" />
+                                <Entry Text="{Binding Source={x:Static essentials:DeviceInfo.Platform}}" />
+                                <Label Text="Install Id" />
+                                <Entry Text="{Binding Source={x:Static services:SecureStorageService.InstallId}}" />
+
+                                <Label Text="Notification Hub Token" />
+                                <Entry Text="{Binding Source={x:Static services:SecureStorageService.NotificationHubToken}}" />
+                                <Button
+                                    x:Name="btnDeleteMember"
+                                    Clicked="BtnDeleteMember_OnClicked"
+                                    FontSize="Default"
+                                    Text="Delete Member Storage" />
+                                <Button
+                                    x:Name="btnRegister"
+                                    Clicked="BtnRegister_OnClicked"
+                                    FontSize="Default"
+                                    Text="Register" />
+                                <Button
+                                    x:Name="btnReRegister"
+                                    Clicked="BtnReRegister_OnClicked"
+                                    FontSize="Default"
+                                    Text="Re Register" />
+                                <Button
+                                    x:Name="btnNewRegister"
+                                    Clicked="BtnNewRegister_OnClicked"
+                                    FontSize="Default"
+                                    Text="New Register" />
+                                <Button
+                                    x:Name="btnDisableDeveloperInfo"
+                                    Clicked="BtnDisableDev_OnClicked"
+                                    FontSize="Default"
+                                    Text="Disable Developer Info" />
+                            </StackLayout>
+                            <StackLayout x:Name="infoStack">
+
+                                <Label
+                                    x:Name="lblText"
+                                    FontSize="7"
+                                    HorizontalOptions="Center"
+                                    Text="Developed by www.interon.co.za"
+                                    TextColor="Gray"
+                                    VerticalOptions="Center">
+                                    <Label.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding IncreaseTapsCommand}" />
+                                    </Label.GestureRecognizers>
+                                </Label>
+                            </StackLayout>
+
+                        </StackLayout>
+
+
+                    </Frame>
+
+
+
+                </Grid>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+
+
+
+
+
+</ContentPage>

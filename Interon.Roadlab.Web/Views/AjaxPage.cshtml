@@ -1,0 +1,8 @@
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Interon.Roadlab.Web.App.ViewModels.TransactionContentModel>
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+    Layout = null;
+}
+
+
+@Html.Partial("_RenderTransactionDetails",Model)

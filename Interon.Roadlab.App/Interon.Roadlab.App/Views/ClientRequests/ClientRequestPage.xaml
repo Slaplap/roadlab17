@@ -1,0 +1,361 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="Interon.Roadlab.App.Views.ClientRequests.ClientRequestPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="clr-namespace:Interon.Roadlab.App.Core.ViewModels;assembly=Interon.Roadlab.App"
+    
+    mc:Ignorable="d">
+
+    <ContentPage.Resources>
+        <StyleSheet Source="../../Styles.css" />
+    </ContentPage.Resources>
+    <ContentPage.BindingContext>
+        <viewModels:ClientRequestViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <ScrollView>
+
+            <StackLayout>
+                <StackLayout Orientation="Vertical">
+                    <StackLayout Orientation="Horizontal">
+                        <Image
+                            HorizontalOptions="Center"
+                            Source="logo.jpg"
+                            VerticalOptions="Start"
+                            WidthRequest="100" />
+                        <Label
+                            FontSize="Default"
+                            HorizontalOptions="Center"
+                            Text="{Binding Heading}"
+                            VerticalOptions="Center" />
+                    </StackLayout>
+
+                    <Frame
+                        Padding="20"
+                        BorderColor="LightGray"
+                        CornerRadius="5"
+                        HasShadow="True"
+                        HorizontalOptions="FillAndExpand">
+                        <StackLayout
+                            HorizontalOptions="FillAndExpand"
+                            Orientation="Vertical"
+                            VerticalOptions="Center">
+                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Horizontal">
+                                <Label
+                                    ClassId="title"
+                                    FontAttributes="Bold"
+                                    FontSize="Default"
+                                    HorizontalOptions="Start"
+                                    Text="Site"
+                                    TextColor="#074F71"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    ClassId="title"
+                                    FontSize="Default"
+                                    HorizontalOptions="Center"
+                                    Text="{Binding ClientRequest.SiteString}"
+                                    TextColor="#074F71"
+                                    VerticalOptions="Center" />
+
+                            </StackLayout>
+                            <BoxView
+                                HeightRequest="1"
+                                HorizontalOptions="FillAndExpand"
+                                Color="#074F71" />
+                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Vertical">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="Default"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="Requested By"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    FontSize="Default"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{Binding ClientRequest.Token.Contact.Firstname   }"
+                                    VerticalOptions="Center" />
+                            </StackLayout>
+                            <BoxView
+                                HeightRequest="1"
+                                HorizontalOptions="FillAndExpand"
+                                Color="#074F71" />
+                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Vertical">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="Default"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="Contact Person"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    FontSize="Default"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{Binding ClientRequest.Token.Contact.Firstname}"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    FontSize="Default"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{Binding ClientRequest.Token.Contact.Email}"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    FontSize="Default"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{Binding ClientRequest.Token.Contact.MobilePhone}"
+                                    VerticalOptions="Center" />
+                            </StackLayout>
+
+
+                            <BoxView
+                                HeightRequest="1"
+                                HorizontalOptions="FillAndExpand"
+                                Color="#074F71" />
+                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Vertical">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="Default"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="Site Location / Address"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    FontSize="Default"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{Binding Site}"
+                                    VerticalOptions="Center" />
+                            </StackLayout>
+                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Vertical">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="Default"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="Special Instruction"
+                                    VerticalOptions="Center" />
+                                <Label
+                                    FontSize="Default"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="{Binding ClientRequest.Token.RequestedServiceDetails}"
+                                    VerticalOptions="Center" />
+                            </StackLayout>
+                        </StackLayout>
+
+                    </Frame>
+
+                    <!--Services-->
+                    <BoxView
+                        HeightRequest="1"
+                        HorizontalOptions="FillAndExpand"
+                        Color="#074F71" />
+                    <Frame
+                        Padding="20"
+                        BorderColor="LightGray"
+                        CornerRadius="5"
+                        HasShadow="True"
+                        
+                         HeightRequest="{Binding RowHeadingPlusListHeight}" >
+                        <StackLayout>
+                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Vertical"    IsVisible="{Binding IsServicesVisible}">
+                                <Label
+                            FontAttributes="Bold"
+                            FontSize="Default"
+                            HorizontalOptions="StartAndExpand"
+                            Text="Services"
+                            VerticalOptions="Center"   />
+                                
+                            </StackLayout>
+
+                            <FlexLayout Direction="Column"
+                                        x:Name="MessagesList"
+                                        AutomationId="MessagesList"
+                                        BindableLayout.ItemsSource="{Binding ClientRequest.Token.Quotation.Services}" >
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Frame
+                                        Padding="5"
+                                        BorderColor="LightGray"
+                                        CornerRadius="5"
+                                        HasShadow="True"
+                                        HeightRequest="60"
+                                        HorizontalOptions="FillAndExpand">
+                                                <StackLayout
+                                            HorizontalOptions="FillAndExpand"
+                                            Orientation="Horizontal"
+                                            VerticalOptions="Center">
+                                                    <StackLayout HorizontalOptions="StartAndExpand" Orientation="Vertical">
+                                                        <Label
+                                                    FontAttributes="Bold"
+                                                    FontSize="Default"
+                                                    HorizontalOptions="Start"
+                                                    Text="{Binding SkuCode}"
+                                                    VerticalOptions="Center" />
+                                                        <Label
+                                                    FontSize="Default"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Text="{Binding ServiceName}"
+                                                    VerticalOptions="Center" />
+                                                    </StackLayout>
+                                                    <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Vertical">
+                                                        <Label
+                                                    FontAttributes="Bold"
+                                                    FontSize="Default"
+                                                    HorizontalOptions="Center"
+                                                    Text="Qty"
+                                                    VerticalOptions="Center" />
+                                                        <Label
+                                                    FontSize="Default"
+                                                    HorizontalOptions="CenterAndExpand"
+                                                    Text="{Binding Quantity}"
+                                                    VerticalOptions="Center" />
+                                                    </StackLayout>
+
+                                                </StackLayout>
+
+                                            </Frame>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                            <StackLayout HorizontalOptions="StartAndExpand" Orientation="Vertical"    IsVisible="{Binding IsEquipmentVisible}">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="Default"
+                                    HorizontalOptions="StartAndExpand"
+                                    Text="Services"
+                                    VerticalOptions="Center"   />
+
+                            </StackLayout>
+                            <FlexLayout Direction="Column"
+                                        x:Name="EquipmentList"
+                                        AutomationId="MessagesList"
+                                        BindableLayout.ItemsSource="{Binding ClientRequest.Token.Quotation.Equipment}" >
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Frame
+                                        Padding="5"
+                                        BorderColor="LightGray"
+                                        CornerRadius="5"
+                                        HasShadow="True"
+                                        HorizontalOptions="FillAndExpand">
+                                                <StackLayout
+                                            HorizontalOptions="FillAndExpand"
+                                            Orientation="Horizontal"
+                                            VerticalOptions="Center">
+                                                    <StackLayout HorizontalOptions="StartAndExpand" Orientation="Vertical">
+                                                        <Label
+                                                    FontAttributes="Bold"
+                                                    FontSize="Default"
+                                                    HorizontalOptions="Start"
+                                                    Text="{Binding Name}"
+                                                    VerticalOptions="Center" />
+                                                        <Label
+                                                    FontSize="Default"
+                                                    HorizontalOptions="StartAndExpand"
+                                                    Text="{Binding State}"
+                                                    VerticalOptions="Center" />
+                                                    </StackLayout>
+                                                    <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Vertical">
+                                                        <Label
+                                                    FontAttributes="Bold"
+                                                    FontSize="Default"
+                                                    HorizontalOptions="Center"
+                                                    Text="Qty"
+                                                    VerticalOptions="Center" />
+                                                        <Label
+                                                    FontSize="Default"
+                                                    HorizontalOptions="CenterAndExpand"
+                                                    Text="{Binding Maintained}"
+                                                    VerticalOptions="Center" />
+                                                    </StackLayout>
+
+                                                </StackLayout>
+
+                                            </Frame>
+                                        </StackLayout>
+                                    </DataTemplate>
+                                </BindableLayout.ItemTemplate>
+                            </FlexLayout>
+                            <FlexLayout   Direction="Row" Padding="20,0,20,0"  AlignItems="Stretch" JustifyContent="SpaceBetween"   IsVisible="{Binding IsQuotationTotalVisible}">
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="Default"
+                                   
+                                    Text="Total"
+                                      />
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="Default"
+                                    
+                                    Text="{Binding ClientRequest.QuotationTotal}"
+                                       />
+                            </FlexLayout>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Frame
+                        Padding="20"
+                        BorderColor="LightGray"
+                        CornerRadius="5"
+                        HasShadow="True"
+                        HeightRequest="300"
+                        HorizontalOptions="FillAndExpand"
+                        IsVisible="{Binding IsDocumentVisible}"
+                        >
+                        <StackLayout Orientation="Vertical" VerticalOptions="StartAndExpand">
+                            <Label
+                                Margin="0,0,0,20"
+                                ClassId="title"
+                                FontAttributes="Bold"
+                                FontSize="Default"
+                                HorizontalOptions="Start"
+                                Text="Documents and actions"
+                                TextColor="#074F71" />
+
+                            <Button
+                                Margin="0,0,0,20"
+                                BackgroundColor="#074F71"
+                                Command="{Binding Commands[OpenClientRequestCommand]}"
+                                FontSize="Default"
+                                IsVisible="{Binding IsDocumentVisible}"
+                                Text="Download Document" />
+                            <Label
+                                FontSize="Default"
+                                HorizontalOptions="CenterAndExpand"
+                                IsVisible="{Binding IsQuoteAcceptanceVisible}">
+                                Accept or Reject Quote
+                            </Label>
+                            <!--<Entry
+                                IsVisible="{Binding CanAcceptReject}"
+                                Placeholder="Order Number"
+                                Text="{Binding OrderNumber}" />-->
+                            <Label
+                                IsVisible="{Binding ValidationFailedOrderNumber}"
+                                Text="Please enter order number"
+                                TextColor="Red" />
+                            <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+
+                                <Button
+                                    Command="{Binding Commands[QuoteAcceptReject]}"
+                                    FontSize="Default"
+                                    IsVisible="{Binding IsQuoteAcceptanceVisible}"
+                                    Text="Open Quote Acceptance Page" />
+
+                            </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+                <!--<Button
+                    x:Name="btnClose"
+                    Command="{Binding Commands[Close]}"
+                    FontSize="Default"
+                    Text="Close"
+                    VerticalOptions="End" />-->
+            </StackLayout>
+
+
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

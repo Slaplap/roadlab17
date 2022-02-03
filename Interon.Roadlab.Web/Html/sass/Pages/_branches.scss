@@ -1,0 +1,179 @@
+.branch {
+backface-visibility: hidden;
+	&__space {
+		padding: 10% 0;
+	}
+
+	&__img {
+		max-width: 100%;
+		margin-bottom: 3rem;
+	}
+
+	&__heading {
+		font-size: 2.4rem;
+		font-weight: 300;
+		text-transform: uppercase;
+	}
+
+	&__name {
+		font-size: 4.5rem;
+		font-weight: 700;
+		text-transform: uppercase;
+		padding-bottom: 3rem;
+		margin-top:  -1rem;
+		line-height: .9;
+	}
+
+	&__icon-space i {
+		padding-right: 1rem;
+	}
+
+	&__box {
+		//border-left: solid 2px $dark-blue;
+		padding-left: 50px;
+		}
+
+	&__map-margin {
+		margin-top: 30px;
+	}
+
+	&__background-color {
+		background: white;
+		
+	}
+
+	&__headoffice-background-color {
+		background: $dark-blue;
+	}
+
+	&__back-image {
+        background-repeat: no-repeat;
+    	background-size: cover;
+    	min-height: 400px;
+	}
+
+	&__headoffice-back-image {
+		background-image:url("../images/HO-back.jpg");
+		background-size: 100%;
+		background-repeat: no-repeat;
+		
+	}
+
+	&__head-space {
+		padding-bottom: 1.5rem;
+	}
+
+	&__head {
+		padding-top: 20rem;
+		
+	}
+
+		&__head--line {
+		padding-left: 2rem;
+		border-left: .4rem solid $dark-orange;
+	}
+
+	&__headoffice-head {
+	padding-top: 25rem;
+	}
+	&__headoffice-head-2 {
+	padding-top: 4rem;
+	}
+	&__sub-heading {
+		text-transform: uppercase;
+		color: white;
+		font-weight: 300;
+		font-size: 2.6rem;
+		margin-bottom: -1rem;
+	}
+	&__main-heading {
+		text-transform: uppercase;
+		color: white;
+		font-weight: 700;
+		font-size: 5.3rem;
+	}
+	&__headoffice-sub-heading {
+		text-transform: uppercase;
+		color: $dark-blue;
+		font-weight: 300;
+		font-size: 2.6rem;
+		margin-bottom: -1rem;
+	}
+	&__headoffice-main-heading {
+		text-transform: uppercase;
+		color: $dark-blue;
+		font-weight: 700;
+		font-size: 5.3rem;
+	}
+
+	&__container {
+	background-color: white;
+	padding: 3%;
+	}
+
+	&__form {
+		padding-right: 5%;
+	}
+	&__form textarea {
+		border: 1px solid grey;
+		background-color: white;
+	}
+
+	&__form input[type=text] {
+		border: 1px solid grey;
+		background-color: white;
+	}
+
+	&__form input[type=password] {
+		border: 1px solid grey;
+		background-color: white;
+	}
+
+	&__glyph {
+		position: relative;
+		left: 2rem;
+		top:.16rem;
+		pointer-events: none;
+		color: white;
+		
+		&:hover {
+			color:white;
+		}
+
+	}
+	&__text-title {
+		font-size: 2.8rem;
+		font-weight: 700;
+		color: $dark-blue;
+		font-style: normal;
+		line-height: 1.2em;
+		padding-top: 1.8em;
+	}
+	&__headoffice-text-title {
+		font-size: 2.8rem;
+		font-weight: 700;
+		color: $dark-blue;
+		font-style: normal;
+		line-height: 1.2em;
+		padding-top: 1.8em;
+		text-transform: uppercase;
+	}
+
+	&__hr {
+	height: .4rem;
+	border: none;
+	color: $light-orange;
+	background-color: $light-orange;
+	width: 20%;
+	text-align: left;
+	margin: 3rem auto 0 0;
+	}
+	
+	&__small-container {
+	padding-top: 3rem;
+}
+	&__map {
+		width: 100%;
+	}
+
+}

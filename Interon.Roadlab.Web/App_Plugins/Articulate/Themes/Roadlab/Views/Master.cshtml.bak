@@ -1,0 +1,144 @@
+@using ClientDependency.Core.Mvc
+@using Articulate;
+@model Articulate.Models.IMasterModel
+
+ 
+@using System
+@using System.Drawing
+@using ClientDependency.Core.Mvc
+@using Syncfusion.EJ2
+@using ContentModels = Umbraco.Web.PublishedModels;
+@{
+
+//var domain = Request.Url.Authority;
+//var url = Model.Value<Image>("oGImage")?.Url;
+//var ogImage = "https://" + domain + url;
+//string s = "";
+
+
+}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en">
+<head>
+    @*Check if the site is live*@
+    @if (Request.Url.AbsoluteUri.Contains("roadlab.co.za"))
+    {
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async= async async= async async= async async= async src="https://www.googletagmanager.com/gtag/js?id=UA-132743191-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+
+            function gtag() { dataLayer.push(arguments); }
+
+            gtag('js', new Date());
+
+            gtag('config', 'UA-132743191-1');
+        </script>
+    }
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta content="strict-origin" name="referrer" />
+    <meta name="description" content="@Model.Value("pageDescription")" />
+    @*<meta name="robots" content="@Model.Value("pageRobots")" />
+    <meta property="og:url" content="@Model.Value("oGUrl")" />
+    <meta property="og:type" content="@Model.Value("oGType")" />
+    <meta property="og:title" content="@Model.Value("oGTitle")" />
+    <meta property="og:description" content="@Model.Value("oGDescription")" />
+    <meta property="og:image" content="@ogImage" />*@
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#f96a04" />
+    <meta name="msapplication-TileColor" content="#ffffff" />
+    <meta name="theme-color" content="#ffffff" />
+    <!-- Bootstrap CSS -->
+    @*<link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet">*@
+    @*<script src="https://kit.fontawesome.com/159299d96f.js">*@
+    @*</script>*@
+    @*<link href="https://fonts.googleapis.com/css?family=Barlow:200,200i,300,300i,500,500i,700,800&display=swap" rel="stylesheet">*@
+    @*<link href="/css/style.css" rel="stylesheet" type="text/css">*@
+    @*<link href="/css/animations.css" rel="stylesheet">*@
+    @*<link href="/css/toast.css" rel="stylesheet">*@
+    @*  <link rel="stylesheet" href="/css/animate.css">*@
+    @Html.RenderCssHere()
+    @{Html.RequiresCssBundle("main");}
+    <title>@Model.Value("pageTitle")</title>
+
+
+
+
+    <!-- LOADING FONTS AND ICONS -->
+
+    <link rel="stylesheet" type="text/css" href="/fonts/pe-icon-7-stroke/css/pe-icon-7-stroke.css" />
+    <link rel="stylesheet" type="text/css" href="/fonts/font-awesome/css/font-awesome.css" />
+
+    <!-- REVOLUTION STYLE SHEETS -->
+    <link rel="stylesheet" type="text/css" href="/css/settings.css" />
+
+
+    <!-- Rev slider END-->
+    <!-- Syncfusion Essential JS 2 Scripts -->
+    @RenderSection("topscripts", false)
+    <script type="text/javascript">
+        var appInsights = window.appInsights || function (a) {
+            function b(a) { c[a] = function () { var b = arguments; c.queue.push(function () { c[a].apply(c, b) }) } } var c = { config: a }, d = document, e = window; setTimeout(function () { var b = d.createElement("script"); b.src = a.url || "https://az416426.vo.msecnd.net/scripts/a/ai.0.js", d.getElementsByTagName("script")[0].parentNode.appendChild(b) }); try { c.cookie = d.cookie } catch (a) { } c.queue = []; for (var f = ["Event", "Exception", "Metric", "PageView", "Trace", "Dependency"]; f.length;)b("track" + f.pop()); if (b("setAuthenticatedUserContext"), b("clearAuthenticatedUserContext"), b("startTrackEvent"), b("stopTrackEvent"), b("startTrackPage"), b("stopTrackPage"), b("flush"), !a.disableExceptionTracking) { f = "onerror", b("_" + f); var g = e[f]; e[f] = function (a, b, d, e, h) { var i = g && g(a, b, d, e, h); return !0 !== i && c["_" + f](a, b, d, e, h), i } } return c
+        }({
+            instrumentationKey: "9e6f349f-bbfb-4550-b70d-09ec68764f8a"
+        });
+
+        window.appInsights = appInsights, appInsights.queue && 0 === appInsights.queue.length && appInsights.trackPageView();
+    </script>
+</head>
+<body>
+    <!-- Facebook plugin START-->
+    <div id="fb-root"></div>
+
+    @Html.Partial("_RenderHeader");
+    <section class="static">
+        @RenderBody()
+    </section>
+    @Html.Partial("_RenderFooter")
+
+    @Html.RenderJsHere()
+    @{Html.RequiresJsBundle("main");}
+    <script type="text/javascript">
+        function setREVStartSize(e) {
+            try {
+                e.c = jQuery(e.c);
+                var i = jQuery(window).width(), t = 9999, r = 0, n = 0, l = 0, f = 0, s = 0, h = 0;
+                if (e.responsiveLevels &&
+                    (jQuery.each(e.responsiveLevels,
+                        function (e, f) {
+                            f > i && (t = r = f, l = e), i > f && f > r && (r = f, n = e)
+                        }), t > r && (l = n)), f = e.gridheight[l] || e.gridheight[0] || e.gridheight, s =
+                    e.gridwidth[l] || e.gridwidth[0] || e.gridwidth, h = i / s, h = h > 1 ? 1 : h, f =
+                    Math.round(h * f), "fullscreen" == e.sliderLayout) {
+                    var u = (e.c.width(), jQuery(window).height());
+                    if (void 0 != e.fullScreenOffsetContainer) {
+                        var c = e.fullScreenOffsetContainer.split(",");
+                        if (c)
+                            jQuery.each(c,
+                                function (e, i) { u = jQuery(i).length > 0 ? u - jQuery(i).outerHeight(!0) : u }),
+                                e.fullScreenOffset.split("%").length > 1 &&
+                                    void 0 != e.fullScreenOffset &&
+                                    e.fullScreenOffset.length > 0
+                                    ? u -= jQuery(window).height() * parseInt(e.fullScreenOffset, 0) / 100
+                                    : void 0 != e.fullScreenOffset &&
+                                    e.fullScreenOffset.length > 0 &&
+                                    (u -= parseInt(e.fullScreenOffset, 0))
+                    }
+                    f = u
+                } else void 0 != e.minHeight && f < e.minHeight && (f = e.minHeight);
+                e.c.closest(".rev_slider_wrapper").css({ height: f })
+            } catch (d) {
+                console.log("Failure at Presize of Slider:" + d)
+            }
+        };
+    </script>
+
+    @RenderSection("scripts", false)
+    <script async= async async= async async= async async= async defer= defer defer= defer defer= defer defer= defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v4.0&appId=111099772310519&autoLogAppEvents=1"></script><!-- Facebook plugin END-->
+</body>
+</html>
