@@ -6,7 +6,7 @@
 @foreach (var blogArticle in Model )
 {
     <div class="col-lg-6 col-md-6 col-sm-12 about-text">
-        <img class="about-team__sub-container--img mb-3" src="@blogArticle.ArticleIntersectImage.Url()" alt="">
+        <img class="about-team__sub-container--img mb-3" src="@(blogArticle.ArticleIntersectImage?.Url()??"")" alt="">
         <h6 class="about-team__sub-container--title">@blogArticle.Parent.Name</h6>
         <h5 class="blog__sub-container--name">@blogArticle.BlogHeading</h5>
         <div class="blog__sub-container--content ft-cont">
