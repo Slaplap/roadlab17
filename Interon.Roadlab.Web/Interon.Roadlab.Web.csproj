@@ -932,6 +932,10 @@
     <Content Include="images\HP-Image-2.jpg" />
     <Content Include="images\HP-Image-2.png" />
     <Content Include="images\icon.png" />
+    <Content Include="images\Icon1.jpg" />
+    <Content Include="images\Icon2.jpg" />
+    <Content Include="images\Icon3.jpg" />
+    <Content Include="images\Icon4.jpg" />
     <Content Include="images\icons\Aggregate.png" />
     <Content Include="images\icons\MT-ServIcons-Aggregate.png" />
     <Content Include="images\loader.gif" />
