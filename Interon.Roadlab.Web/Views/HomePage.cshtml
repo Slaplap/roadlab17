@@ -6,11 +6,79 @@
 }
 
 <main>
-	<section >
-		<img class="hidden-mobile" src="~/images/dbanner.jpg"  style="width:100%;">
-		<img class="visible-mobile" src="~/images/mbanner.jpg"  style="width:100%;">
+	<section>
+		<img class="hidden-mobile" src="~/images/dbanner.jpg" style="width:100%;">
+		<img class="visible-mobile" src="~/images/mbanner.jpg" style="width:100%;">
 	</section>
-<!-- BENEFITS -->
+
+	<section class="features">
+		<div class="container features__cont">
+			<div class="row">
+				<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 features__box">
+					<div class=" text-center features__img"><img src="./images/icon1.jpg" alt="Materials Testing"></div>
+					<h3 class="features__heading">
+						MATERIALS<br>
+						TESTING
+					</h3>
+					<hr class="features__hr">
+					<p>FOR CONSTRUCTION & CIVILS</p>
+					<ul class="fa-ul features__text">
+						<li><span class="fa-li li-icon"><i class="fas fa-angle-right"></i></span>Concrete</li>
+						<li><span class="fa-li li-icon"><i class="fas fa-angle-right"></i></span>Aggregate</li>
+						<li><span class="fa-li li-icon"><i class="fas fa-angle-right"></i></span>Soil & Gravel</li>
+						<li><span class="fa-li li-icon"><i class="fas fa-angle-right"></i></span>Asphalt & Bitumen</li>
+					</ul>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-6 col-sm-6 features__box">
+					<div class="text-center features__img"><img src="./images/icon2.jpg" alt="Laboratory Services"></div>
+					<h3 class="features__heading">
+						Specialised<br>
+						services
+					</h3>
+					<hr class="features__hr">
+					<p>YOUR ONE STOP PROVIDER</p>
+					<ul class="fa-ul features__text">
+						<li><span class="fa-li li-icon"><i class="fas fa-angle-right"></i></span>Forensic Scanning</li>
+						<li><span class="fa-li li-icon"><i class="fas fa-angle-right"></i></span>Site Investigations</li>
+						<li><span class="fa-li li-icon"><i class="fas fa-angle-right"></i></span>Container Site Labs</li>
+						<li><span class="fa-li li-icon"><i class="fas fa-angle-right"></i></span>Geotechnical Analysis</li>
+					</ul>
+				</div>
+
+				<div class="col-lg-3 col-md-6 col-sm-6 features__box">
+					<div class="text-center features__img"><img src="./images/icon4.jpg" alt="Specialised Insights"></div>
+					<h3 class="features__heading">
+						Unparalled<br>
+						Insights
+					</h3>
+					<hr class="features__hr">
+					<p>ANY MATERIAL ANY TIME</p>
+					<ul class="fa-ul features__text">
+						<li><span class="fa-li li-icon"><i class="fas fa-angle-right"></i></span>Latest Technology</li>
+						<li><span class="fa-li li-icon"><i class="fas fa-angle-right"></i></span>65 years experience</li>
+						<li><span class="fa-li li-icon"><i class="fas fa-angle-right"></i></span>Specialist Technicians</li>
+						<li><span class="fa-li li-icon"><i class="fas fa-angle-right"></i></span>All Construction Materials</li>
+					</ul>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-6 features__box">
+					<div class="text-center features__img"><img src="./images/icon3.jpg" alt="Turnkey Partners"></div>
+					<h3 class="features__heading">
+						Turnkey<br>
+						Partners
+					</h3>
+					<hr class="features__hr">
+					<p>EVERY STEP OF THE WAY</p>
+					<ul class="fa-ul features__text">
+						<li><span class="fa-li li-icon"><i class="fas fa-angle-right"></i></span>Industry Experts</li>
+						<li><span class="fa-li li-icon"><i class="fas fa-angle-right"></i></span>Maintenence Consulting</li>
+						<li><span class="fa-li li-icon"><i class="fas fa-angle-right"></i></span>Practical Recommendations</li>
+						<li><span class="fa-li li-icon"><i class="fas fa-angle-right"></i></span>Major and Minor Construction</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- BENEFITS -->
 	<section>
 		<div class="paral paralsec">
 			<div class="container">
@@ -46,7 +114,10 @@
 				</div>
 			</div>
 		</div>
-	</section><!-- BENEFITS BLOCKS -->
+	</section>
+
+
+	<!-- BENEFITS BLOCKS -->
 	<section class="benefits-blocks container">
 
 		<!-- Start Feature 1 -->
@@ -95,7 +166,7 @@
 			<hr>
 		</div>
 		<!-- End Feature 2
-	<!-- Start Feature 3 -->
+		<!-- Start Feature 3 -->
 		<div>
 			<div class="row benefits-blocks__container">
 				<div class="col-md-6 col-sm-12 benefits-blocks__divider">
@@ -125,9 +196,9 @@
 		<!-- Start Feature 4 -->
 		<div>
 
-			<div class="row benefits-blocks__container" >
+			<div class="row benefits-blocks__container">
 				<div class="col-md-6 col-sm-12 benefits-blocks__divider">
-					<div class="benefits-block__left-text left-benefits-block" >
+					<div class="benefits-block__left-text left-benefits-block">
 						<div class="col">
 							<div class="row" style="display:block;">
 								<h3 class="benefits-blocks__heading">LEVEL 1 BBBEE</h3>
@@ -170,7 +241,7 @@
 							<span class="reach__heading-2">THE EXPERTS.</span>
 						</h4>
 						<div id="ContactFormPlaceHolder">
-							@Html.Partial("_RenderContactForm", new ContactModel() {BranchName = "Home Page - Head Office"})
+							@Html.Partial("_RenderContactForm", new ContactModel() { BranchName = "Home Page - Head Office" })
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-6 col-sm-12 cp-text reach__aligner">
