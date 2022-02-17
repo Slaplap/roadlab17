@@ -8,6 +8,7 @@
         pvm.all = true;
 
         pvm.process = $scope.vm.process;
+        pvm.itemtype = 'content';
 
         pvm.mode = $scope.vm.mode;
 
@@ -19,11 +20,14 @@
             $scope.model.subtitle = "Select Languages to publish to " + pvm.server.Name;
         }
 
-        pvm.variants = [];
-        $scope.vm.items[0].variants.forEach(function (variant) {
-            variant._checked = true;
-            pvm.variants.push(variant);
+        pvm.variants = _.map($scope.vm.items[0].variants, function (name, id) {
+            return {
+                _checked: true,
+                name: name,
+                id: id
+            }
         });
+
 
         pvm.loading = false;
 
@@ -35,10 +39,12 @@
 
                 for (let i = 0; i < newValue.length; i++) {
                     if (newValue[i]._checked === true) {
-                        pvm.process.options.Cultures.push(newValue[i].language.culture);
+                        pvm.process.options.Cultures.push(newValue[i].id);
                         $scope.vm.valid = true;
                     }
                 }
+
+                console.log(pvm.process.options.Cultures.length, newValue.length);
 
                 if (pvm.process.options.Cultures.length == newValue.length) {
                     // all selected

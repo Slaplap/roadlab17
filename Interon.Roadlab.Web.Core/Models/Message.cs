@@ -1,7 +1,7 @@
 ﻿using System;
 using NPoco;
 
-namespace Interon.Roadlab.Web.App.Models
+namespace Interon.Roadlab.Web.Core.Models
 {
     [NPoco.TableName("Messages")]
     [PrimaryKey("Key", AutoIncrement = false)]

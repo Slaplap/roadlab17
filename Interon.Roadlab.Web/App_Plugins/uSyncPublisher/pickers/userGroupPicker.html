@@ -13,14 +13,16 @@
         <div class="umb-node-preview__actions">
             <a class="umb-node-preview__action umb-node-preview__action--red"
                title="Remove {{group.name}}"
-               ng-click="vm.remove(group)">
+               ng-click="vm.remove(group)"
+               ng-if="!vm.readonly">
                 <localize key="general_remove">Remove</localize>
                 <span class="sr-only">{{group.name}}</span>
             </a>
         </div>
     </div>
 
-    <a class="umb-node-preview-add"
+    <a ng-if="!vm.readonly"
+       class="umb-node-preview-add"
        ng-click="vm.open()"
        href
        prevent-default>

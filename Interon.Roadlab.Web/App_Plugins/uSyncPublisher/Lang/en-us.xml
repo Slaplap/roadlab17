@@ -14,21 +14,32 @@
 		<key alias="settingsPushButton">Push to server</key>
 		<key alias="settingsPullButton">Pull from server</key>
 
+		<key alias="configPushButton">Push to server</key>
+		<key alias="configPullButton">Pull from server</key>
+
 		<key alias="dictionaryPushButton">Push to server</key>
 		<key alias="dictionaryPullButton">Pull from server</key>
-		
+
+		<key alias="filePushButton">Push to server</key>
+		<key alias="filePullButton">Pull from server</key>
+		<key alias="filesPush"><![CDATA[Push the selected files (and any child items) to the server.]]></key>
+		<key alias="filesPull"><![CDATA[Pull files from the selected server]]></key>
+
 		<key alias="pushButton">Publish to server</key>
 		<key alias="pullButton">Pull from server</key>
 		
 		<key alias="publishButton">Publish to server</key>
 
-		<key alias="pushContent">Publish to</key>
-		<key alias="pullContent">Pull content</key>
-		<key alias="pushMedia">Push to</key>
-		<key alias="pullMedia">Pull media</key>
+		<key alias="pushcontent">Publish to</key>
+		<key alias="pullcontent">Pull content</key>
+		<key alias="pushmedia">Push to</key>
+		<key alias="pullmedia">Pull media</key>
+
+		<key alias="defaultPush">Push to</key>	
+		<key alias="defaultPull">Pull from</key>
 		
-		<key alias="pushDictionary">Push dictionary items</key>
-		<key alias="pullDictionary">Pull dictionary items</key>
+		<key alias="pushdictionary">Push dictionary items</key>
+		<key alias="pulldictionary">Pull dictionary items</key>
 
 		<key alias="intro">
 			<![CDATA[uSync.Publisher allows you to link your Umbraco sites so you can push and pull
@@ -124,7 +135,7 @@
 		<key alias="unavailible">Unavailable</key>
 		
 		<!-- option headings -->
-		<key alias="contentOptions">Contnet options</key>
+		<key alias="contentOptions">Content options</key>
 		<key alias="contentOptionsDesc">Options for sending content and media</key>
 
 		<key alias="developerOptions">Developer settings</key>
@@ -257,6 +268,9 @@
 		<key alias="error_notenabled">The server is not enabled.</key>
 		<key alias="error_nopublisher">There is no valid publisher for this server</key>
 		<key alias="error_unknownserver">The server is unknown</key>
+		<key alias="error_notfound">Umbraco not found - server responded but URL returned 404</key>
+		<key alias="error_invalidresponse">Invalid response - server didn't respond with a version number</key>
+		<key alias="error_unknown">Unexpected response - check the logs to see the status code and reason</key>
 
 		<!-- buttons -->
 		<key alias="send">Send to server</key>
@@ -335,7 +349,10 @@
 		<key alias="reportChanges"><![CDATA[%0% change(s) detected]]></key>
 		<key alias="resultChanges"><![CDATA[%0% item(s) have been updated]]></key>
 		<key alias="resultPending"></key>
-		
+
+		<key alias="filespush"><![CDATA[<p>This process will <strong>push</strong> all the templates settings <strong>and</strong> and all of the webiste files.<p>]]></key>
+		<key alias="filespull"><![CDATA[<p>This process will <strong>pull</strong> all the templates settings <strong>and</strong> and all of the webiste files.<p>]]></key>
+
 	</area>
 	<area alias="actions">
 		<key alias="pushContent">Push content</key>
@@ -343,6 +360,8 @@
 		<key alias="pushContentButton">Publish to Server button</key>
 		<key alias="usyncAddServer">Add server</key>
 		<key alias="usyncDeploy">Sync Settings</key>
+		<key alias="usyncDeployPush">Push Settings</key>
+		<key alias="usyncDeployPull">Pull Settings</key>
 	</area>
 	<area alias="actionDescriptions">
 		<key alias="pushContent">Push content to other Umbraco sites/servers</key>

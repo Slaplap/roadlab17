@@ -1,7 +1,7 @@
-﻿using Interon.Roadlab.Web.App.Interfaces;
-using Interon.Roadlab.Web.App.Models;
+﻿using Interon.Roadlab.Web.Core.Interfaces;
+using Interon.Roadlab.Web.Core.Models;
 
-namespace Interon.Roadlab.Web.App.ViewModels
+namespace Interon.Roadlab.Web.Core.ViewModels
 {
     public class TestViewModel:IMapFrom<TestModel>
     {

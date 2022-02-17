@@ -1,18 +1,15 @@
-﻿ 
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
 using Interon.Roadlab.Core.Models;
-using Interon.Roadlab.Web.App.Models;
+using Interon.Roadlab.Web.Core.Models;
 using NPoco;
-using Umbraco.Core;
 using Umbraco.Core.Persistence;
 using Umbraco.Core.Scoping;
 
-namespace Interon.Roadlab.Web.App.Services
+namespace Interon.Roadlab.Web.Core.Services
 {
     public class NotificationService
     {

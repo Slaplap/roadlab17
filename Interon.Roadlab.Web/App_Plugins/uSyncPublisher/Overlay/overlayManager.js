@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    function overlayManager($rootScope, overlayService, uSyncPublishDialogManager) {
+    function overlayManager($rootScope, overlayService, uSyncItemManager) {
 
         var mgr = {};
 
@@ -60,16 +60,38 @@
             return contentScope;
         }
 
-
-
         function publishToSite() {
+
+            var treeItem = {
+                Id: mgr.content.id,
+                treeAlias: "content",
+                sectionAlias: "content"
+            };
+
+            uSyncItemManager.getEntity(treeItem)
+                .then(function (result) {
+
+                    var options = {
+                        items: [result.data],
+                        treeItem: treeItem,
+                    };
+
+                    openPublishDialog(options);
+                });
+        }
+
+
+        function openPublishDialog(options) {
+
             var overlay = {
                 title: 'Publish to server...',
                 subtitle: 'Select which server you wish to publish the content to',
                 view: Umbraco.Sys.ServerVariables.uSyncPublisher.pluginPath + 'overlay/overlayDialog.html',
-                server: {},
                 isModal: true,
-                entity: mgr.content,
+
+                server: {},
+                options: options,
+
                 disableBackdropClick: true,
                 disableEscKey: true,
                 skipFormValidation: true,

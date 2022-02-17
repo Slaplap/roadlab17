@@ -46,6 +46,7 @@
             reloadSettings: reloadSettings,
             getVersion: getVersion,
             createKeys: createKeys,
+            getUserGroups: getUserGroups,
 
             setServerOrder: setServerOrder,
 
@@ -56,7 +57,9 @@
             getFlags: getFlags,
             getTemplates: getTemplates,
 
-            hasContentOrMedia: hasContentOrMedia
+            hasContentOrMedia: hasContentOrMedia,
+
+            dependencyFlags: dependencyFlags
 
         };
 
@@ -156,7 +159,11 @@
         }
 
         function createKeys() {
-            return $http.put(publishService + 'CreateKeys');
+            return $http.post(publishService + 'CreateKeys');
+        }
+
+        function getUserGroups() {
+            return $http.get(publishService + 'GetUserGroups');
         }
 
 
@@ -180,8 +187,8 @@
             return $http.get(publishService + 'GetTemplates');
         }
 
-        function hasContentOrMedia() {
-            return $http.get(publishService + 'HasContentOrMedia');
+        function hasContentOrMedia(checkEnabled) {
+            return $http.get(publishService + 'HasContentOrMedia?checkEnabled=' + checkEnabled);
         }
 
     }

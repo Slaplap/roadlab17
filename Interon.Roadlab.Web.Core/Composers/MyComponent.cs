@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using Our.Umbraco.AuthU;
 using Our.Umbraco.AuthU.Data;
 using Our.Umbraco.AuthU.Services;
@@ -10,9 +7,8 @@ using Umbraco.Core.Composing;
 using Umbraco.Core.Events;
 using Umbraco.Core.Models;
 using Umbraco.Core.Services;
-using Umbraco.Core.Services.Implement;
 
-namespace Interon.Roadlab.Web.App.Composers
+namespace Interon.Roadlab.Web.Core.Composers
 {
     public class MyComponent : IComponent
     {

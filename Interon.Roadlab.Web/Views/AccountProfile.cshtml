@@ -1,6 +1,6 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.AccountProfile>
+﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Interon.Roadlab.Web.Core.ContentModels.AccountProfile>
 @using Syncfusion.EJ2
-@using ContentModels = Umbraco.Web.PublishedModels;
+ 
 @{
     var _member = Services.MemberService.GetById(Members.GetCurrentMemberId());
     Layout = "MasterPage.cshtml";

@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http.Formatting;
-using System.Web;
+﻿using System.Net.Http.Formatting;
 using Umbraco.Web.Models.Trees;
 using Umbraco.Web.Mvc;
 using Umbraco.Web.Trees;
 
-namespace Interon.Roadlab.Web.App.Controllers
+namespace Interon.Roadlab.Web.Core.Controllers
 {
     [Tree("Transactions", "Transactions", IsSingleNodeTree = true, TreeTitle = "Transactions",
         TreeGroup = "transactionsGroup", SortOrder = 5)]

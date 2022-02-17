@@ -42,19 +42,7 @@
                 {{vm.getDetailText(vm.summary.pending, 'pending')}}
             </li>
         </ul>
-
-        <div class="show-detail-button">
-            <umb-button ng-if="!vm.toggle"
-                        action="vm.toggle = !vm.toggle"
-                        label="Show details"
-                        button-style="link"
-                        type="button"></umb-button>
-            <umb-button ng-if="vm.toggle"
-                        action="vm.toggle = !vm.toggle"
-                        label="Hide details"
-                        button-style="link"
-                        type="button"></umb-button>
-        </div>
+    
     </div>
 
 

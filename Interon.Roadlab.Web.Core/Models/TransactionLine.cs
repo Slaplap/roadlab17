@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using NPoco;
 
-namespace Interon.Roadlab.Web.App.Models
+namespace Interon.Roadlab.Web.Core.Models
 {
     [NPoco.TableName("TransactionLines")]
     [PrimaryKey("Key", AutoIncrement = false)]

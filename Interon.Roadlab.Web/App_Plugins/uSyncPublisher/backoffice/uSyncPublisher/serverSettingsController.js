@@ -218,45 +218,13 @@
             }
         }
 
-        function getDeploySettings() {
-
-            var emptyGuid = '00000000-0000-0000-0000-000000000000';
-            var items = [
-                {
-                    uid: 'umb://document-type/' + emptyGuid, name: 'ContentType'
-                },
-                {
-                    udi: 'umb://data-type/' + emptyGuid, name: 'DataType'
-                },
-                {
-                    udi: 'umb://media-type/' + emptyGuid, name: 'MediaType'
-                }];
-
-            var options = {
-                entity: {
-                    id: '-1',
-                    items: items,
-                    server: vm.server
-                },
-                serverAlias: vm.server.Alias,
-                contentType: 'settings'
-            };
-
-            return options;
-
-        }
-
         function deploy() {
-            var options = getDeploySettings();
-            uSyncPublishDialogManager.openSyncDialog('Deploy Settings', 'publisherDialog', options, function () { }, 'settingsPush', '');
+            uSyncPublishDialogManager.openConfigDialog('Push', vm.server.Alias, function () { });
         }
 
         function pullDeploy() {
-            var options = getDeploySettings();
-            uSyncPublishDialogManager.openSyncDialog('Pull Settings', 'publisherDialog', options, function () { }, 'settingsPull', '');
-
+            uSyncPublishDialogManager.openConfigDialog('Pull', vm.server.Alias, function () { });
         }
-
 
         function remoteSetup(server) {
             uSyncPublishServerManager.remoteSetup(server, function (success) {

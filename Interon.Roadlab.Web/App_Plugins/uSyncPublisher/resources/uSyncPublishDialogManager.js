@@ -1,20 +1,28 @@
 ﻿(function () {
     'use strict';
 
-    function dialogManager($rootScope, $timeout, editorService, navigationService) {
+    function dialogManager($rootScope, $timeout,
+        editorService, navigationService, uSyncItemManager) {
 
         var emptyGuid = '00000000-0000-0000-0000-000000000000';
 
         return {
             openPublisherDialog: openPublisherDialog,
             openPublisherPullDialog: openPublisherPullDialog,
+
             openPublisherMediaPush: openPublisherMediaPush,
             openPublisherMediaPull: openPublisherMediaPull,
 
-            openPublisherDictionaryPush: openPublisherDictionaryPush,
-            openPublisherDictionaryPull: openPublisherDictionaryPull,
+            openPublisherPushItemDialog: openPublisherPushItemDialog,
+            openPublisherPullItemDialog: openPublisherPullItemDialog,
+
+            openPublisherPushFileDialog: openPublisherPushFileDialog,
+            openPublisherPullFileDialog: openPublisherPullFileDialog,
+
+            openConfigDialog: openConfigDialog,
 
             openSettingsPush: openSettingsPush,
+            openSettingsPull: openSettingsPull,
 
             openSyncDialog: openSyncDialog,
 
@@ -22,71 +30,72 @@
             openNewServerDialog: openNewServerDialog
         };
 
+        /////////////////
+
+        function getLocalItem(options) {
+            if (options.action !== undefined && options.action.metaData !== undefined && options.action.metaData !== null) {
+                return JSON.parse(options.action.metaData._syncLocalItem);
+            }
+
+            return options.items[0];
+        }
+
+        // settings 
+        function openPublisherPushItemDialog(options, cb) {
+            openSyncDialog('Push settings', 'publisherDialog', options, cb, 'settingsPush');
+        }
+
+        function openPublisherPullItemDialog(options, cb) {
+            openSyncDialog('Pull settings', 'publisherDialog', options, cb, 'settingsPull');
+        }
+
+        // content 
         function openPublisherDialog(options, cb) {
-            options.contentType = 'content';
             openSyncDialog('Publish Content', 'publisherDialog', options, cb, 'push');
         }
 
         function openPublisherPullDialog(options, cb) {
-            options.contentType = 'content';
             openSyncDialog('Pull Content', 'publisherDialog', options, cb, 'pull');
         }
 
+        // media 
         function openPublisherMediaPush(options, cb) {
-            options.contentType = 'media';
             openSyncDialog('Publish Media', 'publisherDialog', options, cb, 'push');
         }
 
-        function openPublisherDictionaryPush(options, cb) {
-
-            var deployOptions = {
-                entity: options.entity,
-                contentType: 'dictionary-item'
-            };
-
-
-            openSyncDialog('Deploy Settings', 'publisherDialog', deployOptions, cb, "dictionaryPush");
-        }
-
-        function openPublisherDictionaryPull(options, cb) {
-
-            var deployOptions = {
-                entity: options.entity,
-                contentType: 'dictionary-item'
-            };
-
-
-            openSyncDialog('Deploy Settings', 'publisherDialog', deployOptions, cb, "dictionaryPull");
-        }
-
         function openPublisherMediaPull(options, cb) {
-            options.contentType = 'media';
             openSyncDialog('Pull Media', 'publisherDialog', options, cb, 'pull');
         }
 
+        function openPublisherPushFileDialog(options, cb) {
+            openSyncDialog('Push Files', 'publisherDialog', options, cb, 'filePush');
+        }
+
+        function openPublisherPullFileDialog(options, cb) {
+            openSyncDialog('Pull Files', 'publisherDialog', options, cb, 'filePull');
+        }
+
         function openSettingsPush(options, cb) {
+            openConfigDialog("Push", options.entity.id, cb);
+        }
 
-            var items = [
-                {
-                    uid: 'umb://document-type/' + emptyGuid, name: 'ContentType'
-                },
-                {
-                    udi: 'umb://data-type/' + emptyGuid, name: 'DataType'
-                },
-                {
-                    udi: 'umb://media-type/' + emptyGuid, name: 'MediaType'
-                }];
+        function openSettingsPull(options, cb) {
+            openConfigDialog("Pull", options.entity.id, cb);
+        }
 
-            var deployOptions = {
-                entity: {
-                    id: '-1',
-                    items: items
-                },
-                serverAlias: options.entity.id,
-                contentType: 'settings'
-            };
+        // server
+        function openConfigDialog(mode, server, callback) {
 
-            openSyncDialog('Deploy Settings', 'publisherDialog', deployOptions, cb, "SettingsPush", '');
+            var options = {
+                hideItems: true,
+                serverAlias: server,
+                items: [
+                    { uid: 'umb://document-type/' + emptyGuid, name: 'ContentType' },
+                    { udi: 'umb://data-type/' + emptyGuid, name: 'DataType' },
+                    { udi: 'umb://media-type/' + emptyGuid, name: 'MediaType' }]
+            }
+
+            openDialog('Deploy Settings', 'publisherDialog', options, callback, 'config' + mode);
         }
 
         function openSyncDialog(dialogTitle, dialogView, options, cb, mode, size = 'small') {
@@ -95,9 +104,25 @@
                 options.items = [options.entity];
             }
 
+            if (options.items.length === 1) {
+
+                var localItem = getLocalItem(options);
+                var dialogOptions = Object.assign({}, options);
+                dialogOptions.items = [localItem];
+
+                openDialog(dialogTitle, dialogView, dialogOptions, cb, mode, size);
+            }
+            else {
+                openDialog(dialogTitle, dialogView, options, cb, mode, size);
+            }
+        }
+
+        function openDialog(dialogTitle, dialogView, options, cb, mode, size) {
+
             editorService.open({
                 options: options,
                 mode: mode,
+                single: options.items.length === 1,
                 title: dialogTitle,
                 size: size,
                 view: Umbraco.Sys.ServerVariables.uSyncPublisher.pluginPath + 'dialogs/' + dialogView + '.html',

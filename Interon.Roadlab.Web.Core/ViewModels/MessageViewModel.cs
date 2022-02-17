@@ -1,8 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
-using Interon.Roadlab.Web.App.Models;
 
-namespace Interon.Roadlab.Web.App.ViewModels
+namespace Interon.Roadlab.Web.Core.ViewModels
 {
     public class MessageViewModel
     {

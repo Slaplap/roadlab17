@@ -36,7 +36,7 @@
         }
 
         function importItems(entityTypes, force, clientId) {
-            return $http.put(serviceRoot + 'importItems', {
+            return $http.post(serviceRoot + 'importItems', {
                 entityTypes: entityTypes,
                 force: force,
                 clientId: clientId

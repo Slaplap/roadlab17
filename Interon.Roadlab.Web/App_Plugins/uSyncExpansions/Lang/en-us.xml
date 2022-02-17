@@ -17,5 +17,7 @@
 		<p>Missing mappers might mean that uSync is unable to calulate dependencies for media and documents.</p>
 		<p>You don't always need mappers (e.g if the property isn't storing links to pages or media) but you might. 
 		More info : <a href="https://docs.jumoo.co.uk/uSync/v8/developer/mappers/" tartet="_blank">https://docs.jumoo.co.uk/uSync/v8/developer/mappers/</a>]]></key>
+
+	  <key alias="fipswarning"><![CDATA[<p>Your server is set to enforce create only Federal Information Processing Standard (FIPS) certified algorithms. All your servers need to have the same FIPS setting.</p>]]></key>
   </area>
 </language>

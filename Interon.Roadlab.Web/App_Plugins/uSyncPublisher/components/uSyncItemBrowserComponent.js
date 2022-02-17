@@ -89,6 +89,8 @@
             $event.preventDefault();
             $event.stopPropagation();
 
+            item.selected = !item.selected;
+
             if (item.isFolder && item.hasChildren && vm.loadFolder) {
 
                 vm.breadcrumb.push({ key: item.key, name: item.name });
@@ -105,7 +107,7 @@
 
         vm.changeNames = {
             'NoChange': 'In sync',
-            'Update': 'Diffrent',
+            'Update': 'Different',
             'Delete': 'Not on target',
             'Create': 'No on local'
         };

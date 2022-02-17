@@ -55,9 +55,12 @@
 
 
         function getTypeName(typeName) {
-            var umbType = typeName.substring(0, typeName.indexOf(','));
-            var typeName = umbType.substring(umbType.lastIndexOf('.') + 1);
-            return typeName[0] == 'I' ? typeName.substring(1) : typeName;
+            if (typeName.indexOf(',') != -1) {
+                var umbType = typeName.substring(0, typeName.indexOf(','));
+                var typeName = umbType.substring(umbType.lastIndexOf('.') + 1);
+                return typeName[0] == 'I' ? typeName.substring(1) : typeName;
+            }
+            return typeName;
         }
 
         function groupByType(results) {
@@ -75,11 +78,12 @@
                 });
 
                 if (!found) {
+                    var itemName = getTypeName(item.ItemType);
                     var newGroup = {
                         type: item.ItemType,
-                        name: getTypeName(item.ItemType),
+                        name: itemName,
                         items: [],
-                        showGroup: false
+                        showGroup: itemName.indexOf('Content') != -1
                     };
                         
                     newGroup.items.push(item);

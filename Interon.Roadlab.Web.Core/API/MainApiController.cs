@@ -1,18 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
+﻿using System.Diagnostics;
 using System.Net;
-using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
-using System.Web;
 using System.Web.Http;
-using System.Web.Http.Results;
-using System.Web.Mvc;
-using Microsoft.CodeAnalysis.Diagnostics;
 using Umbraco.Web.WebApi;
 
-namespace Interon.Roadlab.Web.App.API
+namespace Interon.Roadlab.Web.Core.API
 {
     public class MainApiController:UmbracoApiController
     {

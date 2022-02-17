@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Interon.Roadlab.Web.App.Models;
+using Interon.Roadlab.Web.Core.Models;
 using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web.Models;
 
-namespace Interon.Roadlab.Web.App.ViewModels
+namespace Interon.Roadlab.Web.Core.ContentModels
 {
     public class AccountNotificationListContentModel : ContentModel
     {

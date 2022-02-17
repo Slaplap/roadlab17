@@ -75,9 +75,6 @@
                 case 'container':
                     item.flags.includeChildren = true;
                     break;
-                case 'templates':
-                    item.flags.includeFiles = true;
-                    break;
                 case 'macros':
                     item.udi = 'umb://macro/00000000-0000-0000-0000-000000000000';
                     break;

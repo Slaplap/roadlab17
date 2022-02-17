@@ -1,21 +1,14 @@
 // Use whatever namespacing works for your project.
 
-using System;
-using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Text;
 using System.Threading.Tasks;
 using System.Web;
-using System.Web.Hosting;
 using System.Web.Http;
- 
-using Microsoft.IdentityModel.Logging;
 using Umbraco.Web.WebApi;
 
-namespace Interon.Roadlab.Web.App.API
+namespace Interon.Roadlab.Web.Core.API
 {
     // If you want this endpoint to only be accessible when the user is logged in, 
     // then use UmbracoAuthorizedApiController instead of UmbracoApiController

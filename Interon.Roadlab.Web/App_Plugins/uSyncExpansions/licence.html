@@ -20,7 +20,15 @@
                 <a href="{{vm.status.Link}}" ng-if="vm.status.Link.length > 0" class="btn btn-success" target="_blank">
                     {{vm.status.LinkTitle}}
                 </a>
+
             </umb-box-content>
+            <umb-box-content ng-if="vm.status.FipsEnabled">
+
+                <div class="alert alert-warning">
+                    Your server is set to enforce create only Federal Information Processing Standard (FIPS) certified algorithms.
+                    You will need a FIPS Compatible licence key to use uSync.Complete.
+                </div>
+           </umb-box-content>
         </umb-box>
 
         <umb-box>

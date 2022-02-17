@@ -1,12 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
-using Newtonsoft.Json;
 using NPoco;
 
-namespace Interon.Roadlab.Web.App.Models
+namespace Interon.Roadlab.Web.Core.Models
 {
     [NPoco.TableName("Transactions")]
     [PrimaryKey("Key", AutoIncrement = false)]

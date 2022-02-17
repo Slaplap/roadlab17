@@ -1,9 +1,5 @@
-﻿using System;
-using System.Web.Mvc;
-using Interon.Roadlab.Core.Json;
-using Interon.Roadlab.Web.App.Services;
-using Interon.Roadlab.Web.App.ViewModels;
-using Newtonsoft.Json;
+﻿using System.Web.Mvc;
+using Interon.Roadlab.Web.Core.Services;
 using Umbraco.Core.Cache;
 using Umbraco.Core.Configuration;
 using Umbraco.Core.Logging;
@@ -12,7 +8,7 @@ using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
 
-namespace Interon.Roadlab.Web.App.mvcControllers
+namespace Interon.Roadlab.Web.Core.MvcControllers
 {
 
     public class AjaxPageController : RenderMvcController

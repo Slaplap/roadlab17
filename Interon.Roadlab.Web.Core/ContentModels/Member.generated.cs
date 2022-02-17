@@ -46,18 +46,18 @@ namespace Interon.Roadlab.Web.Core.ContentModels
 		// properties
 
 		///<summary>
+		/// Clients
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("clients")]
+		public IEnumerable<LimsElement> Clients => this.Value<IEnumerable<LimsElement>>("clients");
+
+		///<summary>
 		/// Communication DateTime
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("communicationDateTime")]
 		public DateTime CommunicationDateTime => this.Value<DateTime>("communicationDateTime");
-
-		///<summary>
-		/// Company
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
-		[ImplementPropertyType("company")]
-		public IPublishedContent Company => this.Value<IPublishedContent>("company");
 
 		///<summary>
 		/// Device Id
@@ -162,28 +162,28 @@ namespace Interon.Roadlab.Web.Core.ContentModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("umbracoMemberFailedPasswordAttempts")]
-		public decimal UmbracoMemberFailedPasswordAttempts => this.Value<decimal>("umbracoMemberFailedPasswordAttempts");
+		public int UmbracoMemberFailedPasswordAttempts => this.Value<int>("umbracoMemberFailedPasswordAttempts");
 
 		///<summary>
 		/// Last Lockout Date
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("umbracoMemberLastLockoutDate")]
-		public decimal UmbracoMemberLastLockoutDate => this.Value<decimal>("umbracoMemberLastLockoutDate");
+		public DateTime UmbracoMemberLastLockoutDate => this.Value<DateTime>("umbracoMemberLastLockoutDate");
 
 		///<summary>
 		/// Last Login Date
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("umbracoMemberLastLogin")]
-		public decimal UmbracoMemberLastLogin => this.Value<decimal>("umbracoMemberLastLogin");
+		public DateTime UmbracoMemberLastLogin => this.Value<DateTime>("umbracoMemberLastLogin");
 
 		///<summary>
 		/// Last Password Change Date
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("umbracoMemberLastPasswordChangeDate")]
-		public decimal UmbracoMemberLastPasswordChangeDate => this.Value<decimal>("umbracoMemberLastPasswordChangeDate");
+		public DateTime UmbracoMemberLastPasswordChangeDate => this.Value<DateTime>("umbracoMemberLastPasswordChangeDate");
 
 		///<summary>
 		/// Is Locked Out
@@ -197,13 +197,13 @@ namespace Interon.Roadlab.Web.Core.ContentModels
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("umbracoMemberPasswordRetrievalAnswer")]
-		public decimal UmbracoMemberPasswordRetrievalAnswer => this.Value<decimal>("umbracoMemberPasswordRetrievalAnswer");
+		public string UmbracoMemberPasswordRetrievalAnswer => this.Value<string>("umbracoMemberPasswordRetrievalAnswer");
 
 		///<summary>
 		/// Password Question
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("umbracoMemberPasswordRetrievalQuestion")]
-		public decimal UmbracoMemberPasswordRetrievalQuestion => this.Value<decimal>("umbracoMemberPasswordRetrievalQuestion");
+		public string UmbracoMemberPasswordRetrievalQuestion => this.Value<string>("umbracoMemberPasswordRetrievalQuestion");
 	}
 }

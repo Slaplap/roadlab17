@@ -10,6 +10,7 @@
         var vm = this;
 
         vm.buttonState = 'init';
+        vm.showError = false;
 
         vm.importGroup = {
             defaultButton: {
@@ -112,6 +113,8 @@
             }).error(function (evt, status, headers, config) {
                 vm.running = false;
                 vm.buttonState = 'error';
+                console.log(status);
+                notificationsService.error('error', 'Error uploading sync pack');
             });
         }
 
@@ -128,7 +131,7 @@
                     vm.progress = response.progress;
 
                     if (!response.response.success) {
-                        vm.state = 'error';
+                        vm.showError = true;
                         vm.errorMessage = response.response.message
                     }
                     else {
@@ -147,10 +150,13 @@
                         }
                     }
                 }, function (error) {
+                        vm.progress.steps[vm.progress.currentStepIndex].status = 'Error';
                         vm.running = false;
                         vm.buttonState = 'error';
+                        vm.showError = true;
+                        vm.errorMessage = getError(error.data);
                         console.log(error);
-                        notificationsService.error('error', getError(error.data));
+                        notificationsService.error('error', vm.errorMessage);
                 });
         }
 
@@ -190,6 +196,14 @@
                         vm.options.request.handlerFolder = response.nextFolder;
                         processImport();
                     }
+                }, function (error) {
+                    vm.running = false;
+                    vm.progress.steps[vm.progress.currentStepIndex].status = 'Error';
+                    vm.buttonState = 'error';
+                    vm.showError = true;
+                    vm.errorMessage = getError(error.data);
+                    console.log(error);
+                    notificationsService.error('error', vm.errorMessage);
                 });
         }
 

@@ -1,9 +1,7 @@
-﻿using System.Collections.Generic;
-using Interon.Roadlab.Web.App.Models;
-using Umbraco.Core.Models.PublishedContent;
+﻿using Umbraco.Core.Models.PublishedContent;
 using Umbraco.Web.Models;
 
-namespace Interon.Roadlab.Web.App.ViewModels
+namespace Interon.Roadlab.Web.Core.ContentModels
 {
     public class AccountTransactionCreateContentModel : ContentModel
     {
@@ -12,11 +10,11 @@ namespace Interon.Roadlab.Web.App.ViewModels
         {
         }
     }
-    public class AccountLogin : ContentModel
-    {
+    //public class AccountLogin : ContentModel
+    //{
 
-        public AccountLogin(IPublishedContent content) : base(content)
-        {
-        }
-    }
+    //    public AccountLogin(IPublishedContent content) : base(content)
+    //    {
+    //    }
+    //}
 }

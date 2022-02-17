@@ -2,7 +2,7 @@
 (function () {
     'use strict';
 
-    function overlayController($scope) {
+    function overlayController($scope, uSyncItemManager) {
 
         var vm = this;
 
@@ -12,10 +12,9 @@
         var model = $scope.model;
 
         vm.mode = 'Push';
-        vm.items = [model.entity];
-        vm.options = {
-            contentType: 'content'
-        };
+        vm.isSingle = true;
+        vm.options = $scope.model.options;
+        vm.items = vm.options.items;
 
         vm.headings = {};
 

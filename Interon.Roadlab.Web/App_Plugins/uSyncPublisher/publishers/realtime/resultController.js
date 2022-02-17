@@ -3,8 +3,15 @@
 
     function resultController($scope) {
 
-        $scope.vm.complete = isComplete($scope.vm.report);
-        $scope.vm.state.complete = $scope.vm.complete;
+        var pvm = this;
+
+        pvm.showDetails = true;
+        pvm.results = $scope.vm.report;
+
+        pvm.complete = isComplete(pvm.results);
+
+        // marks this as the last step in the process.
+        $scope.vm.state.complete = pvm.complete;
 
         if ($scope.model != null && $scope.vm != null && $scope.vm.selectedServer != null) {
             var server = $scope.vm.selectedServer;

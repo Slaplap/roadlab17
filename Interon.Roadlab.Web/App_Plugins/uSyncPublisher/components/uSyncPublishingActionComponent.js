@@ -5,6 +5,7 @@
         templateUrl: Umbraco.Sys.ServerVariables.application.applicationPath + 'App_Plugins/uSyncPublisher/Components/uSyncPublishingAction.html',
         bindings: {
             mode: '<',
+            single: '<',
             items: '=',
             options: '=',
             state: '=',
@@ -17,8 +18,8 @@
         controller: publishingController
     };
 
-    function publishingController($scope, $q, mediaResource, contentResource, dictionaryResource, localizationService,
-        uSyncHub, uSyncPublishService, uSyncPublishingService, uSyncActionManager) {
+    function publishingController($scope, $q, mediaResource, contentResource, dictionaryResource, localizationService, languageResource,
+        uSyncHub, uSyncPublishService, uSyncPublishingService, uSyncActionManager, uSyncItemManager) {
 
         var vm = this;
         vm.process = {};
@@ -26,18 +27,21 @@
         vm.error = {};
         vm.report = [];
 
-        vm.actionButton = { state: 'init', name: 'Send' };
+        // intialize the button (on parent)
+        vm.actionButton = {
+            state: 'init', name: 'Send'
+        };
       
         vm.showPickServer = true; // show the server select dialog.
         vm.servers = [];
-
         vm.selectedServer = null;
-        vm.contentType = 'content'; // could be media, settings or dictionary
 
-        vm.singleItem = false; // single item passed - changes ui, some actions.
+        vm.entityType = 'content'; // the primary UDI entity
 
+        // methods 
         vm.onSelected = onSelected;
 
+        // events
         var events = [];
         events.push($scope.$on('usync-publish-performAction', function () {
             onPerformAction();
@@ -47,12 +51,13 @@
             onClose();
         }))
 
-        /// /// ///
+        //////////////
+
         function onSelected(server) {
-            vm.flags = uSyncActionManager.prepToggles(server, vm.flags, vm.contentType);
+            vm.flags = uSyncActionManager.prepToggles(server, vm.flags, vm.entityType);
 
             vm.headings.description =
-                uSyncActionManager.getDescription(vm.mode, vm.contentType, server.Name);
+                uSyncActionManager.getDescription(vm.mode, vm.entityType, server.Name);
 
             vm.server = server;
 
@@ -63,6 +68,7 @@
             });
         }
 
+        /// triggered when button is pressed on parent.
         function onPerformAction() {
             if (vm.process.view.show) {
                 vm.state.actionLoaded = false;
@@ -70,21 +76,29 @@
             performAction(vm.process);
         }
 
+        /// trigged when close is pressed on parent. 
         function onClose() {
             clean(vm.process);
         }
 
+        /////////////
+
+        ////////////
+        /// Controller lifecycle. 
+
         /// setup
         vm.$onInit = function () {
 
-            vm.contentType = vm.options.contentType ?? 'content';
+            vm.entityType = vm.items[0].entityType; // entity type of the item. 
 
             vm.headings = {
                 title: 'Select a server',
-                description: vm.mode + ' ' + vm.contentType
+                description: vm.mode + ' ' + vm.entityType
             };
 
             var promises = [];
+
+            // no server picked.
             if (vm.options.serverAlias !== undefined) {
                 vm.showPickServer = false;
                 promises.push(uSyncPublishService.getServer(vm.options.serverAlias)
@@ -95,106 +109,46 @@
 
             $q.all(promises).then(function () {
                 vm.flags = uSyncActionManager.initFlags();
+
+                // override when we are syncing something that needs files.
+                if (vm.items[0].requiresFiles) {
+                    vm.flags.includeFiles = { toggle: true, value: true };
+                }
+
                 initComponent();
             });
-
-
 
             localizationService.localize('usyncpublish_' + vm.mode + "Button")
                 .then(function (data) {
                     vm.actionButton.name = data;
                 });
 
-
             initSignalRHub();
         }
 
-        // clean up
         $scope.$on('destroy', function () {
             for (var e in events) { events[e](); }
         });
 
+        ///////////////
+
+
         function initComponent() {
 
             var promises = [];
-
-            vm.itemMode = getItemMode(vm.items);
-            if (vm.itemMode === 'single') {
-                if (isRootItem(vm.items[0])) {
-                    var root = makeRoot(vm.items[0], vm.contentType);
-                    if (root !== null) {
-                        vm.items[0] = root;
-                    }
-                }
-                else if (vm.items[0].udi === undefined) {
-                    promises.push(getItemById(vm.items[0], vm.contentType)
-                        .then(function (item) {
-                            vm.items[0] = item;
-                        }));
-                }
-            }
 
             if (vm.showPickServer) {
                 promises.push(uSyncPublishService.getServers(vm.mode)
                     .then(function (result) {
                         vm.servers = result.data;
                         checkServers(vm.servers);
+                        vm.state.loading = false;
                     }));
             }
-
-            // initSignalR
-
-            $q.all(promises).then(function () {
-                if (!vm.showPickServer) {
-                    setupServer();
-                }
-
+            else {
+                onSelected(vm.selectedServer);
                 vm.state.loading = false;
-            });
-        }
-
-        function getItemMode(items) {
-            return items.length === 1 ? 'single' : 'multi';
-        }
-
-        function isRootItem(item) {
-            return item.id * 1 === -1;
-        }
-
-        function makeRoot(item, contentType) {
-
-            // if (contentType === 'media' || contentType === 'content') {
-                return {
-                    id: -1,
-                    udi: uSyncActionManager.makeUdi(contentType),
-                    name: contentType,
-                    variants: [{ name: contentType }]
-                };
-            // }
-            return null;
-        }
-
-        function getItemById(item, contentType) {
-
-            switch (contentType) {
-                case 'media':
-                    return mediaResource.getById(item.id);
-                    break;
-                case 'content':
-                    return contentResource.getById(item.id);
-                    break;
-                case 'setting':
-                    break;
-                case 'dictionary-item':
-                    return dictionaryResource.getById(item.id);
-                    break;
             }
-
-            return item;
-        }
-
-        function setupServer() {
-            onSelected(vm.selectedServer);
         }
 
         //// utils.
@@ -203,8 +157,7 @@
             var checks = [];
 
             servers.forEach(function (server) {
-                checks.push(
-                uSyncPublishService.checkServer(server.Alias)
+                checks.push(uSyncPublishService.checkServer(server.Alias)
                     .then(function (result) {
                         server.status = result.data;
                     }));
@@ -213,26 +166,6 @@
             $q.all(checks).then(function () {
                 $scope.$broadcast('usync-servers-checked', servers);
             });
-        }
-
-        function getSyncItems(items) {
-
-            return _.map(items, function (item) {
-
-                var name = item.name;
-
-                if (_.isArray(item.variants) && item.variants.length > 0) {
-                // if (item.variants !== undefined && item.variants !== null && item.variants.length > 0) {
-                    name = item.variants[0].name;
-                }
-
-                return {
-                    id: item.id,
-                    udi: item.udi,
-                    name: name
-                }
-            });
-
         }
 
         // processing 
@@ -245,7 +178,7 @@
                 actionAlias: '',
                 server: vm.server.Alias,
                 mode: vm.mode,
-                items: getSyncItems(vm.items),
+                items: vm.items,
                 steps: {
                     stepIndex: 0,
                     pageNumber: 0,
@@ -256,7 +189,7 @@
                     path: ''
                 },
                 options: {
-                    primaryType: vm.contentType,
+                    primaryType: vm.entityType,
                     removeOrphans: false,
                     includeFileHash: false,
                     includeSystemFileHash: false,
@@ -284,44 +217,53 @@
 
         function prepAction(process) {
 
-            if (process.action === null) {
-                // end ? 
-                return;
-            }
+            if (process.action === null) { return; }
 
             process.actionAlias = process.action.alias;
 
-            if (process.action.view !== null && process.action.view.length > 0) {
-                process.view = { show: true, path: process.action.view };
-
-                vm.state.valid = true;
-                vm.state.working = false;
-                vm.state.hideClose = false;
-
-
-                if (vm.showPickServer && vm.hideWhenPicked) {
-                    vm.showPickServer = false;
-                    vm.headings = {
-                        title: 'Publish to ' + vm.server.Name,
-                        description: vm.server.Url
-                    };
-                }
-
-                return;
+            if (hasView(process.action)) {
+                return showView(process);
             }
             else {
-
-                vm.state.working = true;
-                vm.state.hideClose = true;
-
-                process.view = { show: false, path: '' };
-                // no view do the action
+                hideView(process);
                 performAction(process);
             }
         }
 
-        function performAction(process) {
+        function hasView(action) {
+            return action.view !== undefined && action.view !== null && action.view.length > 0;
+        }
 
+        function showView(process) {
+
+            process.view = {
+                show: true,
+                path: process.action.view,
+                boxed: !process.action.unboxView
+            };
+
+            vm.state.valid = true;
+            vm.state.working = false;
+            vm.state.hideClose = false;
+
+            if (vm.showPickServer && vm.hideWhenPicked) {
+                vm.showPickServer = false;
+                vm.headings = {
+                    title: 'Publish to ' + vm.server.Name,
+                    description: vm.server.Url
+                };
+            }
+
+            return;
+        }
+
+        function hideView(process) {
+            vm.state.working = true;
+            vm.state.hideClose = true;
+            process.view = { show: false, path: '' };
+        }
+
+        function performAction(process) {
 
             vm.showPickServer = false; 
 
@@ -333,18 +275,14 @@
                 .then(function (result) {
 
                     var response = result.data;
-
                     if (response.success) {
 
                         process = updateProcess(process, response);
 
                         if (response.processComplete) {
-                            // everything is done.
-                            // this is the end.
                             console.log('end ?');
                         }
                         else if (response.actionComplete) {
-                            // action complete - move to next.
                             getAction(process);
                         }
                         else {
@@ -352,7 +290,6 @@
                         }
                     }
                     else {
-                        // fail.
                         showError(response.error, request);
                     }
                 });
@@ -393,7 +330,7 @@
                 handlerFolder: response.nextFolder
             }
 
-            if (response.actions !== undefined && response.actions !== null && response.actions.length > 0) {
+            if (hasActions(response)) {
                 vm.report = response.actions;
             }
 
@@ -404,6 +341,10 @@
             }
 
             return process;
+        }
+
+        function hasActions(response) {
+            return response.actions !== undefined && response.actions !== null && response.actions.length > 0;
         }
 
         function updateProgressSteps(steps) {
@@ -440,6 +381,8 @@
                 { icon: 'icon-settings', name: 'third-step', status: 0 }
             ]
         }
+
+        /// calculate the progress bar. 
 
         vm.calcPercentage = calcPercentage;
 

@@ -1,22 +1,13 @@
 ﻿using System;
-using System.CodeDom;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http.Formatting;
-using System.Web;
-using System.Web.Http;
-using System.Web.Script.Serialization;
 using Interon.Roadlab.Core.Models;
-using Interon.Roadlab.Web.App.Models;
-using Interon.Roadlab.Web.App.Services;
-using Umbraco.Core.Models.PublishedContent;
-using Umbraco.Core.Services.Implement;
+using Interon.Roadlab.Web.Core.Models;
 using Umbraco.Web.Editors;
 using Umbraco.Web.Mvc;
- 
-using NotificationService = Interon.Roadlab.Web.App.Services.NotificationService;
+using NotificationService = Interon.Roadlab.Web.Core.Services.NotificationService;
 
-namespace Interon.Roadlab.Web.App.API
+namespace Interon.Roadlab.Web.Core.API
 {
     [PluginController("NotificationsBackendApi")]
     public class NotificationsBackendApiController : UmbracoAuthorizedJsonController

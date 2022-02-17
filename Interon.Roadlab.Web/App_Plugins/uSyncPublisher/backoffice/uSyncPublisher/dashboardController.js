@@ -47,7 +47,7 @@
         };
 
         // if site is blank, switch the active tab.
-        uSyncPublishService.hasContentOrMedia()
+        uSyncPublishService.hasContentOrMedia(true)
             .then(function (result) {
                 if (!result.data) {
                     vm.page.navigation[0].active = false;

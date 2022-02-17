@@ -2,24 +2,17 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Runtime.Remoting.Messaging;
 using System.Threading.Tasks;
 using ClientDependency.Core.Logging;
-using Interon.Roadlab.Core;
-using Interon.Roadlab.Core.Dto;
 using Interon.Roadlab.LIMS.DTO;
-using Interon.Roadlab.Web.App.Interfaces;
 using Interon.Roadlab.Web.Core.ContentModels;
-using Lucene.Net.Support;
 using Newtonsoft.Json;
-using Umbraco.Core;
 using Umbraco.Core.Models;
 using Umbraco.Core.Services;
 using Umbraco.Web;
-using Umbraco.Web.PublishedModels;
 using Member = Interon.Roadlab.Web.Core.ContentModels.Member;
 
-namespace Interon.Roadlab.Web.App.Services
+namespace Interon.Roadlab.Web.Core.Services
 {
     public interface IMembershipService
     {

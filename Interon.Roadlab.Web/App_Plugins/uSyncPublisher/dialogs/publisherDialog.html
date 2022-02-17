@@ -9,7 +9,7 @@
         </umb-editor-header>
         <umb-editor-container>
 
-            <div ng-if="vm.items.length > 1" class="usync-node-box-list">
+            <div ng-if="vm.showItems()" class="usync-node-box-list">
                 <h5>Selected items</h5>
                 <div class="flex flex-wrap">
                     <div ng-repeat="item in vm.items | limitTo:5" class="usync-node-box">
@@ -20,12 +20,13 @@
             </div>
 
             <usync-publishing-action mode="vm.mode"
-                                  items="vm.items"
-                                  options="vm.options"
-                                  state="vm.state"
-                                  action-button="vm.ui.button" 
-                                  headings="vm.ui.headings"
-                                  is-modal="false">
+                                     single="vm.single"
+                                     items="vm.items"
+                                     options="vm.options"
+                                     state="vm.state"
+                                     action-button="vm.ui.button" 
+                                     headings="vm.ui.headings"
+                                     is-modal="false">
             </usync-publishing-action>
 
         </umb-editor-container>

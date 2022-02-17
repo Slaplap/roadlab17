@@ -1,4 +1,4 @@
-﻿namespace Interon.Roadlab.Web.App.Interfaces
+﻿namespace Interon.Roadlab.Web.Core.Interfaces
 {
     public interface IMapFrom<T>
     {

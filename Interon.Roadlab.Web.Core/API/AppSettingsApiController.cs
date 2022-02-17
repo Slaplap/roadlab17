@@ -1,16 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using Interon.Roadlab.Core.Dto;
-using Our.Umbraco.AuthU.Web.WebApi;
-using Umbraco.Web;
-using Umbraco.Web.PublishedModels;
+using Interon.Roadlab.Web.Core.ContentModels;
 using Umbraco.Web.WebApi;
 
-namespace Interon.Roadlab.Web.App.API
+namespace Interon.Roadlab.Web.Core.API
 {
     
     public class AppSettingsApiController:UmbracoApiController

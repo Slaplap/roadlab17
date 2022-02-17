@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
-using System.Web;
 
-namespace Interon.Roadlab.Web.App.Models
+namespace Interon.Roadlab.Web.Core.Models
 {
     [DataContract(Name = "pagedData", Namespace = "")]
     public class PagedUmbracoResult

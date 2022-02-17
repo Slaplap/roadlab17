@@ -9,6 +9,7 @@
         var pvm = this;
 
         pvm.results = $scope.vm.report;
+        pvm.showDetails = true;
 
         if ($scope.vm != null && $scope.vm.server != null) {
             var server = $scope.vm.server;

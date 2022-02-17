@@ -16,19 +16,10 @@
             getActionMessage: getActionMessage,
             getDescription: getDescription,
 
-            makeUdi: makeUdi,
             emptyGuid: '00000000-0000-0000-0000-000000000000',
             mergeResults: mergeResults,
             mergeDependencies: mergeDependencies
         };
-
-        function makeUdi(type, guid) {
-
-            var entityType = type !== 'content' ? type : 'document';
-
-            var key = guid !== undefined ? guid : '00000000-0000-0000-0000-000000000000';
-            return 'umb://' + entityType + '/' + key;
-        }
 
         //////
        
@@ -42,9 +33,21 @@
         }
 
         function getDescription(mode, contentType, serverName) {
-            var modeName = mode === 'SettingsPush' ? 'Push' : mode;
-            var direction = mode === 'pull' ? ' from ' : ' to ';
-            return capitalizeFirstLetter(modeName + ' ' + contentType + direction + serverName);
+
+            var modeName = mode;
+            switch (mode) {
+                case 'settingsPush':
+                    modeName = 'Push';
+                    break;
+                case 'filePush':
+                    modeName = 'File Push';
+                    break;
+            }
+
+            // var modeName = mode === 'SettingsPush' ? 'Push' : mode;
+            var direction = mode.toLowerCase().includes('pull') ? ' from ' : ' to ';
+            var type = contentType ?? '';
+            return capitalizeFirstLetter(modeName + ' ' + type + direction + serverName);
         }
 
         function capitalizeFirstLetter(string) {

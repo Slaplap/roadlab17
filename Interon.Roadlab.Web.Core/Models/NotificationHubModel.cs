@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Microsoft.Azure.NotificationHubs;
+﻿using Microsoft.Azure.NotificationHubs;
 
-namespace Interon.Roadlab.Web.App.Models
+namespace Interon.Roadlab.Web.Core.Models
 {
     public class NotificationHubModel
     {

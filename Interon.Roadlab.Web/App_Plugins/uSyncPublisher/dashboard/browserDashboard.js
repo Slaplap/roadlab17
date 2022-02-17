@@ -37,7 +37,7 @@
                 checkServers(vm.servers);
             });
 
-        uSyncPublishService.hasContentOrMedia()
+        uSyncPublishService.hasContentOrMedia(false)
             .then(function (result) {
                 vm.isBlank = !result.data;
             });

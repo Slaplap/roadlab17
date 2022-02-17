@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Interon.Roadlab.Web.App.ViewModels
+namespace Interon.Roadlab.Web.Core.ViewModels
 {
     public class TransactionLineViewModel
     {

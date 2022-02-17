@@ -1,4 +1,4 @@
-﻿namespace Interon.Roadlab.Web.App
+﻿namespace Interon.Roadlab.Web.Core.Interfaces
 {
     public interface IRunAtInit
     {

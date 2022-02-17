@@ -26,7 +26,7 @@
 
                 <div ng-if="vm.process.view.show == true"
                      class="usync-publish-step usync-model-step">
-                    <umb-box ng-if="!vm.isModal">
+                    <umb-box ng-if="!vm.isModal && vm.process.view.boxed">
                         <umb-box-header title="{{vm.headings.boxTitle}}"
                                         description="{{vm.headings.boxDescription}}">
                         </umb-box-header>
@@ -35,7 +35,8 @@
                         </umb-box-content>
                     </umb-box>
 
-                    <div ng-if="vm.isModal" ng-include="vm.process.view.path"></div>
+
+                    <div ng-if="vm.isModal || !vm.process.view.boxed" ng-include="vm.process.view.path"></div>
                 </div>
 
                 <div ng-if="!vm.process.view.show"

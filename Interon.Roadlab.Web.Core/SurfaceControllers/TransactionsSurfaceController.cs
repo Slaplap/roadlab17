@@ -1,23 +1,15 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web.Mvc;
-using System.Web.Security;
-using Interon.Roadlab.Core.Enums;
-using Interon.Roadlab.Web.App.Interfaces;
-using Interon.Roadlab.Web.App.Services;
-using Interon.Roadlab.Web.App.ViewModels;
-using Microsoft.Azure.NotificationHubs;
+using Interon.Roadlab.Web.Core.Services;
+using Interon.Roadlab.Web.Core.ViewModels;
 using Umbraco.Core.Cache;
 using Umbraco.Core.Logging;
 using Umbraco.Core.Persistence;
 using Umbraco.Core.Services;
 using Umbraco.Web;
 using Umbraco.Web.Mvc;
-using Umbraco.Web.PublishedModels;
-using Notification = Interon.Roadlab.Web.App.Models.Notification;
 
-namespace Interon.Roadlab.Web.App.SurfaceControllers
+namespace Interon.Roadlab.Web.Core.SurfaceControllers
 {
     public class TransactionsSurfaceController : SurfaceController
     {

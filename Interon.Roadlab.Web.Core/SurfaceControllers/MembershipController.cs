@@ -2,19 +2,17 @@
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using System.Web.Security;
-using Interon.Roadlab.Web.App.Interfaces;
-using Interon.Roadlab.Web.App.Services;
-using Interon.Roadlab.Web.App.ViewModels;
 using Interon.Roadlab.Web.Core.ContentModels;
+using Interon.Roadlab.Web.Core.Services;
+using Interon.Roadlab.Web.Core.ViewModels;
 using Umbraco.Core.Cache;
 using Umbraco.Core.Logging;
 using Umbraco.Core.Persistence;
 using Umbraco.Core.Services;
 using Umbraco.Web;
 using Umbraco.Web.Mvc;
-using Umbraco.Web.PublishedModels;
 
-namespace Interon.Roadlab.Web.App.SurfaceControllers
+namespace Interon.Roadlab.Web.Core.SurfaceControllers
 {
     public class MembershipController : SurfaceController
     {

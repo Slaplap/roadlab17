@@ -1,13 +1,10 @@
 ﻿using ClientDependency.Core;
-using ClientDependency.Core.Logging;
-using Interon.Roadlab.Web.App.Interfaces;
-using Interon.Roadlab.Web.App.Migrations;
-using Interon.Roadlab.Web.App.Services;
+using Interon.Roadlab.Web.Core.Migrations;
+using Interon.Roadlab.Web.Core.Services;
 using Umbraco.Core;
 using Umbraco.Core.Composing;
-using Umbraco.Core.Events;
 
-namespace Interon.Roadlab.Web.App.Composers
+namespace Interon.Roadlab.Web.Core.Composers
 {
     [RuntimeLevel(MinLevel = RuntimeLevel.Run)]
     public class MyComposer : IUserComposer

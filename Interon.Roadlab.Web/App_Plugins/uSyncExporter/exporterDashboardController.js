@@ -38,7 +38,6 @@
                     vm.includeFiles = result.data.includeFiles;
                     vm.includeMedia = result.data.includeMedia;
                     vm.includeLinked = result.data.includeLinked;
-                    vm.includeDictionary = result.data.includeDictionary;
                 }));
 
             promises.push(uSyncExporterService.getExporters()
@@ -68,7 +67,6 @@
                     includeMedia: vm.includeMedia,
                     includeLinked: vm.includeLinked,
                     includeConfig: vm.includeConfig,
-                    includeDictionary: vm.includeDictionary
                 },
                 view: Umbraco.Sys.ServerVariables.umbracoSettings.appPluginsPath + '/uSyncExporter/exportOverlay.html',
                 title: 'Create sync pack',
@@ -98,11 +96,14 @@
             var options = {
                 section: exporter.section,
                 title: 'Add ' + exporter.type,
+                size: 'small',
+                view: exporter.view,
                 treeAlias: exporter.type,
                 multiPicker: true,
                 idType: 'int',
                 submit: function (model) {
-                    vm.selection = vm.selection.concat(prepSelection(model.selection));
+                    vm.selection = vm.selection.concat(prepSelection(model.selection, exporter.entityType));
+                    cleanSelection();
                     editorService.close();
                 },
                 close: function () {
@@ -123,22 +124,28 @@
                 options.filterCssClass = 'not-allowed';
             }
 
-            editorService.treePicker(options);
+            editorService.open(options);
         }
 
-        function prepSelection(selection) {
+        function cleanSelection() {
+            vm.selection = _.uniq(vm.selection, false, function (s) {
+                return s.id + s.name;
+            });
+        }
+
+        function prepSelection(selection, entityType) {
 
             if (selection.length > 0) {
 
                 for (let n = 0; selection.length > n; n++) {
-                    prepItem(selection[n]);
+                    prepItem(selection[n], entityType);
                 }
             }
 
             return selection;
         }
 
-        function prepItem(item) {
+        function prepItem(item, entityType) {
 
             item.flags = {
                 includeChildren: false,
@@ -146,16 +153,32 @@
                 includeDependencies: true
             };
 
+            item.entityType = entityType;
+
+            if (entityType !== undefined && item.udi == null) {
+                item.udi = "umb://" + entityType + "/" + cleanId(item.id);
+            }
+
             switch (item.nodeType) {
                 case 'media':
                 case 'content':
                 case 'container':
                     item.flags.includeChildren = true;
                     break;
-                case 'templates':
-                    item.flags.includeFiles = true;
+                case 'dictionary':
+                    item.flags.includeAncestors = false;
+                    item.flags.includeDependencies = false;
+                    break;
+                default:
+                    if (item.hasChildren === true) {
+                        item.flags.includeChildren = true;
+                    }
                     break;
             }
+        }
+
+        function cleanId(id) {
+            return id.replaceAll('+', '%20').replaceAll('%2F', '/');
         }
 
         function findItem(id, selection) {

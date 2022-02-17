@@ -2,15 +2,12 @@
 using Interon.Roadlab.Web.Core.ContentModels;
 using Our.Umbraco.FullTextSearch.Interfaces;
 using Our.Umbraco.FullTextSearch.Models;
+using Umbraco.Core.Models.PublishedContent;
+using Umbraco.Web;
 using Umbraco.Web.Models;
 using Umbraco.Web.Mvc;
- 
-using Umbraco.Web;
-using Umbraco.Core.Models.PublishedContent;
-using Umbraco.Web.PublishedModels;
 
-
-namespace Interon.Roadlab.Web.App.mvcControllers
+namespace Interon.Roadlab.Web.Core.MvcControllers
 {
     public class SearchRenderModel : PublishedContentWrapped
     {

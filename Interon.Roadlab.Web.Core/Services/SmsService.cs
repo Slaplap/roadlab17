@@ -3,7 +3,7 @@ using System.IO;
 using System.Net;
 using System.Text;
 
-namespace Interon.Roadlab.Web.App
+namespace Interon.Roadlab.Web.Core.Services
 {
     public static class SmsService
     {

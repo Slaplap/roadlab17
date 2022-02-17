@@ -1,4 +1,4 @@
-﻿namespace Interon.Roadlab.Web.App.Models
+﻿namespace Interon.Roadlab.Web.Core.Models
 {
     public class TestModel
     {

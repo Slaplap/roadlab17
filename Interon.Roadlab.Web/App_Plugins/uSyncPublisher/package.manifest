@@ -1,6 +1,6 @@
 {
   "javascript": [
-    "~/App_Plugins/uSyncPublisher/publish_890.js",
+    "~/App_Plugins/uSyncPublisher/publish_8115.js",
 
     "~/App_Plugins/uSyncPublisher/Services/cacheService.js",
     "~/App_Plugins/uSyncPublisher/Services/publishService.js",
@@ -42,7 +42,7 @@
     "~/App_Plugins/uSyncPublisher/serverPicker/serverPickerDialogController.js"
   ],
   "css": [
-    "~/App_Plugins/uSyncPublisher/publish_890.css",
+    "~/App_Plugins/uSyncPublisher/publish_8115.css",
     "~/App_Plugins/uSyncPublisher/uSyncpublish.css"
   ]
 } 

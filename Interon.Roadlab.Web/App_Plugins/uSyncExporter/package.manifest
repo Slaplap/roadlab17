@@ -1,6 +1,6 @@
 {
   "javascript": [
-    "~/App_Plugins/uSyncExporter/exporter-890.js",
+    "~/App_Plugins/uSyncExporter/exporter-8100.js",
     "~/App_Plugins/uSyncExporter/uSyncExportManager.js",
     "~/App_Plugins/uSyncExporter/importController.js",
     "~/App_Plugins/uSyncExporter/exportController.js",

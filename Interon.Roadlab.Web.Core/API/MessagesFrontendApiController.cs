@@ -1,15 +1,9 @@
-﻿using Interon.Roadlab.Core.Dto;
-using Interon.Roadlab.Web.App.Services;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
-using Interon.Roadlab.Core.Models;
-using Interon.Roadlab.Web.App.Models;
+﻿using System.Web.Http;
+using Interon.Roadlab.Core.Dto;
+using Interon.Roadlab.Web.Core.Services;
 using Umbraco.Web.WebApi;
- 
 
-namespace Interon.Roadlab.Web.App.API
+namespace Interon.Roadlab.Web.Core.API
 {
     public class MessagesFrontendApiController : UmbracoApiController
     {

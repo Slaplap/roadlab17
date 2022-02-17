@@ -25,7 +25,7 @@
             <div class="umb-folder-grid" ng-if="vm.items.folders.length > 0">
                 <div class="umb-folder-grid__folder"
                      ng-repeat="folder in vm.items.folders"
-                     ng-class="{'-selected': item.selected,'usync-row-change' : folder.syncChecked && folder.syncChange}"
+                     ng-class="{'-selected': folder.selected,'usync-row-change' : folder.syncChecked && folder.syncChange}"
                      ng-click="vm.onClickItem(folder, $event)">
 
                     <div class="umb-folder-grid__folder-description">

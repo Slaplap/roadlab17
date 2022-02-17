@@ -2,10 +2,9 @@
 using System.Linq;
 using System.Reflection;
 using AutoMapper;
-using Interon.Roadlab.Web.App.Interfaces;
- 
+using Interon.Roadlab.Web.Core.Interfaces;
 
-namespace Interon.Roadlab.Web.App
+namespace Interon.Roadlab.Web.Core
 {
     public class AutoMapperConfig:IRunAtInit
 

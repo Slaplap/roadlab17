@@ -1,7 +1,7 @@
-﻿using Interon.Roadlab.Web.App.Models;
+﻿using Interon.Roadlab.Web.Core.Models;
 using Umbraco.Core.Migrations;
 
-namespace Interon.Roadlab.Web.App.Migrations
+namespace Interon.Roadlab.Web.Core.Migrations
 {
     public class MigrationCreateTables : MigrationBase
     {

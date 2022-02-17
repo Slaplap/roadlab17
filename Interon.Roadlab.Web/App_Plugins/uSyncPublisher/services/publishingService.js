@@ -23,7 +23,7 @@
         }
 
         function clean(id, server) {
-            return $http.delete(serviceRoot + `clean/${id}?server=` + server);
+            return $http.get(serviceRoot + `clean/${id}?server=` + server);
         }
     };
 

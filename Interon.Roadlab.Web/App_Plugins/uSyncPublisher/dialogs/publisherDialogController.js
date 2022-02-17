@@ -5,12 +5,19 @@
 
         var vm = this;
 
+        // methods
         vm.close = close;
         vm.performAction = performAction;
+        vm.showItems = showItems;
 
+        // init
         vm.mode = $scope.model.mode;
         vm.options = $scope.model.options;
         vm.items = vm.options.items;
+        vm.single = $scope.model.single;
+        vm.hideItems = vm.options.hideItems ?? false;
+
+        // state 
         vm.state = {
             complete: false,
             loading: true,
@@ -21,6 +28,7 @@
             error: ''
         };
 
+        // ui
         vm.ui = {
             button: {
                 state: 'init',
@@ -34,11 +42,16 @@
             }
         }
 
+        // button
         vm.actionButton = {
             state: 'init',
             name: 'Send',
             valid: false
         };
+
+        function showItems() {
+            return !vm.hideItems && vm.items.length > 1;
+        }
 
 
         function performAction() {

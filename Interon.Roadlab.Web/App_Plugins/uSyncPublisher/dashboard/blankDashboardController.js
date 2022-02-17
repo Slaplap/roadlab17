@@ -25,7 +25,7 @@
             vm.emptySite = true;
 
 
-            uSyncPublishService.hasContentOrMedia()
+            uSyncPublishService.hasContentOrMedia(false)
                 .then(function (result) {
                     vm.emptySite = !result.data;
                 });

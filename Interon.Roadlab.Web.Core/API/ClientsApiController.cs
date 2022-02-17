@@ -1,28 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics.Tracing;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 using System.Web.Mvc;
-using Interon.Roadlab.Core;
-using Interon.Roadlab.Core.Dto;
-using Interon.Roadlab.Core.Models;
-using Microsoft.IdentityModel.Logging;
-using Our.Umbraco.AuthU;
-using Our.Umbraco.AuthU.Web.WebApi;
-using Umbraco.Core;
-using Umbraco.Core.Composing;
-using Umbraco.Core.Models;
-using Umbraco.Core.Models.PublishedContent;
-using Umbraco.Core.Persistence.Querying;
-using Umbraco.Core.Services;
-using Umbraco.Core.Services.Implement;
-using Umbraco.Web.PublishedCache;
-using Umbraco.Web.PublishedModels;
 using Umbraco.Web.WebApi;
 
-
-namespace Interon.Roadlab.Web.App.API
+namespace Interon.Roadlab.Web.Core.API
 {
 
     

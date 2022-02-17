@@ -3,7 +3,9 @@
     <div class="alert alert-error">
         <h4>
             {{vm.error.title}} - {{vm.error.message}}
-            <small ng-click="vm.openErrorDialog()" style="cursor: pointer;">view details</small>
         </h4>
+        <div class="flex mt2 justify-end">
+            <div ng-click="vm.openErrorDialog()" style="cursor: pointer;">view details</div>
+        </div>
     </div>
 </div>

@@ -94,3 +94,38 @@
     opacity: .8;
     font-size: 22px;
 }
+
+.usync-complete-progress-icons > div.step-error {
+    color: red;
+}
+
+/* make the upload arrow look nice...*/
+.usync-upload-animation {
+    position: absolute;
+    transform: translate(-50%,-50%);
+    left: 50%;
+    font-size: 40pt;
+    animation-duration: 2s;
+    animation-name: slideup;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes slideup {
+    from {
+        top: 150px;
+        opacity: 0;
+        transform: rotateX(-40deg) translate(-50%,-50%);
+    }
+
+    50% {
+        opacity: 1;
+        top: -15px
+    }
+
+    to {
+        top: -150px;
+        opacity: 0;
+        transform: rotateX(40deg) translate(-50%,-50%);
+    }
+}

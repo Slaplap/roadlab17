@@ -22,7 +22,7 @@ namespace Interon.Roadlab.Web.Core.ContentModels
 {
 	/// <summary>Account Login</summary>
 	[PublishedModel("accountLogin")]
-	public partial class AccountLogin
+	public partial class AccountLogin : PublishedContentModel
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -37,6 +37,11 @@ namespace Interon.Roadlab.Web.Core.ContentModels
 		public static IPublishedPropertyType GetModelPropertyType<TValue>(Expression<Func<AccountLogin, TValue>> selector)
 			=> PublishedModelUtility.GetModelPropertyType(GetModelContentType(), selector);
 #pragma warning restore 0109
+
+		// ctor
+		public AccountLogin(IPublishedContent content)
+			: base(content)
+		{ }
 
 		// properties
 	}

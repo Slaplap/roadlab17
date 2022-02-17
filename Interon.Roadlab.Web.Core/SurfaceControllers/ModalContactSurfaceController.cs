@@ -5,9 +5,9 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Web.Mvc;
-using Interon.Roadlab.Web.App.ViewModels;
+using Interon.Roadlab.Web.Core.ViewModels;
 
-namespace Interon.Roadlab.Web.App.SurfaceControllers
+namespace Interon.Roadlab.Web.Core.SurfaceControllers
 {
     /// <summary>
     /// Summary description for ContactSurfaceController

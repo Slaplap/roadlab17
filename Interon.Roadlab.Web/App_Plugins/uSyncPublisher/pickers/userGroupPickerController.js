@@ -2,12 +2,13 @@
 
     'use strict';
 
-    function userGroupPickerController($scope, editorService, userGroupsResource) {
+    function userGroupPickerController($scope, editorService, uSyncPublishService, userService) {
 
         var vm = this; 
         vm.remove = remove;
         vm.open = open;
         vm.loading = true;
+        vm.readonly = true;
         vm.groups = [];
 
         vm.value = $scope.model.value.Groups;
@@ -17,12 +18,18 @@
         }
 
         loadUserGroups();
-       
+
+
+        userService.getCurrentUser().then(function (currentUser) {
+            vm.readonly = !currentUser.allowedSections.includes("users");
+        });
 
         function loadUserGroups() {
             vm.groups = [];
-            userGroupsResource.getUserGroups()
-                .then(function (userGroups) {
+            uSyncPublishService.getUserGroups()
+                .then(function (result) {
+
+                    var userGroups = result.data;
 
                     vm.value.forEach(function (alias, index) {
 

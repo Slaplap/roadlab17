@@ -24,7 +24,7 @@
 
                             <div class="flex flex-flow">
                                 <div class="flx-b2"><strong>Action:</strong> {{vm.error.action}}</div>
-                                <div class="flx-b2"><strong>StepIndex:</strong> {{vm.error.stepIndex}}</div>
+                                <div class="flx-b2"><strong>Step:</strong> {{vm.error.stepName}} ({{vm.error.stepIndex}})</div>
                                 <div class="flx-b1"><strong>PageNumber:</strong> {{vm.error.pageNumber}}</div>
                             </div>
                             <div class="flex flex-flow">
@@ -47,8 +47,8 @@
                 <umb-box-content>
                     <localize key="usynccomp_errorMessage"></localize>
                     <p>
-                        <a href="https://our.umbraco.com/search?cat=forum&fid=64449&q={{vm.error.ExceptionMessage}}" class="btn btn-action" target="_blank" rel="noopener noreferrer">Check the forums</a>
-                        <a href="https://github.com/KevinJump/uSync.Complete.Issues/issues?utf8=%E2%9C%93&q={{vm.error.ExceptionMessage}}" class="btn btn-success" target="_blank" rel="noopener noreferrer">Check GitHub issues</a>
+                        <a href="https://our.umbraco.com/search?cat=forum&fid=64449&q={{vm.error.message}}" class="btn btn-action" target="_blank" rel="noopener noreferrer">Check the forums</a>
+                        <a href="https://github.com/KevinJump/uSync.Complete.Issues/issues?utf8=%E2%9C%93&q={{vm.error.message}}" class="btn btn-success" target="_blank" rel="noopener noreferrer">Check GitHub issues</a>
                     </p>
                     <p>
                         Can't find anything ? <a href="https://our.umbraco.com/packages/developer-tools/usync/usynccomplete/" class="btn btn-link" target="_blank" rel="noopener noreferrer">Ask a question in the forums</a>

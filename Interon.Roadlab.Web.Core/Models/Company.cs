@@ -1,4 +1,4 @@
-namespace Interon.Roadlab.Web.Migrations
+namespace Interon.Roadlab.Web.Core.Models
 {
     public class Company
     {

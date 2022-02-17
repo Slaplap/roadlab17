@@ -1,35 +1,22 @@
-﻿using Interon.Roadlab.Core;
-using Interon.Roadlab.Core.Dto;
-using Our.Umbraco.AuthU;
-using Our.Umbraco.AuthU.Web.WebApi;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
-using System.Web.Http.Results;
 using System.Web.Mvc;
+using Interon.Roadlab.Core;
+using Interon.Roadlab.Core.Dto;
 using Interon.Roadlab.LIMS.DTO;
-using Interon.Roadlab.LIMS.Services;
-using Interon.Roadlab.Web.App.Interfaces;
-using Interon.Roadlab.Web.App.Services;
+using Interon.Roadlab.Web.Core.Services;
 using Newtonsoft.Json;
-using Umbraco.Core;
-using Umbraco.Core.Cache;
-using Umbraco.Core.Configuration;
-using Umbraco.Core.Logging;
+using Our.Umbraco.AuthU.Web.WebApi;
 using Umbraco.Core.Models;
 using Umbraco.Core.Models.PublishedContent;
-using Umbraco.Core.Persistence;
-using Umbraco.Core.Services;
-using Umbraco.Web;
-using Umbraco.Web.PublishedModels;
 using Umbraco.Web.WebApi;
+using Member = Interon.Roadlab.Web.Core.ContentModels.Member;
 
-
-namespace Interon.Roadlab.Web.App.API
+namespace Interon.Roadlab.Web.Core.API
 {
     [OAuth]
     public class MemberApiController : UmbracoApiController
@@ -110,7 +97,7 @@ namespace Interon.Roadlab.Web.App.API
 
             if (member != null)
             {
-                Umbraco.Web.PublishedModels.Member typedMember = new Umbraco.Web.PublishedModels.Member(member);
+                Member typedMember = new  Member(member);
                 var typedClients = typedMember.Clients;
                 var clients =  new List<ClientDto>();
 

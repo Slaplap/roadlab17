@@ -1,6 +1,6 @@
 ﻿using Umbraco.Core.Migrations;
 
-namespace Interon.Roadlab.Web.App.Migrations
+namespace Interon.Roadlab.Web.Core.Migrations
 {
     public class MyMigrationPlan : MigrationPlan
     {

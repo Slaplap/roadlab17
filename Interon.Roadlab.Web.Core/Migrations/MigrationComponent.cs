@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using Umbraco.Core.Composing;
+﻿using Umbraco.Core.Composing;
 using Umbraco.Core.Logging;
 using Umbraco.Core.Migrations;
 using Umbraco.Core.Migrations.Upgrade;
 using Umbraco.Core.Scoping;
 using Umbraco.Core.Services;
 
-namespace Interon.Roadlab.Web.App.Migrations
+namespace Interon.Roadlab.Web.Core.Migrations
 {
     public class MigrationComponent : IComponent
     {

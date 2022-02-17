@@ -1,10 +1,4 @@
-﻿using System.Collections;
-using Interon.Roadlab.Web.App.Services;
-using Lucene.Net.Support;
-using Newtonsoft.Json;
-using NPoco.fastJSON;
-
-namespace Interon.Roadlab.Web.App.ViewModels
+﻿namespace Interon.Roadlab.Web.Core.ContentModels
 {
     public class DropdownModel
     {

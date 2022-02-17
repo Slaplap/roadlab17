@@ -58,6 +58,7 @@
                     id: selection[n].id,
                     udi: selection[n].udi,
                     name: selection[n].name,
+                    entityType: selection[n].entityType,
                     nodeType: selection[n].nodeType,
                     includeChildren: selection[n].flags.includeChildren,
                     includeAncestors: selection[n].flags.includeAncestors,
