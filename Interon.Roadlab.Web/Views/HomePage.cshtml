@@ -1,5 +1,5 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<ContentModels.HomePage>
-@using Interon.Roadlab.Web.App.ViewModels
+ 
 @using ContentModels = Umbraco.Web.PublishedModels;
 @{
 	Layout = "MasterPage.cshtml";
@@ -241,7 +241,7 @@
 							<span class="reach__heading-2">THE EXPERTS.</span>
 						</h4>
 						<div id="ContactFormPlaceHolder">
-							@Html.Partial("_RenderContactForm", new ContactModel() { BranchName = "Home Page - Head Office" })
+							@Html.Partial("_RenderContactForm", new Interon.Roadlab.Web.App.ViewModels.ContactModel() { BranchName = "Home Page - Head Office" })
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-6 col-sm-12 cp-text reach__aligner">

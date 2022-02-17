@@ -1,5 +1,6 @@
 ﻿<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="..\packages\UmbracoCms.8.17.1\build\UmbracoCms.props" Condition="Exists('..\packages\UmbracoCms.8.17.1\build\UmbracoCms.props')" />
   <Import Project="..\packages\uSync.8.9.0\build\uSync.props" Condition="Exists('..\packages\uSync.8.9.0\build\uSync.props')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props')" />
@@ -998,6 +999,10 @@
     <Content Include="js\jquery.themepunch.tools.min.js" />
     <Content Include="js\roadlab.js" />
     <Content Include="js\toast.js" />
+    <Content Include="media\alwdobhh\upv.png" />
+    <Content Include="media\jfhj00xe\crack.png" />
+    <Content Include="media\nosfrepg\services.png" />
+    <Content Include="media\zotc1lcf\screed.png" />
     <Content Include="mstile-150x150.png" />
     <Content Include="Roadlab.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -1152,6 +1157,7 @@
     <Content Include="Views\Partials\Grid\Bootstrap3.cshtml" />
     <Content Include="Views\Partials\Grid\Bootstrap3-Fluid.cshtml" />
     <Content Include="Views\Partials\BlockList\Default.cshtml" />
+    <Content Include="media\Web.config" />
     <Content Include="config\tinyMceConfig.config" />
     <Content Include="config\serilog.user.config" />
     <Content Include="config\serilog.config" />
@@ -1166,22 +1172,33 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App\API\AppSettingsApiController.cs" />
-    <Compile Include="App\API\FileUploadApiController.cs" />
-    <Compile Include="App\API\NotificationHubBackendApiController.cs" />
-    <Compile Include="App\API\NotificationsBackendApiController.cs" />
-    <Compile Include="App\API\MessagesFrontendApiController.cs" />
-    <Compile Include="App\API\TransactionsBackendApiController.cs" />
-    <Compile Include="App\API\NotificationsFrontendApiController.cs" />
-    <Compile Include="App\API\ClientsApiController.cs" />
     <Compile Include="App\API\BranchesApiController.cs" />
+    <Compile Include="App\API\ClientsApiController.cs" />
+    <Compile Include="App\API\FileUploadApiController.cs" />
     <Compile Include="App\API\MainApiController.cs" />
     <Compile Include="App\API\MemberApiController.cs" />
+    <Compile Include="App\API\MessagesFrontendApiController.cs" />
+    <Compile Include="App\API\NotificationHubBackendApiController.cs" />
+    <Compile Include="App\API\NotificationsBackendApiController.cs" />
+    <Compile Include="App\API\NotificationsFrontendApiController.cs" />
+    <Compile Include="App\API\TransactionsBackendApiController.cs" />
     <Compile Include="App\AutoMapperConfig.cs" />
+    <Compile Include="App\Composers\MyComponent.cs" />
+    <Compile Include="App\Composers\MyComposer.cs" />
     <Compile Include="App\ContentModels\AccountHomeContentModel.cs" />
     <Compile Include="App\ContentModels\AccountNotificationListContentModel.cs" />
     <Compile Include="App\ContentModels\AccountTransactionCreateContentModel.cs" />
     <Compile Include="App\ContentModels\AccountTransactionListContentModel.cs" />
     <Compile Include="App\ContentModels\TransactionContentModel.cs" />
+    <Compile Include="App\ContentModels\TransactionLineContentModel.cs" />
+    <Compile Include="App\Controllers\NotificationsTreeController.cs" />
+    <Compile Include="App\Controllers\TransactionsTreeController.cs" />
+    <Compile Include="App\Interfaces\ICustomMappings.cs" />
+    <Compile Include="App\Interfaces\IMapFrom.cs" />
+    <Compile Include="App\Interfaces\IRunAtInit.cs" />
+    <Compile Include="App\Migrations\MigrationComponent.cs" />
+    <Compile Include="App\Migrations\MigrationCreateTables.cs" />
+    <Compile Include="App\Migrations\MyMigrationPlan.cs" />
     <Compile Include="App\Models\Company.cs" />
     <Compile Include="App\Models\Member.cs" />
     <Compile Include="App\Models\Message.cs" />
@@ -1192,40 +1209,29 @@
     <Compile Include="App\Models\Transaction.cs" />
     <Compile Include="App\Models\TransactionFile.cs" />
     <Compile Include="App\Models\TransactionLine.cs" />
-    <Compile Include="App\MvcControllers\BlogSearchResultsController.cs" />
-    <Compile Include="App\SurfaceControllers\ModalContactSurfaceController.cs" />
-    <Compile Include="App\SurfaceControllers\VacancySurfaceController.cs" />
-    <Compile Include="App\ViewModels\ContactModel.cs" />
-    <Compile Include="App\SurfaceControllers\ContactSurfaceController.cs" />
-    <Compile Include="App\Controllers\NotificationsTreeController.cs" />
-    <Compile Include="App\Interfaces\ICustomMappings.cs" />
-    <Compile Include="App\Interfaces\IMapFrom.cs" />
-    <Compile Include="App\Interfaces\IRunAtInit.cs" />
     <Compile Include="App\MvcControllers\AccountHomeListController.cs" />
     <Compile Include="App\MvcControllers\AccountLoginController.cs" />
     <Compile Include="App\MvcControllers\AccountTransactionCreateController.cs" />
-    <Compile Include="App\MvcControllers\AjaxPageController.cs" />
     <Compile Include="App\MvcControllers\AccountTransactionsController.cs" />
+    <Compile Include="App\MvcControllers\AjaxPageController.cs" />
+    <Compile Include="App\MvcControllers\BlogSearchResultsController.cs" />
     <Compile Include="App\Services\MembershipService.cs" />
-    <Compile Include="App\Services\NotificationHubService.cs" />
     <Compile Include="App\Services\MessageService.cs" />
+    <Compile Include="App\Services\NotificationHubService.cs" />
     <Compile Include="App\Services\NotificationService.cs" />
     <Compile Include="App\Services\SmsService.cs" />
-    <Compile Include="App\Composers\MyComponent.cs" />
-    <Compile Include="App\Composers\MyComposer.cs" />
-    <Compile Include="App\Controllers\TransactionsTreeController.cs" />
-    <Compile Include="App\Migrations\MigrationComponent.cs" />
-    <Compile Include="App\Migrations\MigrationCreateTables.cs" />
-    <Compile Include="App\Migrations\MyMigrationPlan.cs" />
-    <Compile Include="App\SurfaceControllers\TransactionsSurfaceController.cs" />
+    <Compile Include="App\SurfaceControllers\ContactSurfaceController.cs" />
     <Compile Include="App\SurfaceControllers\MembershipController.cs" />
-    <Compile Include="App\ContentModels\TransactionLineContentModel.cs" />
+    <Compile Include="App\SurfaceControllers\ModalContactSurfaceController.cs" />
+    <Compile Include="App\SurfaceControllers\TransactionsSurfaceController.cs" />
+    <Compile Include="App\SurfaceControllers\VacancySurfaceController.cs" />
     <Compile Include="App\ViewModels\ConfirmationViewModel.cs" />
+    <Compile Include="App\ViewModels\ContactModel.cs" />
+    <Compile Include="App\ViewModels\LoginViewModel.cs" />
     <Compile Include="App\ViewModels\MessageViewModel.cs" />
     <Compile Include="App\ViewModels\PasswordChangeViewModel.cs" />
     <Compile Include="App\ViewModels\PasswordResetModelViewModel.cs" />
     <Compile Include="App\ViewModels\RegistrationViewModel.cs" />
-    <Compile Include="App\ViewModels\LoginViewModel.cs" />
     <Compile Include="App\ViewModels\ResetRequestViewModel.cs" />
     <Compile Include="App\ViewModels\ResetViewModel.cs" />
     <Compile Include="App\ViewModels\TestViewModel.cs" />
@@ -1288,7 +1294,6 @@
     <Analyzer Include="..\packages\Microsoft.CodeAnalysis.Analyzers.2.6.1\analyzers\dotnet\cs\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App\Partials\" />
     <Folder Include="images\Banner\" />
     <Folder Include="Views\MacroPartials\" />
     <Folder Include="Views\Shared\DisplayTemplates\" />
@@ -1335,12 +1340,15 @@
     <Error Condition="!Exists('..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Net.Compilers.2.10.0\build\Microsoft.Net.Compilers.props'))" />
     <Error Condition="!Exists('..\packages\uSync.8.9.0\build\uSync.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uSync.8.9.0\build\uSync.props'))" />
     <Error Condition="!Exists('..\packages\uSync.8.9.0\build\uSync.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\uSync.8.9.0\build\uSync.targets'))" />
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
     <Error Condition="!Exists('..\packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets'))" />
+    <Error Condition="!Exists('..\packages\UmbracoCms.8.17.1\build\UmbracoCms.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.8.17.1\build\UmbracoCms.props'))" />
+    <Error Condition="!Exists('..\packages\UmbracoCms.8.17.1\build\UmbracoCms.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\UmbracoCms.8.17.1\build\UmbracoCms.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
   </Target>
   <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
   <Import Project="..\packages\uSync.8.9.0\build\uSync.targets" Condition="Exists('..\packages\uSync.8.9.0\build\uSync.targets')" />
   <Import Project="..\packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets" Condition="Exists('..\packages\Umbraco.SqlServerCE.4.0.0.1\build\Umbraco.SqlServerCE.targets')" />
+  <Import Project="..\packages\UmbracoCms.8.17.1\build\UmbracoCms.targets" Condition="Exists('..\packages\UmbracoCms.8.17.1\build\UmbracoCms.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
