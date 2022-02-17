@@ -999,10 +999,6 @@
     <Content Include="js\jquery.themepunch.tools.min.js" />
     <Content Include="js\roadlab.js" />
     <Content Include="js\toast.js" />
-    <Content Include="media\alwdobhh\upv.png" />
-    <Content Include="media\jfhj00xe\crack.png" />
-    <Content Include="media\nosfrepg\services.png" />
-    <Content Include="media\zotc1lcf\screed.png" />
     <Content Include="mstile-150x150.png" />
     <Content Include="Roadlab.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -1157,7 +1153,6 @@
     <Content Include="Views\Partials\Grid\Bootstrap3.cshtml" />
     <Content Include="Views\Partials\Grid\Bootstrap3-Fluid.cshtml" />
     <Content Include="Views\Partials\BlockList\Default.cshtml" />
-    <Content Include="media\Web.config" />
     <Content Include="config\tinyMceConfig.config" />
     <Content Include="config\serilog.user.config" />
     <Content Include="config\serilog.config" />
@@ -1171,73 +1166,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App\API\AppSettingsApiController.cs" />
-    <Compile Include="App\API\BranchesApiController.cs" />
-    <Compile Include="App\API\ClientsApiController.cs" />
-    <Compile Include="App\API\FileUploadApiController.cs" />
-    <Compile Include="App\API\MainApiController.cs" />
-    <Compile Include="App\API\MemberApiController.cs" />
-    <Compile Include="App\API\MessagesFrontendApiController.cs" />
-    <Compile Include="App\API\NotificationHubBackendApiController.cs" />
-    <Compile Include="App\API\NotificationsBackendApiController.cs" />
-    <Compile Include="App\API\NotificationsFrontendApiController.cs" />
-    <Compile Include="App\API\TransactionsBackendApiController.cs" />
-    <Compile Include="App\AutoMapperConfig.cs" />
-    <Compile Include="App\Composers\MyComponent.cs" />
-    <Compile Include="App\Composers\MyComposer.cs" />
-    <Compile Include="App\ContentModels\AccountHomeContentModel.cs" />
-    <Compile Include="App\ContentModels\AccountNotificationListContentModel.cs" />
-    <Compile Include="App\ContentModels\AccountTransactionCreateContentModel.cs" />
-    <Compile Include="App\ContentModels\AccountTransactionListContentModel.cs" />
-    <Compile Include="App\ContentModels\TransactionContentModel.cs" />
-    <Compile Include="App\ContentModels\TransactionLineContentModel.cs" />
-    <Compile Include="App\Controllers\NotificationsTreeController.cs" />
-    <Compile Include="App\Controllers\TransactionsTreeController.cs" />
-    <Compile Include="App\Interfaces\ICustomMappings.cs" />
-    <Compile Include="App\Interfaces\IMapFrom.cs" />
-    <Compile Include="App\Interfaces\IRunAtInit.cs" />
-    <Compile Include="App\Migrations\MigrationComponent.cs" />
-    <Compile Include="App\Migrations\MigrationCreateTables.cs" />
-    <Compile Include="App\Migrations\MyMigrationPlan.cs" />
-    <Compile Include="App\Models\Company.cs" />
-    <Compile Include="App\Models\Member.cs" />
-    <Compile Include="App\Models\Message.cs" />
-    <Compile Include="App\Models\Notification.cs" />
-    <Compile Include="App\Models\NotificationHubModel.cs" />
-    <Compile Include="App\Models\PagedUmbracoResult.cs" />
-    <Compile Include="App\Models\TestModel.cs" />
-    <Compile Include="App\Models\Transaction.cs" />
-    <Compile Include="App\Models\TransactionFile.cs" />
-    <Compile Include="App\Models\TransactionLine.cs" />
-    <Compile Include="App\MvcControllers\AccountHomeListController.cs" />
-    <Compile Include="App\MvcControllers\AccountLoginController.cs" />
-    <Compile Include="App\MvcControllers\AccountTransactionCreateController.cs" />
-    <Compile Include="App\MvcControllers\AccountTransactionsController.cs" />
-    <Compile Include="App\MvcControllers\AjaxPageController.cs" />
-    <Compile Include="App\MvcControllers\BlogSearchResultsController.cs" />
-    <Compile Include="App\Services\MembershipService.cs" />
-    <Compile Include="App\Services\MessageService.cs" />
-    <Compile Include="App\Services\NotificationHubService.cs" />
-    <Compile Include="App\Services\NotificationService.cs" />
-    <Compile Include="App\Services\SmsService.cs" />
-    <Compile Include="App\SurfaceControllers\ContactSurfaceController.cs" />
-    <Compile Include="App\SurfaceControllers\MembershipController.cs" />
-    <Compile Include="App\SurfaceControllers\ModalContactSurfaceController.cs" />
-    <Compile Include="App\SurfaceControllers\TransactionsSurfaceController.cs" />
-    <Compile Include="App\SurfaceControllers\VacancySurfaceController.cs" />
-    <Compile Include="App\ViewModels\ConfirmationViewModel.cs" />
-    <Compile Include="App\ViewModels\ContactModel.cs" />
-    <Compile Include="App\ViewModels\LoginViewModel.cs" />
-    <Compile Include="App\ViewModels\MessageViewModel.cs" />
-    <Compile Include="App\ViewModels\PasswordChangeViewModel.cs" />
-    <Compile Include="App\ViewModels\PasswordResetModelViewModel.cs" />
-    <Compile Include="App\ViewModels\RegistrationViewModel.cs" />
-    <Compile Include="App\ViewModels\ResetRequestViewModel.cs" />
-    <Compile Include="App\ViewModels\ResetViewModel.cs" />
-    <Compile Include="App\ViewModels\TestViewModel.cs" />
-    <Compile Include="App\ViewModels\TransactionLineViewModel.cs" />
-    <Compile Include="App\ViewModels\TransactionViewModel.cs" />
-    <Compile Include="App\ViewModels\VacancyModel.cs" />
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Roadlab.Context.cs">
@@ -1295,6 +1223,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="images\Banner\" />
+    <Folder Include="media\alwdobhh\" />
+    <Folder Include="media\jfhj00xe\" />
+    <Folder Include="media\nosfrepg\" />
+    <Folder Include="media\zotc1lcf\" />
     <Folder Include="Views\MacroPartials\" />
     <Folder Include="Views\Shared\DisplayTemplates\" />
   </ItemGroup>
