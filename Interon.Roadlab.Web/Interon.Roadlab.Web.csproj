@@ -1149,7 +1149,6 @@
     <Content Include="Views\Partials\Grid\Bootstrap3.cshtml" />
     <Content Include="Views\Partials\Grid\Bootstrap3-Fluid.cshtml" />
     <Content Include="Views\Partials\BlockList\Default.cshtml" />
-    <Content Include="Media\Web.config" />
     <Content Include="config\tinyMceConfig.config" />
     <Content Include="config\serilog.user.config" />
     <Content Include="config\serilog.config" />
@@ -1165,6 +1164,7 @@
     <Content Include="App_Plugins\uSyncPublisher\package.manifest" />
     <Content Include="App_Plugins\uSyncPublisher\Overlay\package.manifest" />
     <Content Include="App_Plugins\uSyncPublisher\backoffice\uSyncPublisher\templates.json" />
+    <Content Include="Media\Web.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
