@@ -1,4 +1,5 @@
-﻿@inherits UmbracoViewPage
+﻿@using Interon.Roadlab.Web.Core.ContentModels
+@inherits UmbracoViewPage
 @{
     var home = Model.AncestorsOrSelf().OfType<BlogHome>().FirstOrDefault();
 }
