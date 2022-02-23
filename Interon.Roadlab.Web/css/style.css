@@ -1425,6 +1425,7 @@ and also iPads specifically.
     margin-right: auto;
     visibility: hidden;
     margin-bottom: 1rem;
+    width:45rem;
 }
 
 .benefits-block__left-text {
@@ -1433,6 +1434,7 @@ and also iPads specifically.
 
 .benefits-blocks__right-box {
     padding-left: 5rem;
+    max-width: 45%;
 }
 
 .benefits-blocks__right-img {
@@ -2002,6 +2004,7 @@ and also iPads specifically.
 @media (max-width: 768px) {
     .benefits-blocks__right-box {
         padding-left: 3rem;
+        min-width: 100%;
     }
 }
 

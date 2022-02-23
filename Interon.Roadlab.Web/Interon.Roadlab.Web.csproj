@@ -917,11 +917,12 @@
     <Content Include="images\africa.jpg" />
     <Content Include="images\africaProjects.jpg" />
     <Content Include="images\Aggredate-back.jpg" />
-    <Content Include="images\Asphalt-1.png" />
+    <Content Include="images\Asphalt-1.jpg" />
     <Content Include="images\back-repeat.jpg" />
     <Content Include="images\bot.png" />
     <Content Include="images\coloredbg.png" />
     <Content Include="images\colours.jpg" />
+    <Content Include="images\Concrete-1.jpg" />
     <Content Include="images\Concrete-1.png" />
     <Content Include="images\dbanner.jpg" />
     <Content Include="images\drilling-back.jpg" />
@@ -935,6 +936,7 @@
     <Content Include="images\g7.jpg" />
     <Content Include="images\g8.jpg" />
     <Content Include="images\g9.jpg" />
+    <Content Include="images\Geotech-1.jpg" />
     <Content Include="images\Geotech-1.png" />
     <Content Include="images\Headoffice.jpg" />
     <Content Include="images\HO-back.jpg" />
@@ -987,6 +989,7 @@
     <Content Include="images\rockface3.jpg" />
     <Content Include="images\rwhite.png" />
     <Content Include="images\SA.jpg" />
+    <Content Include="images\Soil-1.jpg" />
     <Content Include="images\Soil-1.png" />
     <Content Include="images\SPS.jpg" />
     <Content Include="images\ss1.jpg" />
