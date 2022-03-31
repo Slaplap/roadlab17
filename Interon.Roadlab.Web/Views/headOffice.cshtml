@@ -57,7 +57,7 @@
 						Info</h5>
 						<hr class="branch__hr">
 						<div class="branch__small-container">
-							<p>Please refer to our downloadable documents for further information.</p><a class="u-pdf-link" href="@Umbraco.Media(Model.Value<IPublishedContent>("branchAccreditationLink").Id).Url"><i class="fas fa-external-link-alt btn-fa fa-link-space"></i>Download @Model.Value("branchName") Accreditation Pdf</a>
+							<p>Please refer to our downloadable documents for further information.</p><a class="u-pdf-link" href="@(Model.Value<IPublishedContent>("branchAccreditationLink")?.Url??"")"><i class="fas fa-external-link-alt btn-fa fa-link-space"></i>Download @Model.Value("branchName") Accreditation Pdf</a>
 						</div>
 					</div>
 				</div>
@@ -103,6 +103,9 @@
 						</li>
 						<li>
 							<a href="/kimberley/"><i class="fas fa-angle-right"></i>KIMBERLEY</a>
+						</li>
+						<li>
+							<a href="/Langebaan/"><i class="fas fa-angle-right"></i>LANGEBAAN</a>
 						</li>
 						<li>
 							<a href="/Lephalale/"><i class="fas fa-angle-right"></i>LEPHALALE</a>
