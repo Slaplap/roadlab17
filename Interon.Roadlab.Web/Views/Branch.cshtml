@@ -55,14 +55,14 @@
 				</div>
 			</div>
             <div class="col-lg-4 col-md-12 col-sm-12">
-                <div>@Model.Value("branchMap")</div>
+                <div>@(Model.Value("branchMap")??"")</div>
             </div>
         </div>
 
     </div>
 </section>
 <section>
-    <div class="row branch__back-image" style="background-image:url(@Umbraco.Media(Model.Value<IPublishedContent>("branchBackgroundImage").Id).Url);">
+    <div class="row branch__back-image" style="background-image:url(@(Model.Value<IPublishedContent>("branchBackgroundImage")?.Url??"");">
         <div class="container">
             <div class="branch__head">
                 <div class="branch__head--line">
