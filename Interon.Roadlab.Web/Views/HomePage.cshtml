@@ -8,8 +8,8 @@
 
 <main>
 	<section>
-		<img class="hidden-mobile" src="~/images/dbanner22.jpg" style="width:100%;">
-		<img class="visible-mobile" src="~/images/mbanner22.jpg" style="width:100%;">
+		<img class="hidden-mobile" src="@Umbraco.Media(Model.Value<IPublishedContent>("desktopImage").Id).Url" style="width:100%;">
+		<img class="visible-mobile" src="@Umbraco.Media(Model.Value<IPublishedContent>("mobileImage").Id).Url" style="width:100%;">
 	</section>
 
 	<section class="features">
