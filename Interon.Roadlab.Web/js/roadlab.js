@@ -6,8 +6,8 @@ $(document).ready(function () {
     LoadDetailsModal();
     RejectReason();
     SelectCM();
-    AddTests();
-    LoadTests();
+   // AddTests();
+   // LoadTests();
     window.setInterval(RejectReason, 1000);
     $("#contactform").bind("submit", disableButtons);
     $("#vacancyform").bind("submit", disableButtons);
