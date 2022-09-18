@@ -927,6 +927,7 @@
     <Content Include="images\colours.jpg" />
     <Content Include="images\Concrete-1.jpg" />
     <Content Include="images\Concrete-1.png" />
+    <Content Include="images\dbanner22.jpg" />
     <Content Include="images\drilling-back.jpg" />
     <Content Include="images\feature2.png" />
     <Content Include="images\G1.jpg" />
@@ -968,6 +969,7 @@
     <Content Include="images\Management\SibuS.png" />
     <Content Include="images\manb - Copy.png" />
     <Content Include="images\manb.png" />
+    <Content Include="images\mbanner22.jpg" />
     <Content Include="images\MockLogo.jpg" />
     <Content Include="images\n3.jpg" />
     <Content Include="images\n3v.jpg" />

@@ -22,7 +22,7 @@ namespace Interon.Roadlab.Web.Core.ContentModels
 {
 	/// <summary>Home Page</summary>
 	[PublishedModel("homePage")]
-	public partial class HomePage : PublishedContentModel, IBlogSelector, ISEO
+	public partial class HomePage : PublishedContentModel, IBlogSelector, IFooter, ISEO
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -46,11 +46,39 @@ namespace Interon.Roadlab.Web.Core.ContentModels
 		// properties
 
 		///<summary>
+		/// Desktop Image: Banner Image for desktop
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("desktopImage")]
+		public Umbraco.Core.Models.MediaWithCrops DesktopImage => this.Value<Umbraco.Core.Models.MediaWithCrops>("desktopImage");
+
+		///<summary>
+		/// Mobile Image: Banner image for mobile
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("mobileImage")]
+		public Umbraco.Core.Models.MediaWithCrops MobileImage => this.Value<Umbraco.Core.Models.MediaWithCrops>("mobileImage");
+
+		///<summary>
 		/// Block Content Picker
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
 		[ImplementPropertyType("blockContentPicker")]
 		public IEnumerable<IPublishedContent> BlockContentPicker => BlogSelector.GetBlockContentPicker(this);
+
+		///<summary>
+		/// Footer Accreditation
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("footerAccreditation")]
+		public Umbraco.Core.Models.MediaWithCrops FooterAccreditation => Footer.GetFooterAccreditation(this);
+
+		///<summary>
+		/// FooterBee
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
+		[ImplementPropertyType("footerBee")]
+		public Umbraco.Core.Models.MediaWithCrops FooterBee => Footer.GetFooterBee(this);
 
 		///<summary>
 		/// OG Description: A one to two sentence description of your object.

@@ -554,6 +554,9 @@
     <Compile Include="ContentModels\Folder.generated.cs">
       <DependentUpon>Models.mb</DependentUpon>
     </Compile>
+    <Compile Include="ContentModels\Footer.generated.cs">
+      <DependentUpon>Models.mb</DependentUpon>
+    </Compile>
     <Compile Include="ContentModels\GenericPage.generated.cs">
       <DependentUpon>Models.mb</DependentUpon>
     </Compile>

@@ -46,13 +46,6 @@ namespace Interon.Roadlab.Web.Core.ContentModels
 		// properties
 
 		///<summary>
-		/// Branch Accreditation link: Accreditation pdf
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]
-		[ImplementPropertyType("branchAccreditationLink")]
-		public IPublishedContent BranchAccreditationLink => this.Value<IPublishedContent>("branchAccreditationLink");
-
-		///<summary>
 		/// Branch Address 1
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder", "8.1.6")]

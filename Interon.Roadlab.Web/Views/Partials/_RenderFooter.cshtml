@@ -2,6 +2,7 @@
 @inherits UmbracoViewPage
 @{
     BlogSelector blogSelector = new BlogSelector(Model);
+    var homepage = Model.Root<HomePage>();
     
 }
 @if (blogSelector.BlockContentPicker != null)
@@ -53,10 +54,10 @@
                             <div class="footer__list-box">
                                 <ul class="fa-ul footer__links">
                                     <li>
-                                        <a href="/images/accreditation.pdf" target="_blank"><span class="fa-li ft-icon"><i class="fas fa-angle-right"></i></span>Accreditation</a>
+                                        <a href="@(homepage?.FooterAccreditation?.Url()??"#")" target="_blank"><span class="fa-li ft-icon"><i class="fas fa-angle-right"></i></span>Accreditation</a>
                                     </li>
                                     <li>
-                                        <a href="/images/beeCert.pdf" target="_blank"><span class="fa-li ft-icon"><i class="fas fa-angle-right"></i></span>BEE</a>
+                                        <a href="@(homepage?.FooterBee?.Url()??"#")" target="_blank"><span class="fa-li ft-icon"><i class="fas fa-angle-right"></i></span>BEE</a>
                                     </li>
                                     <li>
                                         <a href="/privacy-policy/"><span class="fa-li ft-icon"><i class="fas fa-angle-right"></i></span>Privacy Policy</a>
