@@ -3,9 +3,12 @@ using Interon.Roadlab.Web.Core.Migrations;
 using Interon.Roadlab.Web.Core.Services;
 using Umbraco.Core;
 using Umbraco.Core.Composing;
+using Umbraco.Web.PublishedCache;
+using Umbraco.Web.PublishedCache.NuCache;
 
 namespace Interon.Roadlab.Web.Core.Composers
 {
+
     [RuntimeLevel(MinLevel = RuntimeLevel.Run)]
     public class MyComposer : IUserComposer
     {
@@ -20,7 +23,12 @@ namespace Interon.Roadlab.Web.Core.Composers
             composition.Register<MessageService>();
            
             composition.Register<IMembershipService,MembershipService>(Lifetime.Request);
-            CreateBundles();
+            composition.Register(factory =>
+                new PublishedSnapshotServiceOptions
+                {
+                    IgnoreLocalDb = true
+                },Lifetime.Singleton);
+
         }
 
         public static void CreateBundles()
