@@ -1021,6 +1021,7 @@
       <LastGenOutput>Roadlab.Context.cs</LastGenOutput>
     </Content>
     <Content Include="safari-pinned-tab.svg" />
+    <Content Include="sitemap.xml" />
     <Content Include="Views\Partials\_RenderPasswordChangeForm.cshtml" />
     <Content Include="Views\Web.config" />
     <Content Include="Web.config" />
