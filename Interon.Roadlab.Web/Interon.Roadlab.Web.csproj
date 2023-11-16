@@ -998,6 +998,8 @@
     <Content Include="Html\images\team.jpg" />
     <Content Include="Html\index.html" />
     <Content Include="Html\js\animations.js" />
+    <Content Include="Html\js\owl.carousel.js" />
+    <Content Include="Html\landing.html" />
     <Content Include="Html\login.html" />
     <Content Include="Html\orderStatus.html" />
     <Content Include="Html\paralax.html" />
