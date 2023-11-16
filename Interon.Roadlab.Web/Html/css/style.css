@@ -423,7 +423,7 @@ body {
 }
 .footer {
 	color: #fff;
-	background-image: url("/images/rockface3.jpg");
+	background-image: url("../images/rockface3.jpg");
 }
 .footer__spacer--left {
 	padding-right: 3%;
@@ -1977,16 +1977,3 @@ form.blog::after {
 	height: 79.5%;
 	margin: 5rem 3rem;
 }
-
-.owl-carousel .item {
-        margin: 0 0.75rem; /* Half of gutter on each side */
-    }
-    
-    .owl-carousel .img-fluid {
-        max-height: 12rem;
-        object-fit: cover;
-        width: auto;
-    }
-    
-    /* Optional: Additional styling for the carousel */
-    

@@ -106,3 +106,4 @@ function showSlides(n) {
 		elem.style.backgroundPosition = x;
 	}
 })();
+
