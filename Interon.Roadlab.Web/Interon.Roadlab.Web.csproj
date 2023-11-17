@@ -904,8 +904,6 @@
     <Content Include="Html\branches.html" />
     <Content Include="Html\css\animate.css" />
     <Content Include="Html\css\animations.css" />
-    <Content Include="Html\css\owl.carousel.min.css" />
-    <Content Include="Html\css\owl.theme.default.min.css" />
     <Content Include="Html\css\style.css" />
     <Content Include="Html\Forgot-PW.html" />
     <Content Include="Html\generic.html" />
@@ -929,6 +927,7 @@
     <Content Include="Html\images\africa.jpg" />
     <Content Include="Html\images\africaProjects.jpg" />
     <Content Include="Html\images\Aggredate-back.jpg" />
+    <Content Include="Html\images\Aggregate-back-2.jpg" />
     <Content Include="Html\images\Aggregate-back.jpg" />
     <Content Include="Html\images\back-repeat.jpg" />
     <Content Include="Html\images\Banner\slide-1.jpg" />
