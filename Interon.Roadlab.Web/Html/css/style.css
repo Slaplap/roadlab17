@@ -566,8 +566,8 @@ body {
 }
 .form input[type=submit] {
 	cursor: pointer;
-	background: #041c2c;
-	background-image: linear-gradient(to right, #041c2c, #074f71);
+	/*background: #041c2c;
+	background-image: linear-gradient(to right, #041c2c, #074f71);*/
 	border-radius: 2.8rem;
 	border: solid .1rem #041c2c;
 	font-size: 1.3rem;
@@ -1976,4 +1976,21 @@ form.blog::after {
 	width: 100%;
 	height: 79.5%;
 	margin: 5rem 3rem;
+}
+
+/*NEW*/
+.sub-products__test-title {
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: #041c2c;
+	font-style: normal;
+}
+.sub-products__row {
+	display: flex;
+	margin:1.6rem 0;
+	border-bottom:1px solid rgba(0,0,0,.1);
+}
+.sub-products__pad {
+	padding: 0;
+	margin-bottom: 1.6rem;
 }
