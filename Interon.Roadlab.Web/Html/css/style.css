@@ -2040,3 +2040,9 @@ form.blog::after {
 	color:#070e16;
 	font-size: 2.5rem;
 }
+.landing__main-heading {
+	
+	color: white;
+	font-weight: 400;
+	font-size: 5.3rem;
+}
