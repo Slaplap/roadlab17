@@ -1314,6 +1314,8 @@
     <Content Include="Html\sass\Pages\_products.scss" />
     <Content Include="Html\sass\Pages\_projects.scss" />
     <Content Include="Html\sass\Pages\_specials.scss" />
+    <Content Include="Views\Landing.cshtml" />
+    <Content Include="Views\Services2.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

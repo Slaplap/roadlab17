@@ -2046,3 +2046,9 @@ form.blog::after {
 	font-weight: 400;
 	font-size: 5.3rem;
 }
+.services_hr {
+	height: 0.4rem;
+	border: none;
+	background-color: #fe5000;
+	margin: 0 70% 1rem 0;
+	}
