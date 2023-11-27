@@ -6,11 +6,11 @@
 				<div>
 					<h1 class="hero__container--main-heading-2">@Model.Content.Value("title")</h1>
 				</div>
-				<div class="row">
+
 					<div class="products__space">
 						@Model.Content.Value("content")
 					</div>
-				</div>
+
 			</div>
 			<div class="col-md-4 col-sm-12 products__overflow">
 				@foreach (var item in Model.Content.Value<IEnumerable<IPublishedContent>>("images" ) ?? Enumerable.Empty<IPublishedContent>())
