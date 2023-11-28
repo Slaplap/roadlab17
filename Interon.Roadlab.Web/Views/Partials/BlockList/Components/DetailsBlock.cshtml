@@ -1,4 +1,5 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Umbraco.Core.Models.Blocks.BlockListItem>
+﻿@using Interon.Roadlab.Web.Extensions
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Umbraco.Core.Models.Blocks.BlockListItem>
 <section>
 	<div class="container products__container">
 		<div class="row">
@@ -15,7 +16,7 @@
 			<div class="col-md-4 col-sm-12 products__overflow">
 				@foreach (var item in Model.Content.Value<IEnumerable<IPublishedContent>>("images" ) ?? Enumerable.Empty<IPublishedContent>())
 				{
-        <div class="mb-5"><img alt="@item.Name" class="animated products__img" src="@item.Url()"></div>
+        <div class="mb-5"><img alt="@item.AltText()" class="animated products__img" src="@item.Url()"></div>
 				}
 
 				

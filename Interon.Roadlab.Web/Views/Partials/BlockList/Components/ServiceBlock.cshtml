@@ -1,4 +1,5 @@
-﻿@inherits Umbraco.Web.Mvc.UmbracoViewPage<Umbraco.Core.Models.Blocks.BlockListItem>
+﻿@using Interon.Roadlab.Web.Extensions
+@inherits Umbraco.Web.Mvc.UmbracoViewPage<Umbraco.Core.Models.Blocks.BlockListItem>
 
 
 <div class="col-md-4 sub-products__row">
@@ -11,5 +12,5 @@
         </div>
 
     </div>
-    <div class="col-md-6 sub-products__pad"><img alt="@(Model.Content.Value<IPublishedContent>("image").Name)" class="w-100" src="@(Model.Content.Value<IPublishedContent>("image")?.Url()??"")"></div>
+    <div class="col-md-6 sub-products__pad"><img alt="@(Model.Content.Value<IPublishedContent>("image").AltText())" class="w-100" src="@(Model.Content.Value<IPublishedContent>("image")?.Url()??"")"></div>
 </div>
