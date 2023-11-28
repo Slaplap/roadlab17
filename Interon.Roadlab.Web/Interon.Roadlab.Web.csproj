@@ -1318,6 +1318,7 @@
     <Content Include="Views\Services2.cshtml" />
     <Content Include="Views\Partials\BlockList\Components\DetailsBlock.cshtml" />
     <Content Include="Views\Partials\BlockList\Components\ServicesBlockListBlock.cshtml" />
+    <Content Include="Views\Partials\BlockList\Components\ServiceBlock.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
