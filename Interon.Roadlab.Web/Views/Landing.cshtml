@@ -12,7 +12,9 @@
 					<div class="col-md-6 col-sm-12">
                         @Html.Partial("~/views/partials/_RenderContactForm.cshtml", new ContactModel() { BranchName = $"{Model.Name} -  Landing" })
 					</div>
-					<div class="col-md-6 col-sm-12"><img class="hero__image" src="@(Model.Value<IPublishedContent>("heroRightImage")?.Url()??"" )" alt="" /></div>
+					<div class="col-md-6 col-sm-12">
+						<div class="col-md-6 col-sm-12"><img class="hero__image" src="@Umbraco.Media(Model.Value<IPublishedContent>("landingImage").Id).Url" alt="" /></div>
+					</div>
 				</div>
 			</div>
 		</div>
