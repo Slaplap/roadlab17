@@ -83784,7 +83784,7 @@ export interface FieldsModel {
      * Specifies the array of JavaScript objects or instance of Data Manager to populate the dropdown tree items.
      * @default []
      */
-    dataSource?: any | { [key: string]: Object }[];
+    dataSource?: data.DataManager | { [key: string]: Object }[];
 
     /**
      * This fields specifies the mapping field to define the expanded state of a Dropdown tree item.
@@ -84254,7 +84254,7 @@ export class Fields extends base.ChildProperty<Fields> {
      * Specifies the array of JavaScript objects or instance of Data Manager to populate the dropdown tree items.
      * @default []
      */
-    dataSource: any | {
+    dataSource: data.DataManager | {
         [key: string]: Object;
     }[];
     /**
@@ -84286,7 +84286,7 @@ export class Fields extends base.ChildProperty<Fields> {
      * that will execute along with data processing.
      * @default null
      */
-    query: any;
+    query: data.Query;
     /**
      * Specifies the mapping field for selected state of the Dropdown Tree item.
      */
