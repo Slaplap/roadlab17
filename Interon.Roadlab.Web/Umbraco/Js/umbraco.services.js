@@ -1112,9 +1112,7 @@
                     var tab = variant.tabs[t];
                     for (var p = 0; p < tab.properties.length; p++) {
                         var prop = tab.properties[p];
-                        if (dataModel[prop.alias]) {
-                            prop.value = dataModel[prop.alias];
-                        }
+                        prop.value = dataModel[prop.alias];
                     }
                 }
             }
@@ -1131,9 +1129,7 @@
                     var tab = variant.tabs[t];
                     for (var p = 0; p < tab.properties.length; p++) {
                         var prop = tab.properties[p];
-                        if (prop.value) {
-                            dataModel[prop.alias] = prop.value;
-                        }
+                        dataModel[prop.alias] = prop.value;
                     }
                 }
             }
@@ -1179,11 +1175,15 @@
             function getBlockLabel(blockObject) {
                 if (blockObject.labelInterpolator !== undefined) {
                     var labelVars = Object.assign({
+                        '$contentTypeName': blockObject.content.contentTypeName,
                         '$settings': blockObject.settingsData || {},
                         '$layout': blockObject.layout || {},
                         '$index': (blockObject.index || 0) + 1
                     }, blockObject.data);
-                    return blockObject.labelInterpolator(labelVars);
+                    var label = blockObject.labelInterpolator(labelVars);
+                    if (label) {
+                        return label;
+                    }
                 }
                 return blockObject.content.contentTypeName;
             }
@@ -1474,7 +1474,7 @@
        * @ngdoc method
        * @name getAvailableAliasesForBlockContent
        * @methodOf umbraco.services.blockEditorModelObject
-       * @description Retrive a list of aliases that are available for content of blocks in this property editor, does not contain aliases of block settings.
+       * @description Retrieve a list of aliases that are available for content of blocks in this property editor, does not contain aliases of block settings.
        * @return {Array} array of strings representing alias.
        */
                 getAvailableAliasesForBlockContent: function getAvailableAliasesForBlockContent() {
@@ -1490,7 +1490,7 @@
        * @ngdoc method
        * @name getAvailableBlocksForBlockPicker
        * @methodOf umbraco.services.blockEditorModelObject
-       * @description Retrive a list of available blocks, the list containing object with the confirugation model(blockConfigModel) and the element type model(elementTypeModel).
+       * @description Retrieve a list of available blocks, the list containing object with the confirugation model(blockConfigModel) and the element type model(elementTypeModel).
        * The purpose of this data is to provide it for the Block Picker.
        * @return {Array} array of objects representing available blocks, each object containing properties blockConfigModel and elementTypeModel.
        */
@@ -1891,8 +1891,8 @@
  * @requires eventsService
  *
  * @description
- * Service to handle clipboard in general across the application. Responsible for handling the data both storing and retrive.
- * The service has a set way for defining a data-set by a entryType and alias, which later will be used to retrive the posible entries for a paste scenario.
+ * Service to handle clipboard in general across the application. Responsible for handling the data both storing and retrieve.
+ * The service has a set way for defining a data-set by a entryType and alias, which later will be used to retrieve the posible entries for a paste scenario.
  *
  */
     function clipboardService($window, notificationsService, eventsService, localStorageService, iconHelper) {
@@ -1950,7 +1950,7 @@
         clipboardTypeResolvers[TYPES.MEDIA] = function (data, propMethod) {
         };
         var STORAGE_KEY = 'umbClipboardService';
-        var retriveStorage = function retriveStorage() {
+        var retrieveStorage = function retrieveStorage() {
             if (localStorageService.isSupported === false) {
                 return null;
             }
@@ -1971,7 +1971,7 @@
             var storageString = JSON.stringify(storage);
             try {
                 // Check that we can parse the JSON:
-                var storageJSON = JSON.parse(storageString);
+                var _ = JSON.parse(storageString);
                 // Store the string:
                 localStorageService.set(STORAGE_KEY, storageString);
                 eventsService.emit('clipboardService.storageUpdate');
@@ -1979,7 +1979,6 @@
             } catch (e) {
                 return false;
             }
-            return false;
         };
         function resolvePropertyForStorage(prop, type) {
             type = type || 'raw';
@@ -2132,7 +2131,7 @@
   * Saves a single JS-object with a type and alias to the clipboard.
   */
         service.copy = function (type, alias, data, displayLabel, displayIcon, uniqueKey, firstLevelClearupMethod) {
-            var storage = retriveStorage();
+            var storage = retrieveStorage();
             displayLabel = displayLabel || data.name;
             displayIcon = displayIcon || iconHelper.convertFromLegacyIcon(data.icon);
             uniqueKey = uniqueKey || data.key || console.error('missing unique key for this content');
@@ -2176,7 +2175,7 @@
             if (type === 'elementTypeArray') {
                 type = 'elementType';
             }
-            var storage = retriveStorage();
+            var storage = retrieveStorage();
             // Clean up each entry
             var copiedDatas = datas.map(function (data) {
                 return prepareEntryForStorage(type, data, firstLevelClearupMethod);
@@ -2224,14 +2223,14 @@
   * Determines whether the current clipboard has entries that match a given type and one of the aliases.
   */
         service.hasEntriesOfType = function (type, aliases) {
-            if (service.retriveEntriesOfType(type, aliases).length > 0) {
+            if (service.retrieveEntriesOfType(type, aliases).length > 0) {
                 return true;
             }
             return false;
         };
         /**
   * @ngdoc method
-  * @name umbraco.services.supportsCopy#retriveEntriesOfType
+  * @name umbraco.services.supportsCopy#retrieveEntriesOfType
   * @methodOf umbraco.services.clipboardService
   *
   * @param {string} type A string defining the type of data to recive.
@@ -2240,8 +2239,8 @@
   * @description
   * Returns an array of entries matching the given type and one of the provided aliases.
   */
-        service.retriveEntriesOfType = function (type, allowedAliases) {
-            var storage = retriveStorage();
+        service.retrieveEntriesOfType = function (type, allowedAliases) {
+            var storage = retrieveStorage();
             // Find entries that are fulfilling the criteria for this nodeType and nodeTypesAliases.
             var filteretEntries = storage.entries.filter(function (entry) {
                 return isEntryCompatible(entry, type, allowedAliases);
@@ -2249,8 +2248,15 @@
             return filteretEntries;
         };
         /**
+  * @obsolete Use the typo-free version instead.
+  */
+        service.retriveEntriesOfType = function (type, allowedAliases) {
+            console.warn('clipboardService.retriveEntriesOfType is obsolete, use clipboardService.retrieveEntriesOfType instead');
+            return service.retrieveEntriesOfType(type, allowedAliases);
+        };
+        /**
   * @ngdoc method
-  * @name umbraco.services.supportsCopy#retriveEntriesOfType
+  * @name umbraco.services.supportsCopy#retrieveDataOfType
   * @methodOf umbraco.services.clipboardService
   *
   * @param {string} type A string defining the type of data to recive.
@@ -2259,14 +2265,21 @@
   * @description
   * Returns an array of data of entries matching the given type and one of the provided aliases.
   */
-        service.retriveDataOfType = function (type, aliases) {
-            return service.retriveEntriesOfType(type, aliases).map(function (x) {
+        service.retrieveDataOfType = function (type, aliases) {
+            return service.retrieveEntriesOfType(type, aliases).map(function (x) {
                 return x.data;
             });
         };
         /**
+  * @obsolete Use the typo-free version instead.
+  */
+        service.retriveDataOfType = function (type, aliases) {
+            console.warn('clipboardService.retriveDataOfType is obsolete, use clipboardService.retrieveDataOfType instead');
+            return service.retrieveDataOfType(type, aliases);
+        };
+        /**
   * @ngdoc method
-  * @name umbraco.services.supportsCopy#retriveEntriesOfType
+  * @name umbraco.services.supportsCopy#clearEntriesOfType
   * @methodOf umbraco.services.clipboardService
   *
   * @param {string} type A string defining the type of data to remove.
@@ -2276,7 +2289,7 @@
   * Removes entries matching the given type and one of the provided aliases.
   */
         service.clearEntriesOfType = function (type, allowedAliases) {
-            var storage = retriveStorage();
+            var storage = retrieveStorage();
             // Find entries that are NOT fulfilling the criteria for this nodeType and nodeTypesAliases.
             var filteretEntries = storage.entries.filter(function (entry) {
                 return !isEntryCompatible(entry, type, allowedAliases);
@@ -2949,18 +2962,23 @@
                         var origProp = allOrigProps[k];
                         var alias = origProp.alias;
                         var newProp = getNewProp(alias, allNewProps);
-                        if (newProp && !_.isEqual(origProp.value, newProp.value)) {
-                            //they have changed so set the origContent prop to the new one
-                            var origVal = origProp.value;
-                            origProp.value = newProp.value;
-                            //instead of having a property editor $watch their expression to check if it has
-                            // been updated, instead we'll check for the existence of a special method on their model
-                            // and just call it.
-                            if (Utilities.isFunction(origProp.onValueChanged)) {
-                                //send the newVal + oldVal
-                                origProp.onValueChanged(origProp.value, origVal);
+                        if (newProp) {
+                            // Always update readonly state
+                            origProp.readonly = newProp.readonly;
+                            // Check whether the value has changed and update accordingly
+                            if (!_.isEqual(origProp.value, newProp.value)) {
+                                //they have changed so set the origContent prop to the new one
+                                var origVal = origProp.value;
+                                origProp.value = newProp.value;
+                                //instead of having a property editor $watch their expression to check if it has
+                                // been updated, instead we'll check for the existence of a special method on their model
+                                // and just call it.
+                                if (Utilities.isFunction(origProp.onValueChanged)) {
+                                    //send the newVal + oldVal
+                                    origProp.onValueChanged(origProp.value, origVal);
+                                }
+                                changed.push(origProp);
                             }
-                            changed.push(origProp);
                         }
                     }
                 }
@@ -3528,6 +3546,10 @@
                 // The saved content type might have updated values (eg. new IDs/keys), so make sure the view model is updated
                 contentType.ModelState = savedContentType.ModelState;
                 contentType.id = savedContentType.id;
+                // Prevent rebinding if there was an error: https://github.com/umbraco/Umbraco-CMS/pull/11257
+                if (savedContentType.ModelState) {
+                    return;
+                }
                 contentType.groups.forEach(function (group) {
                     if (!group.alias)
                         return;
@@ -3991,16 +4013,18 @@ When building a custom infinite editor view you can use the same components as a
      * Method to tell editors that they are begin blurred.
      */
             function blur() {
-                /* keyboard shortcuts will be overwritten by the new infinite editor
-          so we need to store the shortcuts for the current editor so they can be rebound
-          when the infinite editor closes
-      */
-                unbindKeyboardShortcuts();
-                isEnabled = false;
+                if (isEnabled === true) {
+                    /* keyboard shortcuts will be overwritten by the new infinite editor
+        so we need to store the shortcuts for the current editor so they can be rebound
+        when the infinite editor closes
+        */
+                    unbindKeyboardShortcuts();
+                    isEnabled = false;
+                }
             }
             /**
      * @ngdoc method
-     * @name umbraco.services.editorService#blur
+     * @name umbraco.services.editorService#focus
      * @methodOf umbraco.services.editorService
      *
      * @description
@@ -4284,7 +4308,7 @@ When building a custom infinite editor view you can use the same components as a
             function rollback(editor) {
                 editor.view = 'views/common/infiniteeditors/rollback/rollback.html';
                 if (!editor.size)
-                    editor.size = 'medium';
+                    editor.size = '';
                 open(editor);
             }
             /**
@@ -4677,6 +4701,28 @@ When building a custom infinite editor view you can use the same components as a
                 open(editor);
             }
             /**
+    * @ngdoc method
+    * @name umbraco.services.editorService#templatePicker
+    * @methodOf umbraco.services.editorService
+    *
+    * @description
+    * Opens a template picker in infinite editing, the submit callback returns an array of selected items.
+    *
+    * @param {object} editor rendering options.
+    * @param {boolean} editor.multiPicker Pick one or multiple items.
+    * @param {function} editor.submit Callback function when the submit button is clicked. Returns the editor model object.
+    * @param {function} editor.close Callback function when the close button is clicked.
+    * @returns {object} editor object.
+    */
+            function templatePicker(editor) {
+                editor.view = 'views/common/infiniteeditors/treepicker/treepicker.html';
+                if (!editor.size)
+                    editor.size = 'small';
+                editor.section = 'settings';
+                editor.treeAlias = 'templates';
+                open(editor);
+            }
+            /**
      * @ngdoc method
      * @name umbraco.services.editorService#macroPicker
      * @methodOf umbraco.services.editorService
@@ -4831,6 +4877,7 @@ When building a custom infinite editor view you can use the same components as a
                 templateSections: templateSections,
                 userPicker: userPicker,
                 itemPicker: itemPicker,
+                templatePicker: templatePicker,
                 macroPicker: macroPicker,
                 memberGroupPicker: memberGroupPicker,
                 memberPicker: memberPicker,
@@ -7494,11 +7541,11 @@ When building a custom infinite editor view you can use the same components as a
     angular.module('umbraco.services').factory('macroService', macroService);
     'use strict';
     /**
-* @ngdoc service
-* @name umbraco.services.mediaHelper
-* @description A helper object used for dealing with media items
-**/
-    function mediaHelper(umbRequestHelper, $log) {
+ * @ngdoc service
+ * @name umbraco.services.mediaHelper
+ * @description A helper object used for dealing with media items
+ **/
+    function mediaHelper(umbRequestHelper, $http, $log) {
         //container of fileresolvers
         var _mediaFileResolvers = {};
         return {
@@ -7773,10 +7820,6 @@ When building a custom infinite editor view you can use the same components as a
                 if (this.getFileExtension(imagePath) === 'svg') {
                     return imagePath;
                 }
-                // Check if file is a svg
-                if (this.getFileExtension(imagePath) === 'svg') {
-                    return imagePath;
-                }
                 // If the path is not an image we cannot get a thumb
                 if (!this.detectIfImageByExtension(imagePath)) {
                     return null;
@@ -7848,6 +7891,52 @@ When building a custom infinite editor view you can use the same components as a
                 var lowered = filePath.toLowerCase();
                 var ext = lowered.substr(lowered.lastIndexOf('.') + 1);
                 return ext;
+            },
+            /**
+     * @ngdoc function
+     * @name umbraco.services.mediaHelper#getProcessedImageUrl
+     * @methodOf umbraco.services.mediaHelper
+     * @function
+     *
+     * @description
+     * Returns image URL with configured crop and other processing parameters.
+     *
+     * @param {string} imagePath Raw image path
+     * @param {object} options Object describing image generation parameters:
+     *  {
+     *      width: <int>
+     *      height: <int>
+     *      focalPoint: {
+     *          left: <int>
+     *          top: <int>
+     *      },
+     *      mode: <string>
+     *      cacheBusterValue: <string>
+     *      crop: {
+     *          x1: <int>
+     *          x2: <int>
+     *          y1: <int>
+     *          y2: <int>
+     *      },
+     *  }
+     */
+            getProcessedImageUrl: function getProcessedImageUrl(imagePath, options) {
+                if (!options) {
+                    return imagePath;
+                }
+                return umbRequestHelper.resourcePromise($http.get(umbRequestHelper.getApiUrl('imagesApiBaseUrl', 'GetProcessedImageUrl', {
+                    imagePath: imagePath,
+                    width: options.width,
+                    height: options.height,
+                    focalPointLeft: options.focalPoint ? options.focalPoint.left : null,
+                    focalPointTop: options.focalPoint ? options.focalPoint.top : null,
+                    mode: options.mode,
+                    cacheBusterValue: options.cacheBusterValue,
+                    cropX1: options.crop ? options.crop.x1 : null,
+                    cropX2: options.crop ? options.crop.x2 : null,
+                    cropY1: options.crop ? options.crop.y1 : null,
+                    cropY2: options.crop ? options.crop.y2 : null
+                })), 'Failed to retrieve processed image URL for image: ' + imagePath);
             }
         };
     }
@@ -8272,8 +8361,8 @@ When building a custom infinite editor view you can use the same components as a
                 var toRetain = Utilities.copy(nextRouteParams);
                 var updated = false;
                 retainedQueryStrings.forEach(function (r) {
-                    // if mculture is set to null in nextRouteParams, the value will be undefined and we will not retain any query string that has a value of "null"
-                    if (currRouteParams[r] && nextRouteParams[r] !== undefined && !nextRouteParams[r]) {
+                    // testing explicitly for undefined in nextRouteParams here, as it must be possible to "unset" e.g. mculture by specifying a null value
+                    if (currRouteParams[r] && nextRouteParams[r] === undefined) {
                         toRetain[r] = currRouteParams[r];
                         updated = true;
                     }
@@ -8990,6 +9079,58 @@ When building a custom infinite editor view you can use the same components as a
         'use strict';
         function overlayService(eventsService, backdropService, focusLockService) {
             var currentOverlay = null;
+            /**
+     * @ngdoc method
+     * @name umbraco.services.overlayService#open
+     * @methodOf umbraco.services.overlayService
+     *
+     * @description
+     * Opens a new overlay.
+     *
+     * @param {object} overlay The rendering options for the overlay.
+     * @param {string=} overlay.view The URL to the view. Defaults to `views/common/overlays/default/default.html` if nothing is specified.
+     * @param {string=} overlay.position The alias of the position of the overlay. Defaults to `center`.
+     * 
+     * Custom positions can be added by adding a CSS rule for the the underlying CSS rule. Eg. for the position `center`, the corresponding `umb-overlay-center` CSS rule is defined as:
+     * 
+     * <pre>
+     * .umb-overlay.umb-overlay-center {
+     *     position: absolute;
+     *     width: 600px;
+     *     height: auto;
+     *     top: 50%;
+     *     left: 50%;
+     *     transform: translate(-50%,-50%);
+     *     border-radius: 3px;
+     * }
+     * </pre>
+     * @param {string=} overlay.size Sets an alias for the size of the overlay to be opened. If set to `small` (default), an `umb-overlay--small` class name will be appended the the class list of the main overlay element in the DOM.
+     * 
+     * Umbraco does not support any more sizes by default, but if you wish to introduce a `medium` size, you could do so by adding a CSS rule simlar to:
+     * 
+     * <pre>
+     * .umb-overlay-center.umb-overlay--medium {
+     *     width: 800px;
+     * }
+     * </pre>
+     * @param {booean=} overlay.disableBackdropClick A boolean value indicating whether the click event on the backdrop should be disabled.
+     * @param {string=} overlay.title The overall title of the overlay. The title will be omitted if not specified.
+     * @param {string=} overlay.subtitle The sub title of the overlay. The sub title will be omitted if not specified.
+     * @param {object=} overlay.itemDetails An item that will replace the header of the overlay.
+     * @param {string=} overlay.itemDetails.icon The icon of the item - eg. `icon-book`.
+     * @param {string=} overlay.itemDetails.title The title of the item.
+     * @param {string=} overlay.itemDetails.description Sets the description of the item.         * 
+     * @param {string=} overlay.submitButtonLabel The label of the submit button. To support localized values, it's recommended to use the `submitButtonLabelKey` instead.
+     * @param {string=} overlay.submitButtonLabelKey The key to be used for the submit button label. Defaults to `general_submit` if not specified.
+     * @param {string=} overlay.submitButtonState The state of the submit button. Possible values are inherited from the [umbButton directive](#/api/umbraco.directives.directive:umbButton) and are `init`, `busy", `success`, `error`.
+     * @param {string=} overlay.submitButtonStyle The styling of the submit button. Possible values are inherited from the [umbButton directive](#/api/umbraco.directives.directive:umbButton) and are `primary`, `info`, `success`, `warning`, `danger`, `inverse`, `link` and `block`. Defaults to `success` if not specified specified.
+     * @param {string=} overlay.hideSubmitButton A boolean value indicating whether the submit button should be hidden. Default is `false`.
+     * @param {string=} overlay.disableSubmitButton A boolean value indicating whether the submit button should be disabled, preventing the user from submitting the overlay. Default is `false`.
+     * @param {string=} overlay.closeButtonLabel The label of the close button. To support localized values, it's recommended to use the `closeButtonLabelKey` instead.
+     * @param {string=} overlay.closeButtonLabelKey The key to be used for the close button label. Defaults to `general_close` if not specified.
+     * @param {string=} overlay.submit A callback function that is invoked when the user submits the overlay.
+     * @param {string=} overlay.close A callback function that is invoked when the user closes the overlay.
+     */
             function open(newOverlay) {
                 // prevent two open overlays at the same time
                 if (currentOverlay) {
@@ -9019,6 +9160,14 @@ When building a custom infinite editor view you can use the same components as a
                 currentOverlay = overlay;
                 eventsService.emit('appState.overlay', overlay);
             }
+            /**
+     * @ngdoc method
+     * @name umbraco.services.overlayService#close
+     * @methodOf umbraco.services.overlayService
+     *
+     * @description
+     * Closes the current overlay.
+     */
             function _close() {
                 focusLockService.removeInertAttribute();
                 var tourIsOpen = document.body.classList.contains('umb-tour-is-visible');
@@ -9028,6 +9177,16 @@ When building a custom infinite editor view you can use the same components as a
                 currentOverlay = null;
                 eventsService.emit('appState.overlay', null);
             }
+            /**
+     * @ngdoc method
+     * @name umbraco.services.overlayService#ysod
+     * @methodOf umbraco.services.overlayService
+     *
+     * @description
+     * Opens a new overlay with an error message.
+     *
+     * @param {object} error The error to be shown.
+     */
             function ysod(error) {
                 var overlay = {
                     view: 'views/common/overlays/ysod/ysod.html',
@@ -9038,6 +9197,36 @@ When building a custom infinite editor view you can use the same components as a
                 };
                 open(overlay);
             }
+            /**
+     * @ngdoc method
+     * @name umbraco.services.overlayService#confirm
+     * @methodOf umbraco.services.overlayService
+     *
+     * @description
+     * Opens a new overlay prompting the user to confirm the overlay.
+     *
+     * @param {object} overlay The options for the overlay.
+     * @param {string=} overlay.confirmType The type of the confirm dialog, which helps define standard styling and labels of the overlay. Supported values are `delete` and `remove`.
+     * @param {string=} overlay.closeButtonLabelKey The key to be used for the cancel button label. Defaults to `general_cancel` if not specified.
+     * @param {string=} overlay.view The URL to the view. Defaults to `views/common/overlays/confirm/confirm.html` if nothing is specified.
+     * @param {string=} overlay.confirmMessageStyle The styling of the confirm message. If `overlay.confirmType` is `delete`, the fallback value is `danger` - otherwise a message style isn't explicitly specified.
+     * @param {string=} overlay.submitButtonStyle The styling of the confirm button. Possible values are inherited from the [umbButton directive](#/api/umbraco.directives.directive:umbButton) and are `primary`, `info`, `success`, `warning`, `danger`, `inverse`, `link` and `block`.
+     * 
+     * If not specified, the fallback value depends on the value specified for the `overlay.confirmType` parameter:
+     * 
+     * - `delete`: fallback key is `danger`
+     * - `remove`: fallback key is `primary`
+     * - anything else: no fallback AKA default button style
+     * @param {string=} overlay.submitButtonLabelKey The key to be used for the confirm button label. 
+     * 
+     * If not specified, the fallback value depends on the value specified for the `overlay.confirmType` parameter:
+     * 
+     * - `delete`: fallback key is `actions_delete`
+     * - `remove`: fallback key is `actions_remove`
+     * - anything else: fallback is `general_confirm`
+     * @param {function=} overlay.close A callback function that is invoked when the user closes the overlay.
+     * @param {function=} overlay.submit A callback function that is invoked when the user confirms the overlay.
+     */
             function confirm(overlay) {
                 if (!overlay.closeButtonLabelKey)
                     overlay.closeButtonLabelKey = 'general_cancel';
@@ -9068,10 +9257,44 @@ When building a custom infinite editor view you can use the same components as a
                 }
                 open(overlay);
             }
+            /**
+     * @ngdoc method
+     * @name umbraco.services.overlayService#confirmDelete
+     * @methodOf umbraco.services.overlayService
+     *
+     * @description
+     * Opens a new overlay prompting the user to confirm the overlay. The overlay will have styling and labels useful for when the user needs to confirm a delete action.
+     *
+     * @param {object} overlay The options for the overlay.
+     * @param {string=} overlay.closeButtonLabelKey The key to be used for the cancel button label. Defaults to `general_cancel` if not specified.
+     * @param {string=} overlay.view The URL to the view. Defaults to `views/common/overlays/confirm/confirm.html` if nothing is specified.
+     * @param {string=} overlay.confirmMessageStyle The styling of the confirm message. Defaults to `delete` if not specified specified.
+     * @param {string=} overlay.submitButtonStyle The styling of the confirm button. Possible values are inherited from the [umbButton directive](#/api/umbraco.directives.directive:umbButton) and are `primary`, `info`, `success`, `warning`, `danger`, `inverse`, `link` and `block`. Defaults to `danger` if not specified specified.
+     * @param {string=} overlay.submitButtonLabelKey The key to be used for the confirm button label. Defaults to `actions_delete` if not specified.
+     * @param {function=} overlay.close A callback function that is invoked when the user closes the overlay.
+     * @param {function=} overlay.submit A callback function that is invoked when the user confirms the overlay.
+     */
             function confirmDelete(overlay) {
                 overlay.confirmType = 'delete';
                 confirm(overlay);
             }
+            /**
+     * @ngdoc method
+     * @name umbraco.services.overlayService#confirmRemove
+     * @methodOf umbraco.services.overlayService
+     *
+     * @description
+     * Opens a new overlay prompting the user to confirm the overlay. The overlay will have styling and labels useful for when the user needs to confirm a remove action.
+     *
+     * @param {object} overlay The options for the overlay.
+     * @param {string=} overlay.closeButtonLabelKey The key to be used for the cancel button label. Defaults to `general_cancel` if not specified.
+     * @param {string=} overlay.view The URL to the view. Defaults to `views/common/overlays/confirm/confirm.html` if nothing is specified.
+     * @param {string=} overlay.confirmMessageStyle The styling of the confirm message - eg. `danger`.
+     * @param {string=} overlay.submitButtonStyle The styling of the confirm button. Possible values are inherited from the [umbButton directive](#/api/umbraco.directives.directive:umbButton) and are `primary`, `info`, `success`, `warning`, `danger`, `inverse`, `link` and `block`. Defaults to `primary` if not specified specified.
+     * @param {string=} overlay.submitButtonLabelKey The key to be used for the confirm button label. Defaults to `actions_remove` if not specified.
+     * @param {function=} overlay.close A callback function that is invoked when the user closes the overlay.
+     * @param {function=} overlay.submit A callback function that is invoked when the user confirms the overlay.
+     */
             function confirmRemove(overlay) {
                 overlay.confirmType = 'remove';
                 confirm(overlay);
@@ -10756,10 +10979,10 @@ When building a custom infinite editor view you can use the same components as a
  * @description
  * A service containing all logic for all of the Umbraco TinyMCE plugins
  */
-    function tinyMceService($rootScope, $q, imageHelper, $locale, $http, $timeout, stylesheetResource, macroResource, macroService, $routeParams, umbRequestHelper, angularHelper, userService, editorService, entityResource, eventsService, localStorageService) {
+    function tinyMceService($rootScope, $q, imageHelper, $locale, $http, $timeout, stylesheetResource, macroResource, macroService, $routeParams, umbRequestHelper, angularHelper, userService, editorService, entityResource, eventsService, localStorageService, mediaHelper) {
         //These are absolutely required in order for the macros to render inline
         //we put these as extended elements because they get merged on top of the normal allowed elements by tiny mce
-        var extendedValidElements = '@[id|class|style],-div[id|dir|class|align|style],ins[datetime|cite],-ul[class|style],-li[class|style],-h1[id|dir|class|align|style],-h2[id|dir|class|align|style],-h3[id|dir|class|align|style],-h4[id|dir|class|align|style],-h5[id|dir|class|align|style],-h6[id|style|dir|class|align],span[id|class|style|lang]';
+        var extendedValidElements = '@[id|class|style],-div[id|dir|class|align|style],ins[datetime|cite],-ul[class|style],-li[class|style],-h1[id|dir|class|align|style],-h2[id|dir|class|align|style],-h3[id|dir|class|align|style],-h4[id|dir|class|align|style],-h5[id|dir|class|align|style],-h6[id|style|dir|class|align],span[id|class|style|lang],figure,figcaption';
         var fallbackStyles = [
             {
                 title: 'Page header',
@@ -10977,8 +11200,7 @@ When building a custom infinite editor view you can use the same components as a
             };
         }
         function uploadImageHandler(blobInfo, success, failure, progress) {
-            var xhr, formData;
-            xhr = new XMLHttpRequest();
+            var xhr = new XMLHttpRequest();
             xhr.open('POST', Umbraco.Sys.ServerVariables.umbracoUrls.tinyMceApiBaseUrl + 'UploadImage');
             xhr.onloadstart = function (e) {
                 angularHelper.safeApply($rootScope, function () {
@@ -10997,14 +11219,24 @@ When building a custom infinite editor view you can use the same components as a
                 failure('Image upload failed due to a XHR Transport error. Code: ' + xhr.status);
             };
             xhr.onload = function () {
-                var json;
                 if (xhr.status < 200 || xhr.status >= 300) {
                     failure('HTTP Error: ' + xhr.status);
                     return;
                 }
-                json = JSON.parse(xhr.responseText);
+                var data = xhr.responseText;
+                if (!data.length > 1) {
+                    failure('Unrecognized text string: ' + data);
+                    return;
+                }
+                var json = {};
+                try {
+                    json = JSON.parse(data);
+                } catch (e) {
+                    failure('Invalid JSON: ' + data + ' - ' + e.message);
+                    return;
+                }
                 if (!json || typeof json.tmpLocation !== 'string') {
-                    failure('Invalid JSON: ' + xhr.responseText);
+                    failure('Invalid JSON: ' + data);
                     return;
                 }
                 // Put temp location into localstorage (used to update the img with data-tmpimg later on)
@@ -11014,7 +11246,7 @@ When building a custom infinite editor view you can use the same components as a
                 // so the img still shows in the editor
                 success(blobInfo.blobUri());
             };
-            formData = new FormData();
+            var formData = new FormData();
             formData.append('file', blobInfo.blob(), blobInfo.blob().name);
             xhr.send(formData);
         }
@@ -11035,8 +11267,12 @@ When building a custom infinite editor view you can use the same components as a
                 // Images inserted via Media Picker will have a URL we can use for ImageResizer QueryStrings
                 // Images pasted/dragged in are not persisted to media until saved & thus will need to be added
                 if (imgUrl) {
-                    var src = imgUrl + '?width=' + newSize.width + '&height=' + newSize.height;
-                    editor.dom.setAttrib(imageDomElement, 'data-mce-src', src);
+                    mediaHelper.getProcessedImageUrl(imgUrl, {
+                        width: newSize.width,
+                        height: newSize.height
+                    }).then(function (resizedImgUrl) {
+                        editor.dom.setAttrib(imageDomElement, 'data-mce-src', resizedImgUrl);
+                    });
                 }
                 editor.execCommand('mceAutoResize', false, null, null);
             }
@@ -11135,7 +11371,7 @@ When building a custom infinite editor view you can use the same components as a
                         config.paste_data_images = true;
                     }
                     if (args.htmlId) {
-                        config.selector = '#' + args.htmlId;
+                        config.selector = '[id="'.concat(args.htmlId, '"]');
                     } else if (args.target) {
                         config.target = args.target;
                     }
@@ -11332,15 +11568,15 @@ When building a custom infinite editor view you can use the same components as a
                     tooltip: 'Media Picker',
                     stateSelector: 'img[data-udi]',
                     onclick: function onclick() {
-                        var selectedElm = editor.selection.getNode(), currentTarget, imgDomElement;
+                        var selectedElm = editor.selection.getNode(), currentTarget;
                         if (selectedElm.nodeName === 'IMG') {
                             var img = $(selectedElm);
-                            imgDomElement = selectedElm;
                             var hasUdi = img.attr('data-udi') ? true : false;
                             var hasDataTmpImg = img.attr('data-tmpimg') ? true : false;
                             currentTarget = {
                                 altText: img.attr('alt'),
-                                url: img.attr('src')
+                                url: img.attr('src'),
+                                caption: img.attr('data-caption')
                             };
                             if (hasUdi) {
                                 currentTarget['udi'] = img.attr('data-udi');
@@ -11354,70 +11590,69 @@ When building a custom infinite editor view you can use the same components as a
                         userService.getCurrentUser().then(function (userData) {
                             if (callback) {
                                 angularHelper.safeApply($rootScope, function () {
-                                    callback(currentTarget, userData, imgDomElement);
+                                    callback(currentTarget, userData);
                                 });
                             }
                         });
                     }
                 });
             },
-            insertMediaInEditor: function insertMediaInEditor(editor, img, imgDomElement) {
+            /**
+     * @ngdoc method
+     * @name umbraco.services.tinyMceService#insetMediaInEditor
+     * @methodOf umbraco.services.tinyMceService
+     *
+     * @description
+     * Inserts the image element in tinymce plugin
+     *
+     * @param {Object} editor the TinyMCE editor instance
+     */
+            insertMediaInEditor: function insertMediaInEditor(editor, img) {
                 if (img) {
-                    // imgElement is only definied if updating an image
-                    // if null/undefinied then its a BRAND new image
-                    if (imgDomElement) {
-                        // Check if the img src has changed
-                        // If it has we will need to do some resizing/recalc again
-                        var hasImageSrcChanged = false;
-                        if (img.url !== editor.dom.getAttrib(imgDomElement, 'src')) {
-                            hasImageSrcChanged = true;
-                        }
-                        // If null/undefinied it will remove the attribute
-                        editor.dom.setAttrib(imgDomElement, 'alt', img.altText);
-                        // It's possible to pick a NEW image - so need to ensure this gets updated
-                        if (img.udi) {
-                            editor.dom.setAttrib(imgDomElement, 'data-udi', img.udi);
-                        }
-                        // It's possible to pick a NEW image - so need to ensure this gets updated
-                        if (img.url) {
-                            editor.dom.setAttrib(imgDomElement, 'src', img.url);
-                        }
-                        // Remove width & height attributes (ONLY if imgSrc changed)
-                        // So native image size is used as this needed to re-calc width & height
-                        // For the function sizeImageInEditor() & apply the image resizing querystrings etc..
-                        if (hasImageSrcChanged) {
-                            editor.dom.setAttrib(imgDomElement, 'width', null);
-                            editor.dom.setAttrib(imgDomElement, 'height', null);
-                            //Re-calc the image dimensions
-                            sizeImageInEditor(editor, imgDomElement, img.url);
+                    // We need to create a NEW DOM <img> element to insert
+                    // setting an attribute of ID to __mcenew, so we can gather a reference to the node, to be able to update its size accordingly to the size of the image.
+                    var data = {
+                        alt: img.altText || '',
+                        src: img.url ? img.url : 'nothing.jpg',
+                        id: '__mcenew',
+                        'data-udi': img.udi,
+                        'data-caption': img.caption
+                    };
+                    var newImage = editor.dom.createHTML('img', data);
+                    var parentElement = editor.selection.getNode().parentElement;
+                    if (img.caption) {
+                        var figCaption = editor.dom.createHTML('figcaption', {}, img.caption);
+                        var combined = newImage + figCaption;
+                        if (parentElement.nodeName !== 'FIGURE') {
+                            var fragment = editor.dom.createHTML('figure', {}, combined);
+                            editor.selection.setContent(fragment);
+                        } else {
+                            parentElement.innerHTML = combined;
                         }
                     } else {
-                        // We need to create a NEW DOM <img> element to insert
-                        // setting an attribute of ID to __mcenew, so we can gather a reference to the node, to be able to update its size accordingly to the size of the image.
-                        var data = {
-                            alt: img.altText || '',
-                            src: img.url ? img.url : 'nothing.jpg',
-                            id: '__mcenew',
-                            'data-udi': img.udi
-                        };
-                        editor.selection.setContent(editor.dom.createHTML('img', data));
-                        // Using settimeout to wait for a DoM-render, so we can find the new element by ID.
-                        $timeout(function () {
-                            var imgElm = editor.dom.get('__mcenew');
-                            editor.dom.setAttrib(imgElm, 'id', null);
-                            // When image is loaded we are ready to call sizeImageInEditor.
-                            var onImageLoaded = function onImageLoaded() {
-                                sizeImageInEditor(editor, imgElm, img.url);
-                                editor.fire('Change');
-                            };
-                            // Check if image already is loaded.
-                            if (imgElm.complete === true) {
-                                onImageLoaded();
-                            } else {
-                                imgElm.onload = onImageLoaded;
-                            }
-                        });
+                        //if caption is removed, remove the figure element
+                        if (parentElement.nodeName === 'FIGURE') {
+                            parentElement.parentElement.innerHTML = newImage;
+                        } else {
+                            editor.selection.setContent(newImage);
+                        }
                     }
+                    // Using settimeout to wait for a DoM-render, so we can find the new element by ID.
+                    $timeout(function () {
+                        var imgElm = editor.dom.get('__mcenew');
+                        editor.dom.setAttrib(imgElm, 'id', null);
+                        // When image is loaded we are ready to call sizeImageInEditor.
+                        var onImageLoaded = function onImageLoaded() {
+                            sizeImageInEditor(editor, imgElm, img.url);
+                            editor.fire('Change');
+                        };
+                        // Check if image already is loaded.
+                        if (imgElm.complete === true) {
+                            onImageLoaded();
+                        } else {
+                            imgElm.onload = onImageLoaded;
+                        }
+                    });
                 }
             },
             /**
@@ -11791,6 +12026,11 @@ When building a custom infinite editor view you can use the same components as a
                         eventsService.emit('rte.shortcut.save');
                     });
                 });
+                editor.addShortcut('Ctrl+P', '', function () {
+                    angularHelper.safeApply($rootScope, function () {
+                        eventsService.emit('rte.shortcut.saveAndPublish');
+                    });
+                });
             },
             insertLinkInEditor: function insertLinkInEditor(editor, target, anchorElm) {
                 var href = target.url;
@@ -11803,7 +12043,7 @@ When building a custom infinite editor view you can use the same components as a
                 }
                 // the href might be an external url, so check the value for an anchor/qs
                 // href has the anchor re-appended later, hence the reset here to avoid duplicating the anchor
-                if (!target.anchor) {
+                if (!target.anchor && href) {
                     var urlParts = href.split(/(#|\?)/);
                     if (urlParts.length === 3) {
                         href = urlParts[0];
@@ -11832,7 +12072,19 @@ When building a custom infinite editor view you can use the same components as a
                         editor.selection.select(anchorElm);
                         editor.execCommand('mceEndTyping');
                     } else {
-                        editor.execCommand('mceInsertLink', false, createElemAttributes());
+                        var selectedContent = editor.selection.getContent();
+                        // If there is no selected content, we can't insert a link
+                        // as TinyMCE needs selected content for this, so instead we
+                        // create a new dom element and insert it, using the chosen
+                        // link name as the content.
+                        if (selectedContent !== '') {
+                            editor.execCommand('mceInsertLink', false, createElemAttributes());
+                        } else {
+                            // Using the target url as a fallback, as href might be confusing with a local link
+                            var linkContent = typeof target.name !== 'undefined' && target.name !== '' ? target.name : target.url;
+                            var domElement = editor.dom.createHTML('a', createElemAttributes(), linkContent);
+                            editor.execCommand('mceInsertContent', false, domElement);
+                        }
                     }
                 }
                 if (!href && !target.anchor) {
@@ -11949,7 +12201,7 @@ When building a custom infinite editor view you can use the same components as a
                 // Then we need to add an event listener to the editor
                 // That will update native browser drag & drop events
                 // To update the icon to show you can NOT drop something into the editor
-                var toolbarItems = args.editor.settings.toolbar.split(' ');
+                var toolbarItems = args.editor.settings.toolbar === false ? [] : args.editor.settings.toolbar.split(' ');
                 if (isMediaPickerEnabled(toolbarItems) === false) {
                     // Wire up the event listener
                     args.editor.on('dragend dragover draggesture dragdrop drop drag', function (e) {
@@ -12091,11 +12343,22 @@ When building a custom infinite editor view you can use the same components as a
                 args.editor.on('blur', function (e) {
                     syncContent();
                 });
+                // When the element is removed from the DOM, we need to terminate
+                // any active watchers to ensure scopes are disposed and do not leak.
+                // No need to sync content as that has already happened.
+                args.editor.on('remove', function () {
+                    return stopWatch();
+                });
                 args.editor.on('ObjectResized', function (e) {
-                    var qs = '?width=' + e.width + '&height=' + e.height + '&mode=max';
                     var srcAttr = $(e.target).attr('src');
                     var path = srcAttr.split('?')[0];
-                    $(e.target).attr('data-mce-src', path + qs);
+                    mediaHelper.getProcessedImageUrl(path, {
+                        width: e.width,
+                        height: e.height,
+                        mode: 'max'
+                    }).then(function (resizedPath) {
+                        $(e.target).attr('data-mce-src', resizedPath);
+                    });
                     syncContent();
                 });
                 args.editor.on('Dirty', function (e) {
@@ -12813,7 +13076,7 @@ When building a custom infinite editor view you can use the same components as a
      *
      * @description
      * Gets a child node with a given ID, from a specific treeNode
-     * @param {object} treeNode to retrive child node from
+     * @param {object} treeNode to retrieve child node from
      * @param {int} id id of child node
      */
             getChildNode: function getChildNode(treeNode, id) {
@@ -12833,7 +13096,7 @@ When building a custom infinite editor view you can use the same components as a
      *
      * @description
      * Gets a descendant node by id
-     * @param {object} treeNode to retrive descendant node from
+     * @param {object} treeNode to retrieve descendant node from
      * @param {int} id id of descendant node
      * @param {string} treeAlias - optional tree alias, if fetching descendant node from a child of a listview document
      */
@@ -12904,7 +13167,7 @@ When building a custom infinite editor view you can use the same components as a
      *
      * @description
      * Gets the root node of the current tree type for a given tree node
-     * @param {object} treeNode to retrive tree root node from
+     * @param {object} treeNode to retrieve tree root node from
      */
             getTreeRoot: function getTreeRoot(treeNode) {
                 if (!treeNode) {
@@ -12936,7 +13199,7 @@ When building a custom infinite editor view you can use the same components as a
      *
      * @description
      * Gets the node's tree alias, this is done by looking up the meta-data of the current node's root node
-     * @param {object} treeNode to retrive tree alias from
+     * @param {object} treeNode to retrieve tree alias from
      */
             getTreeAlias: function getTreeAlias(treeNode) {
                 var root = this.getTreeRoot(treeNode);
@@ -13385,7 +13648,7 @@ When building a custom infinite editor view you can use the same components as a
                 },
                 formatContentTypePostData: function formatContentTypePostData(displayModel, action) {
                     // Create the save model from the display model
-                    var saveModel = _.pick(displayModel, 'compositeContentTypes', 'isContainer', 'allowAsRoot', 'allowedTemplates', 'allowedContentTypes', 'alias', 'description', 'thumbnail', 'name', 'id', 'icon', 'trashed', 'key', 'parentId', 'alias', 'path', 'allowCultureVariant', 'allowSegmentVariant', 'isElement');
+                    var saveModel = _.pick(displayModel, 'compositeContentTypes', 'isContainer', 'allowAsRoot', 'allowedTemplates', 'allowedContentTypes', 'alias', 'description', 'thumbnail', 'name', 'id', 'icon', 'trashed', 'key', 'parentId', 'alias', 'path', 'allowCultureVariant', 'allowSegmentVariant', 'isElement', 'historyCleanup');
                     saveModel.allowedTemplates = _.map(displayModel.allowedTemplates, function (t) {
                         return t.alias;
                     });
@@ -13401,7 +13664,7 @@ When building a custom infinite editor view you can use the same components as a
                             return p.propertyState === 'init' || p.inherited === true;
                         });
                         var saveProperties = _.map(realProperties, function (p) {
-                            var saveProperty = _.pick(p, 'id', 'alias', 'description', 'validation', 'label', 'sortOrder', 'dataTypeId', 'groupId', 'memberCanEdit', 'showOnMemberProfile', 'isSensitiveData', 'allowCultureVariant', 'allowSegmentVariant', 'labelOnTop');
+                            var saveProperty = _.pick(p, 'id', 'alias', 'description', 'validation', 'label', 'sortOrder', 'dataTypeId', 'dataTypeKey', 'groupId', 'memberCanEdit', 'showOnMemberProfile', 'isSensitiveData', 'allowCultureVariant', 'allowSegmentVariant', 'labelOnTop');
                             return saveProperty;
                         });
                         saveGroup.properties = saveProperties;
@@ -13567,36 +13830,30 @@ When building a custom infinite editor view you can use the same components as a
                 },
                 /** formats the display model used to display the member to the model used to save the member */
                 formatMemberPostData: function formatMemberPostData(displayModel, action) {
-                    //this is basically the same as for media but we need to explicitly add the username,email, password to the save model
+                    var _this = this;
+                    //this is basically the same as for media but we need to explicitly add the username, email, password to the save model
                     var saveModel = this.formatMediaPostData(displayModel, action);
                     saveModel.key = displayModel.key;
-                    var genericTab = _.find(displayModel.tabs, function (item) {
-                        return item.id === 0;
-                    });
-                    //map the member login, email, password and groups
-                    var propLogin = _.find(genericTab.properties, function (item) {
-                        return item.alias === '_umb_login';
-                    });
-                    var propEmail = _.find(genericTab.properties, function (item) {
-                        return item.alias === '_umb_email';
-                    });
-                    var propPass = _.find(genericTab.properties, function (item) {
-                        return item.alias === '_umb_password';
-                    });
-                    var propGroups = _.find(genericTab.properties, function (item) {
-                        return item.alias === '_umb_membergroup';
-                    });
-                    saveModel.email = propEmail.value.trim();
-                    saveModel.username = propLogin.value.trim();
-                    saveModel.password = this.formatChangePasswordModel(propPass.value);
-                    var selectedGroups = [];
-                    for (var n in propGroups.value) {
-                        if (propGroups.value[n] === true) {
-                            selectedGroups.push(n);
+                    // Map membership properties
+                    _.each(displayModel.membershipProperties, function (prop) {
+                        switch (prop.alias) {
+                        case '_umb_login':
+                            saveModel.username = prop.value.trim();
+                            break;
+                        case '_umb_email':
+                            saveModel.email = prop.value.trim();
+                            break;
+                        case '_umb_password':
+                            saveModel.password = _this.formatChangePasswordModel(prop.value);
+                            break;
+                        case '_umb_membergroup':
+                            saveModel.memberGroups = _.keys(_.pick(prop.value, function (value) {
+                                return value === true;
+                            }));
+                            break;
                         }
-                    }
-                    saveModel.memberGroups = selectedGroups;
-                    //turn the dictionary into an array of pairs
+                    });
+                    // Map custom member provider properties
                     var memberProviderPropAliases = _.pairs(displayModel.fieldConfig);
                     _.each(displayModel.tabs, function (tab) {
                         _.each(tab.properties, function (prop) {
@@ -13604,7 +13861,7 @@ When building a custom infinite editor view you can use the same components as a
                                 return prop.alias === item[1];
                             });
                             if (foundAlias) {
-                                //we know the current property matches an alias, now we need to determine which membership provider property it was for
+                                // we know the current property matches an alias, now we need to determine which membership provider property it was for
                                 // by looking at the key
                                 switch (foundAlias[0]) {
                                 case 'umbracoMemberLockedOut':
