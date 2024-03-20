@@ -1153,7 +1153,7 @@ and also iPads specifically.
 	font-size: 1.8rem;
 }
 .benefits__img {
-	max-width: 100%; //display: block;
+	max-width: 100%;
 	margin-left: auto;
 	margin-right: auto;
 	padding-bottom: 2rem;
@@ -1922,6 +1922,7 @@ form.blog::after {
 	font-size: 1.8rem;
 }
 .blog-head__back {
+	height:25rem;
 	background-color: rgba(0, 0, 0, .5);
 	padding: .3rem;
 }
