@@ -1,0 +1,15 @@
+﻿@inherits UmbracoViewPage<Umbraco.Core.Models.Blocks.BlockListItem>
+
+
+<div class="col-md-4 sub-products__row">
+    <div class="col-md-6 sub-products__pad">
+      
+        <div class="col">
+            <h5 class="sub-products__test-title">@Model.Content.Value("title")</h5>
+            <hr class="services_hr">
+           <p> @Model.Content.Value("description")</p>
+        </div>
+
+    </div>
+    <div class="col-md-6 sub-products__pad"><img alt="@(Model.Content.Value<IPublishedContent>("image").AltText())" class="w-100" src="@(Model.Content.Value<IPublishedContent>("image")?.Url()??"")"></div>
+</div>

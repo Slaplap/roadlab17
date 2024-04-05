@@ -1,0 +1,17 @@
+body {
+	font-family: 'Barlow', sans-serif;
+	color: $dark-blue;
+}
+/* Tablet:768px. */
+@media (min-width: 768px) and (max-width: 991px) {
+ h1 {
+   font-size: 4rem; 
+  }
+}
+
+/* Mobile :320px. */
+@media (max-width: 767px) {
+  h1 {
+   font-size: 3rem;
+  }
+}

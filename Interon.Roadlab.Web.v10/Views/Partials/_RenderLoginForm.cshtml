@@ -1,0 +1,26 @@
+﻿@inherits UmbracoViewPage<Interon.Roadlab.Web.Net.Core.Models.ViewModels.LoginViewModel>
+    
+
+<div class="container branch__container login__container">
+    <div class="row">
+        <div class="col">
+            
+                @using (Html.BeginUmbracoForm("Validate", "Membership", FormMethod.Post, new {@class = "form branch__form" }))
+                {
+                    @Html.AntiForgeryToken()
+                    @Html.TextBoxFor(x=>x.Login,new{@class="",placeholder="Enter Email"})
+                    @Html.ValidationMessageFor(x=>x.Login)
+                    @Html.TextBoxFor(x=>x.Password,new{@class="",placeholder="Enter Password",type="password"})
+                    @Html.ValidationMessageFor(x=>x.Password)
+                    @Html.HiddenFor(x=>x.RememberMe)
+
+			        <div class="float-right col-md-6 col-sm-12">
+				        <a href="/account/password-reset/" class="btn btn-blue">FORGET PASSWORD</a>
+				        <input class="input btn btn-blue" type="submit" value="SUBMIT">
+			        </div>
+                }           
+            
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,111 @@
+﻿@using Interon.Roadlab.Web.Net.Core.Models.ViewModels
+@inherits UmbracoViewPage<Interon.Roadlab.Web.Net.Core.Models.ContentModels.Branch>
+
+@{
+    Layout = "MasterPage.cshtml";
+}
+
+
+<section class="branch">
+    <div class="container">
+        <div class="row branch__space">
+            <div class="col-lg-4 col-md-6 col-sm-12"><img class="branch__img" src="@(Umbraco.Media(Model.Value<IPublishedContent>("branchImage")?.Id)?.Url??"")" alt="@Model.Value("branchImageAlt")"></div>
+			<div class="col-lg-4 col-md-6 col-sm-12 branch__box">
+				<h4 class="branch__heading">Branch</h4>
+				<h2 class="branch__name">@Model.Value("branchName")</h2>
+				<ul class="fa-ul">
+					<li><span class="fa-li"><i class="fas fa-user"></i></span> @Model.Value("branchManager")</li>
+					<li>
+						<span class="fa-li"><i class="fas fa-map-marker-alt"></i></span> @Model.Value("branchAddress1")<br>
+						@Model.Value("branchAddress2")<br>
+
+						@if (Model.BranchAddress3.Length > 2)
+						{
+							@Model.BranchAddress3 <br>
+						}
+						@if (Model.BranchProvince.ToLower().Contains("outside"))
+						{
+							@Model.BranchCountry<br>
+						}
+						else
+						{
+							@Model.Value("branchProvince")<br>
+						}
+
+						@if (Model.BranchPostalCode.Length < 2)
+						{
+							<br />
+						}
+						else
+						{
+							@Model.Value("branchPostalCode")
+						}
+					</li>
+					<li><span class="fa-li"><i class="fas fa-phone-alt"></i></span>Tel: @Model.Value("branchTelephoneNumber")</li>
+					<li><span class="fa-li"><i class="fas fa-mobile-alt"></i></span>Cell: @Model.Value("branchCellNumber")</li>
+					<li><span class="fa-li"><i class="fas fa-envelope"></i></span>E-Mail: @Model.Value("branchEmail")</li>
+				</ul>
+				<div class="row hero__link-space">
+					<div class="col-md-6 col-sm-12 hero__btn-align">
+						<a class="btn btn-blue" href="#reachout" role="button">SEND A MESSAGE</a>
+					</div>
+					<div class="col-md-6 col-sm-12 hero__link-space--small">
+						<a class="btn btn-blue" href="#expert">SEE EXPERIENCE</a>
+					</div>
+				</div>
+			</div>
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <div>@(Model.Value("branchMap")??"")</div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<section>
+    <div class="row branch__back-image" style="background-image:url(@Umbraco.Media(Model.Value<IPublishedContent>("branchBackgroundImage").Id).Url())">
+        <div class="container">
+            <div class="branch__head">
+                <div class="branch__head--line">
+                    <h4 class="branch__sub-heading">@Model.Value("pageHeadingTop")</h4>
+                    <h2 class="branch__main-heading">enquiries</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container branch__container">
+        <div class="row" id="reachout">
+            <div class="col-md-8 col-sm-12">
+
+                <div id="ContactFormPlaceHolder">
+                    @Html.Partial("~/Views/Partials/_RenderContactForm.cshtml", new ContactModel() { BranchEmail = Model.BranchEmail, BranchName = Model.BranchName })
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="brag paral paralsec">
+        <div class="container about-brag__container">
+            <div class="row">
+                <div class="col-md-2 col-sm-12">
+                    <img src="/images/logo2.png" alt="">
+                </div>
+                <div class="col">
+                    <h3 class="about-brag__heading">WANT TO HEAR MORE?</h3>
+                    <h4 class="about-brag__sub-heading">Don’t hesitate. Give us a call!</h4>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- Call to action -->
+<section class="cta">
+    <div class="cta__background cta__container">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <h4 class="cta__text"><span class="u-bold">TEAM UP WITH THE FRIENDLY EXPERTS. </span> REACH OUT TO US TODAY.</h4><a class="btn btn-white-l" href="/head-office/" role="button"><i class="fas fa-angle-right u-btn-fa"></i>GO</a>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="expert" ></div>

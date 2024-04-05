@@ -1,0 +1,37 @@
+ 
+
+/**umb_name:Image Left*/
+.blog-image-left img {
+	margin: 0 20px 10px 0;
+	max-width: 100%;
+	height: auto;
+	float: left;
+}
+
+/**umb_name:Heading 1*/
+.blog-h1 {
+	font-size: 4rem;
+	font-weight: 700;
+	line-height: 1;
+}
+
+/**umb_name:Heading 2*/
+.heading-h2 {
+	font-size: 3rem;
+	font-weight: 500;
+	line-height: 1; 
+}
+
+/**umb_name:Heading 3*/
+.heading-h3 {
+	font-size: 2.5rem;
+	font-weight: 700;
+	line-height: 1;
+}
+
+/**umb_name:Main Heading*/
+.main-heading h1 {
+	font-size: 2.5rem;
+	font-weight: 700;
+	line-height: 1;
+}

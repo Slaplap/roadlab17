@@ -1,0 +1,105 @@
+﻿@inherits UmbracoViewPage<Interon.Roadlab.Web.Net.Core.Models.ContentModels.Services>
+     
+    @{
+    Layout = "MasterPage.cshtml";
+    }
+    <section class="hero">
+        <div class="hero__shadow hero__pad" >
+            <div class="container">
+				<div class="row">
+					<div class="col-md-6 col-sm-12 hero__space">
+						<div class="hero__container">
+							<h4 class="hero__container--sub-heading">@Model.HeroSmallHeading</h4>
+							<h2 class="hero__container--main-heading-2 hero__hr">@Model.HeroLargeHeading</h2>
+							<p>@Model.HeroShortDescription</p>
+							<div class="hero__container--content">
+								<p>@Model.Value("heroContent")</p>
+							</div>
+							<div class="row hero__link-space">
+                                <div class="col-md-4 col-sm-12 hero__btn-align">
+                                    <a class="btn btn-blue" href="#service" role="button">SERVICE OFFERING</a>
+                                </div>
+								@foreach (var button in Model.ServicesButtons)
+								{
+								    <div class="col-md-4 col-sm-12 hero__btn-align">
+                                        <a class="btn btn-blue text-uppercase" href="@button.Url" target="@button.Target" role="button">@button.Name</a> 
+                                    </div>
+								}
+								
+								 
+
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6 col-sm-12">
+						<img class="hero__image" src="@Umbraco.Media(Model.Value<IPublishedContent>("heroRightImage").Id).Url()" alt="@Model.HeroLargeHeading" />
+					</div>
+					</div>
+				</div>
+        </div>
+    </section>
+	<section class="products">
+		<div class="products__heading paral paralsec-aggregate">
+			<div class="container">
+				<div class="row products__heading-container">
+					<div class="col-md-1 col-sm-12"><img alt="" class="products__heading-icon" src="@Umbraco.Media(Model.Value<IPublishedContent>("pageIcon").Id).Url()"></div>
+					<div class="col-md-11 col-sm-12 products__heading--line products__heading--space">
+						<h2 class="products__heading--heading">@Model.PageHeadingTop</h2>
+						<h4 class="products__heading--sub-heading">@Model.PageHeadingBottom</h4>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!--BELOW IS UPDATED VERSION OF TWO IN A ROW SERVICE ITEMS
+			Need to be able to added to these as per old site-->
+		<div class="container products__container" id="service">
+			<div class="row">
+
+					@foreach (var item in Model.ServiceCategories)
+					{
+						<div class="col-md-3 col-sm-12">
+							<div class="row">
+								<div class="col-2 products__container--width">
+									<h2 class="products__container--heading">@item.CategoryNumber</h2>
+									<hr class="products__hr">
+								</div>
+								<div class="col">
+									<h5 class="products__test-title">
+										@item.CategoryHeading1
+									</h5>
+								</div>
+								<div class="products__space">
+									<div class="products__content" style="margin-bottom: 5rem;">
+										<p class="products__content">@item.Category</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-3 col-sm-12 products__overflow" style="margin-bottom: 5rem;">
+							<img class="animated products__img" src="@(item.CategoryImage?.Url()??"/images/prod-1.jpg")">
+						</div>
+					}
+				</div>
+			</div>
+</section>
+    <section>
+        <div class="brag paral paralsec">
+            <div class="brag__container">
+                <img src="/images/logo2.png" alt="">
+                <h3 class="brag__heading">BACKED BY THE ROADLAB GUARANTEE:</h3>
+                <h4 class="brag__sub-heading">Fast, Accurate, Reliable.</h4>
+
+            </div>
+        </div>
+    </section>
+    <!-- Call to action -->
+    <section class="cta">
+        <div class="cta__background cta__container">
+            <div class="container">
+                <div class="row d-flex justify-content-center">
+                    <h4 class="cta__text"><span class="u-bold">TEAM UP WITH THE FRIENDLY EXPERTS. </span>REACH OUT TO US TODAY.</h4><a class="btn btn-white-l" href="/head-office/" role="button"><i class="fas fa-angle-right u-btn-fa"></i>GO</a>
+                </div>
+            </div>
+        </div>
+    </section>
