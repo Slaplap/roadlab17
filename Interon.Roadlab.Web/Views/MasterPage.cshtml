@@ -12,20 +12,26 @@
     @Html.Partial("~/Views/Partials/_RenderTopScripts.cshtml") 
 </head>
 <body>
-    <!-- Facebook plugin START-->
-    <div id="fb-root"></div>
+	<!-- Google Tag Manager (noscript) -->
+	<noscript>
+		<iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T5KSL5SP"
+				height="0" width="0" style="display:none;visibility:hidden"></iframe>
+	</noscript>
+	<!-- End Google Tag Manager (noscript) -->
+	<!-- Facebook plugin START-->
+	<div id="fb-root"></div>
 
-   @Html.Partial("~/Views/Partials/_RenderHeader.cshtml");
-    <section class="static">
-        @RenderBody()
-    </section>
-  @Html.Partial("~/Views/Partials/_RenderFooter.cshtml")
+	@Html.Partial("~/Views/Partials/_RenderHeader.cshtml");
+	<section class="static">
+		@RenderBody()
+	</section>
+	@Html.Partial("~/Views/Partials/_RenderFooter.cshtml")
 
-    @Html.RenderJsHere()
-@{Html.RequiresJsBundle("main");}
+	@Html.RenderJsHere()
+	@{Html.RequiresJsBundle("main");}
 
-@Html.Partial("~/Views/Partials/_RenderBottomScripts.cshtml")
-@RenderSection("scripts", false)
-  
+	@Html.Partial("~/Views/Partials/_RenderBottomScripts.cshtml")
+	@RenderSection("scripts", false)
+
 </body>
 </html>
