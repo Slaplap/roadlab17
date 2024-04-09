@@ -1,6 +1,6 @@
 ﻿using Umbraco.Cms.Core.Models.PublishedContent;
 
-namespace Interon.Roadlab.Web.v10.Extensions
+namespace Interon.Roadlab.Web.v13.Extensions
 {
     public static class PublishedElementExtensionMethod
     {

@@ -1,7 +1,6 @@
 ﻿using System.Net;
 using System.Net.Mail;
 using System.Text;
-using Azure;
 using Interon.Roadlab.Web.Net.Core.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Umbraco.Cms.Core.Cache;

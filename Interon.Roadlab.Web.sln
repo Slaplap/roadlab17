@@ -20,9 +20,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interon.Roadlab.CMS", "Inte
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interon.Roadlab.Web.Core", "Interon.Roadlab.Web.Core\Interon.Roadlab.Web.Core.csproj", "{B7583FC4-E09D-41A8-B3D4-0545C1949219}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interon.Roadlab.Web.v10", "Interon.Roadlab.Web.v10\Interon.Roadlab.Web.v10.csproj", "{9A94403C-26CB-478B-B7B7-9C8E24430D2E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interon.Roadlab.Web.Net.Core", "Interon.Roadlab.Web.Net.Core\Interon.Roadlab.Web.Net.Core.csproj", "{9F9CD8B1-FFC6-41CF-B1E2-34DD3FCBDD71}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interon.Roadlab.Web.Net.Core", "Interon.Roadlab.Web.Net.Core\Interon.Roadlab.Web.Net.Core.csproj", "{9F9CD8B1-FFC6-41CF-B1E2-34DD3FCBDD71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interon.Roadlab.Web.v13", "Interon.Roadlab.Web.v13\Interon.Roadlab.Web.v13.csproj", "{4B008F55-9370-4363-B51D-FE180A5E8DBD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -94,18 +94,6 @@ Global
 		{B7583FC4-E09D-41A8-B3D4-0545C1949219}.Release|iPhone.Build.0 = Release|Any CPU
 		{B7583FC4-E09D-41A8-B3D4-0545C1949219}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{B7583FC4-E09D-41A8-B3D4-0545C1949219}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{9A94403C-26CB-478B-B7B7-9C8E24430D2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9A94403C-26CB-478B-B7B7-9C8E24430D2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9A94403C-26CB-478B-B7B7-9C8E24430D2E}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{9A94403C-26CB-478B-B7B7-9C8E24430D2E}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{9A94403C-26CB-478B-B7B7-9C8E24430D2E}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{9A94403C-26CB-478B-B7B7-9C8E24430D2E}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{9A94403C-26CB-478B-B7B7-9C8E24430D2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9A94403C-26CB-478B-B7B7-9C8E24430D2E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9A94403C-26CB-478B-B7B7-9C8E24430D2E}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{9A94403C-26CB-478B-B7B7-9C8E24430D2E}.Release|iPhone.Build.0 = Release|Any CPU
-		{9A94403C-26CB-478B-B7B7-9C8E24430D2E}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{9A94403C-26CB-478B-B7B7-9C8E24430D2E}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{9F9CD8B1-FFC6-41CF-B1E2-34DD3FCBDD71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9F9CD8B1-FFC6-41CF-B1E2-34DD3FCBDD71}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F9CD8B1-FFC6-41CF-B1E2-34DD3FCBDD71}.Debug|iPhone.ActiveCfg = Debug|Any CPU
@@ -118,6 +106,18 @@ Global
 		{9F9CD8B1-FFC6-41CF-B1E2-34DD3FCBDD71}.Release|iPhone.Build.0 = Release|Any CPU
 		{9F9CD8B1-FFC6-41CF-B1E2-34DD3FCBDD71}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{9F9CD8B1-FFC6-41CF-B1E2-34DD3FCBDD71}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
+		{4B008F55-9370-4363-B51D-FE180A5E8DBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B008F55-9370-4363-B51D-FE180A5E8DBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B008F55-9370-4363-B51D-FE180A5E8DBD}.Debug|iPhone.ActiveCfg = Debug|Any CPU
+		{4B008F55-9370-4363-B51D-FE180A5E8DBD}.Debug|iPhone.Build.0 = Debug|Any CPU
+		{4B008F55-9370-4363-B51D-FE180A5E8DBD}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
+		{4B008F55-9370-4363-B51D-FE180A5E8DBD}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
+		{4B008F55-9370-4363-B51D-FE180A5E8DBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B008F55-9370-4363-B51D-FE180A5E8DBD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B008F55-9370-4363-B51D-FE180A5E8DBD}.Release|iPhone.ActiveCfg = Release|Any CPU
+		{4B008F55-9370-4363-B51D-FE180A5E8DBD}.Release|iPhone.Build.0 = Release|Any CPU
+		{4B008F55-9370-4363-B51D-FE180A5E8DBD}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
+		{4B008F55-9370-4363-B51D-FE180A5E8DBD}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
