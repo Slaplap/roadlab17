@@ -9,9 +9,4 @@
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Interon.Roadlab.Core\Interon.Roadlab.Core.csproj" />
-    <ProjectReference Include="..\Interon.Roadlab.Lims\Interon.Roadlab.LIMS.csproj" />
-  </ItemGroup>
-
 </Project>
