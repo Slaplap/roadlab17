@@ -9,31 +9,23 @@
 @if (TempData["Result"] == null)
 {
 
-    //using (Ajax.BeginForm("HandleSubmit", "ContactSurface", null, new AjaxOptions
-    //{
-    //    HttpMethod = "POST",
-    //    InsertionMode = InsertionMode.Replace,
-    //    UpdateTargetId = "ContactFormPlaceHolder",form branch__form
-
-    //}, new {@class = "form contact_form"}
-    //    ))
+   
 
     using (Html.BeginUmbracoForm("HandleSubmit", "VacancySurface", FormMethod.Post, new { @class = $"form " + c, enctype = "multipart/form-data",@id="vacancyform" }))
     {
 
+        <input asp-for="Name" class="form-control" placeholder="Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
 
-        @Html.TextBoxFor(x => x.Name, new { @placeholder = "Name" })
-        @Html.ValidationMessageFor(x => x.Name)
-        <div class="h-p">
-        @Html.TextBoxFor(x => x.Surname, new { @placeholder = "Surname" })
-        @Html.ValidationMessageFor(x => x.Surname)
-        </div>
-        @Html.TextBoxFor(x => x.Email, new { @placeholder = "Email" })
-        @Html.ValidationMessageFor(x => x.Email)
-        @Html.TextBoxFor(x => x.ContactNumber, new { @placeholder = "Contact Number" })
-        @Html.TextBoxFor(x=>x.Files,new{type="file",@name ="files"})
+
+        <input asp-for="Email" class="form-control" placeholder="Email" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+
+        <input asp-for="ContactNumber" class="form-control" placeholder="Contact Number" />
+        <input asp-for="Files" type="file" name="files" class="form-control-file" />
+
         <div class="float-right">
-            <input class="btn btn-blue__small" type="submit" value="SUBMIT">
+            <input  class="btn btn-blue__small" type="submit" value="SUBMIT">
         </div>
     }
 }
@@ -41,10 +33,8 @@ else
 {
     <p>@TempData["Result"]</p>
     <script>
-
         $(document).ready(function() {
             @Html.Raw(TempData["script"])
         });
-  
     </script>
 }

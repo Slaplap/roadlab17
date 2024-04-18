@@ -1,3 +1,5 @@
+using Interon.Roadlab.Web.Net.Core.Config;
+
 namespace Interon.Roadlab.Web.v13
 {
     public class Startup
@@ -17,6 +19,7 @@ namespace Interon.Roadlab.Web.v13
         {
             _env = webHostEnvironment ?? throw new ArgumentNullException(nameof(webHostEnvironment));
             _config = config ?? throw new ArgumentNullException(nameof(config));
+
         }
 
         /// <summary>
@@ -29,6 +32,7 @@ namespace Interon.Roadlab.Web.v13
         /// </remarks>
         public void ConfigureServices(IServiceCollection services)
         {
+             services.Configure<EmailSettings>(_config.GetSection("EmailSettings"));
 	        services.AddHttpContextAccessor();
 
 			services.AddUmbraco(_env, _config)

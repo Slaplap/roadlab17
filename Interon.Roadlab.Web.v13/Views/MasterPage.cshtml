@@ -1,28 +1,32 @@
 ﻿@using System
 
- 
+
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html lang="en">
 <head>
     @Html.Partial("~/Views/Partials/_RenderHead.cshtml")
     @RenderSection("topscripts", false)
-    @Html.Partial("~/Views/Partials/_RenderTopScripts.cshtml") 
+    @Html.Partial("~/Views/Partials/_RenderTopScripts.cshtml")
 </head>
 <body>
-    <!-- Facebook plugin START-->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T5KSL5SP"
+                height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+   
     <div id="fb-root"></div>
 
-   @Html.Partial("~/Views/Partials/_RenderHeader.cshtml");
+    @Html.Partial("~/Views/Partials/_RenderHeader.cshtml");
     <section class="static">
         @RenderBody()
     </section>
-  @Html.Partial("~/Views/Partials/_RenderFooter.cshtml")
+    @Html.Partial("~/Views/Partials/_RenderFooter.cshtml")
 
-   
 
-@Html.Partial("~/Views/Partials/_RenderBottomScripts.cshtml")
-@RenderSection("scripts", false)
-  
+
+    @Html.Partial("~/Views/Partials/_RenderBottomScripts.cshtml")
+    @RenderSection("scripts", false)
+
 </body>
 </html>

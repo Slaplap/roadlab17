@@ -1,9 +1,11 @@
 ﻿using System.Net;
 using System.Net.Mail;
 using System.Text;
+using Interon.Roadlab.Web.Net.Core.Config;
 using Interon.Roadlab.Web.Net.Core.Models.ViewModels;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using Umbraco.Cms.Core.Cache;
 using Umbraco.Cms.Core.Logging;
 using Umbraco.Cms.Core.Routing;
@@ -19,6 +21,12 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
     /// </summary>
     public class VacancySurfaceController : SurfaceController
     {
+        private readonly IOptions<EmailSettings> _emailSetings;
+        public VacancySurfaceController(IUmbracoContextAccessor umbracoContextAccessor, IUmbracoDatabaseFactory databaseFactory, ServiceContext services, AppCaches appCaches, IProfilingLogger profilingLogger, IPublishedUrlProvider publishedUrlProvider,IOptions<EmailSettings> emailSetings) : base(umbracoContextAccessor, databaseFactory, services, appCaches, profilingLogger, publishedUrlProvider)
+        {
+            _emailSetings = emailSetings;
+        }
+
         [HttpPost]
         public IActionResult HandleSubmit(VacancyModel model, IFormFileCollection  files)
         {
@@ -29,20 +37,20 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
                 return RedirectToCurrentUmbracoPage();
             }
 
-            //honeypot
-            if (!string.IsNullOrEmpty(model.Surname))
-            {
-                TempData["Result"] = "Thanks for your enquiry a consultant will be conting you shortly";
-                TempData["script"] = "document.getElementById(\"ContactFormPlaceHolder\").scrollIntoView();";
-                return RedirectToCurrentUmbracoPage();
-            }
+         
 
 
             string fileNameAndPath = "";
             IFormFile? file = files.FirstOrDefault();
             if (file != null && file.Length > 0)
             {
-                fileNameAndPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "App_data/FileUpload/", Path.GetFileName(file.FileName));
+                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
+                if (!Directory.Exists(uploadsFolder))
+                {
+                    Directory.CreateDirectory(uploadsFolder);
+                }
+
+                fileNameAndPath = Path.Combine(uploadsFolder, file.FileName);
                 using (var stream = new FileStream(fileNameAndPath, FileMode.Create))
                 {
                     file.CopyTo(stream);
@@ -57,13 +65,13 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
             try
             {
                 //getting useful configuration
-                string smtpAddress = ConfigurationSMTP.smtpAdress;
+                string smtpAddress = _emailSetings.Value.SmtpSettings.Host;
                 //it can be a "smtp.office365.com" or whatever,
                 //it depends on smtp server of your sender email.
-                int  portNumber = ConfigurationSMTP.portNumber;   //Smtp port
-                bool enableSSL  = ConfigurationSMTP.enableSSL;  //SSL enable
+                int portNumber = _emailSetings.Value.SmtpSettings.Port; 
+                bool enableSSL  = _emailSetings.Value.SmtpSettings.EnableSSL;
                 // string emailTo = "marelize@lohansafaris.com";
-                List<string> mailto = System.Configuration.ConfigurationManager.AppSettings["mailto"].Split(';').ToList<string>();
+                List<string> mailto = _emailSetings.Value.MailTo.Split(';').ToList<string>();
 
                 string subject = "Website Vacancy Form";
 
@@ -83,7 +91,7 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
 
                 using (MailMessage mail = new MailMessage())
                 {
-                    mail.From = new MailAddress(System.Configuration.ConfigurationManager.AppSettings["mailfrom"]);
+                    mail.From = new MailAddress( _emailSetings.Value.MailFrom);
                     //destination adress
                     foreach (var item in mailto)
                     {
@@ -107,14 +115,14 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
                     {
                         //passing the credentials for authentication
                         smtp.Credentials = new NetworkCredential
-                            (ConfigurationSMTP.from, ConfigurationSMTP.password);
+                            (_emailSetings.Value.MailFrom,_emailSetings.Value.SmtpSettings.Password);
                         //Authentication required
                         smtp.EnableSsl = enableSSL;
                         //sending email.
                         smtp.Send(mail);
                     }
                 }
-                TempData["Result"] = "Thanks for your enquiry a consultant will be conting you shortly";
+                TempData["Result"] = "Thanks for your enquiry a consultant will be contacting you shortly";
                 TempData["script"] = "document.getElementById(\"ContactFormPlaceHolder\").scrollIntoView();";
             }
             catch (Exception ex)
@@ -129,8 +137,5 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
             return RedirectToCurrentUmbracoPage();
         }
 
-        public VacancySurfaceController(IUmbracoContextAccessor umbracoContextAccessor, IUmbracoDatabaseFactory databaseFactory, ServiceContext services, AppCaches appCaches, IProfilingLogger profilingLogger, IPublishedUrlProvider publishedUrlProvider) : base(umbracoContextAccessor, databaseFactory, services, appCaches, profilingLogger, publishedUrlProvider)
-        {
-        }
     }
 }

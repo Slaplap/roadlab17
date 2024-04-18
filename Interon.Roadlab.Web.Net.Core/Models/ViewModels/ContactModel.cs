@@ -7,7 +7,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ViewModels
 
         public int BranchNumber { get; set; }
 
-        public string BranchEmail { get; set; }
+        public string? BranchEmail { get; set; }
         [Required]
         [Display(Name = "Name", Prompt = "Name")]
         public string Name { get; set; }
@@ -15,19 +15,19 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ViewModels
         [Required]
         [EmailAddress]
         [Display(Name = "Email", Prompt = "Email")]
-        public string Email { get; set; }
+        public string? Email { get; set; }
         [Required]
         [Display(Name = "Contact Number", Prompt = "Contact Number")]
         public string ConactNumber { get; set; }
         [Required]
         [Display(Name = "Subject", Prompt = "Subject")]
-        public string Subject { get; set; }
+        public string? Subject { get; set; }
         [Required]
         [Display(Name = "Query", Prompt = "Query")]
         public string Query { get; set; }
         //this is a honey pot field
-        public string Surname { get; set; }
-        public string BranchName { get; set; }
+
+        public string? BranchName { get; set; } = "";
     }
     /// <summary>
     /// Summary description for ContactModel
@@ -35,26 +35,25 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ViewModels
     public class ContactModel
     {
        
-        public string BranchName { get; set; }
-        public int BranchNumber { get; set; }
-        public string BranchEmail { get; set; }
+        public string? BranchName { get; set; } 
+        public int BranchNumber { get; set; }   
+        public string? BranchEmail { get; set; }  
         [Required]
         [Display(Name = "Name",Prompt = "Name")]
         public string Name { get; set; }
    
         [Required][EmailAddress]
         [Display(Name = "Email",Prompt = "Email")]
-        public string Email { get; set; }
+        public string? Email { get; set; }
         [Required]
         [Display (Name= "Contact Number",Prompt = "Contact Number")]
-        public string ConactNumber { get; set; }
+        public string? ConactNumber { get; set; }
         [Required]
         [Display(Name = "Subject", Prompt = "Subject")]
-        public string Subject { get; set; }
+        public string? Subject { get; set; }
         [Required]
         [Display(Name = "Query", Prompt = "Query")]
-        public string Query { get; set; }
-        //this is a honey pot field
-        public string Surname { get; set; }
+        public string? Query { get; set; }
+               
     }
 }

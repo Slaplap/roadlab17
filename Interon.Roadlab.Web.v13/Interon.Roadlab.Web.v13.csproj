@@ -23,6 +23,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Uploads\" />
     <Folder Include="NewFolder\" />
     <Folder Include="Views\MacroPartials\" />
     <Folder Include="Views\Shared\displaytemplates\" />
