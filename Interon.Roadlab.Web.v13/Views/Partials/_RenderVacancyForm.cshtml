@@ -25,7 +25,10 @@
         <input asp-for="Files" type="file" name="files" class="form-control-file" />
 
         <div class="float-right">
-            <input  class="btn btn-blue__small" type="submit" value="SUBMIT">
+            <input  class="btn btn-blue__small g-recaptcha"
+                    data-sitekey="6Lettr8pAAAAAAg3rQMIrkqhkxB3ROZVvXWy-730"
+                   data-callback='onVacancySubmit'
+                    data-action='submit' value="SUBMIT">
         </div>
     }
 }

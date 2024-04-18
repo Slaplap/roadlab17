@@ -30,7 +30,10 @@
         <textarea asp-for="Query" class="form-control" placeholder="Query" style="color:grey"></textarea>
         <span asp-validation-for="Query" class="text-danger"></span>
         <div class="float-right">
-            <button id="contactButton" class="btn btn-blue__small" type="submit">SUBMIT</button>
+            <button id="contactButton" class="btn btn-blue__small g-recaptcha"
+                    data-sitekey="6Lettr8pAAAAAAg3rQMIrkqhkxB3ROZVvXWy-730"
+                    data-callback='onContactSubmit'
+                    data-action='submit'>SUBMIT</button>
         </div>
     }
 }
