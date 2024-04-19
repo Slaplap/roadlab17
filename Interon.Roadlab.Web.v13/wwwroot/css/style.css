@@ -33,7 +33,7 @@ html {
 	min-height: 25rem;
 	background-attachment: fixed;
 	background-position: 20%;
-	background-repeat: no-repeat;
+	//background-repeat: no-repeat;
 }
 .paralsec {
 	background-image: url("/images/rockface3.jpg");
