@@ -1,16 +1,16 @@
-
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Umbraco.Cms.Core.Models.Blocks;
 using Umbraco.Cms.Core.Models.PublishedContent;
 
+namespace Interon.Roadlab.Web.v13.Extensions;
 
 public static class BlockListTemplateExtensions
 {
     public const string DefaultFolder = "blocklist/";
     public const string DefaultTemplate = "default";
-    public static IHtmlContent GetFirstBlockList(this HtmlHelper html, dynamic oModel, string template = DefaultTemplate)
+    public static IHtmlContent GetFirstBlockList(this IHtmlHelper<dynamic> html, dynamic oModel, string template = DefaultTemplate)
     {
         BlockListModel model = null;
         //check if oModel is of type IPublishedContent or of type BlockListItem
