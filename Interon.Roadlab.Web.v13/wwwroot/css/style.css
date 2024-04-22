@@ -2066,3 +2066,7 @@ form.blog::after {
 	background-color: #fe5000;
 	margin: 0 70% 1rem 0;
 }
+
+.form-control {
+	font-size: 1.6rem;
+}
