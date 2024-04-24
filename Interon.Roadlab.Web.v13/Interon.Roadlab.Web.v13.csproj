@@ -31,6 +31,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Views\Partials\grid\editors\base.cshtml" />
+    <None Include="Views\Partials\grid\editors\embed.cshtml" />
+    <None Include="Views\Partials\grid\editors\macro.cshtml" />
+    <None Include="Views\Partials\grid\editors\media.cshtml" />
+    <None Include="Views\Partials\grid\editors\rte.cshtml" />
+    <None Include="Views\Partials\grid\editors\textstring.cshtml" />
     <None Include="Views\Partials\_RenderCTA.cshtml" />
   </ItemGroup>
 
