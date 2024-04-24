@@ -8,8 +8,8 @@
 
 <main>
 	<section>
-		<img class="hidden-mobile" src="@Umbraco.Media(Model.Value<IPublishedContent>("desktopImage").Id).Url()" style="width:100%;">
-		<img class="visible-mobile" src="@Umbraco.Media(Model.Value<IPublishedContent>("mobileImage").Id).Url()" style="width:100%;">
+		<img class="hidden-mobile" src="@Umbraco.Media(Model.Value<IPublishedContent>("desktopImage").Id).Url()" style="width:100%;" alt="Header Image">
+		<img class="visible-mobile" src="@Umbraco.Media(Model.Value<IPublishedContent>("mobileImage").Id).Url()" style="width:100%;" alt="Header Image">
 	</section>
 
 	<section class="features">
@@ -76,42 +76,7 @@
 			</div>
 		</div>
 	</section>
-	<!-- BENEFITS -->
-	<!--<section>
-		<div class="paral paralsec">
-			<div class="container">
-				<div class="row benefits__content">
-					<div class="col-md-6">
-						<div class="row">
-							<div class="col-md-4">
-								<img class="benefits__img" src="./images/afrd.png" alt="materials testing lab">
-							</div>
-							<div class="col-md-8">
-								<h2 class="benefits__heading"><span class="u-bold">AFRICA’S LEADING </span></h2>
-								<h3 class="benefits__sub-heading">MATERIALS <strong>TESTING SERVICE</strong> PROVIDER</h3><br />
-								<h4 class="benefits__sub-heading" style="font-style: italic;">Making incredible projects happen in over 20 countries across Africa since 1965.</h4>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="row">
-							<div class="col-md-3">
-								<img class="benefits__img" src="./images/4.png" alt="materials testing lab">
-							</div>
-							<div class="col-md-9 benefits__head">
-								<h1 class="">REASONS WHY</h1>
-								<div style="display:inline-flex">
-									<h3 class=""><strong>OUR CLIENTS CHOOSE</strong> </h3>
-									<img style="margin-left:1rem;max-height:30px;" src="/images/rwhite.png" />
-								</div>
-							</div>
 
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>-->
 	<hr />
 	<!-- BENEFITS BLOCKS -->
 	<section class="benefits-blocks container">
