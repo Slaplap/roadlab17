@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Options;
 using System.Net.Http;
 using System.Threading.Tasks;
 
@@ -6,17 +8,19 @@ public class MediaFileMiddleware
 {
     private readonly RequestDelegate _next;
     private readonly IHttpClientFactory _httpClientFactory;
+    private readonly IConfiguration _config;
     private readonly string _remoteServerUrl = "https://roadlabstaging.azurewebsites.net/media/";
 
-    public MediaFileMiddleware(RequestDelegate next, IHttpClientFactory httpClientFactory)
+    public MediaFileMiddleware(RequestDelegate next, IHttpClientFactory httpClientFactory, IConfiguration config)
     {
         _next = next;
         _httpClientFactory = httpClientFactory;
+        _config = config;
     }
 
     public async Task InvokeAsync(HttpContext context)
     {
-        if (context.Request.Path.StartsWithSegments("/media"))
+        if (context.Request.Path.StartsWithSegments("/media") && _config.GetValue<bool>("Custom:LoadMediaFromStaging"))
         {
             var httpClient = _httpClientFactory.CreateClient();
             var filePath = context.Request.Path.ToString();
