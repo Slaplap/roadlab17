@@ -1,0 +1,145 @@
+﻿ 
+@using Interon.Roadlab.Web.Net.Core.Models.ContentModels
+@inject IPublishedValueFallback PublishedValueFallback
+
+@inherits UmbracoViewPage
+@{
+    BlogSelector blogSelector = new BlogSelector(Model, PublishedValueFallback);
+  
+    var homepage = Model.Root<HomePage>();
+    
+}
+@if (blogSelector.BlockContentPicker != null)
+{
+    if (blogSelector.BlockContentPicker.Any())
+    {
+
+
+        <section>
+            <div class="container footer-blog">
+                <div class="row blog-container">
+                    @foreach (var item in blogSelector.BlockContentPicker.OfType<BlogArticle>())
+                    {
+                        <div class="col-md-4 col-sm-12">
+                            <img class="about-team__sub-container--img mb-3" src="@item.ArticleIntersectImage.Url()" alt="">
+                            <h6 class="about-team__sub-container--title">@item.Parent.Name</h6>
+                            <h5 class="blog__sub-container--name">@item.BlogHeading</h5>
+                            <div class="blog__sub-container--content ft-cont">
+                                <p>
+                                    @item.ArticleIntersectDescription
+                                    <a href="@item.Url()"> Read more</a>
+                                </p>
+                            </div>
+
+                        </div>
+                    }
+
+
+                </div>
+            </div>
+        </section>
+    }
+}
+<footer class="footer">
+    <div>
+        <div class="big__container">
+            <div class="row footer__container">
+                <div class="col-lg-4 col-md-12 footer__spacer--left">
+                    <img src="/images/rwhite.png" />
+                    <p class=" footer__text">
+                        <strong>Roadlab</strong> has been providing professional materials laboratory services to the civil engineering, construction and mining industries in sub-Saharan Africa since 1965, serving private, government and municipal sectors. We are an accredited, independent testing laboratory which has gained industry leader reputation due to excellent service and customer-focused solutions.</br></br>
+                        Roadlab offers state-of-the-art facilities, where standardised testing methods ensure products and samples are accurately tested, validated and comprehensive reporting delivered against accredited specifications.
+                    </p>
+                </div>
+                <div class="col-lg-4 col-md-12 footer__spacer--middle">
+                    <p class="footer__heading">QUICK LINKS</p>
+                    <div class="row">
+                        <div class="col">
+                            <div class="footer__list-box">
+                                <ul class="fa-ul footer__links">
+                                    <li>
+                                        <a href="@(homepage?.FooterAccreditation?.Url()??"#")" target="_blank"><span class="fa-li ft-icon"><i class="fas fa-angle-right"></i></span>Accreditation</a>
+                                    </li>
+                                    <li>
+                                        <a href="@(homepage?.FooterBee?.Url()??"#")" target="_blank"><span class="fa-li ft-icon"><i class="fas fa-angle-right"></i></span>BEE</a>
+                                    </li>
+                                    <li>
+                                        <a href="/privacy-policy/"><span class="fa-li ft-icon"><i class="fas fa-angle-right"></i></span>Privacy Policy</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="footer__list-box">
+                                <ul class="fa-ul footer__links">
+                                    <li>
+                                        <a href="/usage-terms/"><span class="fa-li ft-icon"><i class="fas fa-angle-right"></i></span>Usage Terms</a>
+                                    </li>
+                                    <li>
+                                        <a href="/projects/"><span class="fa-li ft-icon"><i class="fas fa-angle-right"></i></span>Projects</a>
+                                    </li>
+                                    <li>
+                                        <a href="/images/POPIA.pdf" target="_blank"><span class="fa-li ft-icon"><i class="fas fa-angle-right"></i></span>POPIA</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-12 footer__spacer--right">
+                    <p class="footer__heading">CONTACT US</p>
+                    <div class="row">
+                        <div class="col">
+                            <div class="footer__list-box--icon">
+                                <ul class="fa-ul footer__links">
+                                    <li>
+                                        <a href="tel:+27 11 828 0279"><span class="fa-li ft-icon"><i class="fas fa-phone"></i></span>+27 11 828 0279</a>
+                                    </li>
+                                    <li>
+                                        <a href="mailto:info@roadlab.co.za"><span class="fa-li ft-icon"><i class="fas fa-envelope"></i></span>info@roadlab.africa</a>
+                                    </li>
+                                    <li>
+                                        <a href="/head-office/">
+                                            <span class="fa-li ft-icon"><i class="fas fa-map-marker-alt"></i></span>207 Rietfontein Rd<br />
+                                            Primrose<br />
+                                            Johannesburg<br />
+                                            SOUTH AFRICA
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <div class="footer__list-box--icon">
+                                <ul class="fa-ul footer__links">
+                                    <li>
+                                        <a href="https://www.facebook.com/Roadlablaboratories" target="_blank"><span class="fa-li ft-icon"><i class="fab fa-facebook"></i></span>Facebook</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.youtube.com/channel/UCZ6-J3HjrR8BAFVSoHUEW1g" target="_blank"><span class="fa-li ft-icon"><i class="fab fa-youtube"></i></span>YouTube</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.instagram.com/roadlabafrica/" target="_blank"><span class="fa-li ft-icon"><i class="fab fa-instagram"></i></span>Instagram</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.linkedin.com/company/roadlab/" target="_blank"><span class="fa-li ft-icon"><i class="fab fa-linkedin"></i></span>LinkedIn</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer__credits">
+        <div class="container">
+            <div class="row footer__credits--text">
+                <div class="col last">
+                    <p>@DateTime.Now.Year Roadlab Pty Ltd. All rights reserved. Web Development by<a href="https://www.interon.co.za" target="_blank" class="interon"> INTERON</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<a href="#top"> <img class="sticky" src="/images/bot.png" alt="Top"></a>

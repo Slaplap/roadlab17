@@ -1,0 +1,50 @@
+﻿@using Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
+@inherits UmbracoViewPage<Interon.Roadlab.Web.Net.Core.Models.ViewModels.ContactModel>
+@{
+    var c = "contact_form";
+    if (!string.IsNullOrEmpty(Model.BranchEmail))
+    {
+        c = "branch__form";
+    }
+}
+
+@if (TempData["Result"] == null)
+{
+ 
+    @using (Html.BeginUmbracoForm<ContactSurfaceController>(nameof(ContactSurfaceController.HandleSubmit), FormMethod.Post, new { @class = $"form " + c, @id = "contactform" }))
+
+   
+    {
+        <input asp-for="BranchName" type="hidden" />
+        <input asp-for="BranchNumber" type="hidden" />
+        <input asp-for="BranchEmail" type="hidden" />
+        <input asp-for="Name" class="form-control" placeholder="Name" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+        
+        <input asp-for="Email" class="form-control" placeholder="Email" />
+        <span asp-validation-for="Email" class="text-danger"></span>
+        <input asp-for="ConactNumber" class="form-control" placeholder="Contact Number" /> <!-- Assuming "ConactNumber" was a typo -->
+        <span asp-validation-for="ConactNumber" class="text-danger"></span>
+        <input asp-for="Subject" class="form-control" placeholder="Subject" />
+        <span asp-validation-for="Subject" class="text-danger"></span>
+        <textarea asp-for="Query" class="form-control" placeholder="Query" style="color:grey"></textarea>
+        <span asp-validation-for="Query" class="text-danger"></span>
+        <div class="float-right">
+            <button id="contactButton" class="btn btn-blue__small g-recaptcha"
+                    data-sitekey="6Lettr8pAAAAAAg3rQMIrkqhkxB3ROZVvXWy-730"
+                    data-callback='onContactSubmit'
+                    data-action='submit'>SUBMIT</button>
+        </div>
+    }
+}
+else
+{
+    <p>@TempData["Result"]</p>
+    <script>
+
+        $(document).ready(function() {
+            @Html.Raw(TempData["script"])
+        });
+
+    </script>
+}

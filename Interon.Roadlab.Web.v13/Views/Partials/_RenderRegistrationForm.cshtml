@@ -1,0 +1,45 @@
+﻿@inherits UmbracoViewPage<Interon.Roadlab.Web.Net.Core.Models.ViewModels.RegistrationViewModel>
+
+
+<div class="container branch__container login__container">
+    <div class="row">
+        <div class="col">
+
+            @using (Html.BeginUmbracoForm("Registration", "Membership", FormMethod.Post, new {@class = "form branch__form"}))
+            {
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                 
+ 
+                @Html.EditorFor(x=>x.Login,new {PlaceHolder="Email"})
+                @Html.ValidationMessageFor(x=>x.Login)
+
+                @Html.EditorFor(x=>x.Name,new {PlaceHolder="Name"})
+                @Html.ValidationMessageFor(x=>x.Name)
+
+                @Html.EditorFor(x=>x.Surname,new {PlaceHolder="Surname"})
+                @Html.ValidationMessageFor(x=>x.Surname)
+
+                @Html.EditorFor(x=>x.CellNumber,new {PlaceHolder="Cell Number"})
+                @Html.ValidationMessageFor(x=>x.CellNumber)
+
+                @Html.EditorFor(x=>x.AccountNumber ,new {PlaceHolder="Account Number"})
+                @Html.ValidationMessageFor(x=>x.AccountNumber)
+
+                @Html.EditorFor(x=>x.Password ,new {PlaceHolder="Password"})
+                @Html.ValidationMessageFor(x=>x.Password)
+
+                <div style="display: none">
+                    @Html.EditorFor(x=>x.RepeatPassword)
+                </div>
+                <div class="float-right">
+                    <span>
+                        <i class="fas fa-angle-right btn-fa branch__glyph"></i>
+                    </span> <input class="input btn btn-blue" type="submit" value="REGISTER">
+                </div>
+            }
+
+        </div>
+
+    </div>
+</div>
