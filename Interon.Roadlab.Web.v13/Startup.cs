@@ -52,6 +52,7 @@ namespace Interon.Roadlab.Web.v13
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseMiddleware<MediaFileMiddleware>();
             }
 
             app.UseUmbraco()
