@@ -6,6 +6,7 @@ using Interon.Roadlab.Web.Net.Core.Config;
 using Interon.Roadlab.Web.Net.Core.Models.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using Serilog;
 using Umbraco.Cms.Core.Cache;
 using Umbraco.Cms.Core.Logging;
 using Umbraco.Cms.Core.Routing;
@@ -40,13 +41,14 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
 
             try
             {
+
                 //getting useful configuration
                 string smtpAddress = _emailSettings.Value.SmtpSettings.Host;
                 //it can be a "smtp.office365.com" or whatever,
                 //it depends on smtp server of your sender email.
                 int portNumber =  _emailSettings.Value.SmtpSettings.Port;   //Smtp port
                 bool enableSSL = _emailSettings.Value.SmtpSettings.EnableSSL;  //SSL enable
-                // string emailTo = "marelize@lohansafaris.com";
+                
                 List<string> mailto = _emailSettings.Value.MailTo.Split(';').ToList<string>();
 
                 string subject = "Website Contact Form - " + @model.BranchName; 
@@ -65,42 +67,46 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
                 body.Append(string.Format("<span style='font-size:11px; font-family:Arial; color:#40411E;'>{0}</span><br>", model.Query));
                 body.Append(string.Format("<span style='font-size:11px; font-family:Arial; color:#40411E;'>{0}</span><br>", model.BranchEmail));
                 body.Append("</body></html>");
+                Log.Information("Start Email Sending");
+                Log.Information("Email To: {0}", _emailSettings.Value.MailTo);
+                Log.Information("Email From: {0}", _emailSettings.Value.MailFrom);
 
                 using (MailMessage mail = new MailMessage())
                 {
-                    mail.From = new MailAddress(_emailSettings.Value.MailFrom);
-                    //destination adress
-                    foreach (var item in mailto)
+                    try
                     {
-                        mail.To.Add(item);
+                        mail.From = new MailAddress(_emailSettings.Value.MailFrom);
+                        //destination address
+                        foreach (var item in mailto)
+                        {
+                            mail.To.Add(item);
+                        }
+
+                        if (!string.IsNullOrWhiteSpace(model.BranchEmail))
+                        {
+                            mail.To.Add(model.BranchEmail);
+                        }
+
+                        mail.Subject = subject;
+                        mail.Body = body.ToString();
+                        //set to true, to specify that we are sending html text.
+                        mail.IsBodyHtml = true;
+
+                        //Specify the smtp Server and port number to create a new instance of SmtpClient.
+                        using (SmtpClient smtp = new SmtpClient(smtpAddress, portNumber))
+                        {
+                            //passing the credentials for authentication
+                            smtp.Credentials = new NetworkCredential(_emailSettings.Value.MailFrom, _emailSettings.Value.SmtpSettings.Password);
+                            //Authentication required
+                            smtp.EnableSsl = enableSSL;
+                            //sending email.
+                            smtp.Send(mail);
+                        }
                     }
-
-                    if (!string.IsNullOrWhiteSpace(model.BranchEmail))
+                    catch (Exception ex)
                     {
-                        mail.To.Add(model.BranchEmail);
-                    }
-
-                    mail.Subject = subject;
-                    mail.Body = body.ToString();
-                    //set to true, to specify that we are sending html text.
-                    mail.IsBodyHtml = true;
-                    // Can set to false, if you are sending pure text.
-
-                    string localFileName = "~/Content/TestAttachement.txt";
-                    //to send a file in attachment.
-                    //mail.Attachments.Add(new Attachment
-                    //(Server.MapPath(localFileName), "application/pdf"));
-
-                    //Specify the smtp Server and port number to create a new instance of SmtpClient.
-                    using (SmtpClient smtp = new SmtpClient(smtpAddress, portNumber))
-                    {
-                        //passing the credentials for authentication
-                        smtp.Credentials = new NetworkCredential
-                            (_emailSettings.Value.MailFrom, _emailSettings.Value.SmtpSettings.Password);
-                        //Authentication required
-                        smtp.EnableSsl = enableSSL;
-                        //sending email.
-                        smtp.Send(mail);
+                        Log.Error(ex, "Error sending email. Configuration: SmtpAddress: {0}, Port: {1}, EnableSSL: {2}, MailFrom: {3}, MailTo: {4}, Subject: {5}, Body: {6}",
+                            smtpAddress, portNumber, enableSSL, _emailSettings.Value.MailFrom, string.Join(";", mailto), subject, body.ToString());
                     }
                 }
                 TempData["Result"] = "Thanks for your enquiry a consultant will be contacting you shortly";
@@ -108,7 +114,7 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
             }
             catch (Exception ex)
             {
-                //Error response
+                Log.Error(ex, "Error sending email");
                 Response.StatusCode = 400;
                 TempData["Result"] = ex.Message;
             }
