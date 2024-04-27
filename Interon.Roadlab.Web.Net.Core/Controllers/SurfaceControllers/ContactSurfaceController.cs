@@ -69,7 +69,7 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
                 body.Append("</body></html>");
                 Log.Information("Start Email Sending");
                 Log.Information("Email To: {0}", _emailSettings.Value.MailTo);
-                Log.Information("Email From: {0}", _emailSettings.Value.MailFrom);
+                Log.Information("Email From: {0}", _emailSettings.Value.MailFrom); 
 
                 using (MailMessage mail = new MailMessage())
                 {
