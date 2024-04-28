@@ -1,5 +1,6 @@
-﻿@inherits UmbracoViewPage<Interon.Roadlab.Web.Core.MvcControllers.SearchRenderModel>
-@using Our.Umbraco.FullTextSearch.Helpers
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@inherits UmbracoViewPage<Interon.Roadlab.Web.Net.Core.Controllers.SearchViewModel>
+
  
  
 @{
@@ -15,12 +16,12 @@
             <div class="row">
                 <div class="col-md-6 col-sm-12 hero__space">
                     <div class="hero__container">
-                        <h4 class="hero__container--sub-heading">@Model.Model.Value("heroSmallHeading")</h4>
-                        <h1 class="hero__container--main-heading ">@Model.Model.Value("heroLargeHeading")</h1>
+                        <h4 class="hero__container--sub-heading">@Model.Value("heroSmallHeading")</h4>
+                        <h1 class="hero__container--main-heading ">@Model.Value("heroLargeHeading")</h1>
                         <hr class="hero__hr2">
-                        <p class="hero__container--content-sub">@Model.Model.Value("heroShortDescription")</p>
+                        <p class="hero__container--content-sub">@Model.Value("heroShortDescription")</p>
                         <div class="hero__container--content">
-                            <p>@Model.Model.Value("heroContent")</p>
+                            <p>@Model.Value("heroContent")</p>
                         </div>
 
                     </div>
@@ -46,18 +47,18 @@
             <div class="row"></div>
             <div class="row blog-container">
                 <div class="col-lg-8 col-md-6 col-sm-12">
-                    @if (  Model.FullTextSearchResult.Results.Any())
+                    @if (  Model.SearchResults.Any())
                     {
-                        foreach (var item in Model.FullTextSearchResult.Results)
+                        foreach (var item in Model.SearchResults.OfType<Interon.Roadlab.Web.Net.Core.Models.ContentModels.BlogArticle>())
                         {
                             try
                             {
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <h6 class="about-team__sub-container--title"></h6>
-                                        <h5 class="blog__sub-container--name">@item.Title</h5>
+                                        <h5 class="blog__sub-container--name">@item.PageTitle</h5>
                                         <p>
-                                            @item.Summary
+                                            @item.ArticleIntersectDescription
                                             <a href="@item.Url()"> read more</a>
                                         </p>
                                     </div>

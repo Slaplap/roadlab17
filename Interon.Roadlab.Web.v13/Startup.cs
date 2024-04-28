@@ -1,4 +1,5 @@
 using Interon.Roadlab.Web.Net.Core.Config;
+using Interon.Roadlab.Web.Net.Core.Controllers;
 
 namespace Interon.Roadlab.Web.v13
 {
@@ -32,10 +33,10 @@ namespace Interon.Roadlab.Web.v13
         /// </remarks>
         public void ConfigureServices(IServiceCollection services)
         {
-             services.Configure<EmailSettings>(_config.GetSection("EmailSettings"));
+            services.Configure<EmailSettings>(_config.GetSection("EmailSettings"));
 	        services.AddHttpContextAccessor();
-
-			services.AddUmbraco(_env, _config)
+            services.AddTransient<ISearchService, SearchService>();
+            services.AddUmbraco(_env, _config)
                 .AddBackOffice()
                 .AddWebsite()
                 .AddComposers()
