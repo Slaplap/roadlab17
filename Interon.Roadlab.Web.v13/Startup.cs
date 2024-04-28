@@ -1,5 +1,6 @@
 using Interon.Roadlab.Web.Net.Core.Config;
 using Interon.Roadlab.Web.Net.Core.Controllers;
+using Our.Umbraco.FullTextSearch;
 
 namespace Interon.Roadlab.Web.v13
 {
@@ -35,10 +36,11 @@ namespace Interon.Roadlab.Web.v13
         {
             services.Configure<EmailSettings>(_config.GetSection("EmailSettings"));
 	        services.AddHttpContextAccessor();
-            services.AddTransient<ISearchService, SearchService>();
+            
             services.AddUmbraco(_env, _config)
                 .AddBackOffice()
                 .AddWebsite()
+                 
                 .AddComposers()
                 .Build();
         }

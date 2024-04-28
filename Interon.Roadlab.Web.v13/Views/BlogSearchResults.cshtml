@@ -1,12 +1,12 @@
 ﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
-@inherits UmbracoViewPage<Interon.Roadlab.Web.Net.Core.Controllers.SearchViewModel>
+@inherits UmbracoViewPage<Interon.Roadlab.Web.Net.Core.Controllers.MvcControllers.SearchViewModel>
+ 
 
- 
- 
+
 @{
     Layout = "MasterPage.cshtml";
-   
-    
+
+
 }
 
 
@@ -16,12 +16,12 @@
             <div class="row">
                 <div class="col-md-6 col-sm-12 hero__space">
                     <div class="hero__container">
-                        <h4 class="hero__container--sub-heading">@Model.Value("heroSmallHeading")</h4>
-                        <h1 class="hero__container--main-heading ">@Model.Value("heroLargeHeading")</h1>
+                        <h4 class="hero__container--sub-heading">@Model.Model.HeroSmallHeading</h4>
+                        <h1 class="hero__container--main-heading ">@Model.Model.HeroLargeHeading</h1>
                         <hr class="hero__hr2">
-                        <p class="hero__container--content-sub">@Model.Value("heroShortDescription")</p>
+                        <p class="hero__container--content-sub">@Model.Model.HeroShortDescription</p>
                         <div class="hero__container--content">
-                            <p>@Model.Value("heroContent")</p>
+                            <p>@Model.Model.HeroContent</p>
                         </div>
 
                     </div>
@@ -47,19 +47,19 @@
             <div class="row"></div>
             <div class="row blog-container">
                 <div class="col-lg-8 col-md-6 col-sm-12">
-                    @if (  Model.SearchResults.Any())
+                    @if (Model.FullTextSearchResult.Results.Any())
                     {
-                        foreach (var item in Model.SearchResults.OfType<Interon.Roadlab.Web.Net.Core.Models.ContentModels.BlogArticle>())
+                        foreach (var item in Model.FullTextSearchResult.Results)
                         {
                             try
                             {
                                 <div class="row">
                                     <div class="col-sm-12">
                                         <h6 class="about-team__sub-container--title"></h6>
-                                        <h5 class="blog__sub-container--name">@item.PageTitle</h5>
+                                        <h5 class="blog__sub-container--name">@item.Title</h5>
                                         <p>
-                                            @item.ArticleIntersectDescription
-                                            <a href="@item.Url()"> read more</a>
+                                            @item.Summary
+                                            <a href="@item.Content.Url()"> read more</a>
                                         </p>
                                     </div>
                                 </div>
@@ -70,6 +70,7 @@
 
                             }
                         }
+                        <div style="margin-bottom:20px">Total results: @Model.FullTextSearchResult.TotalResults</div>
                     }
                     else
                     {
@@ -82,15 +83,15 @@
                     <h5 class="blog__sub-container--name my-3 mb-3">SEARCH</h5>
                     <div>
                         <form class="blog my-3 mb-3" action="">
-                            <input type="text" placeholder="Search" name="search">
+                            <input type="text" placeholder="Search" name="q">
                             <button type="submit"><i class="fa fa-search"></i></button>
                         </form>
                     </div>
                     <div>
 
-                            @*@Html.Partial("_RenderCategoryList",Model.Model)
+                        @*@Html.Partial("_RenderCategoryList",Model.Model)
 
-                            @Html.Partial("_RenderRecentArticleList",Model.Model)*@
+                        @Html.Partial("_RenderRecentArticleList",Model.Model)*@
                     </div>
                 </div>
             </div>
