@@ -65,18 +65,20 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.MvcControllers
                     int.TryParse(HttpContext.Request.Query["p"], out currentPage);
                     currentPage = currentPage < 1 ? 1 : currentPage;
                 }
-                SearchViewModel viewModel = new(CurrentPage!, publishedValueFallback);
-                
-                var search = new Search(query)
+             //   SearchViewModel viewModel = new(CurrentPage!, publishedValueFallback);
+
+                var search = new Search(query.Trim() )
                     .EnableHighlighting()
                     .AddTitleProperty("blogHeading")
-
-                    .AddSummaryProperties("articleIntersectBodyText", "heroSmallHeading", "heroLargeHeading")
+                    
+                    .AddSummaryProperties("articleIntersectDescription")
                     .SetSummaryLength(300)
                     .SetPageLength(50)
-                    
-                    .SetCulture(contentModel.Content.GetCultureFromDomains());
-                search.AddWildcard = true;
+
+                    .AddAllowedContentType(Interon.Roadlab.Web.Net.Core.Models.ContentModels.BlogArticle.ModelTypeAlias);
+                
+                search.EnableWildcards();
+               
                 searchViewModel.FullTextSearchResult = searchService.Search(search, currentPage);
             }
             else

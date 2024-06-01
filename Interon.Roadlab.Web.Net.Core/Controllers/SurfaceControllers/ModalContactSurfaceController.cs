@@ -56,7 +56,9 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
                 //Mail signature
                 body.Append(string.Format("<span style='font-size:11px;font-family:Arial; color:#40411E;'>{0} </span><br>", model.Name));
                 body.Append(string.Format("<span style='font-size:11px;font-family:Arial; color:#40411E;'>Mail: <a href=\"mailto:{0}\">{0}</a></ span ><br> ", model.Email));
-                body.Append(string.Format("<span style='font-size:11px;font-family:Arial; color:#40411E;'>Tel: {0}</span><br>", model.ConactNumber));
+                body.Append(string.Format("<span style='font-size:11px;font-family:Arial; color:#40411E;'>Tel: {0}</span><br>", model.ContactNumber));
+                body.Append(string.Format("<span style='font-size:11px;font-family:Arial; color:#40411E;'>Company: {0}</span><br>", model.Company));
+                body.Append(string.Format("<span style='font-size:11px;font-family:Arial; color:#40411E;'>Location: {0}</span><br>", model.Location));
                 body.Append(string.Format("<span style='font-size:11px; font-family:Arial; color:#40411E;'>{0}</span><br>", model.Query));
                 body.Append(string.Format("<span style='font-size:11px; font-family:Arial; color:#40411E;'>{0}</span><br>", model.BranchEmail));
                 body.Append("</body></html>");
