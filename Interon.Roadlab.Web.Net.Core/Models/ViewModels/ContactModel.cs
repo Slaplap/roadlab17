@@ -47,10 +47,16 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ViewModels
         public string? Email { get; set; }
         [Required]
         [Display (Name= "Contact Number",Prompt = "Contact Number")]
-        public string? ConactNumber { get; set; }
+        public string? ContactNumber { get; set; }
         [Required]
         [Display(Name = "Subject", Prompt = "Subject")]
         public string? Subject { get; set; }
+        [Required]
+        [Display(Name = "Company", Prompt = "Company")]
+        public string? Company { get; set; }
+        [Required]
+        [Display(Name = "Location", Prompt = "Location")]
+        public string? Location { get; set; }
         [Required]
         [Display(Name = "Query", Prompt = "Query")]
         public string? Query { get; set; }
