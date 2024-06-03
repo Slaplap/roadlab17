@@ -20,7 +20,7 @@
         <input asp-for="BranchEmail" type="hidden" />
         <input asp-for="Name" class="form-control" placeholder="Name" />
         <span asp-validation-for="Name" class="text-danger"></span>
-        
+
         <input asp-for="Email" class="form-control" placeholder="Email" />
         <span asp-validation-for="Email" class="text-danger"></span>
         <input asp-for="ConactNumber" class="form-control" placeholder="Contact Number" /> <!-- Assuming "ConactNumber" was a typo -->
@@ -33,10 +33,12 @@
             <button id="contactButton" class="btn btn-blue__small g-recaptcha"
                     data-sitekey="6Lettr8pAAAAAAg3rQMIrkqhkxB3ROZVvXWy-730"
                     data-callback='onContactSubmit'
-                    data-action='submit'>SUBMIT</button>
+                    data-action='submit'>
+                SUBMIT
+            </button>
         </div>
     }
-}
+ }   
 else
 {
     <p>@TempData["Result"]</p>
