@@ -23,6 +23,11 @@
                 j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
                 'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
         })(window, document, 'script', 'dataLayer', 'GTM-T5KSL5SP');</script>
+    <meta name="robots" content="@Model.Value("pageRobots")" />
+}
+else
+{
+    <meta name="robots" content="noindex, nofollow">
 }
 
 
@@ -30,7 +35,7 @@
 <meta charset="utf-8" />
 <meta content="strict-origin" name="referrer" />
 <meta name="description" content="@Model.Value("pageDescription")" />
-<meta name="robots" content="@Model.Value("pageRobots")" />
+
 <meta property="og:url" content="@Model.Value("oGUrl")" />
 <meta property="og:type" content="@Model.Value("oGType")" />
 <meta property="og:title" content="@Model.Value("oGTitle")" />
