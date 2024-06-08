@@ -1,10 +1,25 @@
 ﻿@using Interon.Roadlab.Web.Net.Core.Models.ViewModels
+@using Interon.Roadlab.Web.Net.Core.Models.ContentModels
 @inherits UmbracoViewPage<Interon.Roadlab.Web.Net.Core.Models.ContentModels.HomePage>
- 
+  
  
 @{
 	Layout = "MasterPage.cshtml";
-}
+	var homePage = new HomePage(Model,null);
+
+	IEnumerable<IPublishedContent>? blockContentPicker = homePage.Value<IEnumerable<IPublishedContent>>("blockContentPicker");
+	var blog =  Umbraco.ContentAtRoot().OfType<BlogHome>().FirstOrDefault();
+	var method = homePage.Value<string>("method") ?? "";
+	var releatedArticles = (blockContentPicker ?? Array.Empty<IPublishedContent>()).OfType<BlogArticle>().ToList();
+	if (method == "date")
+	{	
+		releatedArticles = blog.Descendants<BlogArticle>().Where(x=>x.HomePageToggle).OrderByDescending(x => x.ArticleDate).Take(3).ToList();
+	}
+	else if (method == "random")
+	{
+		releatedArticles = blog.Descendants<BlogArticle>().Where(x => x.HomePageToggle).OrderBy(x => Guid.NewGuid()).Take(3).ToList();
+	}
+}  
 
 <main>
 	<section>
@@ -200,6 +215,8 @@
 		</div>
 	</section>
 	<!--DISCOVER -->
+	@if(releatedArticles.Any())
+	{
 	<section class="discover">
 		<div class="paral">
 			<div class="container">
@@ -208,44 +225,30 @@
 					<h3 class="features__heading pb-5"> Recent Articles</h3>
 					</div>
 						<div class="row discover__container">
-						<div class="px-5 col-lg-4 col-md-6 col-sm-12 about-text">
-								<img class="about-team__sub-container--img mb-3" src="/media/ifjdu4t4/polokwane-1.jpg" alt="">
-								<h6 class="about-team__sub-container--title">Civil Construction</h6>
-								<h5 class="blog__sub-container--name">Lifting limpopo - Working Close to Home</h5>
-								<div class="blog__sub-container--content ft-cont">
-									<p>
-										Assistant Branch Manager Potego Kgole talks about how it is like to work close to home- Seshego (Polokwane), Limpopo.
-										<a href="/civil-construction/lifting-limpopo-working-close-to-home/"> Read more</a>
-									</p>
+
+						 
+							@foreach (var item in releatedArticles )
+							{
+								<div class="px-5 col-lg-4 col-md-6 col-sm-12 about-text">
+									<img class="about-team__sub-container--img mb-3" src="@item.ArticleIntersectImage.Url()" alt="@(item.ArticleIntersectImage.Value("fileDescription")??item.ArticleIntersectImage.Name)">
+									<h6 class="about-team__sub-container--title">@item.PageTitle</h6>
+									<h5 class="blog__sub-container--name">@item.BlogHeading</h5>
+									<div class="blog__sub-container--content ft-cont">
+										<p>
+											 @item.ArticleIntersectDescription
+											<a href="@item.Url()"> Read more</a>
+										</p>
+									</div>
 								</div>
-							</div>
-						<div class="px-5 col-lg-4 col-md-6 col-sm-12 about-text">
-								<img class="about-team__sub-container--img mb-3" src="/media/h3bhs4h3/mastersizer-og-image.jpg" alt="">
-								<h6 class="about-team__sub-container--title">Civil Construction</h6>
-								<h5 class="blog__sub-container--name">Particle Size Analysis: Introducing Our Mastersizer</h5>
-								<div class="blog__sub-container--content ft-cont">
-									<p>
-										Introducing the latest addition to our laboratory equipment lineup: the Mastersizer 3000E from Malvern Panalytical.
-										<a href="/civil-construction/particle-size-analysis-introducing-the-mastersizer-3000e/"> Read more</a>
-									</p>
-								</div>
-							</div>
-						<div class="px-5  col-lg-4 col-md-6 col-sm-12 about-text">
-								<img class="about-team__sub-container--img mb-3" src="/media/wsaibvjp/images6.jpg" alt="">
-								<h6 class="about-team__sub-container--title">Civil Construction</h6>
-								<h5 class="blog__sub-container--name">LUSIPII: Supporting Sugar Cane Farmers in Rural Eswatini</h5>
-								<div class="blog__sub-container--content ft-cont">
-									<p>
-										We recount contributing to the Lusip Canal, which today provides a reliable water supply to farmers in remote Eswatini.
-										<a href="/civil-construction/lusip-ii-delivering-water-to-eswatinis-farmers/"> Read more</a>
-									</p>
-								</div>
-						</div>
+							}
+						 
+
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
+	}
 	<section class="cta">
 		<div class="cta__background cta__container">
 			<div class="container">

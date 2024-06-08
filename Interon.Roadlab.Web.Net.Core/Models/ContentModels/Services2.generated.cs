@@ -58,6 +58,14 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent> BlockContentPicker => global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.BlogSelector.GetBlockContentPicker(this, _publishedValueFallback);
 
 		///<summary>
+		/// Method
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("method")]
+		public virtual string Method => global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.BlogSelector.GetMethod(this, _publishedValueFallback);
+
+		///<summary>
 		/// Hero Content
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
