@@ -20,7 +20,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 {
 	/// <summary>Home Page</summary>
 	[PublishedModel("homePage")]
-	public partial class HomePage : PublishedContentModel, IBlogSelector, IFooter, ISEO
+	public partial class HomePage : PublishedContentModel, IBlogSelector, IFooter, IRecentArticles, ISEO
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -74,14 +74,6 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent> BlockContentPicker => global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.BlogSelector.GetBlockContentPicker(this, _publishedValueFallback);
 
 		///<summary>
-		/// Method
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("method")]
-		public virtual string Method => global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.BlogSelector.GetMethod(this, _publishedValueFallback);
-
-		///<summary>
 		/// Footer Accreditation
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
@@ -96,6 +88,22 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("footerBee")]
 		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops FooterBee => global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.Footer.GetFooterBee(this, _publishedValueFallback);
+
+		///<summary>
+		/// Method
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("method")]
+		public virtual string Method => global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.RecentArticles.GetMethod(this, _publishedValueFallback);
+
+		///<summary>
+		/// Related Articles Picker
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("recentArticlesPicker")]
+		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent> RecentArticlesPicker => global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.RecentArticles.GetRecentArticlesPicker(this, _publishedValueFallback);
 
 		///<summary>
 		/// OG Description: A one to two sentence description of your object.

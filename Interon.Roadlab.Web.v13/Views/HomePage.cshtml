@@ -7,17 +7,17 @@
 	Layout = "MasterPage.cshtml";
 	var homePage = new HomePage(Model,null);
 
-	IEnumerable<IPublishedContent>? blockContentPicker = homePage.Value<IEnumerable<IPublishedContent>>("blockContentPicker");
+	IEnumerable<IPublishedContent>? recentArticlesPicker = homePage.Value<IEnumerable<IPublishedContent>>("recentArticlesPicker");
 	var blog =  Umbraco.ContentAtRoot().OfType<BlogHome>().FirstOrDefault();
 	var method = homePage.Value<string>("method") ?? "";
-	var releatedArticles = (blockContentPicker ?? Array.Empty<IPublishedContent>()).OfType<BlogArticle>().ToList();
+	var recentArticles = (recentArticlesPicker ?? Array.Empty<IPublishedContent>()).OfType<BlogArticle>().ToList();
 	if (method == "date")
 	{	
-		releatedArticles = blog.Descendants<BlogArticle>().Where(x=>x.HomePageToggle).OrderByDescending(x => x.ArticleDate).Take(3).ToList();
+		recentArticles = blog.Descendants<BlogArticle>().Where(x=>x.HomePageToggle).OrderByDescending(x => x.ArticleDate).Take(3).ToList();
 	}
 	else if (method == "random")
 	{
-		releatedArticles = blog.Descendants<BlogArticle>().Where(x => x.HomePageToggle).OrderBy(x => Guid.NewGuid()).Take(3).ToList();
+		recentArticles = blog.Descendants<BlogArticle>().Where(x => x.HomePageToggle).OrderBy(x => Guid.NewGuid()).Take(3).ToList();
 	}
 }  
 
@@ -215,7 +215,7 @@
 		</div>
 	</section>
 	<!--DISCOVER -->
-	@if(releatedArticles.Any())
+	@if(recentArticles.Any())
 	{
 	<section class="discover">
 		<div class="paral">
@@ -227,7 +227,7 @@
 						<div class="row discover__container">
 
 						 
-							@foreach (var item in releatedArticles )
+							@foreach (var item in recentArticles )
 							{
 								<div class="px-5 col-lg-4 col-md-6 col-sm-12 about-text">
 									<img class="about-team__sub-container--img mb-3" src="@item.ArticleIntersectImage.Url()" alt="@(item.ArticleIntersectImage.Value("fileDescription")??item.ArticleIntersectImage.Name)">
