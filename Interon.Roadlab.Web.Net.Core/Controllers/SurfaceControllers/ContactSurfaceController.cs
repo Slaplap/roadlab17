@@ -35,7 +35,7 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
 
             if (!ModelState.IsValid)
             {
-                return RedirectToCurrentUmbracoPage();
+                return CurrentUmbracoPage();
             }
            
 
@@ -123,7 +123,7 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
       
 
 
-            return RedirectToCurrentUmbracoPage();
+            return CurrentUmbracoPage();
         }
 
        
