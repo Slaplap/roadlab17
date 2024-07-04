@@ -20,7 +20,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 {
 	/// <summary>Home Page</summary>
 	[PublishedModel("homePage")]
-	public partial class HomePage : PublishedContentModel, IBlogSelector, IFooter, IRecentArticles, ISEO
+	public partial class HomePage : PublishedContentModel, IFooter, IRecentArticles, ISEO
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -64,14 +64,6 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("mobileImage")]
 		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops MobileImage => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "mobileImage");
-
-		///<summary>
-		/// Block Content Picker
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("blockContentPicker")]
-		public virtual global::System.Collections.Generic.IEnumerable<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent> BlockContentPicker => global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.BlogSelector.GetBlockContentPicker(this, _publishedValueFallback);
 
 		///<summary>
 		/// Footer Accreditation

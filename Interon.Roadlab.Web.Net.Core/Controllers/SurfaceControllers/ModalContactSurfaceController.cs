@@ -44,7 +44,7 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
                 // string emailTo = "marelize@lohansafaris.com";
                 List<string> mailto =   _mailsettings.Value.MailTo.Split(';').ToList<string>();
 
-                string subject = "Website Enquiry for Mozambique - "  + model.Subject;
+                string subject = "Website Enquiry for Mozambique - "  ;
 
                 StringBuilder body = new StringBuilder();
 
