@@ -23,7 +23,10 @@
                         </div>
 					</div>
 					<div class="col-md-6 col-sm-12">
-						<img class="hero__image" src="@Umbraco.Media(Model.Value<IPublishedContent>("heroRightImage").Id).Url()" alt="Header Image" />
+                        @if (Model.HasValue("heroRightImage"))
+                        {
+                            <img class="hero__image" src="@Umbraco.Media(Model.Value<IPublishedContent>("heroRightImage").Id).Url()" alt="Header Image" />
+                        }
 					</div>
 				</div>
 			</div>
