@@ -101,6 +101,8 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
                             smtp.Credentials = new NetworkCredential(_emailSettings.Value.MailFrom, _emailSettings.Value.SmtpSettings.Password);
                             //Authentication required
                             smtp.EnableSsl = enableSSL;
+                            //Set timeout to 30 seconds
+                            smtp.Timeout = 30000;
                             //sending email.
                             smtp.Send(mail);
                         }
