@@ -109,6 +109,7 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
                     {
                         Log.Error(ex, "Error sending email. Configuration: SmtpAddress: {0}, Port: {1}, EnableSSL: {2}, MailFrom: {3}, MailTo: {4}, Subject: {5}, Body: {6}",
                             smtpAddress, portNumber, enableSSL, _emailSettings.Value.MailFrom, string.Join(";", mailto), subject, body.ToString());
+                        throw;
                     }
                 }
                 TempData["Result"] = "Thanks for your enquiry a consultant will be contacting you shortly";
