@@ -1,5 +1,6 @@
 using Interon.Roadlab.Web.Net.Core.Config;
 using Interon.Roadlab.Web.Net.Core.Controllers;
+using Interon.Roadlab.Web.Net.Core.Services;
 using Our.Umbraco.FullTextSearch;
 
 namespace Interon.Roadlab.Web.v13
@@ -36,6 +37,9 @@ namespace Interon.Roadlab.Web.v13
         {
             services.Configure<EmailSettings>(_config.GetSection("EmailSettings"));
 	        services.AddHttpContextAccessor();
+            
+            // Register spam filter service
+            services.AddScoped<ISpamFilterService, SpamFilterService>();
             
             services.AddUmbraco(_env, _config)
                 .AddBackOffice()

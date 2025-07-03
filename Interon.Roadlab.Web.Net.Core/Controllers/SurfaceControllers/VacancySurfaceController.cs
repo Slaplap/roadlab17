@@ -3,6 +3,7 @@ using System.Net.Mail;
 using System.Text;
 using Interon.Roadlab.Web.Net.Core.Config;
 using Interon.Roadlab.Web.Net.Core.Models.ViewModels;
+using Interon.Roadlab.Web.Net.Core.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
@@ -22,13 +23,16 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
     public class VacancySurfaceController : SurfaceController
     {
         private readonly IOptions<EmailSettings> _emailSetings;
-        public VacancySurfaceController(IUmbracoContextAccessor umbracoContextAccessor, IUmbracoDatabaseFactory databaseFactory, ServiceContext services, AppCaches appCaches, IProfilingLogger profilingLogger, IPublishedUrlProvider publishedUrlProvider,IOptions<EmailSettings> emailSetings) : base(umbracoContextAccessor, databaseFactory, services, appCaches, profilingLogger, publishedUrlProvider)
+        private readonly ISpamFilterService _spamFilterService;
+        
+        public VacancySurfaceController(IUmbracoContextAccessor umbracoContextAccessor, IUmbracoDatabaseFactory databaseFactory, ServiceContext services, AppCaches appCaches, IProfilingLogger profilingLogger, IPublishedUrlProvider publishedUrlProvider,IOptions<EmailSettings> emailSetings, ISpamFilterService spamFilterService) : base(umbracoContextAccessor, databaseFactory, services, appCaches, profilingLogger, publishedUrlProvider)
         {
             _emailSetings = emailSetings;
+            _spamFilterService = spamFilterService;
         }
 
         [HttpPost]
-        public IActionResult HandleSubmit(VacancyModel model, IFormFileCollection  files)
+        public async Task<IActionResult> HandleSubmit(VacancyModel model, IFormFileCollection  files)
         {
 
             ModelState.Remove("Files");
@@ -43,8 +47,30 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
                 return RedirectToCurrentUmbracoPage();
             }
 
-         
+            // Spam detection
+            string spamPrefix = "";
+            try
+            {
+                var spamResult = await _spamFilterService.AnalyzeEmailAsync(
+                    "Website Vacancy Application",
+                    model.Email ?? "unknown@domain.com",
+                    $"Name: {model.Name}\nContact: {model.ContactNumber}\nVacancy Application"
+                );
 
+                if (spamResult.IsSpam && spamResult.ConfidenceScore > 80)
+                {
+                    TempData["Result"] = "Thank you for your application. We have received your submission and will review it shortly.";
+                    return RedirectToCurrentUmbracoPage();
+                }
+                else if (spamResult.IsSpam && spamResult.ConfidenceScore >= 60)
+                {
+                    spamPrefix = "[SPAM] ";
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log but don't block legitimate applications
+            }
 
             string fileNameAndPath = "";
             IFormFile? file = files.FirstOrDefault();
@@ -79,7 +105,7 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
                 // string emailTo = "marelize@lohansafaris.com";
                 List<string> mailto = _emailSetings.Value.MailTo.Split(';').ToList<string>();
 
-                string subject = "Website Vacancy Form";
+                string subject = spamPrefix + "Website Vacancy Form";
 
                 StringBuilder body = new StringBuilder();
 
