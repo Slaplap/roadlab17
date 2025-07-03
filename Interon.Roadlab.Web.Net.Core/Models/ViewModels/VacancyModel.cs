@@ -20,6 +20,10 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ViewModels
 
 		public IFormFile? Files { get; set; }
 
+		[Required]
+		[Display(Name = "I agree to the Terms and Conditions")]
+		public bool AcceptTerms { get; set; }
+
 
 	}
 }

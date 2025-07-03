@@ -60,6 +60,19 @@
             </div>
         </div>
 
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="form-check">
+                    <input asp-for="AcceptTerms" class="form-check-input" type="checkbox" />
+                    <label asp-for="AcceptTerms" class="form-check-label">
+                        I agree to the <a href="/usage-terms/" target="_blank">Terms and Conditions</a>
+                    </label>
+                    <br />
+                    <span asp-validation-for="AcceptTerms" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+
         <div class="float-right">
             <button id="contactButton" class="btn btn-blue__small g-recaptcha"
                     data-sitekey="6Lettr8pAAAAAAg3rQMIrkqhkxB3ROZVvXWy-730" data-callback='onContactSubmit'

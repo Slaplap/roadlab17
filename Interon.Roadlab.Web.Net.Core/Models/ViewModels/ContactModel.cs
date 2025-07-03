@@ -28,6 +28,9 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ViewModels
         [Required]
         [Display(Name = "Query", Prompt = "Query")]
         public string? Query { get; set; }
+        [Required]
+        [Display(Name = "I agree to the Terms and Conditions")]
+        public bool AcceptTerms { get; set; }
     }
     /// <summary>
     /// Summary description for ContactModel
@@ -57,6 +60,9 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ViewModels
         [Required]
         [Display(Name = "Query", Prompt = "Query")]
         public string? Query { get; set; }
+        [Required]
+        [Display(Name = "I agree to the Terms and Conditions")]
+        public bool AcceptTerms { get; set; }
                
     }
 }

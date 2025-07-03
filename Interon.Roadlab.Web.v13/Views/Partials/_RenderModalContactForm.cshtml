@@ -43,6 +43,15 @@
         @Html.ValidationMessageFor(x => x.Subject)
         @Html.TextAreaFor(x => x.Query, new { @placeholder = "Query", @style = "color:grey" })
         @Html.ValidationMessageFor(x => x.Query)
+        
+        <div class="form-check">
+            @Html.CheckBoxFor(x => x.AcceptTerms, new { @class = "form-check-input" })
+            @Html.LabelFor(x => x.AcceptTerms, "I agree to the ", new { @class = "form-check-label" })
+            <a href="/usage-terms/" target="_blank">Terms and Conditions</a>
+            <br />
+            @Html.ValidationMessageFor(x => x.AcceptTerms)
+        </div>
+        
         <div class="float-right">
             <input id="contactButton" class="btn btn-blue__small g-recaptcha"
                    data-sitekey="6Lettr8pAAAAAAg3rQMIrkqhkxB3ROZVvXWy-730"

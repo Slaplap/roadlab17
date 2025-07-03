@@ -31,6 +31,12 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
             {
                 return RedirectToCurrentUmbracoPage();
             }
+
+            if (!model.AcceptTerms)
+            {
+                ModelState.AddModelError("AcceptTerms", "You must accept the Terms and Conditions to submit this form.");
+                return RedirectToCurrentUmbracoPage();
+            }
           
 
             try
