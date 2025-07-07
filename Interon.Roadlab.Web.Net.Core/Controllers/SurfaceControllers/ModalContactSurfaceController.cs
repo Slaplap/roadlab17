@@ -3,6 +3,7 @@ using System.Net.Mail;
 using System.Text;
 using Interon.Roadlab.Web.Net.Core.Config;
 using Interon.Roadlab.Web.Net.Core.Models.ViewModels;
+using Interon.Roadlab.Web.Net.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Umbraco.Cms.Core.Cache;
@@ -21,9 +22,10 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
     public class ModalContactSurfaceController : SurfaceController
     {
         private readonly IOptions<EmailSettings> _mailsettings;
+        private readonly ISpamFilterService _spamFilterService;
 
         [HttpPost]
-        public IActionResult HandleSubmit(ContactModel model)
+        public async Task<IActionResult> HandleSubmit(ContactModel model)
         {
 
 
@@ -31,7 +33,46 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
             {
                 return RedirectToCurrentUmbracoPage();
             }
-          
+
+            if (!model.AcceptTerms)
+            {
+                ModelState.AddModelError("AcceptTerms", "You must accept the Terms and Conditions to submit this form.");
+                return RedirectToCurrentUmbracoPage();
+            }
+
+            // Spam detection
+            string spamPrefix = "";
+            try
+            {
+                var spamResult = await _spamFilterService.AnalyzeEmailAsync(
+                    "Website Modal Contact Form",
+                    model.Email ?? "unknown@domain.com",
+                    $"Name: {model.Name}\nCompany: {model.Company}\nLocation: {model.Location}\nQuery: {model.Query}"
+                );
+
+                Serilog.Log.Information("Spam analysis completed for modal contact form. Classification: {Classification}, Confidence: {Confidence}, Sender: {Email}", 
+                    spamResult.Classification, spamResult.ConfidenceScore, model.Email);
+
+                if (spamResult.IsSpam && spamResult.ConfidenceScore > 80)
+                {
+                    Serilog.Log.Warning("Modal contact form submission blocked as spam. Email: {Email}, Reason: {Reasoning}", 
+                        model.Email, spamResult.Reasoning);
+                    
+                    TempData["Result"] = "Thank you for your message. We have received your enquiry and will respond shortly.";
+                    return RedirectToCurrentUmbracoPage();
+                }
+                else if (spamResult.IsSpam && spamResult.ConfidenceScore >= 60)
+                {
+                    Serilog.Log.Warning("Modal contact form flagged as potential spam. Email: {Email}, Confidence: {Confidence}, Reason: {Reasoning}", 
+                        model.Email, spamResult.ConfidenceScore, spamResult.Reasoning);
+                    
+                    spamPrefix = "[SPAM] ";
+                }
+            }
+            catch (Exception ex)
+            {
+                Serilog.Log.Warning(ex, "Spam filter failed for modal contact form, allowing submission to proceed. Email: {Email}", model.Email);
+            }
 
             try
             {
@@ -44,7 +85,7 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
                 // string emailTo = "marelize@lohansafaris.com";
                 List<string> mailto =   _mailsettings.Value.MailTo.Split(';').ToList<string>();
 
-                string subject = "Website Enquiry for Mozambique - "  ;
+                string subject = spamPrefix + "Website Enquiry for Mozambique - "  ;
 
                 StringBuilder body = new StringBuilder();
 
@@ -115,9 +156,10 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
             return RedirectToCurrentUmbracoPage();
         }
 
-        public ModalContactSurfaceController(IUmbracoContextAccessor umbracoContextAccessor, IUmbracoDatabaseFactory databaseFactory, ServiceContext services, AppCaches appCaches, IProfilingLogger profilingLogger, IPublishedUrlProvider publishedUrlProvider,IOptions<EmailSettings> mailsettings) : base(umbracoContextAccessor, databaseFactory, services, appCaches, profilingLogger, publishedUrlProvider)
+        public ModalContactSurfaceController(IUmbracoContextAccessor umbracoContextAccessor, IUmbracoDatabaseFactory databaseFactory, ServiceContext services, AppCaches appCaches, IProfilingLogger profilingLogger, IPublishedUrlProvider publishedUrlProvider,IOptions<EmailSettings> mailsettings, ISpamFilterService spamFilterService) : base(umbracoContextAccessor, databaseFactory, services, appCaches, profilingLogger, publishedUrlProvider)
         {
             _mailsettings = mailsettings;
+            _spamFilterService = spamFilterService;
         }
     }
 }

@@ -4,6 +4,7 @@ using System.Net.Mail;
 using System.Text;
 using Interon.Roadlab.Web.Net.Core.Config;
 using Interon.Roadlab.Web.Net.Core.Models.ViewModels;
+using Interon.Roadlab.Web.Net.Core.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Serilog;
@@ -23,13 +24,16 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
     public class ContactSurfaceController : Umbraco.Cms.Web.Website.Controllers.SurfaceController
     {
         private readonly IOptions<EmailSettings> _emailSettings;
-        public ContactSurfaceController(IUmbracoContextAccessor umbracoContextAccessor, IUmbracoDatabaseFactory databaseFactory, ServiceContext services, AppCaches appCaches, IProfilingLogger profilingLogger, IPublishedUrlProvider publishedUrlProvider, IOptions<EmailSettings> emailSettings) : base(umbracoContextAccessor, databaseFactory, services, appCaches, profilingLogger, publishedUrlProvider)
+        private readonly ISpamFilterService _spamFilterService;
+        
+        public ContactSurfaceController(IUmbracoContextAccessor umbracoContextAccessor, IUmbracoDatabaseFactory databaseFactory, ServiceContext services, AppCaches appCaches, IProfilingLogger profilingLogger, IPublishedUrlProvider publishedUrlProvider, IOptions<EmailSettings> emailSettings, ISpamFilterService spamFilterService) : base(umbracoContextAccessor, databaseFactory, services, appCaches, profilingLogger, publishedUrlProvider)
         {
             _emailSettings = emailSettings;
+            _spamFilterService = spamFilterService;
         }
          
         [HttpPost]
-        public IActionResult HandleSubmit(ContactModel model)
+        public async Task<IActionResult> HandleSubmit(ContactModel model)
         {
 
 
@@ -37,7 +41,46 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
             {
                 return CurrentUmbracoPage();
             }
-           
+
+            if (!model.AcceptTerms)
+            {
+                ModelState.AddModelError("AcceptTerms", "You must accept the Terms and Conditions to submit this form.");
+                return CurrentUmbracoPage();
+            }
+
+            // Spam detection
+            string spamPrefix = "";
+            try
+            {
+                var spamResult = await _spamFilterService.AnalyzeEmailAsync(
+                    $"Website Contact Form - {model.BranchName}",
+                    model.Email ?? "unknown@domain.com",
+                    $"Name: {model.Name}\nCompany: {model.Company}\nLocation: {model.Location}\nQuery: {model.Query}"
+                );
+
+                Log.Information("Spam analysis completed for contact form. Classification: {Classification}, Confidence: {Confidence}, Sender: {Email}", 
+                    spamResult.Classification, spamResult.ConfidenceScore, model.Email);
+
+                if (spamResult.IsSpam && spamResult.ConfidenceScore > 80)
+                {
+                    Log.Warning("Contact form submission blocked as spam. Email: {Email}, Reason: {Reasoning}", 
+                        model.Email, spamResult.Reasoning);
+                    
+                    TempData["Result"] = "Thank you for your message. We have received your enquiry and will respond shortly.";
+                    return CurrentUmbracoPage();
+                }
+                else if (spamResult.IsSpam && spamResult.ConfidenceScore >= 60)
+                {
+                    Log.Warning("Contact form flagged as potential spam. Email: {Email}, Confidence: {Confidence}, Reason: {Reasoning}", 
+                        model.Email, spamResult.ConfidenceScore, spamResult.Reasoning);
+                    
+                    spamPrefix = "[SPAM] ";
+                }
+            }
+            catch (Exception ex)
+            {
+                Log.Warning(ex, "Spam filter failed for contact form, allowing submission to proceed. Email: {Email}", model.Email);
+            }
 
             try
             {
@@ -51,7 +94,7 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
                 
                 List<string> mailto = _emailSettings.Value.MailTo.Split(';').ToList<string>();
 
-                string subject = "Website Contact Form - " + @model.BranchName; 
+                string subject = spamPrefix + "Website Contact Form - " + @model.BranchName; 
 
                 StringBuilder body = new StringBuilder();
 
@@ -101,6 +144,8 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
                             smtp.Credentials = new NetworkCredential(_emailSettings.Value.MailFrom, _emailSettings.Value.SmtpSettings.Password);
                             //Authentication required
                             smtp.EnableSsl = enableSSL;
+                            //Set timeout to 30 seconds
+                            smtp.Timeout = 30000;
                             //sending email.
                             smtp.Send(mail);
                         }
@@ -109,6 +154,7 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
                     {
                         Log.Error(ex, "Error sending email. Configuration: SmtpAddress: {0}, Port: {1}, EnableSSL: {2}, MailFrom: {3}, MailTo: {4}, Subject: {5}, Body: {6}",
                             smtpAddress, portNumber, enableSSL, _emailSettings.Value.MailFrom, string.Join(";", mailto), subject, body.ToString());
+                        throw;
                     }
                 }
                 TempData["Result"] = "Thanks for your enquiry a consultant will be contacting you shortly";
