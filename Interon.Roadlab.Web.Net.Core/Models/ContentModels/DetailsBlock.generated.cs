@@ -50,6 +50,14 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		// properties
 
 		///<summary>
+		/// Anchor ID: Enter number for menu anchor 01 for first, or 02 second etc
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("anchorID")]
+		public virtual string AnchorID => this.Value<string>(_publishedValueFallback, "anchorID");
+
+		///<summary>
 		/// Content
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]

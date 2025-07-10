@@ -1,8 +1,8 @@
 ﻿@using Interon.Roadlab.Web.v13.Extensions
 @inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
 <section>
-	<div class="container products__container">
-		<div class="row">
+	<div class="container products__container" >
+		<div class="row" id="@Model.Content.Value("anchorID")">
 			<div class="col-md-8">
 				<div>
 					<h1 class="hero__container--main-heading-2">@Model.Content.Value("title")</h1>
