@@ -2072,3 +2072,59 @@ form.blog::after {
 .grecaptcha-badge {
 	visibility: hidden;
 }
+@media (min-width: 992px) {
+	.dropdown-menu .row .col .row {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+		.dropdown-menu .row .col .row > div {
+			flex: 0 0 20%;
+			max-width: 20%;
+		}
+}
+
+@media (max-width: 991px) {
+	.dropdown-menu .row .col .row > div {
+		flex: 0 0 50%;
+		max-width: 50%;
+		margin-bottom: 20px;
+	}
+}
+
+@media (max-width: 767px) {
+	.dropdown-menu .row .col .row > div {
+		flex: 0 0 100%;
+		max-width: 100%;
+		margin-bottom: 20px;
+	}
+}
+/* Contact menu 3-column responsive layout */
+@media (min-width: 992px) {
+	#megamenu-contact + .dropdown-menu .row .col .row {
+		display: flex;
+		flex-wrap: wrap;
+	}
+
+		#megamenu-contact + .dropdown-menu .row .col .row > div {
+			flex: 0 0 33.333%;
+			max-width: 33.333%;
+		}
+}
+
+@media (max-width: 991px) {
+	#megamenu-contact + .dropdown-menu .row .col .row > div {
+		flex: 0 0 50%;
+		max-width: 50%;
+		margin-bottom: 20px;
+	}
+}
+
+@media (max-width: 767px) {
+	#megamenu-contact + .dropdown-menu .row .col .row > div {
+		flex: 0 0 100%;
+		max-width: 100%;
+		margin-bottom: 20px;
+	}
+}
+

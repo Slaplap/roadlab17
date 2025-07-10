@@ -1,4 +1,4 @@
-﻿<header>
+<header>
     <section class="top-banner">
         <div class="big__container">
             <div class="row">
@@ -8,120 +8,279 @@
                             <strong>CALL US:</strong> +27 11 828 0279 <span class="top-banner__spacer">|</span>
                         </div>
                         <div>
-                            <strong>EMAIL:</strong> info@roadlab.africa 
+                            <strong>EMAIL:</strong> info@roadlab.africa
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-sm-12">
                     <div class="float-right top-banner__fa-social--align">
                         @* <!--Blanked out until app is live-->@if (!Members.IsLoggedIn())
-                            {
-                                <a class="btn btn-dark" href="/account/login" role="button"><i class="fas fa-user u-btn-fa"></i>LOGIN</a>
-                                <a class="btn btn-dark ml-3" href="/account/registration" role="button"><i class="fas fa-user u-btn-fa"></i>REGISTER</a>
-                            }
-                            else
-                            {
-                                <a class="btn btn-dark" href="/account/secure-area/home/">Account</a>
-                                @Html.ActionLink("Logout", "Logout", "Membership",null, new { @class = "btn btn-dark" })
-                            } *@
+                        {
+                        <a class="btn btn-dark" href="/account/login" role="button"><i
+                                class="fas fa-user u-btn-fa"></i>LOGIN</a>
+                        <a class="btn btn-dark ml-3" href="/account/registration" role="button"><i
+                                class="fas fa-user u-btn-fa"></i>REGISTER</a>
+                        }
+                        else
+                        {
+                        <a class="btn btn-dark" href="/account/secure-area/home/">Account</a>
+                        @Html.ActionLink("Logout", "Logout", "Membership",null, new { @class = "btn btn-dark" })
+                        } *@
                         <!--<a class="top-banner__link" href="">create an account...</a> -->
-                        <a href="https://www.facebook.com/Roadlablaboratories" target="_blank"><i class="fab fa-facebook top-banner__fa-social"></i></a>
-                        <a href="https://www.youtube.com/channel/UCG-E2QMilSPmwuu1VV8Aadw" target="_blank"><i class="fab fa-youtube top-banner__fa-social"></i></a>
-                        <a href="https://www.instagram.com/roadlabafrica/" target="_blank"><i class="fab fa-instagram top-banner__fa-social"></i></a>
-						<a href="https://www.linkedin.com/company/roadlab/" target="_blank"><i class="fab fa-linkedin top-banner__fa-social"></i></a>
+                        <a href="https://www.facebook.com/Roadlablaboratories" target="_blank">
+                            <i class="fab fa-facebook top-banner__fa-social"></i>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCG-E2QMilSPmwuu1VV8Aadw" target="_blank">
+                            <i class="fab fa-youtube top-banner__fa-social"></i>
+                        </a>
+                        <a href="https://www.instagram.com/roadlabafrica/" target="_blank">
+                            <i class="fab fa-instagram top-banner__fa-social"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/roadlab/" target="_blank">
+                            <i class="fab fa-linkedin top-banner__fa-social"></i>
+                        </a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-<!-- Cleaned-up and complete navigation menu for Roadlab
-     * All original classes preserved
-     * href and id issues corrected only -->
 
-<section class="nav">
-  <div class="big__container big__container--bottom" style="z-index: 99999">
-    <nav class="navbar navbar-expand-lg navbar-light nav-top bg-white">
-      <a class="navbar-brand" href="/"><img src="/images/logo.png" /></a>
-      <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar4">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="navbar-collapse collapse" id="collapsingNavbar4">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item">
-            <a class="nav-link hvr-underline-from-left" href="/">HOME<span class="sr-only">(current)</span></a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link hvr-underline-from-left" href="/about/">ABOUT</a>
-          </li>
-          <li class="nav-item dropdown megamenu">
-            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle text-uppercase hvr-underline-from-left" data-toggle="dropdown" href="#services" id="megamenu-services">Services</a>
-            <div class="dropdown-menu" aria-labelledby="megamenu-services">
-              <div class="">
-                <div class="row">
-                  <div class="col">
-                    <div>
-                      <div class="row">
-                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 dropdown-menu__items dropdown-menu__heading">
-                          <a href="/services/mobile-lab-services/mobile-lab-services/"><h2>MOBILE LAB SERVICES</h2></a>
-                          <hr class="dropdown-menu__hr" />
-                          <ul class="dropdown-menu__list dropdown-menu__link dropdown-menu__icon">
-                            <li><a href="/services/mobile-lab-services/mobile-lab-services/#service"><img src="/media/sutdqxq1/mls-servicons-containerisedlabs.png" />CONTAINER LABORATORIES</a></li>
-                            <li><a href="/services/mobile-lab-services/mobile-lab-services/#service"><img src="/media/nmrkv3g5/mls-servicons-staffhire.png" />LAB STAFF HIRE & TRAINING</a></li>
-                            <li><a href="/services/mobile-lab-services/mobile-lab-services/#service"><img src="/media/wzth4zha/onsiteteststations.png" />On-Site Testing Stations</a></li>
-                            <li><a href="/services/mobile-lab-services/mobile-lab-services/#service"><img src="/media/r01lenxq/equiprental.png" />EQUIPMENT RENTAL</a></li>
-                          </ul>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 dropdown-menu__items dropdown-menu__heading">
-                          <a href="/services/materials-testing/concrete/"><h2 class="dropdown-menu__heading">materials testing</h2></a>
-                          <hr class="dropdown-menu__hr" />
-                          <ul class="dropdown-menu__list dropdown-menu__link dropdown-menu__icon">
-                            <li><a href="/services/materials-testing/concrete/"><img src="/media/marpaaxa/concrete.png" />Concrete</a></li>
-                            <li><a href="/services/materials-testing/asphalt-bitumen/"><img src="/media/z0cjjx0s/asphalt_bitumen.png" />Asphalt & Bitumen</a></li>
-                            <li><a href="/services/materials-testing/soil-gravel/"><img src="/media/s5cjtqwq/soil-and-gravel.png" />Soil & Gravel</a></li>
-                            <li><a href="/services/materials-testing/aggregate/"><img src="/media/t4ldzbx4/aggregate.png" />Aggregate</a></li>
-                            <li><a href="/services/materials-testing/sample-field-testing/"><img src="/media/a3kjhpcr/compactiontesting.png" />Sample & Field Testing</a></li>
-                            <li><a href="/services/materials-testing/chemical-testing/"><img src="/media/khnlnp5h/chemistr-darky.png" />Chemicals Testing</a></li>
-                          </ul>
-                        </div>
-                        <div class="col-lg-3 col-md-6 col-sm-12 col-xs-12 dropdown-menu__items dropdown-menu__heading">
-                          <a href="/services/geotechnical-road-investigations/geotechnical-road-investigations/"><h2>Geotechnical & Road Investigations</h2></a>
-                          <hr class="dropdown-menu__hr" />
-                          <ul class="dropdown-menu__list dropdown-menu__link dropdown-menu__icon">
-                            <li><a href="/services/geotechnical-road-investigations/geotechnical-road-investigations/#01"><img src="/media/lmbdxm45/foundationinvestig.png" />Foundation Investigations</a></li>
-                            <li><a href="/services/geotechnical-road-investigations/geotechnical-road-investigations/#02"><img src="/media/h0livxnn/centrelineborrow.png" />CENTRELINE & BORROW PIT</a></li>
-                            <li><a href="/services/geotechnical-road-investigations/geotechnical-road-investigations/#03"><img src="/media/vpffrsu3/roadpaveinvestig.png" />Road Pavement Evaluations</a></li>
-                            <li><a href="/services/geotechnical-road-investigations/geotechnical-road-investigations/#04"><img src="/media/3l0jydjg/siteinvestig.png" />SITE INVESTIGATIONS</a></li>
-                            <li><a href="/services/geotechnical-road-investigations/geotechnical-road-investigations/#05"><img src="/media/jbtk3t2s/gri-servicons-drilling.png" />Drilling</a></li>
-                          </ul>
-                        </div>
-                        <div class="col-lg-3 dropdown-menu__items dropdown-menu__heading">
-                          <a href="/services/specialised-concrete-forensic-investigations/non-destructive-concrete-testing/">
-                            <h2 class="dropdown-menu__heading">Specialised Concrete & Forensic Investigations</h2>
-                          </a>
-                          <hr class="dropdown-menu__hr" />
-                          <ul class="dropdown-menu__list dropdown-menu__link dropdown-menu__icon">
-                            <li><a href="/services/specialised-concrete-forensic-investigations/non-destructive-concrete-testing/#service"><img src="/media/wj4feysf/testing.png" />Non-Destructive Concrete Testing</a></li>
-                            <li><a href="/services/specialised-concrete-forensic-investigations/non-destructive-concrete-testing/#service"><img src="/media/alwdobhh/upv.png" />Ultrasonic pulse velocity</a></li>
-                            <li><a href="/services/specialised-concrete-forensic-investigations/non-destructive-concrete-testing/#service"><img src="/media/nosfrepg/services.png" />service scanning</a></li>
-                            <li><a href="/services/specialised-concrete-forensic-investigations/non-destructive-concrete-testing/#service"><img src="/media/jfhj00xe/crack.png" />crack width meter</a></li>
-                            <li><a href="/services/specialised-concrete-forensic-investigations/non-destructive-concrete-testing/#service"><img src="/media/zotc1lcf/screed.png" />BRE screed testing</a></li>
-                          </ul>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link hvr-underline-from-left" href="/Industries/">INDUSTRIES</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link hvr-underline-from-left" href="/projects/">PROJECTS</a>
-          </li>
+    <section class="nav">
+        <div class="big__container big__container--bottom" style="z-index: 99999">
+            <nav class="navbar navbar-expand-lg navbar-light nav-top bg-white">
+                <a class="navbar-brand" href="/"><img src="/images/logo.png" /></a>
+                <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse"
+                        data-target="#collapsingNavbar4">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse" id="collapsingNavbar4">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link hvr-underline-from-left" href="/">
+                                HOME<span class="sr-only">(current)</span>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link hvr-underline-from-left" href="/about/">ABOUT</a>
+                        </li>
                         <li class="nav-item dropdown megamenu">
-                            <a aria-expanded="false" aria-haspopup="true" class="nav-link dropdown-toggle text-uppercase hvr-underline-from-left" data-toggle="dropdown" href="#contact" id="megamenu-contact">Contact</a>
+                            <a aria-expanded="false" aria-haspopup="true"
+                               class="nav-link dropdown-toggle text-uppercase hvr-underline-from-left"
+                               data-toggle="dropdown" href="#services" id="megamenu-services">Services</a>
+                            <div class="dropdown-menu" aria-labelledby="megamenu-services">
+                                <div class="">
+                                    <div class="row">
+                                        <div class="col">
+                                            <div>
+                                                <div class="row">
+                                                    <div class="dropdown-menu__items dropdown-menu__heading"
+                                                         style="flex: 0 0 20%; max-width: 20%;">
+                                                        <a href="/services/mobile-lab-services/mobile-lab-services/">
+                                                            <h2>MOBILE LAB SERVICES</h2>
+                                                        </a>
+                                                        <hr class="dropdown-menu__hr" />
+                                                        <ul class="dropdown-menu__list dropdown-menu__link dropdown-menu__icon">
+                                                            <li>
+                                                                <a href="/services/mobile-lab-services/mobile-lab-services/#service">
+                                                                    <img src="/media/sutdqxq1/mls-servicons-containerisedlabs.png" />CONTAINER
+                                                                    LABORATORIES
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/services/mobile-lab-services/mobile-lab-services/#service">
+                                                                    <img src="/media/nmrkv3g5/mls-servicons-staffhire.png" />LAB
+                                                                    STAFF HIRE & TRAINING
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/services/mobile-lab-services/mobile-lab-services/#service">
+                                                                    <img src="/media/wzth4zha/onsiteteststations.png" />On-Site
+                                                                    Testing Stations
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/services/mobile-lab-services/mobile-lab-services/#service">
+                                                                    <img src="/media/r01lenxq/equiprental.png" />EQUIPMENT
+                                                                    RENTAL
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="dropdown-menu__items dropdown-menu__heading"
+                                                         style="flex: 0 0 20%; max-width: 20%;">
+                                                        <a href="/services/materials-testing/concrete/">
+                                                            <h2 class="dropdown-menu__heading">materials testing</h2>
+                                                        </a>
+                                                        <hr class="dropdown-menu__hr" />
+                                                        <ul class="dropdown-menu__list dropdown-menu__link dropdown-menu__icon">
+                                                            <li>
+                                                                <a href="/services/materials-testing/concrete/">
+                                                                    <img src="/media/marpaaxa/concrete.png" />Concrete
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/services/materials-testing/asphalt-bitumen/">
+                                                                    <img src="/media/z0cjjx0s/asphalt_bitumen.png" />Asphalt
+                                                                    & Bitumen
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/services/materials-testing/soil-gravel/">
+                                                                    <img src="/media/s5cjtqwq/soil-and-gravel.png" />Soil
+                                                                    & Gravel
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/services/materials-testing/aggregate/">
+                                                                    <img src="/media/t4ldzbx4/aggregate.png" />Aggregate
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/services/materials-testing/sample-field-testing/">
+                                                                    <img src="/media/a3kjhpcr/compactiontesting.png" />Sample
+                                                                    & Field Testing
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/services/materials-testing/chemical-testing/">
+                                                                    <img src="/media/khnlnp5h/chemistr-darky.png" />Chemicals
+                                                                    Testing
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="dropdown-menu__items dropdown-menu__heading"
+                                                         style="flex: 0 0 20%; max-width: 20%;">
+                                                        <a href="/services/geotechnical-road-investigations/geotechnical-road-investigations/">
+                                                            <h2>Geotechnical & Road Investigations</h2>
+                                                        </a>
+                                                        <hr class="dropdown-menu__hr" />
+                                                        <ul class="dropdown-menu__list dropdown-menu__link dropdown-menu__icon">
+                                                            <li>
+                                                                <a href="/services/geotechnical-road-investigations/geotechnical-road-investigations/#01">
+                                                                    <img src="/media/lmbdxm45/foundationinvestig.png" />Centreline
+                                                                    Investigations
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/services/geotechnical-road-investigations/geotechnical-road-investigations/#02">
+                                                                    <img src="/media/h0livxnn/centrelineborrow.png" />Borrowpit
+                                                                    Investigations
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/services/geotechnical-road-investigations/geotechnical-road-investigations/#03">
+                                                                    <img src="/media/vpffrsu3/roadpaveinvestig.png" />In-Situ
+                                                                    Investigations
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/services/geotechnical-road-investigations/geotechnical-road-investigations/#04">
+                                                                    <img src="/media/3l0jydjg/siteinvestig.png" />Dolomite
+                                                                    Stability Investigations
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/services/geotechnical-road-investigations/geotechnical-road-investigations/#05">
+                                                                    <img src="/media/jbtk3t2s/gri-servicons-drilling.png" />Specialised
+                                                                    Testing
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="dropdown-menu__items dropdown-menu__heading"
+                                                         style="flex: 0 0 20%; max-width: 20%;">
+                                                        <a href="/services/new-services/">
+                                                            <h2>NEW SERVICES</h2>
+                                                        </a>
+                                                        <hr class="dropdown-menu__hr" />
+                                                        <ul class="dropdown-menu__list dropdown-menu__link dropdown-menu__icon">
+                                                            <li>
+                                                                <a href="/services/new-services/link1/">
+                                                                    <img src="/media/placeholder1.png" />Link 1
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/services/new-services/link2/">
+                                                                    <img src="/media/placeholder2.png" />Link 2
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/services/new-services/link3/">
+                                                                    <img src="/media/placeholder3.png" />Link 3
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/services/new-services/link4/">
+                                                                    <img src="/media/placeholder4.png" />Link 4
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/services/new-services/link5/">
+                                                                    <img src="/media/placeholder5.png" />Link 5
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="dropdown-menu__items dropdown-menu__heading"
+                                                         style="flex: 0 0 20%; max-width: 20%;">
+                                                        <a href="/services/specialised-concrete-forensic-investigations/non-destructive-concrete-testing/">
+                                                            <h2 class="dropdown-menu__heading">
+                                                                Specialised Concrete &
+                                                                Forensic Investigations
+                                                            </h2>
+                                                        </a>
+                                                        <hr class="dropdown-menu__hr" />
+                                                        <ul class="dropdown-menu__list dropdown-menu__link dropdown-menu__icon">
+                                                            <li>
+                                                                <a href="/services/specialised-concrete-forensic-investigations/non-destructive-concrete-testing/#service">
+                                                                    <img src="/media/wj4feysf/testing.png" />Non-Destructive
+                                                                    Concrete Testing
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/services/specialised-concrete-forensic-investigations/non-destructive-concrete-testing/#service">
+                                                                    <img src="/media/alwdobhh/upv.png" />Ultrasonic pulse
+                                                                    velocity
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/services/specialised-concrete-forensic-investigations/non-destructive-concrete-testing/#service">
+                                                                    <img src="/media/nosfrepg/services.png" />service
+                                                                    scanning
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/services/specialised-concrete-forensic-investigations/non-destructive-concrete-testing/#service">
+                                                                    <img src="/media/jfhj00xe/crack.png" />crack width
+                                                                    meter
+                                                                </a>
+                                                            </li>
+                                                            <li>
+                                                                <a href="/services/specialised-concrete-forensic-investigations/non-destructive-concrete-testing/#service">
+                                                                    <img src="/media/zotc1lcf/screed.png" />BRE screed
+                                                                    testing
+                                                                </a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link hvr-underline-from-left" href="/Industries/">INDUSTRIES</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link hvr-underline-from-left" href="/projects/">PROJECTS</a>
+                        </li>
+                        <li class="nav-item dropdown megamenu">
+                            <a aria-expanded="false" aria-haspopup="true"
+                               class="nav-link dropdown-toggle text-uppercase hvr-underline-from-left"
+                               data-toggle="dropdown" href="#contact" id="megamenu-contact">Contact</a>
                             <div class="dropdown-menu" aria-labelledby="megamenu-contact" style="left:40%;">
                                 <div class="row">
                                     <div class="col">
@@ -130,43 +289,141 @@
                                                 <h2>National</h2>
                                                 <hr class="dropdown-menu__hr" />
                                                 <ul class="dropdown-menu__list dropdown-menu__link dropdown-menu__li-icon">
-                                                    <li><a href="/head-office/"><i class="fas fa-angle-right"></i>HEAD OFFICE</a></li>
-                                                    <li><a href="/site-investigations/"><i class="fas fa-angle-right"></i>GEOTECHNICAL INVESTIGATIONS</a></li>
-                                                    <li><a href="/site-laboratories/"><i class="fas fa-angle-right"></i>site laboratories</a></li>
-                                                    <li><a href="/specialized-concrete-and-forensic-investigations/"><i class="fas fa-angle-right"></i>FORENSIC CONCRETE INVESTIGATIONS</a></li>
+                                                    <li>
+                                                        <a href="/head-office/">
+                                                            <i class="fas fa-angle-right"></i>HEAD
+                                                            OFFICE
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/site-investigations/">
+                                                            <i class="fas fa-angle-right"></i>GEOTECHNICAL
+                                                            INVESTIGATIONS
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/site-laboratories/">
+                                                            <i class="fas fa-angle-right"></i>site laboratories
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/specialized-concrete-and-forensic-investigations/">
+                                                            <i class="fas fa-angle-right"></i>FORENSIC CONCRETE
+                                                            INVESTIGATIONS
+                                                        </a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                             <div class="col-lg-4 col-md-6 col-sm-12 col-xs-12 dropdown-menu__items dropdown-menu__heading">
                                                 <h2>SOUTH AFRICAN OFFICES</h2>
                                                 <hr class="dropdown-menu__hr" />
                                                 <ul class="dropdown-menu__list dropdown-menu__link dropdown-menu__li-icon">
-                                                    <li><a href="/bellville/"><i class="fas fa-angle-right"></i>BELLVILLE</a></li>
-                                                    <li><a href="/bloemfontein/"><i class="fas fa-angle-right"></i>BLOEMFONTEIN</a></li>
-                                                    <li><a href="/centurion/"><i class="fas fa-angle-right"></i>CENTURION</a></li>
-                                                    <li><a href="/durban/"><i class="fas fa-angle-right"></i>DURBAN</a></li>
-                                                    <li><a href="/east-london/"><i class="fas fa-angle-right"></i>EAST LONDON</a></li>
-                                                    <li><a href="/george/"><i class="fas fa-angle-right"></i>GEORGE</a></li>
-                                                    <li><a href="/germiston/"><i class="fas fa-angle-right"></i>GERMISTON</a></li>
-                                                    <li><a href="/kathu/"><i class="fas fa-angle-right"></i>KATHU</a></li>
-                                                    <li><a href="/kimberley/"><i class="fas fa-angle-right"></i>KIMBERLEY</a></li>
-                                                    <li><a href="/langebaan/"><i class="fas fa-angle-right"></i>LANGEBAAN</a></li>
-                                                    <li><a href="/Lephalale/"><i class="fas fa-angle-right"></i>LEPHALALE</a></li>
-                                                    <li><a href="/mahikeng/"><i class="fas fa-angle-right"></i>MAHIKENG</a></li>
-                                                    <li><a href="/mthatha/"><i class="fas fa-angle-right"></i>MTHATHA</a></li>
-                                                    <li><a href="/polokwane/"><i class="fas fa-angle-right"></i>POLOKWANE</a></li>
-                                                    <li><a href="/queenstown/"><i class="fas fa-angle-right"></i>QUEENSTOWN</a></li>
-                                                    <li><a href="/upington/"><i class="fas fa-angle-right"></i>UPINGTON</a></li>
+                                                    <li>
+                                                        <a href="/bellville/">
+                                                            <i class="fas fa-angle-right"></i>BELLVILLE
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/bloemfontein/">
+                                                            <i class="fas fa-angle-right"></i>BLOEMFONTEIN
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/centurion/">
+                                                            <i class="fas fa-angle-right"></i>CENTURION
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/durban/"><i class="fas fa-angle-right"></i>DURBAN</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/east-london/">
+                                                            <i class="fas fa-angle-right"></i>EAST
+                                                            LONDON
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/george/"><i class="fas fa-angle-right"></i>GEORGE</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/germiston/">
+                                                            <i class="fas fa-angle-right"></i>GERMISTON
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/kathu/"><i class="fas fa-angle-right"></i>KATHU</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/kimberley/">
+                                                            <i class="fas fa-angle-right"></i>KIMBERLEY
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/langebaan/">
+                                                            <i class="fas fa-angle-right"></i>LANGEBAAN
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/Lephalale/">
+                                                            <i class="fas fa-angle-right"></i>LEPHALALE
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/mahikeng/">
+                                                            <i class="fas fa-angle-right"></i>MAHIKENG
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/mthatha/">
+                                                            <i class="fas fa-angle-right"></i>MTHATHA
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/polokwane/">
+                                                            <i class="fas fa-angle-right"></i>POLOKWANE
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/queenstown/">
+                                                            <i class="fas fa-angle-right"></i>QUEENSTOWN
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/upington/">
+                                                            <i class="fas fa-angle-right"></i>UPINGTON
+                                                        </a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                             <div class="col dropdown-menu__items dropdown-menu__heading">
                                                 <h2>REST OF AFRICA</h2>
                                                 <hr class="dropdown-menu__hr" />
                                                 <ul class="dropdown-menu__list dropdown-menu__link dropdown-menu__li-icon">
-                                                    <li><a href="/mauritius/"><i class="fas fa-angle-right"></i>MAURITIUS</a></li>
-                                                    <li><a href="/mozambique/"><i class="fas fa-angle-right"></i>MOZAMBIQUE</a></li>
-                                                    <li><a href="/nigeria/"><i class="fas fa-angle-right"></i>NIGERIA</a></li>
-                                                    <li><a href="/tanzania/"><i class="fas fa-angle-right"></i>TANZANIA</a></li>
-                                                    <li><a href="/zimbabwe/"><i class="fas fa-angle-right"></i>ZIMBABWE</a></li>
+                                                    <li>
+                                                        <a href="/mauritius/">
+                                                            <i class="fas fa-angle-right"></i>MAURITIUS
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/mozambique/">
+                                                            <i class="fas fa-angle-right"></i>MOZAMBIQUE
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/nigeria/">
+                                                            <i class="fas fa-angle-right"></i>NIGERIA
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/tanzania/">
+                                                            <i class="fas fa-angle-right"></i>TANZANIA
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="/zimbabwe/">
+                                                            <i class="fas fa-angle-right"></i>ZIMBABWE
+                                                        </a>
+                                                    </li>
                                                 </ul>
                                             </div>
                                         </div>
