@@ -1,0 +1,57 @@
+﻿@using Interon.Roadlab.Web.Net.Core.Models.ViewModels
+@inherits UmbracoViewPage<Interon.Roadlab.Web.Net.Core.Models.ContentModels.Branch1>
+
+@{
+    Layout = "MasterPage.cshtml";
+}
+<section class="branch">
+    <div class="container">
+        <div class="row branch__space">
+			<div class="col-lg-6 col-md-6 col-sm-12 branch__box">
+				<h4 class="branch__heading">Branch</h4>
+				<h2 class="branch__name">@Model.Value("branchName")</h2>
+				<ul class="fa-ul">
+					<li><span class="fa-li"><i class="fas fa-user"></i></span> @Model.Value("branchManager")</li>
+					<li>
+						<span class="fa-li"><i class="fas fa-map-marker-alt"></i></span> @Model.Value("branchAddress1")<br>
+						@Model.Value("branchAddress2")<br>
+						@if (Model.BranchAddress3.Length > 2)
+						{
+							@Model.BranchAddress3 <br>
+						}
+						@if (Model.BranchProvince.ToLower().Contains("outside"))
+						{
+							@Model.BranchCountry<br>
+						}
+						else
+						{
+							@Model.Value("branchProvince")<br>
+						}
+						@if (Model.BranchPostalCode.Length < 2)
+						{
+							<br />
+						}
+						else
+						{
+							@Model.Value("branchPostalCode")
+						}
+					</li>
+					<li><span class="fa-li"><i class="fas fa-phone-alt"></i></span>Tel: @Model.Value("branchTelephoneNumber")</li>
+					<li><span class="fa-li"><i class="fas fa-mobile-alt"></i></span>Cell: @Model.Value("branchCellNumber")</li>
+					<li><span class="fa-li"><i class="fas fa-envelope"></i></span>E-Mail: @Model.Value("branchEmail")</li>
+				</ul>
+				<div class="row hero__link-space">
+					<div class="col-md-6 col-sm-12 hero__btn-align">
+						<a class="btn btn-blue" href="tel:@Model.Value("branchTelephoneNumber")" role="button">CALL</a>
+					</div>
+					<div class="col-md-6 col-sm-12 hero__link-space--small mb-3">
+						<a class="btn btn-blue" href="#expert">SAVE NUMBER</a>
+					</div>
+				</div>
+			</div>
+            <div class="col-lg-6 col-md-12 col-sm-12">
+                <div>@(Model.Value("branchMap")??"")</div>
+            </div>
+        </div>
+    </div>
+</section>

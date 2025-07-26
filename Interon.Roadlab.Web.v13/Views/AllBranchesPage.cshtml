@@ -1,0 +1,100 @@
+﻿@using Interon.Roadlab.Web.Net.Core.Models.ViewModels
+@using Umbraco.Cms.Core.Models.Blocks
+@inherits UmbracoViewPage
+@{
+    Layout = "MasterPage.cshtml";
+    
+    // Access Block List data
+    var provincesBlockList = Model.Value<BlockListModel>("provinces");
+    var provinces = provincesBlockList?.Select(x => x.Content);
+}
+
+@if (provinces != null && provinces.Any())
+{
+    foreach (var province in provinces)
+    {
+        <section class="branch-head__img" style="background-image: url('@(Umbraco.Media(province.Value<IPublishedContent>("provinceBackgroundImage")?.Id)?.Url()??"")')"> 
+            <div class="container branch-headings">
+                <h2>@province.Value("provinceName")</h2>
+            </div>
+        </section>
+
+        var branchesBlockList = province.Value<BlockListModel>("branch");
+        var branches = branchesBlockList?.Select(x => x.Content);
+
+        if (branches != null && branches.Any())
+        {
+            foreach (var branch in branches)
+            {
+                <section class="branch">
+                    <div class="container">
+                        <div class="row branch__space">
+                            <div class="col-lg-6 col-md-6 col-sm-12 branch__box">
+                                <h4 class="branch__heading">Branch</h4>
+                                <h2 class="branch__name">@branch.Value("branchName")</h2>
+                                <ul class="fa-ul">
+                                    <li><span class="fa-li"><i class="fas fa-user"></i></span> @branch.Value("branchManager")</li>
+                                    <li>
+                                        <span class="fa-li"><i class="fas fa-map-marker-alt"></i></span> @branch.Value("branchAddress1")<br>
+                                        @branch.Value("branchAddress2")<br>
+                                        @if (branch.Value("branchAddress3") != null && branch.Value("branchAddress3").ToString().Length > 2)
+                                        {
+                                            @branch.Value("branchAddress3") <br>
+                                        }
+                                        @if (branch.Value("branchProvince") != null && branch.Value("branchProvince").ToString().ToLower().Contains("outside"))
+                                        {
+                                            @branch.Value("branchCountry")<br>
+                                        }
+                                        else
+                                        {
+                                            @branch.Value("branchProvince")<br>
+                                        }
+                                        @if (branch.Value("branchPostalCode") == null || branch.Value("branchPostalCode").ToString().Length < 2)
+                                        {
+                                            <br />
+                                        }
+                                        else
+                                        {
+                                            @branch.Value("branchPostalCode")
+                                        }
+                                    </li>
+                                    <li><span class="fa-li"><i class="fas fa-phone-alt"></i></span>Tel: @branch.Value("branchTelephoneNumber")</li>
+                                    <li><span class="fa-li"><i class="fas fa-mobile-alt"></i></span>Cell: @branch.Value("branchCellNumber")</li>
+                                    <li><span class="fa-li"><i class="fas fa-envelope"></i></span>E-Mail: @branch.Value("branchEmail")</li>
+                                </ul>
+                                <div class="row hero__link-space">
+                                    <div class="col-md-6 col-sm-12 hero__btn-align">
+                                        <a class="btn btn-blue" href="tel:@branch.Value("branchTelephoneNumber")" role="button">CALL</a>
+                                    </div>
+                                    <div class="col-md-6 col-sm-12 hero__link-space--small mb-3">
+                                        <a class="btn btn-blue" href="#" onclick="addToPhone('@branch.Value("branchCellNumber")', '@branch.Value("branchName")')" role="button">ADD TO PHONE</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-12 col-sm-12">
+                                <div>@(branch.Value("branchMap")??"")</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            }
+        }
+    }
+}
+else
+{
+    <div style="text-align: center; padding: 50px;">
+        <h2>No Provinces Available</h2>
+        <p>Please add provinces and branches in the Umbraco admin.</p>
+    </div>
+}
+
+<script>
+function addToPhone(phoneNumber, branchName) {
+    if (navigator.userAgent.match(/Android|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i)) {
+        window.location.href = 'tel:' + phoneNumber;
+    } else {
+        alert('Contact: ' + branchName + ' - Roadlab\nPhone: ' + phoneNumber);
+    }
+}
+</script>
