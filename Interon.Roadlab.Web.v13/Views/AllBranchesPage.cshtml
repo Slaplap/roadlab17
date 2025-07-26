@@ -28,7 +28,7 @@
             {
                 <section class="branch">
                     <div class="container">
-                        <div class="row branch__space">
+                        <div class="row all-branch__space">
                             <div class="col-lg-6 col-md-6 col-sm-12 branch__box">
                                 <h4 class="branch__heading">Branch</h4>
                                 <h2 class="branch__name">@branch.Value("branchName")</h2>
@@ -64,10 +64,26 @@
                                 </ul>
                                 <div class="row hero__link-space">
                                     <div class="col-md-6 col-sm-12 hero__btn-align">
-                                        <a class="btn btn-blue" href="tel:@branch.Value("branchTelephoneNumber")" role="button">CALL</a>
+                                        @{
+                                            var cleanTelNumber = branch.Value("branchTelephoneNumber")?.ToString()
+                                                ?.Replace(" ", "")
+                                                ?.Replace("(0)", "")
+                                                ?.Replace("(", "")
+                                                ?.Replace(")", "")
+                                                ?.Replace("-", "");
+                                        }
+                                        <a class="btn btn-blue" href="tel:@cleanTelNumber" role="button">CALL</a>
                                     </div>
                                     <div class="col-md-6 col-sm-12 hero__link-space--small mb-3">
-                                        <a class="btn btn-blue" href="#" onclick="addToPhone('@branch.Value("branchCellNumber")', '@branch.Value("branchName")')" role="button">ADD TO PHONE</a>
+                                        @{
+                                            var cleanCellNumber = branch.Value("branchCellNumber")?.ToString()
+                                                ?.Replace(" ", "")
+                                                ?.Replace("(0)", "")
+                                                ?.Replace("(", "")
+                                                ?.Replace(")", "")
+                                                ?.Replace("-", "");
+                                        }
+                                        <a class="btn btn-blue" href="#" onclick="addToPhone('@cleanCellNumber', '@branch.Value("branchName")')" role="button">ADD TO PHONE</a>
                                     </div>
                                 </div>
                             </div>
@@ -75,6 +91,12 @@
                                 <div>@(branch.Value("branchMap")??"")</div>
                             </div>
                         </div>
+                        
+                        @* Add HR after each branch except the last one *@
+                        @if (branch != branches.Last())
+                        {
+                            <hr class="hr__line">
+                        }
                     </div>
                 </section>
             }
