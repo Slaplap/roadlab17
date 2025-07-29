@@ -2129,11 +2129,10 @@ form.blog::after {
 }
 .branch-headings h2 {
 	color: #f05804;
-	font-size: clamp(3.5rem, 12vw, 7.5rem);
+	font-size: clamp(3.5rem, 15vw, 7.5rem);
 	text-transform: uppercase;
 	text-align: center;
 	font-weight: 700;
-	margin: 20px;
 }
 .branch-head__img {
 	background-image: url("/images/rockface3.jpg");
