@@ -2186,7 +2186,7 @@ form.blog::after {
 /* Desktop Button Styling - Side by side layout */
 @media (min-width: 768px) {
 	.mobile-full-btn {
-		width: auto;
+		width: 100%;
 		display: inline-block;
 	}
 
