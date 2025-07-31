@@ -111,7 +111,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("branchMap")]
-		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString BranchMap => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "branchMap");
+		public virtual string BranchMap => this.Value<string>(_publishedValueFallback, "branchMap");
 
 		///<summary>
 		/// Branch Name
@@ -144,5 +144,13 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("branchTelephoneNumber")]
 		public virtual string BranchTelephoneNumber => this.Value<string>(_publishedValueFallback, "branchTelephoneNumber");
+
+		///<summary>
+		/// Map Coordinates: add coordinates for mobile similar to this -33.011095, 27.890480
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("mapCoordinates")]
+		public virtual string MapCoordinates => this.Value<string>(_publishedValueFallback, "mapCoordinates");
 	}
 }
