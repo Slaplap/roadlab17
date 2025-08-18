@@ -1,0 +1,258 @@
+/* 
+ * Mega Menu Responsive Text Wrapping Fix - Updated with Original Font Sizes
+ * This CSS overrides inline styles and ensures proper responsive behavior
+ */
+
+/* Fix Bootstrap row negative margins in dropdown */
+.dropdown-menu .row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* Alternative: Add padding to compensate for Bootstrap row margins */
+.dropdown-menu .row .col {
+    padding-left: 30px !important;
+    padding-right: 15px !important;
+}
+
+/* Override inline styles for responsive behavior */
+@media (max-width: 1439px) {
+    .dropdown-menu__items.dropdown-menu__heading {
+        flex: 0 0 auto !important;
+        max-width: none !important;
+    }
+}
+
+/* Maintain original 5-column layout for large screens (1440px+) */
+@media (min-width: 1440px) {
+    .dropdown-menu .row .col .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .dropdown-menu__items.dropdown-menu__heading {
+        flex: 0 0 20% !important;
+        max-width: 20% !important;
+    }
+}
+
+/* 4 columns for tablet landscape (992px to 1439px) */
+@media (min-width: 992px) and (max-width: 1439px) {
+    .dropdown-menu .row .col .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .dropdown-menu__items.dropdown-menu__heading {
+        flex: 0 0 25% !important;
+        max-width: 25% !important;
+        margin-bottom: 20px;
+    }
+    
+    /* Keep original font sizes - no reduction */
+    .dropdown-menu__heading h2 {
+        font-size: 1.9rem !important;
+    }
+    
+    .dropdown-menu__link a {
+        font-size: 1.4rem !important;
+    }
+}
+
+/* 2 columns for tablet portrait (768px to 991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+    .dropdown-menu .row .col .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .dropdown-menu__items.dropdown-menu__heading {
+        flex: 0 0 50% !important;
+        max-width: 50% !important;
+        margin-bottom: 25px;
+    }
+    
+    /* Adjust dropdown positioning */
+    .dropdown-menu {
+        min-width: 90% !important;
+        left: 5% !important;
+    }
+    
+    /* Keep original font sizes */
+    .dropdown-menu__heading h2 {
+        font-size: 1.9rem !important;
+    }
+    
+    .dropdown-menu__link a {
+        font-size: 1.4rem !important;
+    }
+}
+
+/* 1 column for mobile (up to 767px) */
+@media (max-width: 767px) {
+    .dropdown-menu .row .col .row {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    
+    .dropdown-menu__items.dropdown-menu__heading {
+        flex: 0 0 100% !important;
+        max-width: 100% !important;
+        margin-bottom: 25px;
+    }
+    
+    /* Full width dropdown */
+    .dropdown-menu {
+        min-width: 95% !important;
+        left: 2.5% !important;
+    }
+    
+    /* Keep original font sizes on mobile too */
+    .dropdown-menu__heading h2 {
+        font-size: 1.9rem !important;
+    }
+    
+    .dropdown-menu__link a {
+        font-size: 1.4rem !important;
+    }
+    
+    /* Larger touch targets but keep font size */
+    .dropdown-menu__list li a {
+        padding: 1.2rem 0;
+        min-height: 3.5rem;
+    }
+}
+
+/* Text wrapping fixes for ALL screen sizes */
+.dropdown-menu__list {
+    width: 100%;
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.dropdown-menu__list li {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+    -webkit-hyphens: auto;
+    -ms-hyphens: auto;
+}
+
+.dropdown-menu__list li a {
+    display: flex !important;
+    align-items: flex-start;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: normal !important;
+    line-height: 1.4;
+    text-decoration: none;
+    color: inherit;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Icon and text alignment - Critical for proper wrapping */
+.dropdown-menu__icon img {
+    flex-shrink: 0 !important;
+    width: 2.5rem;
+    height: auto;
+    margin-right: 1rem !important;
+    margin-top: 0.2rem;
+    display: inline-block;
+}
+
+/* Text content that should wrap naturally */
+.dropdown-menu__list li a {
+    text-align: left;
+    flex-direction: row;
+    align-items: flex-start;
+}
+
+/* Ensure text flows naturally after the icon */
+.dropdown-menu__list li a img + * {
+    flex: 1;
+    word-break: normal;
+    overflow-wrap: break-word;
+    hyphens: auto;
+}
+
+/* Remove any conflicting white-space rules */
+.dropdown-menu__list li a * {
+    white-space: normal !important;
+}
+
+/* Border management for responsive layout */
+@media (max-width: 1439px) {
+    .dropdown-menu__items:not(:last-child) {
+        border-right: none !important;
+    }
+}
+
+@media (min-width: 1440px) {
+    .dropdown-menu__items:not(:last-child) {
+        border-right: 1px solid #ccc;
+    }
+}
+
+/* Very small screens (480px and below) - Still keep readable font sizes */
+@media (max-width: 480px) {
+    .dropdown-menu__items {
+        padding: 1rem !important;
+    }
+    
+    /* Slightly smaller but still readable */
+    .dropdown-menu__heading h2 {
+        font-size: 1.7rem !important;
+    }
+    
+    .dropdown-menu__link a {
+        font-size: 1.3rem !important;
+    }
+    
+    .dropdown-menu__icon img {
+        width: 2rem !important;
+        margin-right: 0.8rem !important;
+    }
+    
+    /* Extra padding for better spacing on very small screens */
+    .dropdown-menu .row .col {
+        padding-left: 20px !important;
+        padding-right: 10px !important;
+    }
+}
+
+/* Smooth transitions */
+.dropdown-menu__items {
+    transition: all 0.3s ease-in-out;
+}
+
+.dropdown-menu__list li a {
+    transition: color 0.2s ease-in-out;
+}
+
+/* Hover effects */
+.dropdown-menu__list li a:hover {
+    color: #fE5000 !important;
+    text-decoration: none;
+}
+
+/* Ensure proper spacing between sections */
+.dropdown-menu__hr {
+    margin: 1rem 0;
+    width: 20%;
+}
+
+/* Additional spacing fix for dropdown container */
+.dropdown-menu {
+    padding: 0 !important;
+}
+
+/* Fix any overflow issues on smaller screens */
+@media (max-width: 991px) {
+    .dropdown-menu__items {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+}
