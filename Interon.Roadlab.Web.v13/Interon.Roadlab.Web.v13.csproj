@@ -11,6 +11,7 @@
 
   <ItemGroup>
     <PackageReference Include="Anthropic.SDK" Version="5.10.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="10.0.8" />
     <PackageReference Include="Our.Umbraco.FullTextSearch" Version="17.0.1" />
     <PackageReference Include="Umbraco.Cms" Version="17.4.1" />
   </ItemGroup>

@@ -44,9 +44,14 @@ namespace Interon.Roadlab.Web.v13
             services.AddUmbraco(_env, _config)
                 .AddBackOffice()
                 .AddWebsite()
-                 
+
                 .AddComposers()
                 .Build();
+
+            // Razor runtime compilation: required while RazorCompileOnBuild=false
+            // is in effect during the v17 view-migration window.
+            services.AddRazorPages().AddRazorRuntimeCompilation();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
         }
 
         /// <summary>

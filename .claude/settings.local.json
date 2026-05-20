@@ -51,7 +51,13 @@
       "Bash(dotnet tool *)",
       "Bash(git commit *)",
       "Bash(dotnet restore *)",
-      "Bash(git reset *)"
+      "Bash(git reset *)",
+      "Bash(git ls-remote *)",
+      "Bash(cp -r C:/dev/Roadlab/Interon.Roadlab.Web.v13/uSync/v9/Content/. C:/dev/Roadlab/Interon.Roadlab.Web.v13/uSync/v17/Content/)",
+      "Bash(cp -r C:/dev/Roadlab/Interon.Roadlab.Web.v13/uSync/v9/Media/. C:/dev/Roadlab/Interon.Roadlab.Web.v13/uSync/v17/Media/)",
+      "Bash(xargs rm -f)",
+      "PowerShell(& \"C:\\\\dev\\\\Roadlab\\\\tools\\\\Convert-V13-To-V17-Data.ps1\" -DryRun)",
+      "PowerShell(& \"C:\\\\dev\\\\Roadlab\\\\tools\\\\Convert-V13-To-V17-Data.ps1\")"
     ],
     "deny": []
   }
