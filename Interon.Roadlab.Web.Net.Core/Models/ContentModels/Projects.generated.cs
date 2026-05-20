@@ -55,7 +55,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("projectList")]
-		public virtual global::System.Collections.Generic.IEnumerable<global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.Project> ProjectList => this.Value<global::System.Collections.Generic.IEnumerable<global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.Project>>(_publishedValueFallback, "projectList");
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel ProjectList => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "projectList");
 
 		///<summary>
 		/// Block Content Picker

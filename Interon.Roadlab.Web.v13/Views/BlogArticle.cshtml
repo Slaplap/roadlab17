@@ -77,27 +77,27 @@
                          @if (Model.LocationList.Any())
                          {
                              <p class="case-title">Location</p>
-                             foreach (StringItem stringItem in Model.LocationList)	
+                             foreach (var block in Model.LocationList)
                              {
-                                 
+                                 var stringItem = (StringItem)block.Content;
                              <p><span class="ft-icon" style="margin-right:10px;"><i class="fas fa-angle-right"></i></span>@stringItem.StringItemText</p>
                              }
                          }
                         @if (Model.LocationList.Any())
                         {
                            <p class="case-title">Industry</p>
-                            foreach (StringItem stringItem in Model.IndustryList)	
+                            foreach (var block in Model.IndustryList)
                             {
-                                 
+                                var stringItem = (StringItem)block.Content;
                                 <p><span class="ft-icon" style="margin-right:10px;"><i class="fas fa-angle-right"></i></span>@stringItem.StringItemText</p>
                             }
                         }
                         @if (Model.LocationList.Any())
                         {
                         <p class="case-title">Our Expertise</p>
-                            foreach (StringItem stringItem in Model.ExpertiseList)	
+                            foreach (var block in Model.ExpertiseList)
                             {
-                                 
+                                var stringItem = (StringItem)block.Content;
                                 <p><span class="ft-icon" style="margin-right:10px;"><i class="fas fa-angle-right"></i></span>@stringItem.StringItemText</p>
                             }
                         }

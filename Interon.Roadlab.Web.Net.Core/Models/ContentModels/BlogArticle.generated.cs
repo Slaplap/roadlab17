@@ -93,7 +93,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("expertiseList")]
-		public virtual global::System.Collections.Generic.IEnumerable<global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.StringItem> ExpertiseList => this.Value<global::System.Collections.Generic.IEnumerable<global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.StringItem>>(_publishedValueFallback, "expertiseList");
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel ExpertiseList => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "expertiseList");
 
 		///<summary>
 		/// Grid
@@ -116,7 +116,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("industryList")]
-		public virtual global::System.Collections.Generic.IEnumerable<global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.StringItem> IndustryList => this.Value<global::System.Collections.Generic.IEnumerable<global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.StringItem>>(_publishedValueFallback, "industryList");
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel IndustryList => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "industryList");
 
 		///<summary>
 		/// Location List
@@ -124,7 +124,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("locationList")]
-		public virtual global::System.Collections.Generic.IEnumerable<global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.StringItem> LocationList => this.Value<global::System.Collections.Generic.IEnumerable<global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.StringItem>>(_publishedValueFallback, "locationList");
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel LocationList => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "locationList");
 
 		///<summary>
 		/// Banner Background Image: Image for heading background, image size 1920px X 1080px

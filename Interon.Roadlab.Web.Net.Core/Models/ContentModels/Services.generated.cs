@@ -63,7 +63,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("serviceCategories")]
-		public virtual global::System.Collections.Generic.IEnumerable<global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.Products> ServiceCategories => this.Value<global::System.Collections.Generic.IEnumerable<global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.Products>>(_publishedValueFallback, "serviceCategories");
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel ServiceCategories => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "serviceCategories");
 
 		///<summary>
 		/// Services Buttons

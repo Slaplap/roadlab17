@@ -157,8 +157,9 @@
 
 			<div class="row">
 
-				@foreach (var item in Model.TeamMember)
+				@foreach (var block in Model.TeamMember)
 				{
+					var item = (AboutTeamMembers)block.Content;
 					<div class="col-lg-4 col-md-6 col-sm-12 about-text about-team__sub-container--box">
 						<img class="about-team__sub-container--img" src="@(item.TeamMemberPhoto?.Url()??"/images/nh.jpg")" alt="@item.TeamImageAlt">
 						<h5 class="about-team__sub-container--name">@item.TeamMemberName</h5>

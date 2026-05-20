@@ -33,7 +33,22 @@
       "Bash(grep -r \"IContentService\\\\|IContentTypeService\\\\|ContentService\\\\|PublishedContentService\" /c/dev/Roadlab --include=*.cs)",
       "Bash(gh auth *)",
       "Bash(git remote *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git push *)",
+      "Bash(Get-ChildItem -Path \"C:\\\\dev\\\\Roadlab\" -Recurse -Directory)",
+      "Bash(Select-Object -ExpandProperty FullName)",
+      "Bash(xargs find -name \"*.config\")",
+      "Bash(git config *)",
+      "Bash(git checkout *)",
+      "PowerShell(Get-Service *)",
+      "PowerShell(sqlpackage *)",
+      "Bash(sqlcmd *)",
+      "PowerShell(Get-Process *)",
+      "Bash(dotnet run *)",
+      "Bash(tasklist)",
+      "Bash(taskkill *)",
+      "PowerShell(Stop-Process *)",
+      "Bash(dotnet tool *)"
     ],
     "deny": []
   }

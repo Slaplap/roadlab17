@@ -55,7 +55,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("clients")]
-		public virtual global::System.Collections.Generic.IEnumerable<global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.LimsElement> Clients => this.Value<global::System.Collections.Generic.IEnumerable<global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.LimsElement>>(_publishedValueFallback, "clients");
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel Clients => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "clients");
 
 		///<summary>
 		/// Communication DateTime
@@ -94,7 +94,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("devices")]
-		public virtual global::System.Collections.Generic.IEnumerable<global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.Devices> Devices => this.Value<global::System.Collections.Generic.IEnumerable<global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.Devices>>(_publishedValueFallback, "devices");
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel Devices => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "devices");
 
 		///<summary>
 		/// Device Software Build

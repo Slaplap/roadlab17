@@ -55,7 +55,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("operationTeams")]
-		public virtual global::System.Collections.Generic.IEnumerable<global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.AboutOperationsTeams> OperationTeams => this.Value<global::System.Collections.Generic.IEnumerable<global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.AboutOperationsTeams>>(_publishedValueFallback, "operationTeams");
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel OperationTeams => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "operationTeams");
 
 		///<summary>
 		/// Team Member
@@ -63,7 +63,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("teamMember")]
-		public virtual global::System.Collections.Generic.IEnumerable<global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.AboutTeamMembers> TeamMember => this.Value<global::System.Collections.Generic.IEnumerable<global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.AboutTeamMembers>>(_publishedValueFallback, "teamMember");
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel TeamMember => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "teamMember");
 
 		///<summary>
 		/// Block Content Picker

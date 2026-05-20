@@ -201,9 +201,14 @@ modal.show();
 **These MUST be migrated before upgrading to Umbraco 14+. They are removed entirely.**
 
 ### 5.1 Umbraco.NestedContent (14 usages) --> Block List
-- Used across multiple document types
-- **Migration:** Use Umbraco's built-in migration helper or manually convert
-- **Do this on v13 first** before attempting the major version upgrade
+- **STATUS (2026-05-20):** 13 of 14 schema-migrated to `Umbraco.BlockList` on branch `upgrade/v17`. uSync configs and Razor views (`BlogArticle.cshtml`, `AboutPage.cshtml`, `Projects.cshtml`, `Services.cshtml`) updated for the new iteration pattern (`(ElementType)block.Content`).
+- **NOT migrated:** `AppSettingsTestingTypesNestedContent` (data type key `c8284069-...`). Its `ncAlias` is `testingType` but no element type with that alias exists in the repo — only `compTestingType` (`181d7f3c-...`), which has `IsElement=false`. Likely orphaned/broken since a past rename. **Action:** confirm whether AppSettings.testingTypes is actually used by any live content; if not, delete the data type. If yes, either rename `compTestingType` to `testingType` and flip `IsElement=true`, or create a new `testingType` element type.
+- **Duplicate/orphan NC data types still to clean up:**
+  - `AboutPageOperationTeamsNestedContent1` (`429a457d-...`) duplicates `OperationTeamsNestedContent` — both reference `aboutOperationsTeams`.
+  - `QuoteRequestQuoteRequestLineItemsNestedContent1` (`549b4804-...`) duplicates `QuoteRequestQuoteRequestLineItemsNestedContent`.
+  - `TeamMemberNestedContent1` (`d5f2a503-...`) duplicates `TeamMemberNestedContent`.
+  - Migrated to BL for consistency, but no content type references them — safe to delete in cleanup pass.
+- **Production data migration (still TODO):** uSync only changes schema, not existing content data. The old NC JSON in `umbracoPropertyData.dataNvarchar` is not auto-converted to BL JSON. Before deploying this to prod, write a one-off SQL/code migration script that walks affected property records and rewrites the JSON from NC format `[{key,name,ncContentTypeAlias,...}]` to BL format `{layout:{...},contentData:[{contentTypeKey,udi,...}],settingsData:[]}`.
 
 ### 5.2 Umbraco.Grid (1 usage: Blog Article) --> Block Grid
 - Grid Layout editor on BlogArticle document type

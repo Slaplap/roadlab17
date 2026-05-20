@@ -26,8 +26,9 @@
     </div>
 </section>
 <!-- Do repeat from here-->
-@foreach (var project in Model.ProjectList)
+@foreach (var block in Model.ProjectList)
 {
+    var project = (Project)block.Content;
     <section class="projects">
         <div class="projects__heading paral" style="background-image: url(@project.ProjectHeadingBackgroundImage.Url());">
             <div class="projects__container">
