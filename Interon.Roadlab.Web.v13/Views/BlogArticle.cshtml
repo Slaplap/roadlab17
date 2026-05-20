@@ -53,7 +53,7 @@
 					<div class="row">
 						<!--<div class="col">-->
 						<div class="blog-image-left">
-							@Html.GetGridHtml(Model, "grid")
+							@await Html.GetBlockGridHtmlAsync(Model.Grid)
 						</div>
 						<!--</div>-->
 					</div>

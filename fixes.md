@@ -213,11 +213,14 @@ modal.show();
   - Migrated to BL for consistency, but no content type references them — safe to delete in cleanup pass.
 - **Production data migration (still TODO):** uSync only changes schema, not existing content data. The old NC JSON in `umbracoPropertyData.dataNvarchar` is not auto-converted to BL JSON. Before deploying this to prod, write a one-off SQL/code migration script that walks affected property records and rewrites the JSON from NC format `[{key,name,ncContentTypeAlias,...}]` to BL format `{layout:{...},contentData:[{contentTypeKey,udi,...}],settingsData:[]}`.
 
-### 5.2 Umbraco.Grid (1 usage: Blog Article) --> Block Grid
-- Grid Layout editor on BlogArticle document type
-- Grid partial views exist at `Views/Partials/grid/editors/`
-- **Migration:** Convert grid content to Block Grid, create corresponding Block Grid partial views
-- **Do this on v13 first**
+### 5.2 Umbraco.Grid (1 usage: Blog Article) --> Block Grid — SCHEMA DONE (2026-05-20, branch `upgrade/v17`)
+- `BlogArticleGrid` data type converted from `Umbraco.Grid` to `Umbraco.BlockGrid`. Created new element type `blogContentBlock` (key `9a4f7c2e-1b3d-4e8a-bf01-7d62a8f5c930`) with a single `content` RTE property as the initial block.
+- `blogarticle.config`: property `grid` Type updated from `Umbraco.Grid` → `Umbraco.BlockGrid`. ModelsBuilder regenerated `BlogArticle.Grid` from `JToken` → `BlockGridModel`.
+- `BlogArticle.cshtml`: `@Html.GetGridHtml(Model, "grid")` replaced with `@await Html.GetBlockGridHtmlAsync(Model.Grid)`.
+- New partial: `Views/Partials/blockgrid/Components/blogContentBlock.cshtml` renders the RTE content inside `<div class="blog-content-block">`.
+- **Single-block setup, expand later:** Only one block type (`blogContentBlock`) is defined. The old Grid had separate editors for media/embed/textstring — those are covered by the RTE's built-in image and embed support for now. If team wants explicit image-only or embed-only blocks, add element types and re-import via uSync.
+- **Old grid editor partials still on disk:** `Views/Partials/grid/editors/{base,embed,macro,media,rte,textstring}.cshtml` are now dead code. Safe to delete in a cleanup commit (they're listed under `<None Include=>` in the .csproj so they don't compile anyway).
+- **Production content migration (TODO):** Existing BlogArticles have grid JSON in the old Grid Layout shape. No auto-converter — each blog article needs manual rebuild in Block Grid editor at deploy time. (Alternative: write a one-off script that extracts text/HTML content from the legacy grid JSON and creates BlockGrid items.)
 
 ### 5.3 Umbraco.MediaPicker (12 usages) --> MediaPicker3 — SCHEMA DONE (2026-05-20, branch `upgrade/v17`)
 - All 12 v1 data types converted to `Umbraco.MediaPicker3` editor with the equivalent v3 config (`OnlyImages: true` → `Filter: "umbracoMediaImage"`, `DisableFolderSelect` dropped, added `Crops/EnableLocalFocalPoint/ValidationLimit` defaults).

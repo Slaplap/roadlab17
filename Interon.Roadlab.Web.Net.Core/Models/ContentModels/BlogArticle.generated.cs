@@ -101,7 +101,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("grid")]
-		public virtual global::Newtonsoft.Json.Linq.JToken Grid => this.Value<global::Newtonsoft.Json.Linq.JToken>(_publishedValueFallback, "grid");
+		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel Grid => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockGridModel>(_publishedValueFallback, "grid");
 
 		///<summary>
 		/// Home Page Toggle
