@@ -72,25 +72,41 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
                 // Log but don't block legitimate applications
             }
 
+            const long maxFileSize = 5 * 1024 * 1024;
+            var allowedContentTypes = new HashSet<string>(StringComparer.OrdinalIgnoreCase)
+            {
+                "application/pdf",
+                "application/msword",
+                "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+            };
+            var allowedExtensions = new HashSet<string>(StringComparer.OrdinalIgnoreCase) { ".pdf", ".doc", ".docx" };
+
             string fileNameAndPath = "";
             IFormFile? file = files.FirstOrDefault();
             if (file != null && file.Length > 0)
             {
-                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
-                if (!Directory.Exists(uploadsFolder))
+                if (file.Length > maxFileSize)
                 {
-                    Directory.CreateDirectory(uploadsFolder);
+                    ModelState.AddModelError("Files", "Attachment must be 5MB or smaller.");
+                    return RedirectToCurrentUmbracoPage();
                 }
 
-                fileNameAndPath = Path.Combine(uploadsFolder, file.FileName);
+                var extension = Path.GetExtension(file.FileName);
+                if (!allowedContentTypes.Contains(file.ContentType) || !allowedExtensions.Contains(extension))
+                {
+                    ModelState.AddModelError("Files", "Only PDF and Word documents (.pdf, .doc, .docx) are accepted.");
+                    return RedirectToCurrentUmbracoPage();
+                }
+
+                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "App_Data", "VacancyUploads");
+                Directory.CreateDirectory(uploadsFolder);
+
+                string safeFileName = $"{Guid.NewGuid()}{extension}";
+                fileNameAndPath = Path.Combine(uploadsFolder, safeFileName);
                 using (var stream = new FileStream(fileNameAndPath, FileMode.Create))
                 {
-                    file.CopyTo(stream);
+                    await file.CopyToAsync(stream);
                 }
-            }
-            else
-            {
-                // Handle the case when no file is uploaded
             }
 
     
@@ -138,9 +154,10 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
                     mail.IsBodyHtml = true;
                     // Can set to false, if you are sending pure text.
 
-                    string localFileName = fileNameAndPath;
-                    //to send a file in attachment.
-                    mail.Attachments.Add(new Attachment(localFileName,  file.ContentType));
+                    if (file != null && !string.IsNullOrEmpty(fileNameAndPath))
+                    {
+                        mail.Attachments.Add(new Attachment(fileNameAndPath, file.ContentType));
+                    }
 
                     //Specify the smtp Server and port number to create a new instance of SmtpClient.
                     using (SmtpClient smtp = new SmtpClient(smtpAddress, portNumber))

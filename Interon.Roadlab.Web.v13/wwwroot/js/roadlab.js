@@ -153,7 +153,6 @@ var account = {
 function LoadDetailsModal() {
 
     $('.openDetails').click(function () {
-        debugger;
         var key = $(this).data('key');
         onGridClick(key);
         // AJAX request

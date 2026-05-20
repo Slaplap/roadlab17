@@ -24,21 +24,24 @@
 
 ## 1. CRITICAL SECURITY ISSUES
 
-### 1.1 Secrets Hardcoded in appsettings.json
-- **File:** `Interon.Roadlab.Web.v13/appsettings.json`
-- Database password, SMTP password, and uSync AppKey are committed to source control
-- **Fix:** Rotate ALL credentials immediately. Move secrets to Azure Key Vault or environment variables. Use `appsettings.Development.json` (gitignored) for local dev only.
+### 1.1 Secrets Hardcoded in appsettings.json — PENDING (needs Anton)
+- **File:** `Interon.Roadlab.Web.v13/appsettings.json` (lines 34, 44, 54)
+- Database password, SMTP password, and uSync AppKey are committed to source control. The repo is pushed to a private GitHub (`Slaplap/roadlab17`), so exposure is limited to that account, but rotation is still required before any public/wider sharing.
+- **Coordinated fix needed:**
+  1. Anton rotates the Azure SQL `interon` user password in Azure Portal.
+  2. Anton rotates the SMTP `webserver@roadlab.co.za` password on the mail server.
+  3. Anton generates a new uSync Publisher AppKey.
+  4. Production reads all three from Azure Key Vault references (or environment variables). Repo's `appsettings.json` keeps placeholder strings only.
+  5. After cutover, force-rewrite history on `Slaplap/roadlab17` to scrub the old values (git filter-branch / BFG).
+- Cannot be done unilaterally — needs coordination so the live staging site doesn't break mid-rotation.
 
-### 1.2 File Upload Path Traversal Vulnerability
-- **File:** `VacancySurfaceController.cs` (lines 75-90)
-- `file.FileName` used directly in `Path.Combine()` without sanitization
-- No file type validation, no size limits, saved to web-accessible directory
-- **Fix:** Use GUID-based filenames, validate MIME types, enforce size limits, save outside wwwroot
+### 1.2 File Upload Path Traversal Vulnerability — FIXED (2026-05-20, branch `upgrade/v17`)
+- **File:** `VacancySurfaceController.cs`
+- Added 5MB size cap, MIME whitelist (PDF/Word only) + extension whitelist (`.pdf`, `.doc`, `.docx`), GUID-based filenames, saves to `App_Data/VacancyUploads/` (outside wwwroot, so files aren't web-accessible), guarded email-attachment call against the null-file case.
+- **Still TODO (separate cleanup):** the empty `catch` in the spam-check block (lines ~70-73) silently swallows exceptions. Comment says "Log but don't block" but no actual `ILogger` call. Needs a logger injection.
 
-### 1.3 Debugger Statements in Production Code
-- **File:** `_RenderTopScripts.cshtml` (lines 4, 7, 9) - `debugger;` in reCAPTCHA callbacks
-- **File:** `roadlab.js` (line 156) - `debugger;` in onGridClick
-- **Fix:** Remove all debugger statements immediately
+### 1.3 Debugger Statements in Production Code — FIXED (2026-05-20, branch `upgrade/v17`)
+- Removed from `Views/Partials/_RenderBottomScripts.cshtml` (3 instances in reCAPTCHA callbacks) and `wwwroot/js/roadlab.js` (1 instance in openDetails click handler).
 
 ### 1.4 External Third-Party Script
 - **File:** `_RenderHead.cshtml` (line 62)

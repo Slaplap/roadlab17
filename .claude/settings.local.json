@@ -48,7 +48,8 @@
       "Bash(tasklist)",
       "Bash(taskkill *)",
       "PowerShell(Stop-Process *)",
-      "Bash(dotnet tool *)"
+      "Bash(dotnet tool *)",
+      "Bash(git commit *)"
     ],
     "deny": []
   }
