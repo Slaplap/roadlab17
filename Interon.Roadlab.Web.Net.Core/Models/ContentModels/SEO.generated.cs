@@ -30,7 +30,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		/// <summary>OG Image</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent OGimage { get; }
+		global::Umbraco.Cms.Core.Models.MediaWithCrops OGimage { get; }
 
 		/// <summary>OG Title</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
@@ -113,12 +113,12 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("oGImage")]
-		public virtual global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent OGimage => GetOGimage(this, _publishedValueFallback);
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops OGimage => GetOGimage(this, _publishedValueFallback);
 
 		/// <summary>Static getter for OG Image</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent GetOGimage(ISEO that, IPublishedValueFallback publishedValueFallback) => that.Value<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent>(publishedValueFallback, "oGImage");
+		public static global::Umbraco.Cms.Core.Models.MediaWithCrops GetOGimage(ISEO that, IPublishedValueFallback publishedValueFallback) => that.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(publishedValueFallback, "oGImage");
 
 		///<summary>
 		/// OG Title: The title of your object as it should appear within the graph, e.g., "The Rock".

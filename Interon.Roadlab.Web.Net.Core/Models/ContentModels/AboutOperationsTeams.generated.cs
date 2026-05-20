@@ -63,7 +63,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("operationsImage")]
-		public virtual global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent OperationsImage => this.Value<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent>(_publishedValueFallback, "operationsImage");
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops OperationsImage => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "operationsImage");
 
 		///<summary>
 		/// Operations Name

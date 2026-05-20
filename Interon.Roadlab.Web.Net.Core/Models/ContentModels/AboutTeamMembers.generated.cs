@@ -79,7 +79,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("teamMemberPhoto")]
-		public virtual global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent TeamMemberPhoto => this.Value<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent>(_publishedValueFallback, "teamMemberPhoto");
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops TeamMemberPhoto => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "teamMemberPhoto");
 
 		///<summary>
 		/// Team Member Position

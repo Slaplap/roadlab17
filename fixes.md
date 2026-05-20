@@ -219,10 +219,10 @@ modal.show();
 - **Migration:** Convert grid content to Block Grid, create corresponding Block Grid partial views
 - **Do this on v13 first**
 
-### 5.3 Umbraco.MediaPicker (12 usages) --> MediaPicker3
-- Legacy media picker across many document types
-- **Migration:** Switch to Umbraco.MediaPicker3 (already used in 5 places)
-- Model code changes: `IPublishedContent` to `MediaWithCrops`
+### 5.3 Umbraco.MediaPicker (12 usages) --> MediaPicker3 — SCHEMA DONE (2026-05-20, branch `upgrade/v17`)
+- All 12 v1 data types converted to `Umbraco.MediaPicker3` editor with the equivalent v3 config (`OnlyImages: true` → `Filter: "umbracoMediaImage"`, `DisableFolderSelect` dropped, added `Crops/EnableLocalFocalPoint/ValidationLimit` defaults).
+- Build clean with no view changes needed — `.Url()` is an extension method that works on both `IPublishedContent` and `MediaWithCrops`, so existing view code stayed working.
+- **Production data conversion still TODO:** v1 stored single value as `umb://media/<udi>` string; v3 stores JSON array of `{key, mediaKey, crops, focalPoint}` objects. Same orphan-on-existing-data risk as the NC→BL migration. Production deploy needs a one-off conversion script.
 
 ### 5.4 Summary of Required Migrations
 | Editor | Count | Replacement | Priority |

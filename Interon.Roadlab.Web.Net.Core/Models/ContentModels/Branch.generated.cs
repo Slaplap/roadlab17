@@ -79,7 +79,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("branchBackgroundImage")]
-		public virtual global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent BranchBackgroundImage => this.Value<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent>(_publishedValueFallback, "branchBackgroundImage");
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops BranchBackgroundImage => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "branchBackgroundImage");
 
 		///<summary>
 		/// Branch Cell Number
@@ -119,7 +119,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("branchImage")]
-		public virtual global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent BranchImage => this.Value<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent>(_publishedValueFallback, "branchImage");
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops BranchImage => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "branchImage");
 
 		///<summary>
 		/// Branch Image Alt: Branch Image alt tag manager name
@@ -230,7 +230,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("pageIcon")]
-		public virtual global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent PageIcon => global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.PageHeading.GetPageIcon(this, _publishedValueFallback);
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops PageIcon => global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.PageHeading.GetPageIcon(this, _publishedValueFallback);
 
 		///<summary>
 		/// OG Description: A one to two sentence description of your object.
@@ -246,7 +246,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("oGImage")]
-		public virtual global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent OGimage => global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.SEO.GetOGimage(this, _publishedValueFallback);
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops OGimage => global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.SEO.GetOGimage(this, _publishedValueFallback);
 
 		///<summary>
 		/// OG Title: The title of your object as it should appear within the graph, e.g., "The Rock".

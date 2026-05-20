@@ -111,7 +111,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("oGImage")]
-		public virtual global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent OGimage => global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.SEO.GetOGimage(this, _publishedValueFallback);
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops OGimage => global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.SEO.GetOGimage(this, _publishedValueFallback);
 
 		///<summary>
 		/// OG Title: The title of your object as it should appear within the graph, e.g., "The Rock".

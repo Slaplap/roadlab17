@@ -35,7 +35,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		/// <summary>Page Icon</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent PageIcon { get; }
+		global::Umbraco.Cms.Core.Models.MediaWithCrops PageIcon { get; }
 	}
 
 	/// <summary>_page heading</summary>
@@ -101,11 +101,11 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("pageIcon")]
-		public virtual global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent PageIcon => GetPageIcon(this, _publishedValueFallback);
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops PageIcon => GetPageIcon(this, _publishedValueFallback);
 
 		/// <summary>Static getter for Page Icon</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent GetPageIcon(IPageHeading that, IPublishedValueFallback publishedValueFallback) => that.Value<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent>(publishedValueFallback, "pageIcon");
+		public static global::Umbraco.Cms.Core.Models.MediaWithCrops GetPageIcon(IPageHeading that, IPublishedValueFallback publishedValueFallback) => that.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(publishedValueFallback, "pageIcon");
 	}
 }

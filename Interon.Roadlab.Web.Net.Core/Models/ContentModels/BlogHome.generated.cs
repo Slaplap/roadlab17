@@ -55,7 +55,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("backImage")]
-		public virtual global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent BackImage => global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.BannerImage.GetBackImage(this, _publishedValueFallback);
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops BackImage => global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.BannerImage.GetBackImage(this, _publishedValueFallback);
 
 		///<summary>
 		/// Hero Content
@@ -119,7 +119,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("pageIcon")]
-		public virtual global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent PageIcon => global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.PageHeading.GetPageIcon(this, _publishedValueFallback);
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops PageIcon => global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.PageHeading.GetPageIcon(this, _publishedValueFallback);
 
 		///<summary>
 		/// OG Description: A one to two sentence description of your object.
@@ -135,7 +135,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("oGImage")]
-		public virtual global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent OGimage => global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.SEO.GetOGimage(this, _publishedValueFallback);
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops OGimage => global::Interon.Roadlab.Web.Net.Core.Models.ContentModels.SEO.GetOGimage(this, _publishedValueFallback);
 
 		///<summary>
 		/// OG Title: The title of your object as it should appear within the graph, e.g., "The Rock".

@@ -79,7 +79,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("projectHeadingBackgroundImage")]
-		public virtual global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent ProjectHeadingBackgroundImage => this.Value<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent>(_publishedValueFallback, "projectHeadingBackgroundImage");
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops ProjectHeadingBackgroundImage => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "projectHeadingBackgroundImage");
 
 		///<summary>
 		/// Project Heading Bottom
@@ -103,7 +103,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("projectImage1")]
-		public virtual global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent ProjectImage1 => this.Value<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent>(_publishedValueFallback, "projectImage1");
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops ProjectImage1 => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "projectImage1");
 
 		///<summary>
 		/// Project Image 2
@@ -111,7 +111,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("projectImage2")]
-		public virtual global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent ProjectImage2 => this.Value<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent>(_publishedValueFallback, "projectImage2");
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops ProjectImage2 => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "projectImage2");
 
 		///<summary>
 		/// Project Image 3
@@ -119,7 +119,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("projectImage3")]
-		public virtual global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent ProjectImage3 => this.Value<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent>(_publishedValueFallback, "projectImage3");
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops ProjectImage3 => this.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(_publishedValueFallback, "projectImage3");
 
 		///<summary>
 		/// Project Links

@@ -25,7 +25,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		/// <summary>Banner Background Image</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent BackImage { get; }
+		global::Umbraco.Cms.Core.Models.MediaWithCrops BackImage { get; }
 	}
 
 	/// <summary>_banner image</summary>
@@ -65,11 +65,11 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("backImage")]
-		public virtual global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent BackImage => GetBackImage(this, _publishedValueFallback);
+		public virtual global::Umbraco.Cms.Core.Models.MediaWithCrops BackImage => GetBackImage(this, _publishedValueFallback);
 
 		/// <summary>Static getter for Banner Background Image</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "13.2.2+79d241a")]
 		[return: global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		public static global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent GetBackImage(IBannerImage that, IPublishedValueFallback publishedValueFallback) => that.Value<global::Umbraco.Cms.Core.Models.PublishedContent.IPublishedContent>(publishedValueFallback, "backImage");
+		public static global::Umbraco.Cms.Core.Models.MediaWithCrops GetBackImage(IBannerImage that, IPublishedValueFallback publishedValueFallback) => that.Value<global::Umbraco.Cms.Core.Models.MediaWithCrops>(publishedValueFallback, "backImage");
 	}
 }
