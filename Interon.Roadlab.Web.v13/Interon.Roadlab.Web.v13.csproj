@@ -32,25 +32,15 @@
     <Folder Include="wwwroot\images\banner\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="Views\Partials\grid\editors\base.cshtml" />
-    <None Include="Views\Partials\grid\editors\embed.cshtml" />
-    <None Include="Views\Partials\grid\editors\macro.cshtml" />
-    <None Include="Views\Partials\grid\editors\media.cshtml" />
-    <None Include="Views\Partials\grid\editors\rte.cshtml" />
-    <None Include="Views\Partials\grid\editors\textstring.cshtml" />
-    <None Include="Views\Partials\_RenderCTA.cshtml" />
-  </ItemGroup>
-
   <PropertyGroup>
     <!-- Razor files are needed for the backoffice to work correctly -->
     <CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>
   </PropertyGroup>
 
   <PropertyGroup>
-    <!-- TEMPORARY during v17 upgrade: skip Razor compile-on-build so we can rebuild
-         the project before ModelsBuilder regenerates the .generated.cs files.
-         Remove this PropertyGroup once the upgrade is complete and models are stable. -->
+    <!-- TEMPORARY during v17 view migration: defer Razor compile to runtime
+         so we can boot the site while account/transaction views (orphan
+         features) get cleaned up incrementally. Remove once all views compile. -->
     <RazorCompileOnBuild>false</RazorCompileOnBuild>
     <RazorCompileOnPublish>false</RazorCompileOnPublish>
   </PropertyGroup>

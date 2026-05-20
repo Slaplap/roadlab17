@@ -50,7 +50,8 @@
       "PowerShell(Stop-Process *)",
       "Bash(dotnet tool *)",
       "Bash(git commit *)",
-      "Bash(dotnet restore *)"
+      "Bash(dotnet restore *)",
+      "Bash(git reset *)"
     ],
     "deny": []
   }
