@@ -12,19 +12,19 @@
 	var method = homePage.Value<string>("method") ?? "";
 	var recentArticles = (recentArticlesPicker ?? Array.Empty<IPublishedContent>()).OfType<BlogArticle>().ToList();
 	if (method == "date")
-	{	
-		recentArticles = blog.Descendants<BlogArticle>().Where(x=>x.HomePageToggle).OrderByDescending(x => x.ArticleDate).Take(3).ToList();
+	{
+		recentArticles = (blog?.Descendants<BlogArticle>() ?? Enumerable.Empty<BlogArticle>()).Where(x=>x.HomePageToggle).OrderByDescending(x => x.ArticleDate).Take(3).ToList();
 	}
 	else if (method == "random")
 	{
-		recentArticles = blog.Descendants<BlogArticle>().Where(x => x.HomePageToggle).OrderBy(x => Guid.NewGuid()).Take(3).ToList();
+		recentArticles = (blog?.Descendants<BlogArticle>() ?? Enumerable.Empty<BlogArticle>()).Where(x => x.HomePageToggle).OrderBy(x => Guid.NewGuid()).Take(3).ToList();
 	}
 }  
 
 <main>
 	<section>
-		<img class="hidden-mobile" src="@Umbraco.Media(Model.Value<IPublishedContent>("desktopImage").Id).Url()" style="width:100%;" alt="Header Image">
-		<img class="visible-mobile" src="@Umbraco.Media(Model.Value<IPublishedContent>("mobileImage").Id).Url()" style="width:100%;" alt="Header Image">
+		<img class="hidden-mobile" src="@(Model.Value<IPublishedContent>("desktopImage") is IPublishedContent dImg ? Umbraco.Media(dImg.Id).Url() : "")" style="width:100%;" alt="Header Image">
+		<img class="visible-mobile" src="@(Model.Value<IPublishedContent>("mobileImage") is IPublishedContent mImg ? Umbraco.Media(mImg.Id).Url() : "")" style="width:100%;" alt="Header Image">
 	</section>
 
 	<section class="features">

@@ -62,7 +62,7 @@
     </div>
 </section>
 <section>
-    <div class="row branch__back-image" style="background-image:url(@Umbraco.Media(Model.Value<IPublishedContent>("branchBackgroundImage").Id).Url())">
+    <div class="row branch__back-image" style="@(Model.Value<IPublishedContent>("branchBackgroundImage") is IPublishedContent bbi ? $"background-image:url({Umbraco.Media(bbi.Id).Url()})" : "")">
         <div class="container">
             <div class="branch__head">
                 <div class="branch__head--line">
