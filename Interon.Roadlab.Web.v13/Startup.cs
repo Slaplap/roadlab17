@@ -70,7 +70,6 @@ namespace Interon.Roadlab.Web.v13
                 })
                 .WithEndpoints(u =>
                 {
-                    u.UseInstallerEndpoints();
                     u.UseBackOfficeEndpoints();
                     u.UseWebsiteEndpoints();
                 });

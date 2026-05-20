@@ -106,7 +106,7 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
 
                 using (MailMessage mail = new MailMessage())
                 {
-                    mail.From = new MailAddress(System.Configuration.ConfigurationManager.AppSettings["mailfrom"]);
+                    mail.From = new MailAddress(_mailsettings.Value.MailFrom);
                     //destination adress
                     foreach (var item in mailto)
                     {

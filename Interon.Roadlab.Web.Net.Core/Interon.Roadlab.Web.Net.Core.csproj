@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFramework>net10.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
   </PropertyGroup>
@@ -10,12 +10,12 @@
 		<FrameworkReference Include="Microsoft.AspNetCore.App" />
 	</ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Anthropic.SDK" Version="5.4.2" />
-    <PackageReference Include="Our.Umbraco.FullTextSearch" Version="4.1.0" />
-    <PackageReference Include="Umbraco.Cms.Core" Version="13.2.2" />
-    <PackageReference Include="Umbraco.Cms.Infrastructure" Version="13.2.2" />
-    <PackageReference Include="Umbraco.Cms.Web.Common" Version="13.2.2" />
-    <PackageReference Include="Umbraco.Cms.Web.Website" Version="13.2.2" />
+    <PackageReference Include="Anthropic.SDK" Version="5.10.0" />
+    <PackageReference Include="Our.Umbraco.FullTextSearch" Version="17.0.1" />
+    <PackageReference Include="Umbraco.Cms.Core" Version="17.4.1" />
+    <PackageReference Include="Umbraco.Cms.Infrastructure" Version="17.4.1" />
+    <PackageReference Include="Umbraco.Cms.Web.Common" Version="17.4.1" />
+    <PackageReference Include="Umbraco.Cms.Web.Website" Version="17.4.1" />
   </ItemGroup>
 
 </Project>

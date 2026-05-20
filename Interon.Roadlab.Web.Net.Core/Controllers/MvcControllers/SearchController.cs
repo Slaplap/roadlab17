@@ -75,7 +75,7 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.MvcControllers
                     .SetSummaryLength(300)
                     .SetPageLength(50)
 
-                    .AddAllowedContentType(Interon.Roadlab.Web.Net.Core.Models.ContentModels.BlogArticle.ModelTypeAlias);
+                    .AddAllowedContentType("blogArticle");
                 
                 search.EnableWildcards();
                

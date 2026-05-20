@@ -90,7 +90,7 @@ Provide your analysis in JSON format.";
                 {
                     Messages = messages,
                     MaxTokens = 300,
-                    Model = AnthropicModels.Claude35Sonnet, // Fastest for classification
+                    Model = "claude-haiku-4-5-20251001", // Fastest for classification
                     Temperature = 0.1m, // Low temperature for consistent results
                     System = new List<SystemMessage> { new SystemMessage(_systemPrompt) }
                 };
