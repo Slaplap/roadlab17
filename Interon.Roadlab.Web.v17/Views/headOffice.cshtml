@@ -12,7 +12,7 @@
             <div class="col-lg-4 col-md-6 col-sm-12"><img loading="lazy" class="branch__img" src="@(Model.Value<IPublishedContent>("branchImage") is IPublishedContent brImg ? Umbraco.Media(brImg.Id).Url() : "")" alt="Office"></div>
             <div class="col-lg-4 col-md-6 col-sm-12 branch__box">
                 <h4 class="branch__heading">contact</h4>
-                <h2 class="branch__name">@Model.Value("branchName")</h2>
+                <h1 class="branch__name">@Model.Value("branchName")</h1>
                 <ul class="fa-ul">
 
                     <li>

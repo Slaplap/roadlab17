@@ -11,6 +11,7 @@
 
 @if (provinces != null && provinces.Any())
 {
+    <h1 class="sr-only">@(string.IsNullOrEmpty(Model.Name) ? "Branches" : Model.Name)</h1>
     foreach (var province in provinces)
     {
         <section class="branch-head__img" style="background-image: url('@(Umbraco.Media(province.Value<IPublishedContent>("provinceBackgroundImage")?.Id)?.Url()??"")')"> 
