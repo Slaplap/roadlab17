@@ -82,13 +82,13 @@
             </div><hr>
             <div class="row projects__images">
                 <div class="col-4">
-                    <img loading="lazy" src=@(project.ProjectImage1?.Url() ?? "") alt="Project">
+                    <img loading="lazy" src=@(project.ProjectImage1?.Url() ?? "") alt="@project.ProjectHeadingTop">
                 </div>
                 <div class="col-4">
-                    <img loading="lazy" src=@(project.ProjectImage2?.Url() ?? "") alt="Project">
+                    <img loading="lazy" src=@(project.ProjectImage2?.Url() ?? "") alt="@project.ProjectHeadingTop">
                 </div>
                 <div class="col-4">
-                    <img loading="lazy" src=@(project.ProjectImage3?.Url() ?? "") alt="Project">
+                    <img loading="lazy" src=@(project.ProjectImage3?.Url() ?? "") alt="@project.ProjectHeadingTop">
                 </div>
             </div>
         </div>

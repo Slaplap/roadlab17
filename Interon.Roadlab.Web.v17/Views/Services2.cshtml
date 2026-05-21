@@ -25,7 +25,7 @@
 					<div class="col-md-6 col-sm-12">
                         @if (Model.Value<IPublishedContent>("heroRightImage") is IPublishedContent hImg)
                         {
-                            <img class="hero__image" src="@Umbraco.Media(hImg.Id).Url()" alt="Header Image" />
+                            <img class="hero__image" src="@Umbraco.Media(hImg.Id).Url()" alt="@Model.Value("heroLargeHeading")" />
                         }
 					</div>
 				</div>
@@ -49,7 +49,7 @@
 		<section>
 			<div class="brag paral paralsec">
 				<div class="brag__container">
-					<img loading="lazy" src="/images/logo2.png" alt="logo">
+					<img loading="lazy" src="/images/logo2.png" alt="Roadlab">
 					<h3 class="brag__heading">BACKED BY THE ROADLAB GUARANTEE:</h3>
 					<h4 class="brag__sub-heading">Fast, Accurate, Reliable.</h4>
 

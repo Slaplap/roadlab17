@@ -32,7 +32,7 @@
 						</div>
 					</div>
 					<div class="col-md-6 col-sm-12">
-						<img class="hero__image"  alt="Header Image" src="@(Model.Value<IPublishedContent>("heroRightImage") is IPublishedContent hImg ? Umbraco.Media(hImg.Id).Url() : "")" alt="@Model.HeroLargeHeading" />
+						<img class="hero__image" src="@(Model.Value<IPublishedContent>("heroRightImage") is IPublishedContent hImg ? Umbraco.Media(hImg.Id).Url() : "")" alt="@Model.HeroLargeHeading" />
 					</div>
 					</div>
 				</div>
@@ -78,7 +78,7 @@
 							</div>
 						</div>
 						<div class="col-md-3 col-sm-12 products__overflow" style="margin-bottom: 5rem;">
-							<img loading="lazy" class="animated products__img" src="@(item.CategoryImage?.Url()??"/images/prod-1.jpg")" alt="Category Image">
+							<img loading="lazy" class="animated products__img" src="@(item.CategoryImage?.Url()??"/images/prod-1.jpg")" alt="@item.CategoryHeading1">
 						</div>
 					}
 				</div>
@@ -87,7 +87,7 @@
     <section>
         <div class="brag paral paralsec">
             <div class="brag__container">
-                <img loading="lazy" src="/images/logo2.png" alt="logo">
+                <img loading="lazy" src="/images/logo2.png" alt="Roadlab">
                 <h3 class="brag__heading">BACKED BY THE ROADLAB GUARANTEE:</h3>
                 <h4 class="brag__sub-heading">Fast, Accurate, Reliable.</h4>
 
