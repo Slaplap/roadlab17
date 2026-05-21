@@ -21,22 +21,24 @@ namespace Interon.Roadlab.Web.Net.Core.Services
 
     public class SpamFilterService : ISpamFilterService
     {
-        private readonly AnthropicClient _client;
+        private readonly AnthropicClient? _client;
         private readonly TokenBucketRateLimiter _rateLimiter;
         private readonly ILogger<SpamFilterService> _logger;
         private readonly string _systemPrompt;
 
         public SpamFilterService(IConfiguration config, ILogger<SpamFilterService> logger)
         {
-            var apiKey = Environment.GetEnvironmentVariable("ROADLAB_ANTHROPIC_API_KEY") ?? config["AnthropicApiKey"] ;
-            if (string.IsNullOrEmpty(apiKey))
-            {
-                throw new InvalidOperationException("Anthropic API key not found in configuration or environment variables");
-            }
-
-            _client = new AnthropicClient(apiKey);
-            _rateLimiter = new TokenBucketRateLimiter(50, 1); // 50 requests per minute
             _logger = logger;
+            var apiKey = Environment.GetEnvironmentVariable("ROADLAB_ANTHROPIC_API_KEY") ?? config["AnthropicApiKey"];
+            if (!string.IsNullOrEmpty(apiKey))
+            {
+                _client = new AnthropicClient(apiKey);
+            }
+            else
+            {
+                _logger.LogWarning("Anthropic API key not configured (neither ROADLAB_ANTHROPIC_API_KEY env var nor AnthropicApiKey config value is set). Spam filtering is disabled; all submissions will be treated as legitimate.");
+            }
+            _rateLimiter = new TokenBucketRateLimiter(50, 1); // 50 requests per minute
             
             _systemPrompt = @"You are an expert email security analyst specializing in spam detection. 
 Analyze the provided email across multiple dimensions:
@@ -59,11 +61,16 @@ Return your analysis as JSON in this exact format:
         }
 
         public async Task<SpamAnalysisResult> AnalyzeEmailAsync(
-            string subject, 
-            string sender, 
+            string subject,
+            string sender,
             string body,
             CancellationToken cancellationToken = default)
         {
+            if (_client == null)
+            {
+                return CreateFallbackResult("Spam filter disabled (no Anthropic API key configured).");
+            }
+
             try
             {
                 // Rate limiting check

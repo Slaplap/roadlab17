@@ -180,9 +180,9 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
             }
             catch (Exception ex)
             {
-                //Error response
+                _logger.LogError(ex, "Vacancy form submission failed during email send.");
                 Response.StatusCode = 400;
-                TempData["Result"]  = ex.Message;
+                TempData["Result"]  = "Sorry, we couldn't process your application right now. Please try again later or contact us directly.";
             }
       
 

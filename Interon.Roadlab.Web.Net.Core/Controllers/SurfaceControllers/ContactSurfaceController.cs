@@ -162,9 +162,9 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
             }
             catch (Exception ex)
             {
-                Log.Error(ex, "Error sending email");
+                Log.Error(ex, "Error sending contact form email");
                 Response.StatusCode = 400;
-                TempData["Result"] = ex.Message;
+                TempData["Result"] = "Sorry, we couldn't send your enquiry right now. Please try again later or contact us directly.";
             }
       
 
