@@ -5,9 +5,12 @@
 
 @inherits UmbracoViewPage
 @{
-    //Get domain name 
+    //Get domain name
     var domain = HttpContextAccessor.HttpContext.Request.Host.Value;
     var url = Model.Value<Image>("oGImage")?.GetCropUrl("ogImage");
+    // Fall back to the site logo when a page has no oGImage set, so the
+    // <meta property="og:image"> never resolves to a path-less URL.
+    if (string.IsNullOrEmpty(url)) { url = "/images/logo.png"; }
     var ogImage = "https://" + domain + url;
 }
 
