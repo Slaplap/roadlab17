@@ -359,3 +359,23 @@ Interon.Roadlab.Web/bin/
 obj/
 /Interon.Roadlab.Web/Media
 bin/
+
+# Project-specific
+# Screenshots / scratch error logs kept locally for triage, not for the repo
+Interon.Roadlab.Web.v13/ss/
+
+# Umbraco runtime data + caches (regenerated on first run)
+Interon.Roadlab.Web.v13/umbraco/Data/TEMP/
+Interon.Roadlab.Web.v13/umbraco/Logs/
+Interon.Roadlab.Web.v13/umbraco/Data/MainDom_*
+
+# Local uploads (not part of source)
+Interon.Roadlab.Web.v13/App_Data/VacancyUploads/
+Interon.Roadlab.Web.v13/Uploads/
+
+# Local-only appsettings overrides containing connection strings or secrets
+# (appsettings.Development.json is tracked because the LocalDB string is shared
+# dev convention; if you ever add personal secrets, use appsettings.Local.json
+# instead — it stays out of the repo.)
+appsettings.Local.json
+appsettings.*.Local.json
