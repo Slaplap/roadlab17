@@ -23,9 +23,9 @@
                         </div>
 					</div>
 					<div class="col-md-6 col-sm-12">
-                        @if (Model.HasValue("heroRightImage"))
+                        @if (Model.Value<IPublishedContent>("heroRightImage") is IPublishedContent hImg)
                         {
-                            <img class="hero__image" src="@Umbraco.Media(Model.Value<IPublishedContent>("heroRightImage").Id).Url()" alt="Header Image" />
+                            <img class="hero__image" src="@Umbraco.Media(hImg.Id).Url()" alt="Header Image" />
                         }
 					</div>
 				</div>
