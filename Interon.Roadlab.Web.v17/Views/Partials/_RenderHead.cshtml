@@ -6,12 +6,16 @@
 @inherits UmbracoViewPage
 @{
     //Get domain name
-    var domain = HttpContextAccessor.HttpContext.Request.Host.Value;
+    var request = HttpContextAccessor.HttpContext.Request;
+    var domain = request.Host.Value;
     var url = Model.Value<Image>("oGImage")?.GetCropUrl("ogImage");
     // Fall back to the site logo when a page has no oGImage set, so the
     // <meta property="og:image"> never resolves to a path-less URL.
     if (string.IsNullOrEmpty(url)) { url = "/images/logo.png"; }
     var ogImage = "https://" + domain + url;
+    // Canonical URL: scheme + host + path (no query string), so URL
+    // variants (utm params, etc.) consolidate into one indexable URL.
+    var canonical = request.Scheme + "://" + domain + request.Path;
 }
 
 @*Check if the site is live*@
@@ -39,6 +43,7 @@ else
 <meta content="strict-origin" name="referrer" />
 <meta name="description" content="@Model.Value("pageDescription")" />
 
+<link rel="canonical" href="@canonical" />
 <meta property="og:url" content="@Model.Value("oGUrl")" />
 <meta property="og:type" content="@Model.Value("oGType")" />
 <meta property="og:title" content="@Model.Value("oGTitle")" />
