@@ -7,18 +7,18 @@ Guidance for Claude Code (claude.ai/code) when working on this repository.
 This codebase was migrated from **Umbraco 13 / .NET 8** to **Umbraco 17.4.1 / .NET 10** on the `upgrade/v17` branch. The migration is functionally complete locally — the site boots, content renders, and the v13 staging is mirrored. Pre-deploy work is still outstanding (see `TODO.md`).
 
 - **Live staging:** `https://roadlabstaging.azurewebsites.net/` — still v13. **DO NOT** push to the Azure DevOps remote; its push URL is intentionally set to `DISABLED_NO_PUSH_TO_AZURE` so we don't auto-deploy unfinished v17 work. Use `git push github upgrade/v17` to push to the GitHub mirror (`Slaplap/roadlab17`).
-- **Local DB:** `(localdb)\MSSQLLocalDB` / `Roadlab_Local`. Connection override is in `Interon.Roadlab.Web.v13/appsettings.Development.json`. Has `MultipleActiveResultSets=True` set — required by v17's `DocumentUrlAliasService`.
+- **Local DB:** `(localdb)\MSSQLLocalDB` / `Roadlab_Local`. Connection override is in `Interon.Roadlab.Web.v17/appsettings.Development.json`. Has `MultipleActiveResultSets=True` set — required by v17's `DocumentUrlAliasService`.
 - **Production DB:** Azure SQL connection string lives in `appsettings.json`. Has known plaintext credentials (rotation pending — see TODO).
 
 ## Architecture
 
 Two-project solution:
-- **`Interon.Roadlab.Web.v13/`** — the Umbraco web app. (Project name is a v13 historical artifact; still on this name post-upgrade.)
+- **`Interon.Roadlab.Web.v17/`** — the Umbraco web app (renamed from `Interon.Roadlab.Web.v13` during the upgrade).
 - **`Interon.Roadlab.Web.Net.Core/`** — library with controllers, view models, services, generated ContentModels.
 
 Key conventions:
 - **ModelsBuilder** runs in `SourceCodeAuto` mode and writes typed model classes to `Interon.Roadlab.Web.Net.Core/Models/ContentModels/*.generated.cs`. Don't edit those — regenerate by changing the content type and rebuilding.
-- **uSync** is the schema + content sync. v17 reads from `Interon.Roadlab.Web.v13/uSync/v17/`. The original `v9/` folder is kept as a v13 reference / source for the conversion script.
+- **uSync** is the schema + content sync. v17 reads from `Interon.Roadlab.Web.v17/uSync/v17/`. The original `v9/` folder is kept as a v13 reference / source for the conversion script.
 - **Surface controllers** in `Interon.Roadlab.Web.Net.Core/Controllers/SurfaceControllers/` handle form posts (`ContactSurfaceController`, `VacancySurfaceController`, `ModalContactSurfaceController`).
 - **Razor runtime compilation** is on (`Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation`) and `RazorCompileOnBuild=false` is set in the web csproj. This is **temporary** during the view-migration window — a few views (account/transaction forms, EditorTemplates) still don't compile cleanly. Re-enable build-time Razor compile once those are fixed.
 
@@ -31,7 +31,7 @@ Key conventions:
    ```
 3. Run the site:
    ```
-   cd Interon.Roadlab.Web.v13
+   cd Interon.Roadlab.Web.v17
    dotnet run
    ```
 4. First-run: Umbraco's install wizard at `https://localhost:44375/umbraco` — enter admin user, accept the LocalDB connection.
@@ -52,14 +52,14 @@ The runtime auto-proxies missing media files from the live staging server via `I
 dotnet build Interon.Roadlab.Web.sln
 
 # Run the web project
-cd Interon.Roadlab.Web.v13
+cd Interon.Roadlab.Web.v17
 dotnet run
 
 # Restore packages
 dotnet restore
 
 # Add a package
-dotnet add Interon.Roadlab.Web.v13 package PackageName
+dotnet add Interon.Roadlab.Web.v17 package PackageName
 ```
 
 ## Tooling scripts

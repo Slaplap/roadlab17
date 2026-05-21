@@ -24,7 +24,7 @@
 
 .PARAMETER ContentFolder
     Directory containing the uSync content config files. Defaults to
-    Interon.Roadlab.Web.v13\uSync\v17\Content relative to repo root.
+    Interon.Roadlab.Web.v17\uSync\v17\Content relative to repo root.
 
 .PARAMETER ConnectionString
     SQL Server connection. Defaults to local LocalDB Roadlab_Local.
@@ -37,7 +37,7 @@
 #>
 [CmdletBinding()]
 param(
-    [string]$ContentFolder = "C:\dev\Roadlab\Interon.Roadlab.Web.v13\uSync\v17\Content",
+    [string]$ContentFolder = "C:\dev\Roadlab\Interon.Roadlab.Web.v17\uSync\v17\Content",
     [string]$ConnectionString = "Server=(localdb)\MSSQLLocalDB;Database=Roadlab_Local;Trusted_Connection=True;TrustServerCertificate=True;Encrypt=False;MultipleActiveResultSets=True;",
     [switch]$DryRun
 )

@@ -3,7 +3,7 @@ using Interon.Roadlab.Web.Net.Core.Controllers;
 using Interon.Roadlab.Web.Net.Core.Services;
 using Our.Umbraco.FullTextSearch;
 
-namespace Interon.Roadlab.Web.v13
+namespace Interon.Roadlab.Web.v17
 {
     public class Startup
     {

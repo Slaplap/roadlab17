@@ -25,7 +25,7 @@
 ## 1. CRITICAL SECURITY ISSUES
 
 ### 1.1 Secrets Hardcoded in appsettings.json — PENDING (needs Anton)
-- **File:** `Interon.Roadlab.Web.v13/appsettings.json` (lines 34, 44, 54)
+- **File:** `Interon.Roadlab.Web.v17/appsettings.json` (lines 34, 44, 54)
 - Database password, SMTP password, and uSync AppKey are committed to source control. The repo is pushed to a private GitHub (`Slaplap/roadlab17`), so exposure is limited to that account, but rotation is still required before any public/wider sharing.
 - **Coordinated fix needed:**
   1. Anton rotates the Azure SQL `interon` user password in Azure Portal.

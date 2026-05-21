@@ -21,7 +21,7 @@ Corporate website for Roadlab (materials testing, civil-engineering services).
 
 ```
 Interon.Roadlab.Web.sln
-├── Interon.Roadlab.Web.v13/          ← web app (project name is v13-era, still on it)
+├── Interon.Roadlab.Web.v17/          ← web app (renamed from v13)
 │   ├── Views/                          Razor templates
 │   ├── wwwroot/                        static CSS/JS/images/media
 │   ├── uSync/v17/                      schema + content sync (Umbraco 17 layout)
@@ -52,7 +52,7 @@ You need:
 One-time setup:
 ```bash
 sqlcmd -S "(localdb)\MSSQLLocalDB" -Q "CREATE DATABASE [Roadlab_Local]"
-cd Interon.Roadlab.Web.v13
+cd Interon.Roadlab.Web.v17
 dotnet run
 ```
 

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using Umbraco.Cms.Core.Models.Blocks;
 using Umbraco.Cms.Core.Models.PublishedContent;
 
-namespace Interon.Roadlab.Web.v13.Extensions;
+namespace Interon.Roadlab.Web.v17.Extensions;
 
 public static class BlockListTemplateExtensions
 {

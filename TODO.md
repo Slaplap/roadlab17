@@ -13,7 +13,7 @@ Legend: **[BLOCK]** = blocks production deploy · **[SAFETY]** = security / data
     - `Views/Shared/EditorTemplates/string.cshtml` and `emailaddress.cshtml` — call removed `ModelMetadata.Watermark`
     - `Views/Partials/_RenderModalContactForm.cshtml` — dynamic-Model expression-tree errors
     - `Views/Landing.cshtml` — uses `GetFirstBlockList` extension (currently resolved via `_ViewImports.cshtml`; runtime-only, no compile check)
-    - Remove `<RazorCompileOnBuild>false</...>` and `<RazorCompileOnPublish>false</...>` from `Interon.Roadlab.Web.v13.csproj` once views compile cleanly.
+    - Remove `<RazorCompileOnBuild>false</...>` and `<RazorCompileOnPublish>false</...>` from `Interon.Roadlab.Web.v17.csproj` once views compile cleanly.
 - [ ] **[BLOCK] Production data conversion** — pre-deploy run of `tools/Convert-V13-To-V17-Data.ps1` against the production database, after a v13→v17 Umbraco upgrade migration runs and before clients hit the published cache. Wrap as a one-shot console app or PowerShell `-ConnectionString` invocation that's safe to run twice.
 - [ ] **[BLOCK] uSync "Cannot save a non-current version" second-pass error** — uSync's second-pass content save fails on a specific item. First-pass writes commit fine (visible content is intact), but cross-content references (MultiNodeTreePicker pointing to other content, etc.) may not be fully re-linked. Pin down the offending item, fix or skip it.
 - [ ] **[SAFETY] Strip `appsettings.json` of staging secrets** before the git history is forced — even with rotation done, the OLD values shouldn't ship in the repo.
