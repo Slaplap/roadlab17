@@ -60,7 +60,7 @@ Legend: **[BLOCK]** = blocks production deploy · **[SAFETY]** = security / data
 - [x] **[SAFETY] Fix silent `catch` blocks** — done. `VacancySurfaceController` injects `ILogger<>` and the spam-check failure catch now logs a warning instead of swallowing the exception silently. Legitimate applications still go through; failures are now visible in `umbraco/Logs/UmbracoTraceLog.*`.
 - [x] **[SAFETY] PII in logs** — done. Added `PiiMasking.MaskEmail` helper in `Net.Core/Logging/` (preserves first char of local part + domain, e.g. `g***@interon.co.za`). Applied to all 6 user-email log sites in `ContactSurfaceController` and `SpamFilterService`. Also dropped the full email body from the SMTP error log — exception trace covers the failure context, body added raw PII. Admin recipient addresses in `Email To` / `Email From` lines left unmasked since those are config, not user-submitted.
 - [ ] **[SAFETY] Error messages to users** — `TempData["Result"] = ex.Message` exposes internals; substitute generic copy and log details server-side.
-- [ ] **[SAFETY] Hardcoded `_remoteServerUrl`** in `MediaLocal.cs` — move to config.
+- [x] **[SAFETY] Hardcoded `_remoteServerUrl`** in `MediaLocal.cs` — done. URL now read from `Custom:RemoteMediaUrl` in `appsettings.Development.json` (with the staging URL kept as a code-level fallback so behaviour is preserved if config is missing). Silent `HttpRequestException` catch now logs a `LogWarning` too.
 
 ## Backoffice content / data hygiene
 
