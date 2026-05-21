@@ -1,5 +1,6 @@
 using Interon.Roadlab.Web.Net.Core.Config;
 using Interon.Roadlab.Web.Net.Core.Controllers;
+using Interon.Roadlab.Web.Net.Core.Middleware;
 using Interon.Roadlab.Web.Net.Core.Services;
 using Our.Umbraco.FullTextSearch;
 
@@ -66,6 +67,16 @@ namespace Interon.Roadlab.Web.v17
                 app.UseDeveloperExceptionPage();
                 app.UseMiddleware<MediaFileMiddleware>();
             }
+            else
+            {
+                // HSTS only fires in non-development environments (UseHsts respects this anyway,
+                // but being explicit prevents an accidental HSTS lock on localhost).
+                app.UseHsts();
+            }
+
+            // Defence-in-depth response headers (nosniff, SAMEORIGIN, Referrer-Policy).
+            // CSP is intentionally deferred — to be introduced in report-only mode first.
+            app.UseMiddleware<SecurityHeadersMiddleware>();
 
             app.UseUmbraco()
                 .WithMiddleware(u =>

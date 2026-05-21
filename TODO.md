@@ -55,7 +55,7 @@ Legend: **[BLOCK]** = blocks production deploy · **[SAFETY]** = security / data
 
 ## Security (post-credential-rotation)
 
-- [ ] **[SAFETY] Add security headers middleware** — CSP, X-Frame-Options, X-Content-Type-Options, HSTS. v17 makes `UseHttps=true` default; add the rest.
+- [x] **[SAFETY] Add security headers middleware** — partial. Added `Net.Core/Middleware/SecurityHeadersMiddleware` setting `X-Content-Type-Options: nosniff`, `X-Frame-Options: SAMEORIGIN`, `Referrer-Policy: strict-origin-when-cross-origin` on every response. HSTS via `app.UseHsts()` (only fires outside Development, so localhost stays unpinned). **CSP intentionally deferred** — adding it without first running in report-only mode is likely to break the backoffice / Revolution Slider / Lightbox / CDN scripts; revisit as its own item.
 - [x] **[SAFETY] Replace `Html.Raw(TempData["script"])` pattern** — done. Both contact and vacancy form partials no longer interpolate server-side strings into a `<script>` tag. The result `<p>` now carries `id="formResult"` and a tiny inline script (`document.getElementById('formResult')?.scrollIntoView()`) handles the post-submit scroll without any Html.Raw. Controllers no longer set `TempData["script"]`. (As a side effect, the contact form's scrollIntoView target now actually exists — the old `contactformResult` ID wasn't in the DOM, so the old code was silently no-op'ing.)
 - [x] **[SAFETY] Fix silent `catch` blocks** — done. `VacancySurfaceController` injects `ILogger<>` and the spam-check failure catch now logs a warning instead of swallowing the exception silently. Legitimate applications still go through; failures are now visible in `umbraco/Logs/UmbracoTraceLog.*`.
 - [x] **[SAFETY] PII in logs** — done. Added `PiiMasking.MaskEmail` helper in `Net.Core/Logging/` (preserves first char of local part + domain, e.g. `g***@interon.co.za`). Applied to all 6 user-email log sites in `ContactSurfaceController` and `SpamFilterService`. Also dropped the full email body from the SMTP error log — exception trace covers the failure context, body added raw PII. Admin recipient addresses in `Email To` / `Email From` lines left unmasked since those are config, not user-submitted.
@@ -77,6 +77,9 @@ Legend: **[BLOCK]** = blocks production deploy · **[SAFETY]** = security / data
 - [ ] **[DOC] Inline comments on tools/** — both PS scripts have header comments but could use more inline explanation of the JSON-shape transformations.
 
 ## Maybe later / out of scope
+
+- [ ] **[SAFETY] Content-Security-Policy** — split off from the main security-headers task. Add CSP in `Content-Security-Policy-Report-Only` mode first, watch the browser console for violations across the public site **and** Umbraco backoffice (Revolution Slider, Lightbox, Bootstrap CDN, jQuery CDN, YouTube embeds, Facebook SDK, Google reCAPTCHA, Anthropic API requests from backoffice tools are all candidates). Once the policy is tight, switch to enforcement.
+
 
 - [ ] Bootstrap 5 + responsive overhaul as a separate project.
 - [ ] Replace Syncfusion notification grid (already removed) with a lightweight `<table>` if any in-backoffice notifications view is still needed (currently nothing references it).
