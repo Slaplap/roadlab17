@@ -26,7 +26,7 @@ Legend: **[BLOCK]** = blocks production deploy · **[SAFETY]** = security / data
 
 ## Performance
 
-- [ ] **[PERF] CSS / JS bundling + minification** — set up `Microsoft.AspNetCore.WebOptimizer` or `<bundleconfig.json>`. Combine the 7+ separate stylesheet requests; minify custom JS. ~1-2 hr.
+- [x] **[PERF] CSS / JS bundling + minification** — done for CSS. Added `LigerShark.WebOptimizer.Core 3.0.477`, wired up in `Startup.cs` with one bundle `/css/site.bundle.css` combining style/animations/toast/animate/megamenu-responsive-fix (~164 KB unminified → ~114 KB minified, 5 requests → 1). JS bundling was not done — only one local JS file exists (`/js/animations.js`, 4 KB), no benefit. CDN-loaded CSS/JS (Bootstrap, Lightbox, jQuery, Google Fonts) is unchanged; consolidating those is `#4d`.
 - [x] **[PERF] Lazy-load images** — done. Bulk-added `loading="lazy"` to 53 `<img>` tags across 20 .cshtml files. Skipped the hero `<img class="hero__image">` on Landing / Services / Services2 and the top-nav logo in `_RenderHeader.cshtml` — those stay eagerly loaded since they're above the fold.
 - [ ] **[PERF] Replace Revolution Slider** — old + heavy (~150 KB). Use Swiper.js or CSS-only carousel. Half-day, touches hero sections.
 - [ ] **[PERF] Consolidate CDN requests** — Bootstrap, jQuery, FontAwesome, Lightbox2, Popper all loaded from separate CDNs. Either bundle locally or pick a single CDN. ~30 min.

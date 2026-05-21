@@ -3,6 +3,7 @@ using Interon.Roadlab.Web.Net.Core.Controllers;
 using Interon.Roadlab.Web.Net.Core.Middleware;
 using Interon.Roadlab.Web.Net.Core.Services;
 using Our.Umbraco.FullTextSearch;
+using WebOptimizer;
 
 namespace Interon.Roadlab.Web.v17
 {
@@ -53,6 +54,17 @@ namespace Interon.Roadlab.Web.v17
             // is in effect during the v17 view-migration window.
             services.AddRazorPages().AddRazorRuntimeCompilation();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
+
+            // Bundle + minify the head CSS files into a single asset.
+            services.AddWebOptimizer(pipeline =>
+            {
+                pipeline.AddCssBundle("/css/site.bundle.css",
+                    "/css/style.css",
+                    "/css/animations.css",
+                    "/css/toast.css",
+                    "/css/animate.css",
+                    "/css/megamenu-responsive-fix.css");
+            });
         }
 
         /// <summary>
@@ -77,6 +89,9 @@ namespace Interon.Roadlab.Web.v17
             // Defence-in-depth response headers (nosniff, SAMEORIGIN, Referrer-Policy).
             // CSP is intentionally deferred — to be introduced in report-only mode first.
             app.UseMiddleware<SecurityHeadersMiddleware>();
+
+            // Serve WebOptimizer bundles before Umbraco / static-file middleware.
+            app.UseWebOptimizer();
 
             app.UseUmbraco()
                 .WithMiddleware(u =>
