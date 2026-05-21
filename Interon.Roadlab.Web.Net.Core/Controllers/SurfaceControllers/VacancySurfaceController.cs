@@ -176,7 +176,6 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
                     }
                 }
                 TempData["Result"] = "Thanks for your enquiry a consultant will be contacting you shortly";
-                TempData["script"] = "document.getElementById(\"ContactFormPlaceHolder\").scrollIntoView();";
             }
             catch (Exception ex)
             {

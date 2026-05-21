@@ -45,10 +45,8 @@
 }
 else
 {
-    <p>@TempData["Result"]</p>
+    <p id="formResult" tabindex="-1">@TempData["Result"]</p>
     <script>
-        $(document).ready(function() {
-            @Html.Raw(TempData["script"])
-        });
+        document.getElementById('formResult')?.scrollIntoView();
     </script>
 }
