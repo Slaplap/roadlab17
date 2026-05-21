@@ -23,8 +23,8 @@
 
 <main>
 	<section>
-		<img class="hidden-mobile" src="@(Model.Value<IPublishedContent>("desktopImage") is IPublishedContent dImg ? Umbraco.Media(dImg.Id).Url() : "")" style="width:100%;" alt="Header Image">
-		<img class="visible-mobile" src="@(Model.Value<IPublishedContent>("mobileImage") is IPublishedContent mImg ? Umbraco.Media(mImg.Id).Url() : "")" style="width:100%;" alt="Header Image">
+		<img class="hidden-mobile" src="@(Model.DesktopImage?.Url() ?? "")" style="width:100%;" alt="Header Image">
+		<img class="visible-mobile" src="@(Model.MobileImage?.Url() ?? "")" style="width:100%;" alt="Header Image">
 	</section>
 
 	<section class="features">

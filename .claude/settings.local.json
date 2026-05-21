@@ -58,7 +58,9 @@
       "Bash(xargs rm -f)",
       "PowerShell(& \"C:\\\\dev\\\\Roadlab\\\\tools\\\\Convert-V13-To-V17-Data.ps1\" -DryRun)",
       "PowerShell(& \"C:\\\\dev\\\\Roadlab\\\\tools\\\\Convert-V13-To-V17-Data.ps1\")",
-      "Bash(grep -v \"^$\")"
+      "Bash(grep -v \"^$\")",
+      "PowerShell(& \"C:\\\\dev\\\\Roadlab\\\\tools\\\\Convert-USync-Files-V9-To-V17.ps1\")",
+      "Bash(awk '/<serviceCategories>/{flag=1} flag{print} /<\\\\/serviceCategories>/{flag=0; exit}' C:/dev/Roadlab/Interon.Roadlab.Web.v13/uSync/v17/Content/concrete.config)"
     ],
     "deny": []
   }
