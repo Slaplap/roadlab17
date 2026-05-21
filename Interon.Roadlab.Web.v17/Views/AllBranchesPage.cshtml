@@ -139,10 +139,11 @@
                                                 var lng = coords[1].Trim();
                                                 var mapSrc = $"https://maps.google.com/maps?q={lat},{lng}&hl=en&z=15&output=embed";
                                                 
-                                                <iframe src="@mapSrc" 
+                                                <iframe src="@mapSrc"
+                                                        title="Map of @branch.Value("branchName")"
                                                         class="desktop-map-iframe"
-                                                        allowfullscreen="" 
-                                                        loading="lazy" 
+                                                        allowfullscreen=""
+                                                        loading="lazy"
                                                         referrerpolicy="no-referrer-when-downgrade">
                                                 </iframe>
                                             }
