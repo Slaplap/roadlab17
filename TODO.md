@@ -16,10 +16,6 @@ Legend: **[BLOCK]** = blocks production deploy · **[SAFETY]** = security / data
 - [ ] **[CHORE] Re-enable Azure DevOps push** — when ready: `git remote set-url --push origin "<PAT URL>"`. Verify the existing `azure-pipelines.yml` works against .NET 10 / Umbraco 17 build (it's currently described in `fixes.md §7.9` as broken Xamarin config — full rewrite needed).
 - [x] **[CHORE] Verify the staging-only items that didn't import via uSync** — done. Diff of `uSync/v9/Content` vs `uSync/v17/Content` showed 20 missing: 10 are intentional mobile-app deletions (account/ajax/login/registration/profile/secure-area/notificaitons/our-world/industries/test), 2 are uSync sync-delta markers (`branch` rename, `branches-landing-pages` delete), 3 are duplicates/orphans (`concrete-1`, `geotechnical-road-investigations_4uahwu0d`, `home_harmyy4a`), 3 are the Industries subtree (Civil Construction + Mining and Quarrying + 1 child blog) — **accepted loss** since Industries was folded into "WHAT WE DO". The 2 real branches (`mosselbay`, `upington`) were copied from v9 → v17 and put through `Convert-USync-Files-V9-To-V17.ps1` to fix MediaPicker v1 → v3 values; user must run uSync force-import to populate the DB.
 
-## Known runtime bugs
-
-- [ ] **[CHORE] Vacancy form submit button doesn't work on local** — page renders fine, button click doesn't POST. Likely client-side (reCAPTCHA / JS handler / event binding); needs a browser-devtools session to pin down. Surfaced 2026-05-21 while testing the surface-controller security pass.
-
 ## Open issues from view migration
 
 - [ ] **[CHORE] Faithful Grid → BlockGrid** *(deferred — George decision 2026-05-21)* — current conversion flattens everything into one RTE block per article. Visually fine, but old blog posts can't have individual images/embeds edited as separate blocks. Revisit only if editors complain about the limitation; new posts in v17 aren't affected.
