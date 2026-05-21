@@ -30,7 +30,7 @@ Legend: **[BLOCK]** = blocks production deploy · **[SAFETY]** = security / data
 - [ ] **[PERF] Lazy-load images** — add `loading="lazy"` to non-hero `<img>` tags in partials. ~1 hr.
 - [ ] **[PERF] Replace Revolution Slider** — old + heavy (~150 KB). Use Swiper.js or CSS-only carousel. Half-day, touches hero sections.
 - [ ] **[PERF] Consolidate CDN requests** — Bootstrap, jQuery, FontAwesome, Lightbox2, Popper all loaded from separate CDNs. Either bundle locally or pick a single CDN. ~30 min.
-- [ ] **[PERF] Delete `wwwroot/Html/` legacy folder (~15 MB)** — pre-Umbraco static HTML files, nothing in code references them. Verify no inbound bookmarks first.
+- [x] **[PERF] Delete `wwwroot/Html/` legacy folder (~15 MB)** — done. 139 files / 15 MB of pre-Umbraco static HTML removed. Verified zero references from any .cshtml/.cs/.csproj/.js/.css/.scss/.md/.config in the solution before deletion. The csproj had one stray `<Content Include="wwwroot\Html\.vscode\launch.json" />` that was also stripped.
 - [ ] **[PERF] Remove duplicate / unused assets** identified in `fixes.md §2`: `material.css` ✅ done · `pe-icon-7-stroke` fonts ✅ done · animate.css duplicate ✅ done · check unused `font-awesome/` local copy (CDN is loaded instead).
 - [ ] **[PERF] Image optimization** — many of the 1,386 imported media files are likely larger than they need to be. Run them through a re-encoder (avif/webp where supported).
 
@@ -84,7 +84,6 @@ Legend: **[BLOCK]** = blocks production deploy · **[SAFETY]** = security / data
 - [ ] Bootstrap 5 + responsive overhaul as a separate project.
 - [ ] Replace Syncfusion notification grid (already removed) with a lightweight `<table>` if any in-backoffice notifications view is still needed (currently nothing references it).
 - [ ] Re-implement a customer/login area if business decides to bring back the mobile-app feature in a new shape.
-- [ ] Convert `wwwroot/Html/` static pages to Umbraco doctypes if any of them are still needed.
 
 ---
 

@@ -57,10 +57,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="wwwroot\Html\.vscode\launch.json" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Interon.Roadlab.Web.Net.Core\Interon.Roadlab.Web.Net.Core.csproj" />
   </ItemGroup>
 
