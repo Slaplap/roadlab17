@@ -22,6 +22,7 @@ Legend: **[BLOCK]** = blocks production deploy · **[SAFETY]** = security / data
 - [ ] **[CHORE] AccountTransactionCreateForm + Modal forms** — Razor views from the deleted mobile-app feature that still exist but won't compile (`_RenderAccountTransactionCreateForm.cshtml` already gone; `_RenderModalContactForm.cshtml` still here, uses `dynamic` Model). Decide: delete, or rewrite for v17.
 - [ ] **[CHORE] EditorTemplates** — `Views/Shared/EditorTemplates/string.cshtml` and `emailaddress.cshtml` use removed `ModelMetadata.Watermark`. Either replace with `Description` / placeholder pattern, or delete if unused.
 - [ ] **[CHORE] Defensive null guards** — done for HomePage / AboutPage / Projects / Services / Branch / headOffice / Landing / BlogCategories / blog partials. Audit other views (`branches.cshtml`, `Footer` partial, `_RenderTopScripts`, etc.) for similar `Model.Value<IPublishedContent>(x).Url()` patterns.
+- [ ] **[CHORE] Missing BlockList element-type partials** — `Views/Partials/blocklist/default.cshtml` now silently skips blocks whose `BlockList/Components/<alias>.cshtml` partial is missing. Real content already uses element types `products`, `aboutOperationsTeams`, `aboutTeamMembers`, `branchElement`, `provinceSection`, `recentArticles`, `stringItem`, `project`, etc. — none have partials yet. Audit which are reached at render time, then write proper partials so the dropped blocks show up. Until then, affected pages will render incomplete.
 
 ## Performance
 
