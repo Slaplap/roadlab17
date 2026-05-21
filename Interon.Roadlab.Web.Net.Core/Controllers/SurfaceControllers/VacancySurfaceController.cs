@@ -6,6 +6,7 @@ using Interon.Roadlab.Web.Net.Core.Models.ViewModels;
 using Interon.Roadlab.Web.Net.Core.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Umbraco.Cms.Core.Cache;
 using Umbraco.Cms.Core.Logging;
@@ -24,11 +25,13 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
     {
         private readonly IOptions<EmailSettings> _emailSetings;
         private readonly ISpamFilterService _spamFilterService;
-        
-        public VacancySurfaceController(IUmbracoContextAccessor umbracoContextAccessor, IUmbracoDatabaseFactory databaseFactory, ServiceContext services, AppCaches appCaches, IProfilingLogger profilingLogger, IPublishedUrlProvider publishedUrlProvider,IOptions<EmailSettings> emailSetings, ISpamFilterService spamFilterService) : base(umbracoContextAccessor, databaseFactory, services, appCaches, profilingLogger, publishedUrlProvider)
+        private readonly ILogger<VacancySurfaceController> _logger;
+
+        public VacancySurfaceController(IUmbracoContextAccessor umbracoContextAccessor, IUmbracoDatabaseFactory databaseFactory, ServiceContext services, AppCaches appCaches, IProfilingLogger profilingLogger, IPublishedUrlProvider publishedUrlProvider,IOptions<EmailSettings> emailSetings, ISpamFilterService spamFilterService, ILogger<VacancySurfaceController> logger) : base(umbracoContextAccessor, databaseFactory, services, appCaches, profilingLogger, publishedUrlProvider)
         {
             _emailSetings = emailSetings;
             _spamFilterService = spamFilterService;
+            _logger = logger;
         }
 
         [HttpPost]
@@ -69,7 +72,8 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
             }
             catch (Exception ex)
             {
-                // Log but don't block legitimate applications
+                // Spam check failures must not block a legitimate application — log and continue.
+                _logger.LogWarning(ex, "Spam analysis failed for vacancy submission; allowing through.");
             }
 
             const long maxFileSize = 5 * 1024 * 1024;
