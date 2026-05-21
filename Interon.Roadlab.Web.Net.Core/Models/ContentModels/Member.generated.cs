@@ -50,107 +50,12 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		// properties
 
 		///<summary>
-		/// Clients
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "17.4.1+ba29b91")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("clients")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel Clients => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "clients");
-
-		///<summary>
-		/// Communication DateTime
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "17.4.1+ba29b91")]
-		[ImplementPropertyType("communicationDateTime")]
-		public virtual global::System.DateTime CommunicationDateTime => this.Value<global::System.DateTime>(_publishedValueFallback, "communicationDateTime");
-
-		///<summary>
-		/// Device Id
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "17.4.1+ba29b91")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("deviceId")]
-		public virtual string DeviceId => this.Value<string>(_publishedValueFallback, "deviceId");
-
-		///<summary>
-		/// Device Type
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "17.4.1+ba29b91")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("deviceOS")]
-		public virtual string DeviceOS => this.Value<string>(_publishedValueFallback, "deviceOS");
-
-		///<summary>
-		/// Device OS Version
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "17.4.1+ba29b91")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("deviceOSVersion")]
-		public virtual string DeviceOsversion => this.Value<string>(_publishedValueFallback, "deviceOSVersion");
-
-		///<summary>
-		/// Devices
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "17.4.1+ba29b91")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("devices")]
-		public virtual global::Umbraco.Cms.Core.Models.Blocks.BlockListModel Devices => this.Value<global::Umbraco.Cms.Core.Models.Blocks.BlockListModel>(_publishedValueFallback, "devices");
-
-		///<summary>
-		/// Device Software Build
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "17.4.1+ba29b91")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("deviceSoftwareBuild")]
-		public virtual string DeviceSoftwareBuild => this.Value<string>(_publishedValueFallback, "deviceSoftwareBuild");
-
-		///<summary>
-		/// Device Software Version
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "17.4.1+ba29b91")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("deviceSoftwareVersion")]
-		public virtual string DeviceSoftwareVersion => this.Value<string>(_publishedValueFallback, "deviceSoftwareVersion");
-
-		///<summary>
 		/// Name
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "17.4.1+ba29b91")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("firstName")]
 		public virtual string FirstName => this.Value<string>(_publishedValueFallback, "firstName");
-
-		///<summary>
-		/// Mobile Number
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "17.4.1+ba29b91")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("mobileNumber")]
-		public virtual string MobileNumber => this.Value<string>(_publishedValueFallback, "mobileNumber");
-
-		///<summary>
-		/// Notification Hub Token
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "17.4.1+ba29b91")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("notificationHubToken")]
-		public virtual string NotificationHubToken => this.Value<string>(_publishedValueFallback, "notificationHubToken");
-
-		///<summary>
-		/// Notification Sender
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "17.4.1+ba29b91")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("notificationSender")]
-		public virtual string NotificationSender => this.Value<string>(_publishedValueFallback, "notificationSender");
-
-		///<summary>
-		/// OTP
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "17.4.1+ba29b91")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("otp")]
-		public virtual string Otp => this.Value<string>(_publishedValueFallback, "otp");
 
 		///<summary>
 		/// Surname

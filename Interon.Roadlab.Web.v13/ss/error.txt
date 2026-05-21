@@ -1,0 +1,132 @@
+ [2026-05-21T08:29:22.791Z] Information: WebSocket connected to wss://localhost:44375/umbraco/serverEventHub?id=ui5s1GhMR12_9w_b6AqkJg&access_token=%5Bredacted%5D.
+ Umbraco Backoffice: The `entityType` and `unique` properties on `<umb-entity-actions-bundle>`. The feature will be removed in version 19. Provide the entity type and unique via the UMB_ENTITY_CONTEXT context instead.
+ Umbraco Backoffice: The `entityType` and `unique` properties on `<umb-entity-actions-bundle>`. The feature will be removed in version 19. Provide the entity type and unique via the UMB_ENTITY_CONTEXT context instead.
+:44375/css/layout.css:1  Failed to load resource: the server responded with a status of 404 ()
+index.js:85 Uncaught (in promise) 
+:44375/umbraco/management/api/v1/security/back-office/token:1  Failed to load resource: the server responded with a status of 400 ()
+ [UmbAuthClient] Token request failed: 400 
+ Umbraco Backoffice: The "AllowNonExistingSegmentsCreation" setting is deprecated. The feature will be removed in version 19.0.0. This functionality will be moved to a client-side extension.
+ Umbraco Backoffice: The `entityType` and `unique` properties on `<umb-entity-actions-bundle>`. The feature will be removed in version 19. Provide the entity type and unique via the UMB_ENTITY_CONTEXT context instead.
+ Umbraco Backoffice: The `entityType` and `unique` properties on `<umb-entity-actions-bundle>`. The feature will be removed in version 19. Provide the entity type and unique via the UMB_ENTITY_CONTEXT context instead.
+ Umbraco Backoffice: The `entityType` and `unique` properties on `<umb-entity-actions-bundle>`. The feature will be removed in version 19. Provide the entity type and unique via the UMB_ENTITY_CONTEXT context instead.
+ Umbraco Backoffice: The `entityType` and `unique` properties on `<umb-entity-actions-bundle>`. The feature will be removed in version 19. Provide the entity type and unique via the UMB_ENTITY_CONTEXT context instead.
+ Umbraco Backoffice: The `entityType` and `unique` properties on `<umb-entity-actions-bundle>`. The feature will be removed in version 19. Provide the entity type and unique via the UMB_ENTITY_CONTEXT context instead.
+ Umbraco Backoffice: The `entityType` and `unique` properties on `<umb-entity-actions-bundle>`. The feature will be removed in version 19. Provide the entity type and unique via the UMB_ENTITY_CONTEXT context instead.
+ Umbraco Backoffice: The `entityType` and `unique` properties on `<umb-entity-actions-bundle>`. The feature will be removed in version 19. Provide the entity type and unique via the UMB_ENTITY_CONTEXT context instead.
+ Umbraco Backoffice: The `entityType` and `unique` properties on `<umb-entity-actions-bundle>`. The feature will be removed in version 19. Provide the entity type and unique via the UMB_ENTITY_CONTEXT context instead.
+ Umbraco Backoffice: The `entityType` and `unique` properties on `<umb-entity-actions-bundle>`. The feature will be removed in version 19. Provide the entity type and unique via the UMB_ENTITY_CONTEXT context instead.
+ Umbraco Backoffice: The `entityType` and `unique` properties on `<umb-entity-actions-bundle>`. The feature will be removed in version 19. Provide the entity type and unique via the UMB_ENTITY_CONTEXT context instead.
+ Umbraco Backoffice: The `entityType` and `unique` properties on `<umb-entity-actions-bundle>`. The feature will be removed in version 19. Provide the entity type and unique via the UMB_ENTITY_CONTEXT context instead.
+ Umbraco Backoffice: The `entityType` and `unique` properties on `<umb-entity-actions-bundle>`. The feature will be removed in version 19. Provide the entity type and unique via the UMB_ENTITY_CONTEXT context instead.
+ Umbraco Backoffice: The `entityType` and `unique` properties on `<umb-entity-actions-bundle>`. The feature will be removed in version 19. Provide the entity type and unique via the UMB_ENTITY_CONTEXT context instead.
+ Umbraco Backoffice: The `entityType` and `unique` properties on `<umb-entity-actions-bundle>`. The feature will be removed in version 19. Provide the entity type and unique via the UMB_ENTITY_CONTEXT context instead.
+ Umbraco Backoffice: The `entityType` and `unique` properties on `<umb-entity-actions-bundle>`. The feature will be removed in version 19. Provide the entity type and unique via the UMB_ENTITY_CONTEXT context instead.
+ Umbraco Backoffice: The `entityType` and `unique` properties on `<umb-entity-actions-bundle>`. The feature will be removed in version 19. Provide the entity type and unique via the UMB_ENTITY_CONTEXT context instead.
+ Umbraco Backoffice: The `entityType` and `unique` properties on `<umb-entity-actions-bundle>`. The feature will be removed in version 19. Provide the entity type and unique via the UMB_ENTITY_CONTEXT context instead.
+ Umbraco Backoffice: The `entityType` and `unique` properties on `<umb-entity-actions-bundle>`. The feature will be removed in version 19. Provide the entity type and unique via the UMB_ENTITY_CONTEXT context instead.
+:44375/umbraco/management/api/v1/security/back-office/token:1  Failed to load resource: the server responded with a status of 400 ()
+ [UmbAuthClient] Token request failed: 400 
+:44375/umbraco/management/api/v1/security/back-office/token:1  Failed to load resource: the server responded with a status of 400 ()
+ [UmbAuthClient] Token request failed: 400 
+:44375/umbraco/management/api/v1/tree/document-type/root?skip=0&take=0:1  Failed to load resource: the server responded with a status of 401 ()
+ [Interceptor] 401 Unauthorized - queuing request for re-authentication and have tried 0 times before Object
+ [2026-05-21T08:53:24.211Z] Information: Connection disconnected.
+:44375/umbraco/management/api/v1/tree/member-type/root?skip=0&take=0:1  Failed to load resource: the server responded with a status of 401 ()
+ [Interceptor] 401 Unauthorized - queuing request for re-authentication and have tried 0 times before Object
+:44375/umbraco/management/api/v1/security/back-office/token:1  Failed to load resource: the server responded with a status of 400 ()
+ [UmbAuthClient] Token request failed: 400 
+:44375/umbraco/management/api/v1/tree/media-type/root?skip=0&take=0:1  Failed to load resource: the server responded with a status of 401 ()
+ [Interceptor] 401 Unauthorized - queuing request for re-authentication and have tried 0 times before Object
+:44375/umbraco/management/api/v1/security/back-office/token:1  Failed to load resource: the server responded with a status of 400 ()
+ [UmbAuthClient] Token request failed: 400 
+:44375/umbraco/management/api/v1/tree/data-type/root?skip=0&take=0:1  Failed to load resource: the server responded with a status of 401 ()
+ [Interceptor] 401 Unauthorized - queuing request for re-authentication and have tried 0 times before Object
+:44375/umbraco/management/api/v1/security/back-office/token:1  Failed to load resource: the server responded with a status of 400 ()
+ [UmbAuthClient] Token request failed: 400 
+:44375/umbraco/management/api/v1/tree/document-blueprint/root?skip=0&take=0:1  Failed to load resource: the server responded with a status of 401 ()
+ [Interceptor] 401 Unauthorized - queuing request for re-authentication and have tried 0 times before Object
+:44375/umbraco/management/api/v1/security/back-office/token:1  Failed to load resource: the server responded with a status of 400 ()
+ [UmbAuthClient] Token request failed: 400 
+:44375/umbraco/management/api/v1/tree/template/root?skip=0&take=0:1  Failed to load resource: the server responded with a status of 401 ()
+ [Interceptor] 401 Unauthorized - queuing request for re-authentication and have tried 0 times before Object
+:44375/umbraco/management/api/v1/security/back-office/token:1  Failed to load resource: the server responded with a status of 400 ()
+ [UmbAuthClient] Token request failed: 400 
+:44375/umbraco/management/api/v1/tree/stylesheet/root?skip=0&take=0:1  Failed to load resource: the server responded with a status of 401 ()
+ [Interceptor] 401 Unauthorized - queuing request for re-authentication and have tried 0 times before Object
+:44375/umbraco/management/api/v1/security/back-office/token:1  Failed to load resource: the server responded with a status of 400 ()
+ [UmbAuthClient] Token request failed: 400 
+:44375/umbraco/management/api/v1/tree/script/root?skip=0&take=0:1  Failed to load resource: the server responded with a status of 401 ()
+ [Interceptor] 401 Unauthorized - queuing request for re-authentication and have tried 0 times before Object
+:44375/umbraco/management/api/v1/security/back-office/token:1  Failed to load resource: the server responded with a status of 400 ()
+ [UmbAuthClient] Token request failed: 400 
+:44375/umbraco/management/api/v1/tree/partial-view/root?skip=0&take=0:1  Failed to load resource: the server responded with a status of 401 ()
+ [Interceptor] 401 Unauthorized - queuing request for re-authentication and have tried 0 times before Object
+:44375/umbraco/management/api/v1/security/back-office/token:1  Failed to load resource: the server responded with a status of 400 ()
+ [UmbAuthClient] Token request failed: 400 
+:44375/umbraco/management/api/v1/tree/document-type/root?skip=0&take=0:1  Failed to load resource: the server responded with a status of 401 ()
+ [Interceptor] 401 Unauthorized - queuing request for re-authentication and have tried 0 times before Object
+:44375/umbraco/management/api/v1/security/back-office/token:1  Failed to load resource: the server responded with a status of 400 ()
+ [UmbAuthClient] Token request failed: 400 
+:44375/umbraco/management/api/v1/tree/media-type/root?skip=0&take=0:1  Failed to load resource: the server responded with a status of 401 ()
+ [Interceptor] 401 Unauthorized - queuing request for re-authentication and have tried 0 times before Object
+:44375/umbraco/management/api/v1/security/back-office/token:1  Failed to load resource: the server responded with a status of 400 ()
+ [UmbAuthClient] Token request failed: 400 
+:44375/umbraco/management/api/v1/tree/member-type/root?skip=0&take=0:1  Failed to load resource: the server responded with a status of 401 ()
+ [Interceptor] 401 Unauthorized - queuing request for re-authentication and have tried 0 times before Object
+:44375/umbraco/management/api/v1/security/back-office/token:1  Failed to load resource: the server responded with a status of 400 ()
+ [UmbAuthClient] Token request failed: 400 
+:44375/umbraco/management/api/v1/tree/data-type/root?skip=0&take=0:1  Failed to load resource: the server responded with a status of 401 ()
+ [Interceptor] 401 Unauthorized - queuing request for re-authentication and have tried 0 times before Object
+:44375/umbraco/management/api/v1/security/back-office/token:1  Failed to load resource: the server responded with a status of 400 ()
+ [UmbAuthClient] Token request failed: 400 
+:44375/umbraco/management/api/v1/tree/document-blueprint/root?skip=0&take=0:1  Failed to load resource: the server responded with a status of 401 ()
+api-interceptor.controller.ts:117 [Interceptor] 401 Unauthorized - queuing request for re-authentication and have tried 0 times before Object
+:44375/umbraco/management/api/v1/security/back-office/token:1  Failed to load resource: the server responded with a status of 400 ()
+installHook.js:1 [UmbAuthClient] Token request failed: 400 
+overrideMethod @ installHook.js:1
+:44375/umbraco/management/api/v1/tree/template/root?skip=0&take=0:1  Failed to load resource: the server responded with a status of 401 ()
+api-interceptor.controller.ts:117 [Interceptor] 401 Unauthorized - queuing request for re-authentication and have tried 0 times before Object
+:44375/umbraco/management/api/v1/security/back-office/token:1  Failed to load resource: the server responded with a status of 400 ()
+installHook.js:1 [UmbAuthClient] Token request failed: 400 
+overrideMethod @ installHook.js:1
+:44375/umbraco/management/api/v1/tree/partial-view/root?skip=0&take=0:1  Failed to load resource: the server responded with a status of 401 ()
+api-interceptor.controller.ts:117 [Interceptor] 401 Unauthorized - queuing request for re-authentication and have tried 0 times before Object
+:44375/umbraco/management/api/v1/security/back-office/token:1  Failed to load resource: the server responded with a status of 400 ()
+installHook.js:1 [UmbAuthClient] Token request failed: 400 
+overrideMethod @ installHook.js:1
+:44375/umbraco/management/api/v1/tree/stylesheet/root?skip=0&take=0:1  Failed to load resource: the server responded with a status of 401 ()
+api-interceptor.controller.ts:117 [Interceptor] 401 Unauthorized - queuing request for re-authentication and have tried 0 times before Object
+:44375/umbraco/management/api/v1/security/back-office/token:1  Failed to load resource: the server responded with a status of 400 ()
+installHook.js:1 [UmbAuthClient] Token request failed: 400 
+overrideMethod @ installHook.js:1
+:44375/umbraco/management/api/v1/tree/script/root?skip=0&take=0:1  Failed to load resource: the server responded with a status of 401 ()
+api-interceptor.controller.ts:117 [Interceptor] 401 Unauthorized - queuing request for re-authentication and have tried 0 times before Object
+app-auth.controller.js:16 [UmbAppAuthController] Authorization timed out, starting authorization flow
+api-interceptor.controller.ts:277 [Interceptor] 401 Unauthorized - re-authentication completed
+api-interceptor.controller.ts:282 [Interceptor] 401 Unauthorized - retrying request after re-authentication Object
+api-interceptor.controller.ts:282 [Interceptor] 401 Unauthorized - retrying request after re-authentication Object
+api-interceptor.controller.ts:282 [Interceptor] 401 Unauthorized - retrying request after re-authentication Object
+api-interceptor.controller.ts:282 [Interceptor] 401 Unauthorized - retrying request after re-authentication Object
+api-interceptor.controller.ts:282 [Interceptor] 401 Unauthorized - retrying request after re-authentication Object
+api-interceptor.controller.ts:282 [Interceptor] 401 Unauthorized - retrying request after re-authentication Object
+api-interceptor.controller.ts:282 [Interceptor] 401 Unauthorized - retrying request after re-authentication Object
+api-interceptor.controller.ts:282 [Interceptor] 401 Unauthorized - retrying request after re-authentication Object
+api-interceptor.controller.ts:282 [Interceptor] 401 Unauthorized - retrying request after re-authentication Object
+api-interceptor.controller.ts:282 [Interceptor] 401 Unauthorized - retrying request after re-authentication Object
+api-interceptor.controller.ts:282 [Interceptor] 401 Unauthorized - retrying request after re-authentication Object
+api-interceptor.controller.ts:282 [Interceptor] 401 Unauthorized - retrying request after re-authentication Object
+api-interceptor.controller.ts:282 [Interceptor] 401 Unauthorized - retrying request after re-authentication Object
+api-interceptor.controller.ts:282 [Interceptor] 401 Unauthorized - retrying request after re-authentication Object
+api-interceptor.controller.ts:282 [Interceptor] 401 Unauthorized - retrying request after re-authentication Object
+api-interceptor.controller.ts:282 [Interceptor] 401 Unauthorized - retrying request after re-authentication Object
+api-interceptor.controller.ts:282 [Interceptor] 401 Unauthorized - retrying request after re-authentication Object
+api-interceptor.controller.ts:282 [Interceptor] 401 Unauthorized - retrying request after re-authentication Object
+Utils.js:148 [2026-05-21T08:53:28.731Z] Information: WebSocket connected to wss://localhost:44375/umbraco/serverEventHub?id=Fpjl3I517_aWJwB_srPI0g&access_token=%5Bredacted%5D.
+:44375/umbraco/usync/api/v1/Perform:1  Failed to load resource: the server responded with a status of 500 ()
+installHook.js:1 [UmbTryExecuteController] Error in request: UmbApiError: Unknown error
+    at b.mapToUmbError (resource.controller.ts:41:10)
+    at b.tryExecute (try-execute.controller.ts:35:26)
+    at async G (tryExecute.function.ts:27:19)
+    at async Gr.performAction (SyncAction.source.ts:44:10)
+    at async Wn.performAction (workspace.context.ts:241:21)
+overrideMethod @ installHook.js:1
