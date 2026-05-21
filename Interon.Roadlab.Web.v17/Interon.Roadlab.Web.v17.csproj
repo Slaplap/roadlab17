@@ -38,14 +38,6 @@
     <CopyRazorGenerateFilesToPublishDirectory>true</CopyRazorGenerateFilesToPublishDirectory>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <!-- TEMPORARY during v17 view migration: defer Razor compile to runtime
-         so we can boot the site while account/transaction views (orphan
-         features) get cleaned up incrementally. Remove once all views compile. -->
-    <RazorCompileOnBuild>false</RazorCompileOnBuild>
-    <RazorCompileOnPublish>false</RazorCompileOnPublish>
-  </PropertyGroup>
-
   <ItemGroup>
     <UpToDateCheckInput Remove="Views\Partials\BlockList\Components\DetailsBlock.cshtml" />
   </ItemGroup>
