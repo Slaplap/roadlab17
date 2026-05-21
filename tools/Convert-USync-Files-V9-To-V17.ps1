@@ -157,9 +157,61 @@ foreach ($file in $files) {
             elseif ($editor -eq 'Umbraco.BlockGrid') {
                 if ($trim.StartsWith('{') -and $trim -notmatch '"sections"') { continue }  # already BG
                 if ($trim -match '"sections"') {
-                    # Grid Layout JSON. We don't have a converter; null it (consistent with prior DB cleanup).
-                    $valueNode.InnerText = ''
-                    $changed = $true; $valuesChanged++
+                    # Grid Layout -> Block Grid. We only have one block type (blogContentBlock,
+                    # key 9a4f7c2e-1b3d-4e8a-bf01-7d62a8f5c930) with a single RTE field `content`.
+                    # Flatten the grid's controls into one HTML string and put it into one block.
+                    try {
+                        $grid = $raw | ConvertFrom-Json
+                        $sb = New-Object System.Text.StringBuilder
+                        foreach ($section in @($grid.sections)) {
+                            foreach ($row in @($section.rows)) {
+                                foreach ($area in @($row.areas)) {
+                                    foreach ($ctrl in @($area.controls)) {
+                                        $editAlias = if ($ctrl.editor) { $ctrl.editor.alias } else { '' }
+                                        switch ($editAlias) {
+                                            'rte' {
+                                                [void]$sb.AppendLine([string]$ctrl.value)
+                                            }
+                                            'textstring' {
+                                                [void]$sb.AppendLine('<p>' + [string]$ctrl.value + '</p>')
+                                            }
+                                            'media' {
+                                                $src = if ($ctrl.value.image) { [string]$ctrl.value.image } else { '' }
+                                                if ($src) { [void]$sb.AppendLine('<p><img src="' + $src + '" /></p>') }
+                                            }
+                                            'embed' {
+                                                if ($ctrl.value.preview) { [void]$sb.AppendLine([string]$ctrl.value.preview) }
+                                                elseif ($ctrl.value) { [void]$sb.AppendLine('<!-- embed: ' + [string]$ctrl.value + ' -->') }
+                                            }
+                                            default {
+                                                # Unknown control type - skip with comment
+                                                if ($editAlias) { [void]$sb.AppendLine('<!-- ' + $editAlias + ' control dropped -->') }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                        $blockUdi = "umb://element/" + ([guid]::NewGuid().ToString() -replace '-','')
+                        $bg = [ordered]@{
+                            layout = [ordered]@{
+                                'Umbraco.BlockGrid' = @([ordered]@{ contentUdi = $blockUdi; areas = @(); columnSpan = 12; rowSpan = 1 })
+                            }
+                            contentData = @([ordered]@{
+                                contentTypeKey = '9a4f7c2e-1b3d-4e8a-bf01-7d62a8f5c930'
+                                udi = $blockUdi
+                                content = $sb.ToString()
+                            })
+                            settingsData = @()
+                        }
+                        $newJson = $bg | ConvertTo-Json -Depth 25 -Compress
+                        $valueNode.InnerText = "`r`n" + $newJson + "`r`n"
+                        $changed = $true; $valuesChanged++
+                    } catch {
+                        Write-Warning "[$($file.Name) / $alias] Grid->BG conversion failed: $_"
+                        $valueNode.InnerText = ''
+                        $changed = $true; $valuesChanged++
+                    }
                 }
             }
         } catch {

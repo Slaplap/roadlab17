@@ -60,7 +60,10 @@
       "PowerShell(& \"C:\\\\dev\\\\Roadlab\\\\tools\\\\Convert-V13-To-V17-Data.ps1\")",
       "Bash(grep -v \"^$\")",
       "PowerShell(& \"C:\\\\dev\\\\Roadlab\\\\tools\\\\Convert-USync-Files-V9-To-V17.ps1\")",
-      "Bash(awk '/<serviceCategories>/{flag=1} flag{print} /<\\\\/serviceCategories>/{flag=0; exit}' C:/dev/Roadlab/Interon.Roadlab.Web.v13/uSync/v17/Content/concrete.config)"
+      "Bash(awk '/<serviceCategories>/{flag=1} flag{print} /<\\\\/serviceCategories>/{flag=0; exit}' C:/dev/Roadlab/Interon.Roadlab.Web.v13/uSync/v17/Content/concrete.config)",
+      "Bash(xargs -I{} bash -c 'awk \"/<grid>/,/<\\\\/grid>/\" \"{}\" | head -50')",
+      "Bash(awk '/<grid>/,/<\\\\/grid>/' C:/dev/Roadlab/Interon.Roadlab.Web.v13/uSync/v9/Content/why-construction-companies-should-use-accredited-laboratories.config)",
+      "Bash(awk '/<grid>/,/<\\\\/grid>/' C:/dev/Roadlab/Interon.Roadlab.Web.v13/uSync/v17/Content/why-construction-companies-should-use-accredited-laboratories.config)"
     ],
     "deny": []
   }
