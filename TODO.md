@@ -65,7 +65,7 @@ Legend: **[BLOCK]** = blocks production deploy · **[SAFETY]** = security / data
 ## Backoffice content / data hygiene
 
 - [ ] **[CHORE] Decide on `compTestingType` + `test` doctype** — `fixes.md §5.1` flagged as suspicious orphans. Confirm not used on prod, then delete.
-- [ ] **[CHORE] Delete duplicate "(1)" NC and Branch doctypes** — `Branch1`, `Services2` (vs `Services`), `QuoteRequest...NestedContent (1)`, `Team Member - Nested Content (1)`. Consolidate or remove.
+- [ ] **[CHORE] Delete duplicate "(1)" NC and Branch doctypes** — `Branch1`, `QuoteRequest...NestedContent (1)`, `Team Member - Nested Content (1)`. Consolidate or remove. (Note: `Services2` is **not** a duplicate of `Services` — they're intentionally separate templates that may diverge; keep both.)
 - [ ] **[CHORE] Rename data-types from "...Nested Content" suffix to "...Block List"** — purely cosmetic; the editor is already BlockList.
 - [ ] **[CHORE] Clean up the v9 staging-export duplicate-key bugs** — staging has two content nodes sharing the same Key in a few places (Mosselbay/George, Upington/Lichtenburg, etc.). Fix on staging at source if possible.
 - [ ] **[CHORE] Old grid editor partials** — `Views/Partials/grid/editors/*` already removed; verify no straggler references.

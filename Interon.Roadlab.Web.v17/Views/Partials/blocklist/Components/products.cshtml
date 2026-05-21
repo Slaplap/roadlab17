@@ -1,0 +1,26 @@
+@using Interon.Roadlab.Web.Net.Core.Models.ContentModels
+@inherits UmbracoViewPage<Umbraco.Cms.Core.Models.Blocks.BlockListItem>
+
+@{
+    var item = (Products)Model.Content;
+}
+
+<div class="col-md-3 col-sm-12">
+    <div class="row">
+        <div class="col-2 products__container--width">
+            <h2 class="products__container--heading">@item.CategoryNumber</h2>
+            <hr class="products__hr">
+        </div>
+        <div class="col">
+            <h5 class="products__test-title">@item.CategoryHeading1</h5>
+        </div>
+        <div class="products__space">
+            <div class="products__content" style="margin-bottom: 5rem;">
+                <p class="products__content">@item.Category</p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-3 col-sm-12 products__overflow" style="margin-bottom: 5rem;">
+    <img class="animated products__img" src="@(item.CategoryImage?.Url() ?? "/images/prod-1.jpg")" alt="Category Image">
+</div>
