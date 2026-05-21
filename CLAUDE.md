@@ -74,13 +74,12 @@ Production deploy will run a packaged version of these (see `TODO.md`).
 - **The mobile-app feature was removed** in `0fc27992`. Account/Transaction content types, AppSettings tree, Companies, Devices, LimsElement, and 12 mobile-specific Member properties are all gone. If you see legacy references in old branches, that's why.
 - **The `Html/` folder** under `wwwroot/Html/` is ~15 MB of static pre-Umbraco HTML files. Nothing in code references it but it's still served at `/Html/*`. Deletion candidate — verify no inbound links first.
 - **Generated.cs files are committed** to the repo so a fresh clone builds without Umbraco running first. If you change a content type, expect `.generated.cs` diffs.
-- **uSync's second-pass import logs `Cannot save a non-current version`** — known issue, doesn't block the bulk of data being written. Tracked in TODO.
+- **uSync's second-pass import logs `Cannot save a non-current version`** — a known transient race condition in uSync's second-pass save (cross-content reference re-linking). First-pass writes commit fine — content IS intact. Workaround: **run the uSync import a second time** — the items that failed second-pass save on run 1 are stable on run 2 and succeed. This is the documented pre-deploy pattern (will go into `DEPLOY.md`).
 
 ## What NOT to do
 
 - **Never push to `origin` (Azure DevOps).** It's the live-staging-deploys remote and our work isn't ready. The push URL is disabled, but don't try to re-enable it without coordination.
 - **Never commit `appsettings.json` credential edits.** Use `appsettings.Development.json` (LocalDB, harmless) or `appsettings.Local.json` (gitignored) for personal overrides.
-- **Don't re-enable `RazorCompileOnBuild=true`** until the deferred view fixes (`_RenderModalContactForm`, EditorTemplates Watermark, `Landing.cshtml`'s `GetFirstBlockList`) are done. The site will fail to build.
 
 ## User profile
 
