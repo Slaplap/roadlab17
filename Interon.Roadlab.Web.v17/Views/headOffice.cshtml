@@ -9,7 +9,7 @@
 <section class="branch">
     <div class="container">
         <div class="row branch__space">
-            <div class="col-lg-4 col-md-6 col-sm-12"><img class="branch__img" src="@(Model.Value<IPublishedContent>("branchImage") is IPublishedContent brImg ? Umbraco.Media(brImg.Id).Url() : "")" alt="Office"></div>
+            <div class="col-lg-4 col-md-6 col-sm-12"><img loading="lazy" class="branch__img" src="@(Model.Value<IPublishedContent>("branchImage") is IPublishedContent brImg ? Umbraco.Media(brImg.Id).Url() : "")" alt="Office"></div>
             <div class="col-lg-4 col-md-6 col-sm-12 branch__box">
                 <h4 class="branch__heading">contact</h4>
                 <h2 class="branch__name">@Model.Value("branchName")</h2>
@@ -132,7 +132,7 @@
                 </ul>
             </div>
             <div class="col-md-8 col-sm-12 headoffice__img">
-                <img class="branch__map" src="/images/sa.jpg" alt="map South Africa">
+                <img loading="lazy" class="branch__map" src="/images/sa.jpg" alt="map South Africa">
             </div>
         </div>
         <div class="row">
@@ -156,7 +156,7 @@
                 </ul>
             </div>
             <div class="col-md-8 col-sm-12 headoffice__img">
-                <img class="branch__map" src="/images/africa.jpg" alt="Africa">
+                <img loading="lazy" class="branch__map" src="/images/africa.jpg" alt="Africa">
             </div>
         </div>
     </div>
@@ -166,7 +166,7 @@
         <div class="container about-brag__container">
             <div class="row">
                 <div class="col-md-2 col-sm-12">
-                    <img src="/images/logo2.png" alt="logo">
+                    <img loading="lazy" src="/images/logo2.png" alt="logo">
                 </div>
                 <div class="col">
                     <h3 class="about-brag__heading">WANT TO HEAR MORE?</h3>

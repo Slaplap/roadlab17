@@ -12,5 +12,5 @@
         </div>
 
     </div>
-    <div class="col-md-6 sub-products__pad"><img alt="@(Model.Content.Value<IPublishedContent>("image")?.AltText() ?? "")" class="w-100" src="@(Model.Content.Value<IPublishedContent>("image")?.Url() ?? "")"></div>
+    <div class="col-md-6 sub-products__pad"><img loading="lazy" alt="@(Model.Content.Value<IPublishedContent>("image")?.AltText() ?? "")" class="w-100" src="@(Model.Content.Value<IPublishedContent>("image")?.Url() ?? "")"></div>
 </div>

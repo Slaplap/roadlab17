@@ -42,7 +42,7 @@
 		<div class="products__heading paral paralsec-aggregate">
 			<div class="container">
 				<div class="row products__heading-container">
-					<div class="col-md-1 col-sm-12"><img alt="" class="products__heading-icon" src="@(Model.Value<IPublishedContent>("pageIcon") is IPublishedContent pIcon ? Umbraco.Media(pIcon.Id).Url() : "")" alt="Services"></div>
+					<div class="col-md-1 col-sm-12"><img loading="lazy" alt="" class="products__heading-icon" src="@(Model.Value<IPublishedContent>("pageIcon") is IPublishedContent pIcon ? Umbraco.Media(pIcon.Id).Url() : "")" alt="Services"></div>
 					<div class="col-md-11 col-sm-12 products__heading--line products__heading--space">
 						<h2 class="products__heading--heading">@Model.PageHeadingTop</h2>
 						<h4 class="products__heading--sub-heading">@Model.PageHeadingBottom</h4>
@@ -78,7 +78,7 @@
 							</div>
 						</div>
 						<div class="col-md-3 col-sm-12 products__overflow" style="margin-bottom: 5rem;">
-							<img class="animated products__img" src="@(item.CategoryImage?.Url()??"/images/prod-1.jpg")" alt="Category Image">
+							<img loading="lazy" class="animated products__img" src="@(item.CategoryImage?.Url()??"/images/prod-1.jpg")" alt="Category Image">
 						</div>
 					}
 				</div>
@@ -87,7 +87,7 @@
     <section>
         <div class="brag paral paralsec">
             <div class="brag__container">
-                <img src="/images/logo2.png" alt="logo">
+                <img loading="lazy" src="/images/logo2.png" alt="logo">
                 <h3 class="brag__heading">BACKED BY THE ROADLAB GUARANTEE:</h3>
                 <h4 class="brag__sub-heading">Fast, Accurate, Reliable.</h4>
 

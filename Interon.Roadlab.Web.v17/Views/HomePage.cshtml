@@ -23,15 +23,15 @@
 
 <main>
 	<section>
-		<img class="hidden-mobile" src="@(Model.DesktopImage?.Url() ?? "")" style="width:100%;" alt="Header Image">
-		<img class="visible-mobile" src="@(Model.MobileImage?.Url() ?? "")" style="width:100%;" alt="Header Image">
+		<img loading="lazy" class="hidden-mobile" src="@(Model.DesktopImage?.Url() ?? "")" style="width:100%;" alt="Header Image">
+		<img loading="lazy" class="visible-mobile" src="@(Model.MobileImage?.Url() ?? "")" style="width:100%;" alt="Header Image">
 	</section>
 
 	<section class="features">
 		<div class="container features__cont">
 			<div class="row">
 				<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 features__box">
-					<div class=" text-center features__img"><img src="./images/icon1.jpg" alt="Materials Testing"></div>
+					<div class=" text-center features__img"><img loading="lazy" src="./images/icon1.jpg" alt="Materials Testing"></div>
 					<h3 class="features__heading"> 
 						MATERIALS<br>
 						TESTING
@@ -46,7 +46,7 @@
 					</ul>
 				</div>
 				<div class="col-lg-3 col-md-6 col-sm-6 col-sm-6 features__box">
-					<div class="text-center features__img"><img src="./images/icon2.jpg" alt="Laboratory Services"></div>
+					<div class="text-center features__img"><img loading="lazy" src="./images/icon2.jpg" alt="Laboratory Services"></div>
 					<h3 class="features__heading">
 						Specialised<br>
 						services
@@ -62,7 +62,7 @@
 				</div>
 
 				<div class="col-lg-3 col-md-6 col-sm-6 features__box">
-					<div class="text-center features__img"><img src="./images/icon4.jpg" alt="Specialised Insights"></div>
+					<div class="text-center features__img"><img loading="lazy" src="./images/icon4.jpg" alt="Specialised Insights"></div>
 					<h3 class="features__heading">Unparalleled<br>&nbsp;&nbsp;Insights</h3>
 					<hr class="features__hr">
 					<p>ANY MATERIAL ANY TIME</p>
@@ -74,7 +74,7 @@
 					</ul>
 				</div>
 				<div class="col-lg-3 col-md-6 col-sm-6 features__box">
-					<div class="text-center features__img"><img src="./images/icon3.jpg" alt="Turnkey Partners"></div>
+					<div class="text-center features__img"><img loading="lazy" src="./images/icon3.jpg" alt="Turnkey Partners"></div>
 					<h3 class="features__heading">
 						Turnkey<br>
 						Partners
@@ -99,7 +99,7 @@
 		<!-- Start Feature 1 -->
 		<div class="container">
 			<div class="row benefits-blocks__container">
-				<div class="col-md-6 col-sm-12 benefits-blocks__divider"><img class="benefits-blocks__img" src="./images/soil-1.jpg" alt="At your Site"></div>
+				<div class="col-md-6 col-sm-12 benefits-blocks__divider"><img loading="lazy" class="benefits-blocks__img" src="./images/soil-1.jpg" alt="At your Site"></div>
 				<div class="col-md-6 col-sm-12 benefits-blocks__right-box">
 					<div class="col">
 
@@ -120,7 +120,7 @@
 		<!-- Start Feature 2 -->
 		<div>
 			<div class="row benefits-blocks__container">
-				<div class="col-md-6 col-sm-12 benefits-blocks__divider"><img class="benefits-blocks__img" src="./images/concrete-1.jpg" alt="At your Site"></div>
+				<div class="col-md-6 col-sm-12 benefits-blocks__divider"><img loading="lazy" class="benefits-blocks__img" src="./images/concrete-1.jpg" alt="At your Site"></div>
 				<div class="col-md-6 col-sm-12 benefits-blocks__right-box">
 					<div class="col">
 
@@ -145,7 +145,7 @@
 		<div>
 
 				<div class="row benefits-blocks__container">
-					<div class="col-md-6 col-sm-12 benefits-blocks__divider"><img class="benefits-blocks__img" src="./images/geotech-1.jpg" alt="At your Site"></div>
+					<div class="col-md-6 col-sm-12 benefits-blocks__divider"><img loading="lazy" class="benefits-blocks__img" src="./images/geotech-1.jpg" alt="At your Site"></div>
 					<div class="col-md-6 col-sm-12 benefits-blocks__right-box">
 						<div class="col">
 
@@ -168,7 +168,7 @@
 		<!-- Start Feature 4 -->
 			<div>
 				<div class="row benefits-blocks__container">
-					<div class="col-md-6 col-sm-12 benefits-blocks__divider"><img class="benefits-blocks__img" src="./images/asphalt-1.jpg" alt="At your Site"></div>
+					<div class="col-md-6 col-sm-12 benefits-blocks__divider"><img loading="lazy" class="benefits-blocks__img" src="./images/asphalt-1.jpg" alt="At your Site"></div>
 					<div class="col-md-6 col-sm-12 benefits-blocks__right-box">
 						<div class="col">
 
@@ -209,7 +209,7 @@
 							<p class="cp-just">We love doing business in person and our friendly staff are always eager to hear about your project. Let's have a chat!</p><a class="btn btn-blue__small" href="/head-office/" role="button"></i>CONTACT US</a>
 						</div>
 					</div>
-					<div class="col-lg-4 col-md-6 col-sm-12 reach__img-hide"><img class="reach__bottom " src="/media/zmffny3g/manb.png" alt="Roadlab Man"></div>
+					<div class="col-lg-4 col-md-6 col-sm-12 reach__img-hide"><img loading="lazy" class="reach__bottom " src="/media/zmffny3g/manb.png" alt="Roadlab Man"></div>
 				</div>
 			</div>
 		</div>
@@ -230,7 +230,7 @@
 							@foreach (var item in recentArticles )
 							{
 								<div class="px-5 col-lg-4 col-md-6 col-sm-12 about-text">
-									<img class="about-team__sub-container--img mb-3" src="@item.ArticleIntersectImage.Url()" alt="@(item.ArticleIntersectImage.Value("fileDescription")??item.ArticleIntersectImage.Name)">
+									<img loading="lazy" class="about-team__sub-container--img mb-3" src="@item.ArticleIntersectImage.Url()" alt="@(item.ArticleIntersectImage.Value("fileDescription")??item.ArticleIntersectImage.Name)">
 									<h6 class="about-team__sub-container--title">@item.PageTitle</h6>
 									<h5 class="blog__sub-container--name">@item.BlogHeading</h5>
 									<div class="blog__sub-container--content ft-cont">

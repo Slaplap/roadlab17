@@ -21,7 +21,7 @@
                     @foreach (var item in blogSelector.BlockContentPicker.OfType<BlogArticle>())
                     {
                         <div class="col-md-4 col-sm-12">
-                            <img class="about-team__sub-container--img mb-3" src="@item.ArticleIntersectImage.Url()" alt="">
+                            <img loading="lazy" class="about-team__sub-container--img mb-3" src="@item.ArticleIntersectImage.Url()" alt="">
                             <h6 class="about-team__sub-container--title">@item.Parent.Name</h6>
                             <h5 class="blog__sub-container--name">@item.BlogHeading</h5>
                             <div class="blog__sub-container--content ft-cont">
@@ -45,7 +45,7 @@
         <div class="big__container">
             <div class="row footer__container">
                 <div class="col-lg-4 col-md-12 footer__spacer--left">
-                    <img src="/images/rwhite.png" />
+                    <img loading="lazy" src="/images/rwhite.png" />
                     <p class=" footer__text">
                         <strong>Roadlab</strong> has been providing professional materials laboratory services to the civil engineering, construction and mining industries in sub-Saharan Africa since 1965, serving private, government and municipal sectors. We are an accredited, independent testing laboratory which has gained industry leader reputation due to excellent service and customer-focused solutions.</br></br>
                         Roadlab offers state-of-the-art facilities, where standardised testing methods ensure products and samples are accurately tested, validated and comprehensive reporting delivered against accredited specifications.
@@ -142,4 +142,4 @@
         </div>
     </div>
 </footer>
-<a href="#top"> <img class="sticky" src="/images/bot.png" alt="Top"></a>
+<a href="#top"> <img loading="lazy" class="sticky" src="/images/bot.png" alt="Top"></a>

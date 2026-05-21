@@ -27,7 +27,7 @@ Legend: **[BLOCK]** = blocks production deploy · **[SAFETY]** = security / data
 ## Performance
 
 - [ ] **[PERF] CSS / JS bundling + minification** — set up `Microsoft.AspNetCore.WebOptimizer` or `<bundleconfig.json>`. Combine the 7+ separate stylesheet requests; minify custom JS. ~1-2 hr.
-- [ ] **[PERF] Lazy-load images** — add `loading="lazy"` to non-hero `<img>` tags in partials. ~1 hr.
+- [x] **[PERF] Lazy-load images** — done. Bulk-added `loading="lazy"` to 53 `<img>` tags across 20 .cshtml files. Skipped the hero `<img class="hero__image">` on Landing / Services / Services2 and the top-nav logo in `_RenderHeader.cshtml` — those stay eagerly loaded since they're above the fold.
 - [ ] **[PERF] Replace Revolution Slider** — old + heavy (~150 KB). Use Swiper.js or CSS-only carousel. Half-day, touches hero sections.
 - [ ] **[PERF] Consolidate CDN requests** — Bootstrap, jQuery, FontAwesome, Lightbox2, Popper all loaded from separate CDNs. Either bundle locally or pick a single CDN. ~30 min.
 - [x] **[PERF] Delete `wwwroot/Html/` legacy folder (~15 MB)** — done. 139 files / 15 MB of pre-Umbraco static HTML removed. Verified zero references from any .cshtml/.cs/.csproj/.js/.css/.scss/.md/.config in the solution before deletion. The csproj had one stray `<Content Include="wwwroot\Html\.vscode\launch.json" />` that was also stripped.
