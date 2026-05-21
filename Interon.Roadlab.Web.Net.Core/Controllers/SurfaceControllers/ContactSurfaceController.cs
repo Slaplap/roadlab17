@@ -3,6 +3,7 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using Interon.Roadlab.Web.Net.Core.Config;
+using Interon.Roadlab.Web.Net.Core.Logging;
 using Interon.Roadlab.Web.Net.Core.Models.ViewModels;
 using Interon.Roadlab.Web.Net.Core.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -58,28 +59,28 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
                     $"Name: {model.Name}\nCompany: {model.Company}\nLocation: {model.Location}\nQuery: {model.Query}"
                 );
 
-                Log.Information("Spam analysis completed for contact form. Classification: {Classification}, Confidence: {Confidence}, Sender: {Email}", 
-                    spamResult.Classification, spamResult.ConfidenceScore, model.Email);
+                Log.Information("Spam analysis completed for contact form. Classification: {Classification}, Confidence: {Confidence}, Sender: {Email}",
+                    spamResult.Classification, spamResult.ConfidenceScore, PiiMasking.MaskEmail(model.Email));
 
                 if (spamResult.IsSpam && spamResult.ConfidenceScore > 80)
                 {
-                    Log.Warning("Contact form submission blocked as spam. Email: {Email}, Reason: {Reasoning}", 
-                        model.Email, spamResult.Reasoning);
-                    
+                    Log.Warning("Contact form submission blocked as spam. Email: {Email}, Reason: {Reasoning}",
+                        PiiMasking.MaskEmail(model.Email), spamResult.Reasoning);
+
                     TempData["Result"] = "Thank you for your message. We have received your enquiry and will respond shortly.";
                     return CurrentUmbracoPage();
                 }
                 else if (spamResult.IsSpam && spamResult.ConfidenceScore >= 60)
                 {
-                    Log.Warning("Contact form flagged as potential spam. Email: {Email}, Confidence: {Confidence}, Reason: {Reasoning}", 
-                        model.Email, spamResult.ConfidenceScore, spamResult.Reasoning);
-                    
+                    Log.Warning("Contact form flagged as potential spam. Email: {Email}, Confidence: {Confidence}, Reason: {Reasoning}",
+                        PiiMasking.MaskEmail(model.Email), spamResult.ConfidenceScore, spamResult.Reasoning);
+
                     spamPrefix = "[SPAM] ";
                 }
             }
             catch (Exception ex)
             {
-                Log.Warning(ex, "Spam filter failed for contact form, allowing submission to proceed. Email: {Email}", model.Email);
+                Log.Warning(ex, "Spam filter failed for contact form, allowing submission to proceed. Email: {Email}", PiiMasking.MaskEmail(model.Email));
             }
 
             try
@@ -152,8 +153,9 @@ namespace Interon.Roadlab.Web.Net.Core.Controllers.SurfaceControllers
                     }
                     catch (Exception ex)
                     {
-                        Log.Error(ex, "Error sending email. Configuration: SmtpAddress: {0}, Port: {1}, EnableSSL: {2}, MailFrom: {3}, MailTo: {4}, Subject: {5}, Body: {6}",
-                            smtpAddress, portNumber, enableSSL, _emailSettings.Value.MailFrom, string.Join(";", mailto), subject, body.ToString());
+                        // Don't log the body — it contains the user's name/email/contact/query (PII).
+                        Log.Error(ex, "Error sending contact email. Smtp={SmtpAddress}:{Port} EnableSSL={EnableSSL} Subject={Subject}",
+                            smtpAddress, portNumber, enableSSL, subject);
                         throw;
                     }
                 }

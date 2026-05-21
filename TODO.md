@@ -58,7 +58,7 @@ Legend: **[BLOCK]** = blocks production deploy · **[SAFETY]** = security / data
 - [ ] **[SAFETY] Add security headers middleware** — CSP, X-Frame-Options, X-Content-Type-Options, HSTS. v17 makes `UseHttps=true` default; add the rest.
 - [ ] **[SAFETY] Replace `Html.Raw(TempData["script"])` pattern** — `fixes.md §1.5`. Use a safer post-submit hook (data-attr-driven JS instead of injected `<script>`).
 - [x] **[SAFETY] Fix silent `catch` blocks** — done. `VacancySurfaceController` injects `ILogger<>` and the spam-check failure catch now logs a warning instead of swallowing the exception silently. Legitimate applications still go through; failures are now visible in `umbraco/Logs/UmbracoTraceLog.*`.
-- [ ] **[SAFETY] PII in logs** — `ContactSurfaceController.cs` logs email addresses. Mask before logging.
+- [x] **[SAFETY] PII in logs** — done. Added `PiiMasking.MaskEmail` helper in `Net.Core/Logging/` (preserves first char of local part + domain, e.g. `g***@interon.co.za`). Applied to all 6 user-email log sites in `ContactSurfaceController` and `SpamFilterService`. Also dropped the full email body from the SMTP error log — exception trace covers the failure context, body added raw PII. Admin recipient addresses in `Email To` / `Email From` lines left unmasked since those are config, not user-submitted.
 - [ ] **[SAFETY] Error messages to users** — `TempData["Result"] = ex.Message` exposes internals; substitute generic copy and log details server-side.
 - [ ] **[SAFETY] Hardcoded `_remoteServerUrl`** in `MediaLocal.cs` — move to config.
 

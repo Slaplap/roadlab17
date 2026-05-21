@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Anthropic.SDK;
 using Anthropic.SDK.Constants;
 using Anthropic.SDK.Messaging;
+using Interon.Roadlab.Web.Net.Core.Logging;
 using Interon.Roadlab.Web.Net.Core.Models.ViewModels;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
@@ -105,7 +106,7 @@ Provide your analysis in JSON format.";
                 var response = await _client.Messages.GetClaudeMessageAsync(parameters);
                 var responseText = response.Message.ToString();
                 
-                _logger.LogInformation("Claude spam analysis completed for sender: {Sender}", sender);
+                _logger.LogInformation("Claude spam analysis completed for sender: {Sender}", PiiMasking.MaskEmail(sender));
                 
                 return ParseSpamAnalysisResult(responseText);
             }
@@ -119,7 +120,7 @@ Provide your analysis in JSON format.";
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error analyzing email for spam. Subject: {Subject}, Sender: {Sender}", subject, sender);
+                _logger.LogError(ex, "Error analyzing email for spam. Subject: {Subject}, Sender: {Sender}", subject, PiiMasking.MaskEmail(sender));
                 
                 // Fallback to basic keyword detection
                 return CreateFallbackAnalysis(subject, body);
