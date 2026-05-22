@@ -75,7 +75,7 @@ Legend: **[BLOCK]** = blocks production deploy · **[SAFETY]** = security / data
 ## Documentation
 
 - [ ] **[DOC] Update `fixes.md` final state** — most sections are now historical context. Mark completed items, drop sections that no longer apply.
-- [ ] **[DOC] Write a `DEPLOY.md`** — step-by-step prod deploy runbook (credential rotation → uSync schema sync → data conversion script → cache rebuild → smoke test).
+- [ ] **[DOC] Write a `DEPLOY.md`** — step-by-step prod deploy runbook. Must cover: credential rotation → uSync schema sync (run twice — second pass clears the documented "Cannot save a non-current version" race) → data conversion script → **media bulk-copy from staging → prod storage** (~1,386 files, ~1.4 GB; the local dev MediaLocal proxy goes away at this point and `Custom:LoadMediaFromStaging` flips to `false` in prod settings) → cache rebuild → smoke test.
 - [ ] **[DOC] Inline comments on tools/** — both PS scripts have header comments but could use more inline explanation of the JSON-shape transformations.
 
 ## Maybe later / out of scope
