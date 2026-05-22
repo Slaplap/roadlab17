@@ -63,7 +63,7 @@
                 </ul>
             </div>
             <div class="col-lg-4 col-md-12 col-sm-12 branch__map-margin">
-                <div>@Model.Value("branchMap")</div>
+                <div>@Html.Raw(Model.Value("branchMap")?.ToString() ?? "")</div>
             </div>
         </div>
     </div>

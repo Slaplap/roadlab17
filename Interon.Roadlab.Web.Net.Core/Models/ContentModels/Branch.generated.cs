@@ -159,7 +159,7 @@ namespace Interon.Roadlab.Web.Net.Core.Models.ContentModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "17.4.1+ba29b91")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("branchMap")]
-		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString BranchMap => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "branchMap");
+		public virtual string BranchMap => this.Value<string>(_publishedValueFallback, "branchMap");
 
 		///<summary>
 		/// Branch Name

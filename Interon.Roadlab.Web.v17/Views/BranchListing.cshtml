@@ -50,7 +50,7 @@
 				</div>
 			</div>
             <div class="col-lg-6 col-md-12 col-sm-12">
-                <div>@(Model.Value("branchMap")??"")</div>
+                <div>@Html.Raw(Model.Value("branchMap")?.ToString() ?? "")</div>
             </div>
         </div>
     </div>
