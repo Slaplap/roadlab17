@@ -46,8 +46,8 @@ Legend: **[BLOCK]** = blocks production deploy · **[SAFETY]** = security / data
 ## SEO / accessibility
 
 - [ ] **[FEAT] Canonical tags** — add `<link rel="canonical">` to `_RenderHead.cshtml`.
-- [ ] **[FEAT] Structured data (JSON-LD)** — at minimum `LocalBusiness` on head office page, `BreadcrumbList` on inner pages.
-- [ ] **[FEAT] Breadcrumb markup** — visual + schema.
+- [x] **[FEAT] Structured data (JSON-LD)** — `BreadcrumbList` is emitted per inner page by `_RenderBreadcrumb.cshtml`; `LocalBusiness` is emitted by `headOffice.cshtml` and pulls name/image/url/telephone/email/address/geo from the existing Branch doctype properties. (Note: existing data has `branchAddress1` = placeholder text and `branchPostalCode` = "South Africa" — needs an editor pass to land cleanly in the JSON-LD.)
+- [x] **[FEAT] Breadcrumb markup** — `Views/Partials/_RenderBreadcrumb.cshtml` walks `Model.Ancestors().Reverse().Append(Model)` and renders both a visual `<nav class="breadcrumb-nav container">` (Bootstrap 4 `.breadcrumb`) and a `BreadcrumbList` JSON-LD script. Wired via `MasterPage.cshtml` so every page gets it; the partial early-returns on level ≤ 1 so the home page stays clean. Visual placement (above the hero) is the default Bootstrap pattern — revisit per-template if the design wants it elsewhere.
 - [ ] **[FEAT] Open Graph fallback** — `_RenderHead.cshtml` lines 9-11 produce a malformed URL when `oGImage` is null. Add a fallback default OG image.
 - [ ] **[FEAT] Alt text quality pass** — many `alt="Header Image"` / `alt="Project"` placeholders.
 - [ ] **[FEAT] Heading hierarchy** — some pages start at H2 instead of H1; audit.
@@ -63,6 +63,8 @@ Legend: **[BLOCK]** = blocks production deploy · **[SAFETY]** = security / data
 - [x] **[SAFETY] Hardcoded `_remoteServerUrl`** in `MediaLocal.cs` — done. URL now read from `Custom:RemoteMediaUrl` in `appsettings.Development.json` (with the staging URL kept as a code-level fallback so behaviour is preserved if config is missing). Silent `HttpRequestException` catch now logs a `LogWarning` too.
 
 ## Backoffice content / data hygiene
+
+- [ ] **[CHORE] Head Office address fields** — surfaced 2026-05-21 during the LocalBusiness JSON-LD work. `branchAddress1` currently holds the placeholder "Fill in the form below." and `branchPostalCode` holds "South Africa". Once cleaned up in the backoffice the JSON-LD will render a proper street address + postal code.
 
 - [ ] **[CHORE] Decide on `compTestingType` + `test` doctype** — `fixes.md §5.1` flagged as suspicious orphans. Confirm not used on prod, then delete.
 - [ ] **[CHORE] Delete duplicate "(1)" NC and Branch doctypes** — `Branch1`, `QuoteRequest...NestedContent (1)`, `Team Member - Nested Content (1)`. Consolidate or remove. (Note: `Services2` is **not** a duplicate of `Services` — they're intentionally separate templates that may diverge; keep both.)

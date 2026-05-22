@@ -1,10 +1,44 @@
 ﻿@using Interon.Roadlab.Web.Net.Core.Models.ViewModels
+@using Microsoft.AspNetCore.Http
+@inject IHttpContextAccessor HttpContextAccessor
 @inherits UmbracoViewPage<Interon.Roadlab.Web.Net.Core.Models.ContentModels.Branch>
 
 @{
     Layout = "MasterPage.cshtml";
+
+    // LocalBusiness JSON-LD — feeds Google Knowledge Panel.
+    var hoRequest = HttpContextAccessor.HttpContext.Request;
+    var hoOrigin = hoRequest.Scheme + "://" + hoRequest.Host.Value;
+    var hoImage = Model.Value<IPublishedContent>("branchImage") is IPublishedContent hoImg
+        ? hoOrigin + Umbraco.Media(hoImg.Id).Url()
+        : hoOrigin + "/images/logo.png";
+    string Esc(object v) => System.Text.Json.JsonSerializer.Serialize((v ?? "").ToString());
 }
 
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "LocalBusiness",
+  "name": @Html.Raw(Esc(Model.Value("branchName"))),
+  "image": @Html.Raw(Esc(hoImage)),
+  "url": @Html.Raw(Esc(hoOrigin + Model.Url())),
+  "telephone": @Html.Raw(Esc(Model.Value("branchTelephoneNumber"))),
+  "email": @Html.Raw(Esc(Model.Value("branchEmail"))),
+  "address": {
+    "@@type": "PostalAddress",
+    "streetAddress": @Html.Raw(Esc(Model.Value("branchAddress1"))),
+    "addressLocality": @Html.Raw(Esc(Model.Value("branchCity"))),
+    "addressRegion": @Html.Raw(Esc(Model.Value("branchProvince"))),
+    "postalCode": @Html.Raw(Esc(Model.Value("branchPostalCode"))),
+    "addressCountry": @Html.Raw(Esc(Model.Value("branchCountry")))
+  },
+  "geo": {
+    "@@type": "GeoCoordinates",
+    "latitude": @Html.Raw(Esc(Model.Value("branchLatitude"))),
+    "longitude": @Html.Raw(Esc(Model.Value("branchLongitude")))
+  }
+}
+</script>
 
 <section class="branch">
     <div class="container">

@@ -1,0 +1,47 @@
+@using Microsoft.AspNetCore.Http
+@using Umbraco.Cms.Core.Models.PublishedContent
+@inject IHttpContextAccessor HttpContextAccessor
+@inherits UmbracoViewPage
+
+@{
+    // Skip on the site root / home page — there's nothing to navigate up to.
+    if (Model == null || Model.Level <= 1) { return; }
+
+    // Root-first ancestor chain ending with the current page.
+    var trail = Model.Ancestors().Reverse().Append(Model).ToList();
+
+    var request = HttpContextAccessor.HttpContext.Request;
+    var origin = request.Scheme + "://" + request.Host.Value;
+}
+
+<nav class="breadcrumb-nav container" aria-label="Breadcrumb">
+    <ol class="breadcrumb">
+        @for (var i = 0; i < trail.Count; i++)
+        {
+            var item = trail[i];
+            var isLast = i == trail.Count - 1;
+            if (isLast)
+            {
+                <li class="breadcrumb-item active" aria-current="page">@item.Name</li>
+            }
+            else
+            {
+                <li class="breadcrumb-item"><a href="@item.Url()">@item.Name</a></li>
+            }
+        }
+    </ol>
+</nav>
+
+<script type="application/ld+json">
+{
+  "@@context": "https://schema.org",
+  "@@type": "BreadcrumbList",
+  "itemListElement": [
+    @for (var i = 0; i < trail.Count; i++)
+    {
+        var item = trail[i];
+        @:{ "@@type": "ListItem", "position": @(i + 1), "name": @Html.Raw(System.Text.Json.JsonSerializer.Serialize(item.Name)), "item": "@(origin + item.Url())" }@(i < trail.Count - 1 ? "," : "")
+    }
+  ]
+}
+</script>
