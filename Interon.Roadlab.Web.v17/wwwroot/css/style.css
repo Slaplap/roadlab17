@@ -678,26 +678,31 @@ and also iPads specifically.
 .top-banner {
 	background-color: #041c2c;
 	min-height: 4rem;
-	padding: 1rem 0 1rem;
+	padding: 1rem 0;
 }
 .top-banner__content {
 	color: #fff;
 	font-size: 1.3rem;
 	padding: .5rem 0 .5rem .5rem;
 }
+.top-banner__content a,
+.top-banner__content a:hover,
+.top-banner__content a:focus {
+	color: #fff;
+	text-decoration: none;
+}
 .top-banner__spacer {
 	padding: 0 1rem;
 }
 .top-banner__fa-social {
 	font-size: 1.9rem;
-	border-radius: 2.5rem;
 	margin: 0 0 .5rem 1rem;
-	vertical-align: -.5rem;
 	color: #fff;
 }
 .top-banner__fa-social--align {
-	margin-top: auto;
-	margin-bottom: auto;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
 }
 .top-banner__link {
 	text-decoration: none;
