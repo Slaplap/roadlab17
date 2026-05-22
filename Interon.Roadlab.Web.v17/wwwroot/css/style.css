@@ -175,6 +175,8 @@ body {
 	transition: transform .1s;
 	display: inline-block;
 	margin-top: .75rem;
+	position: relative;
+	z-index: 1;
 }
 .btn-orange:hover {
 	background: #ff8f1c;
