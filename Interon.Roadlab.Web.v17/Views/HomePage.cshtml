@@ -1,41 +1,40 @@
 ﻿@using Interon.Roadlab.Web.Net.Core.Models.ViewModels
 @using Interon.Roadlab.Web.Net.Core.Models.ContentModels
 @inherits UmbracoViewPage<Interon.Roadlab.Web.Net.Core.Models.ContentModels.HomePage>
-  
- 
+
 @{
 	Layout = "MasterPage.cshtml";
-	var homePage = new HomePage(Model,null);
 
-	IEnumerable<IPublishedContent>? recentArticlesPicker = homePage.Value<IEnumerable<IPublishedContent>>("recentArticlesPicker");
-	var blog =  Umbraco.ContentAtRoot().OfType<BlogHome>().FirstOrDefault();
-	var method = homePage.Value<string>("method") ?? "";
+	IEnumerable<IPublishedContent>? recentArticlesPicker = Model.Value<IEnumerable<IPublishedContent>>("recentArticlesPicker");
+	var blog = Umbraco.ContentAtRoot().OfType<BlogHome>().FirstOrDefault();
+	var method = Model.Value<string>("method") ?? "";
 	var recentArticles = (recentArticlesPicker ?? Array.Empty<IPublishedContent>()).OfType<BlogArticle>().ToList();
 	if (method == "date")
 	{
-		recentArticles = (blog?.Descendants<BlogArticle>() ?? Enumerable.Empty<BlogArticle>()).Where(x=>x.HomePageToggle).OrderByDescending(x => x.ArticleDate).Take(3).ToList();
+		recentArticles = (blog?.Descendants<BlogArticle>() ?? Enumerable.Empty<BlogArticle>()).Where(x => x.HomePageToggle).OrderByDescending(x => x.ArticleDate).Take(3).ToList();
 	}
 	else if (method == "random")
 	{
 		recentArticles = (blog?.Descendants<BlogArticle>() ?? Enumerable.Empty<BlogArticle>()).Where(x => x.HomePageToggle).OrderBy(x => Guid.NewGuid()).Take(3).ToList();
 	}
-}  
+}
 
 <main>
+	<h1 class="sr-only">Roadlab — materials testing for civil engineering and construction</h1>
 	<section>
-		<img loading="lazy" class="hidden-mobile" src="@(Model.DesktopImage?.Url() ?? "")" style="width:100%;" alt="">
-		<img loading="lazy" class="visible-mobile" src="@(Model.MobileImage?.Url() ?? "")" style="width:100%;" alt="">
+		<img class="hidden-mobile" src="@(Model.DesktopImage?.Url() ?? "")" style="width:100%;" alt="" fetchpriority="high">
+		<img class="visible-mobile" src="@(Model.MobileImage?.Url() ?? "")" style="width:100%;" alt="" fetchpriority="high">
 	</section>
 
 	<section class="features">
 		<div class="container features__cont">
 			<div class="row">
 				<div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 features__box">
-					<div class=" text-center features__img"><img loading="lazy" src="./images/icon1.jpg" alt="Materials Testing"></div>
-					<h3 class="features__heading"> 
+					<div class=" text-center features__img"><img loading="lazy" src="/images/icon1.jpg" alt="Materials Testing"></div>
+					<h2 class="features__heading">
 						MATERIALS<br>
 						TESTING
-					</h3>
+					</h2>
 					<hr class="features__hr"> 
 					<p>FOR CONSTRUCTION & CIVILS</p>
 					<ul class="fa-ul features__text">
@@ -45,12 +44,12 @@
 						<li><span class="fa-li li-icon"><i class="fas fa-angle-right"></i></span>Asphalt & Bitumen</li>
 					</ul>
 				</div>
-				<div class="col-lg-3 col-md-6 col-sm-6 col-sm-6 features__box">
-					<div class="text-center features__img"><img loading="lazy" src="./images/icon2.jpg" alt="Laboratory Services"></div>
-					<h3 class="features__heading">
+				<div class="col-lg-3 col-md-6 col-sm-6 features__box">
+					<div class="text-center features__img"><img loading="lazy" src="/images/icon2.jpg" alt="Laboratory Services"></div>
+					<h2 class="features__heading">
 						Specialised<br>
 						services
-					</h3>
+					</h2>
 					<hr class="features__hr">
 					<p>YOUR ONE STOP PROVIDER</p>
 					<ul class="fa-ul features__text">
@@ -62,8 +61,8 @@
 				</div>
 
 				<div class="col-lg-3 col-md-6 col-sm-6 features__box">
-					<div class="text-center features__img"><img loading="lazy" src="./images/icon4.jpg" alt="Specialised Insights"></div>
-					<h3 class="features__heading">Unparalleled<br>&nbsp;&nbsp;Insights</h3>
+					<div class="text-center features__img"><img loading="lazy" src="/images/icon4.jpg" alt="Specialised Insights"></div>
+					<h2 class="features__heading features__heading--indented">Unparalleled<br>Insights</h2>
 					<hr class="features__hr">
 					<p>ANY MATERIAL ANY TIME</p>
 					<ul class="fa-ul features__text">
@@ -74,11 +73,11 @@
 					</ul>
 				</div>
 				<div class="col-lg-3 col-md-6 col-sm-6 features__box">
-					<div class="text-center features__img"><img loading="lazy" src="./images/icon3.jpg" alt="Turnkey Partners"></div>
-					<h3 class="features__heading">
+					<div class="text-center features__img"><img loading="lazy" src="/images/icon3.jpg" alt="Turnkey Partners"></div>
+					<h2 class="features__heading">
 						Turnkey<br>
 						Partners
-					</h3>
+					</h2>
 					<hr class="features__hr">
 					<p>EVERY STEP OF THE WAY</p>
 					<ul class="fa-ul features__text">
@@ -99,11 +98,11 @@
 		<!-- Start Feature 1 -->
 		<div class="container">
 			<div class="row benefits-blocks__container">
-				<div class="col-md-6 col-sm-12 benefits-blocks__divider"><img loading="lazy" class="benefits-blocks__img" src="./images/soil-1.jpg" alt="At your Site"></div>
+				<div class="col-md-6 col-sm-12 benefits-blocks__divider"><img loading="lazy" class="benefits-blocks__img" src="/images/soil-1.jpg" alt="Soil and gravel testing"></div>
 				<div class="col-md-6 col-sm-12 benefits-blocks__right-box">
 					<div class="col">
 
-						<div class="row" style="display: inline-block;">
+						<div class="benefits-blocks__title-block">
 							<h3 class="benefits-blocks__heading">SOIL, GRAVEL & AGGREGATE</h3>
 							<p class="benefits-blocks__sub-heading">LABORATORY & IN-FIELD TESTING</p>
 						</div>
@@ -120,11 +119,11 @@
 		<!-- Start Feature 2 -->
 		<div>
 			<div class="row benefits-blocks__container">
-				<div class="col-md-6 col-sm-12 benefits-blocks__divider"><img loading="lazy" class="benefits-blocks__img" src="./images/concrete-1.jpg" alt="At your Site"></div>
+				<div class="col-md-6 col-sm-12 benefits-blocks__divider"><img loading="lazy" class="benefits-blocks__img" src="/images/concrete-1.jpg" alt="Concrete testing"></div>
 				<div class="col-md-6 col-sm-12 benefits-blocks__right-box">
 					<div class="col">
 
-						<div class="row" style="display: inline-block;">
+						<div class="benefits-blocks__title-block">
 							<h3 class="benefits-blocks__heading">CONCRETE</h3>
 							<p class="benefits-blocks__sub-heading">STRENGTH, DURABILITY & UNIFORMITY</p>
 						</div>
@@ -135,21 +134,21 @@
 						<p>
 							With our dedicated concrete technologist we can offer the broadest range of concrete services in South Africa, from on-site sampling and laboratory strength testing to specialist GPR scanning, ultrasonic pulse velocity testing and other non-destructive methods.
 						</p>
-					</div><a class="btn btn-orange mr-3" href="/services/materials-testing/concrete/" role="button"><i class="fas fa-angle-right u-btn-fa"></i>SAMPLING & TESTING</a><a class="btn btn-orange" href="/services/specialised-concrete-forensic-investigations/non-destructive-concrete-testing/" role="button"><i class="fas fa-angle-right u-btn-fa"></i>NON DESTRUCTIVE TESTING</a>
+					</div><a class="btn btn-orange mr-3" href="/services/materials-testing/concrete/" role="button"><i class="fas fa-angle-right u-btn-fa"></i>SAMPLING & TESTING</a><a class="btn btn-orange" href="/services/specialised-concrete-forensic-investigations/non-destructive-forensic-investigations/" role="button"><i class="fas fa-angle-right u-btn-fa"></i>NON DESTRUCTIVE TESTING</a>
 				</div>
 			</div>
 			<hr>
 		</div>
-		<!-- End Feature 2
+		<!-- End Feature 2 -->
 	<!-- Start Feature 3 -->
 		<div>
 
 				<div class="row benefits-blocks__container">
-					<div class="col-md-6 col-sm-12 benefits-blocks__divider"><img loading="lazy" class="benefits-blocks__img" src="./images/geotech-1.jpg" alt="At your Site"></div>
+					<div class="col-md-6 col-sm-12 benefits-blocks__divider"><img loading="lazy" class="benefits-blocks__img" src="/images/geotech-1.jpg" alt="Geotechnical investigation"></div>
 					<div class="col-md-6 col-sm-12 benefits-blocks__right-box">
 						<div class="col">
 
-							<div class="row" style="display: inline-block;">
+							<div class="benefits-blocks__title-block">
 								<h3 class="benefits-blocks__heading">GEOTECHNICAL AND ROAD INVESTIGATIONS</h3>
 								<p class="benefits-blocks__sub-heading">ENERGY, CONSTRUCTION & ROADWORKS</p>
 							</div>
@@ -158,7 +157,7 @@
 							<p>
 								Incredible facilities, innovative energy projects and awe-inspiring roads start with our world-class geotechnical investigations. </p><p>Over decades of unique foundation, site and material investigations we have profiled and established the foundations of award-winning wind farms, solar parks, construction projects and national roads across the country.
 							</p>
-						</div><a class="btn btn-orange mr-3" href="/services/geotechnical-road-investigations/geotechnical-road-investigations/" role="button"><i class="fas fa-angle-right u-btn-fa"></i>GEOTECHNICAL AND ROAD INVESTIGATIONS</a>
+						</div><a class="btn btn-orange" href="/services/geotechnical-road-investigations/geotechnical-road-investigations/" role="button"><i class="fas fa-angle-right u-btn-fa"></i>GEOTECHNICAL AND ROAD INVESTIGATIONS</a>
 					</div>
 				</div>
 				<hr>
@@ -168,11 +167,11 @@
 		<!-- Start Feature 4 -->
 			<div>
 				<div class="row benefits-blocks__container">
-					<div class="col-md-6 col-sm-12 benefits-blocks__divider"><img loading="lazy" class="benefits-blocks__img" src="./images/asphalt-1.jpg" alt="At your Site"></div>
+					<div class="col-md-6 col-sm-12 benefits-blocks__divider"><img loading="lazy" class="benefits-blocks__img" src="/images/asphalt-1.jpg" alt="Asphalt and bitumen testing"></div>
 					<div class="col-md-6 col-sm-12 benefits-blocks__right-box">
 						<div class="col">
 
-							<div class="row" style="display: inline-block;">
+							<div class="benefits-blocks__title-block">
 								<h3 class="benefits-blocks__heading">ASPHALT & BITUMEN</h3>
 								<p class="benefits-blocks__sub-heading">MIX CONTENT, QUALITY & RIDEABILITY</p>
 							</div>
@@ -183,7 +182,7 @@
 							<p>
 								Get meaningful insights at every level and stage of your work, from the particle size, stability, flow, density and void content of your samples to the roughness, rideability, deflection response and environmental resilience of your pavements layers.
 							</p>
-						</div><a class="btn btn-orange mr-3" href="/services/materials-testing/asphalt-bitumen/" role="button"><i class="fas fa-angle-right u-btn-fa"></i>ASPHALT & BITUMEN</a>
+						</div><a class="btn btn-orange" href="/services/materials-testing/asphalt-bitumen/" role="button"><i class="fas fa-angle-right u-btn-fa"></i>ASPHALT & BITUMEN</a>
 					</div>
 				</div>
 			</div>
@@ -206,7 +205,7 @@
 						<div>
 							<h4 class="reach__option">---- OR ----</h4>
 							<h5 class="u-bold reach__cta">Visit your local branch</h5>
-							<p class="cp-just">We love doing business in person and our friendly staff are always eager to hear about your project. Let's have a chat!</p><a class="btn btn-blue__small" href="/head-office/" role="button"></i>CONTACT US</a>
+							<p class="cp-just">We love doing business in person and our friendly staff are always eager to hear about your project. Let's have a chat!</p><a class="btn btn-blue__small" href="/head-office/" role="button"><i class="fas fa-angle-right u-btn-fa"></i>CONTACT US</a>
 						</div>
 					</div>
 					<div class="col-lg-4 col-md-6 col-sm-12 reach__img-hide"><img loading="lazy" class="reach__bottom " src="/media/zmffny3g/manb.png" alt="Roadlab Man"></div>
@@ -230,7 +229,7 @@
 							@foreach (var item in recentArticles )
 							{
 								<div class="px-5 col-lg-4 col-md-6 col-sm-12 about-text">
-									<img loading="lazy" class="about-team__sub-container--img mb-3" src="@item.ArticleIntersectImage.Url()" alt="@(item.ArticleIntersectImage.Value("fileDescription")??item.ArticleIntersectImage.Name)">
+									<img loading="lazy" class="about-team__sub-container--img mb-3" src="@(item.ArticleIntersectImage?.Url() ?? "")" alt="@(item.ArticleIntersectImage?.Value("fileDescription") ?? item.ArticleIntersectImage?.Name ?? item.BlogHeading)">
 									<h6 class="about-team__sub-container--title">@item.PageTitle</h6>
 									<h5 class="blog__sub-container--name">@item.BlogHeading</h5>
 									<div class="blog__sub-container--content ft-cont">

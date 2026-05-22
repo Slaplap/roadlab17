@@ -173,6 +173,8 @@ body {
 	text-decoration: none;
 	border-radius: 2.8rem;
 	transition: transform .1s;
+	display: inline-block;
+	margin-top: .75rem;
 }
 .btn-orange:hover {
 	background: #ff8f1c;
@@ -506,6 +508,74 @@ body {
 }
 .form {
 	font-size: 1.6rem;
+}
+/* Checkbox / radio reset — the .form input rules below force width:100%
+   and 2rem padding, which clobbers Bootstrap's .form-check layout.
+   Restore native checkbox/radio sizing and align with the label via flex. */
+.form .form-check {
+	display: flex;
+	align-items: flex-start;
+	gap: .5rem;
+	padding-left: 0;
+}
+.form .form-check-input,
+.form input[type=checkbox],
+.form input[type=radio] {
+	/* Defeat Bootstrap's position:absolute on .form-check-input which
+	   would pull it out of the flex flow and overlap the label. */
+	position: static;
+	width: auto;
+	flex: 0 0 auto;
+	margin: .35rem 0 0 0;
+	padding: 0;
+	border: none;
+}
+.form .form-check-label {
+	margin: 0;
+	flex: 1 1 auto;
+}
+/* On the orange Reach background, the Terms & Conditions link inside the
+   form-check label was nearly invisible (Bootstrap default link orange on
+   orange). Force white + underline so it's readable. */
+.reach .form-check-label a {
+	color: #fff;
+	text-decoration: underline;
+}
+.reach .form-check-label a:hover {
+	color: #fff;
+	text-decoration: none;
+}
+/* Custom checkbox skin on the Reach form: native checkbox has no visible
+   border on the orange background. Take over rendering with appearance:none
+   so we can draw a white-bordered box, then fill with white when checked
+   (with an orange check mark from a tiny inline SVG). */
+.reach .form-check-input[type=checkbox] {
+	appearance: none;
+	-webkit-appearance: none;
+	width: 1.4rem;
+	height: 1.4rem;
+	border: 2px solid #fff;
+	border-radius: 3px;
+	background-color: transparent;
+	cursor: pointer;
+}
+.reach .form-check-input[type=checkbox]:checked {
+	background-color: #fff;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10'%3E%3Cpath fill='none' stroke='%23fE5000' stroke-width='2' d='M1 5l3 3 7-7'/%3E%3C/svg%3E");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 80% 80%;
+}
+/* Homepage REACH section: form inputs sit on an orange gradient,
+   so override the default grey border to white. */
+.reach .form input[type=text],
+.reach .form input[type=email],
+.reach .form input[type=tel],
+.reach .form input[type=password],
+.reach .form select,
+.reach .form textarea,
+.reach .form .form-control {
+	border: 1px solid #fff;
 }
 .form input[type=text], .form select {
 	width: 100%;
@@ -1110,6 +1180,18 @@ and also iPads specifically.
 	color: #041c2c;
 	line-height: .9;
 	text-align: center;
+}
+.features__heading--indented {
+	/* Slight visual right-shift on the second line of two-line feature
+	   titles (e.g. "Unparalleled Insights"). Replaces a previous
+	   &nbsp;&nbsp; indent that was in the HTML. */
+	padding-left: 1.2rem;
+}
+.benefits-blocks__title-block {
+	/* Used to wrap the h3 + sub-heading of each benefits block; previously
+	   this was a `<div class="row" style="display: inline-block;">` which
+	   abused the .row class. */
+	display: inline-block;
 }
 .features__text li {
 	font-style: italic;
