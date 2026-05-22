@@ -803,15 +803,12 @@ and also iPads specifically.
 		padding-left: 1.5rem;
 	}
 }
-.navbar-nav .ml-auto li a {
-	color: red;
-}
 .navbar-light .navbar-nav .nav-link {
 	color: #074f71;
 	font-weight: 500;
-	font-size: 1.8rem;
+	font-size: 1.6rem;
 }
-.bg-white {
+.nav-top.bg-white {
 	background-color: transparent !important;
 }
 .about-team__background {
