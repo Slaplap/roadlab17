@@ -36,12 +36,12 @@ Legend: **[BLOCK]** = blocks production deploy · **[SAFETY]** = security / data
 
 ## Bootstrap / frontend libraries
 
-- [ ] **[CHORE] Bootstrap 4.3.1 → 5.x** — covered in `fixes.md §3`. Class renames (`ml-*` → `ms-*` etc.), `data-bs-*` attributes, mega-menu rebuild. Half-day to full-day.
-- [ ] **[CHORE] Replace `node-sass` with `sass` (dart-sass)** — `node-sass 4.12.0` is deprecated.
-- [ ] **[CHORE] Update or remove `Animate.css 3.7.2`** — class names changed in v4.
-- [ ] **[CHORE] Replace or upgrade `Lightbox2 2.8.2`** — old.
-- [ ] **[CHORE] Update jQuery 3.3.1 slim → 3.7.x** — or remove altogether once Bootstrap 5 is in (no longer required).
-- [ ] **[CHORE] Inline `<style>` in views** — `_RenderModalContactForm.cshtml` and others have inline CSS. Move to stylesheets.
+- [ ] **[CHORE] Bootstrap 4.3.1 → 5.x** *(deferred — George decision 2026-05-22)* — measured speed gain is ~50-100 ms on broadband, ~30 KB lighter (~30 KB more if we can also drop jQuery, which is blocked by Lightbox2 + custom roadlab.js + recaptcha submit handlers). BS4 still works; the upgrade is future-proofing, not a perf win. The bigger speed levers (#4b lazy-load, #4c bundling, #4e rev-slider removal) were already pulled. Revisit when there's appetite for the half-day of regression testing on every template.
+- [ ] **[CHORE] Replace `node-sass` with `sass` (dart-sass)** *(deferred along with #6a)* — no active SCSS build in repo; pure cleanup.
+- [ ] **[CHORE] Update or remove `Animate.css 3.7.2`** *(deferred along with #6a)* — class names changed in v4.
+- [ ] **[CHORE] Replace or upgrade `Lightbox2 2.8.2`** *(deferred along with #6a)* — old; jQuery-dependent.
+- [ ] **[CHORE] Update jQuery 3.3.1 slim → 3.7.x** *(deferred along with #6a)* — can be dropped entirely after BS5 + Lightbox replacement.
+- [ ] **[CHORE] Inline `<style>` in views** *(deferred along with #6a)* — `_RenderModalContactForm.cshtml` is gone; other inline-style sites still exist. Pure cleanup.
 
 ## SEO / accessibility
 
