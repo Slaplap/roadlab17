@@ -449,7 +449,6 @@ body {
 .footer__text {
 	color: #ccc;
 	padding-top: 3rem;
-	text-align: justify;
 	font-size: 1.3rem;
 	font-weight: 300;
 }
@@ -471,20 +470,7 @@ body {
 }
 .footer__links a:hover {
 	color: #fff;
-	font-weight: 500;
 	text-decoration: none;
-}
-.footer__contact {
-	font-weight: 500;
-	color: #ccc;
-	font-size: 1.3rem;
-}
-.footer__contact--details {
-	padding-left: 5rem;
-}
-.footer__icon {
-	padding: 2rem;
-	margin-left: -5rem;
 }
 .footer__credits {
 	background-color: #070e16;
@@ -513,11 +499,10 @@ body {
 	color: #fE5000;
 }
 .sticky {
-	position: -webkit-sticky;
-	position: sticky;
+	position: fixed;
+	right: 4%;
 	bottom: 5%;
-	left: 96%;
-	overflow: hidden;
+	z-index: 100;
 }
 .form {
 	font-size: 1.6rem;
