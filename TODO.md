@@ -65,18 +65,19 @@ Legend: **[BLOCK]** = blocks production deploy · **[SAFETY]** = security / data
 ## Backoffice content / data hygiene
 
 - [ ] **[CHORE] Head Office address fields** — surfaced 2026-05-21 during the LocalBusiness JSON-LD work. `branchAddress1` currently holds the placeholder "Fill in the form below." and `branchPostalCode` holds "South Africa". Once cleaned up in the backoffice the JSON-LD will render a proper street address + postal code.
+- [ ] **[CHORE] Decide on `branch1` doctype + `testing-branch` content** — `branch1.config` is a duplicate of the `branch` doctype, referenced only by the `testing-branch.config` test node. If `testing-branch` is genuinely a throwaway test, delete both (and `BranchMapRichTextEditor.config` becomes a third deletable orphan in the cascade). Decision needed.
 
-- [ ] **[CHORE] Decide on `compTestingType` + `test` doctype** — `fixes.md §5.1` flagged as suspicious orphans. Confirm not used on prod, then delete.
-- [ ] **[CHORE] Delete duplicate "(1)" NC and Branch doctypes** — `Branch1`, `QuoteRequest...NestedContent (1)`, `Team Member - Nested Content (1)`. Consolidate or remove. (Note: `Services2` is **not** a duplicate of `Services` — they're intentionally separate templates that may diverge; keep both.)
-- [ ] **[CHORE] Rename data-types from "...Nested Content" suffix to "...Block List"** — purely cosmetic; the editor is already BlockList.
+- [x] **[CHORE] Decide on `compTestingType` + `test` doctype** — done. `compTestingType.config` had zero content references and was deleted. The `test` doctype no longer exists in `uSync/v17/ContentTypes/` (already cleaned up earlier or never imported).
+- [x] **[CHORE] Delete duplicate "(1)" NC and Branch doctypes** — done for the 15 truly-orphan `(1)` data types (zero refs from any ContentType). One was kept (`MediaPicker1` — still referenced by aboutOperationsTeams + aboutTeamMembers, so it's a real second variant, not just a duplicate). `Branch1` doctype tracked separately under data hygiene (its sole user is the `testing-branch` content node — needs a decision before deletion). `Services2` is intentionally separate from `Services` and kept (different templates).
+- [x] **[CHORE] Rename data-types from "...Nested Content" suffix to "...Block List"** — done for the 8 data types still present after the duplicate-cleanup pass (Blog Article Expertise/Industry/Location lists, Operation Teams, Products Service Categories, Projects Project List, Quote Request Line Items, Team Member). Only the `<Name>` display value was changed; Alias and filename left alone so existing references stay valid.
 - [ ] **[CHORE] Clean up the v9 staging-export duplicate-key bugs** — staging has two content nodes sharing the same Key in a few places (Mosselbay/George, Upington/Lichtenburg, etc.). Fix on staging at source if possible.
-- [ ] **[CHORE] Old grid editor partials** — `Views/Partials/grid/editors/*` already removed; verify no straggler references.
+- [x] **[CHORE] Old grid editor partials** — verified; `find -ipath "*grid/editors*"` returns zero hits in the repo.
 
 ## Documentation
 
-- [ ] **[DOC] Update `fixes.md` final state** — most sections are now historical context. Mark completed items, drop sections that no longer apply.
-- [ ] **[DOC] Write a `DEPLOY.md`** — step-by-step prod deploy runbook. Must cover: credential rotation → uSync schema sync (run twice — second pass clears the documented "Cannot save a non-current version" race) → data conversion script → **media bulk-copy from staging → prod storage** (~1,386 files, ~1.4 GB; the local dev MediaLocal proxy goes away at this point and `Custom:LoadMediaFromStaging` flips to `false` in prod settings) → cache rebuild → smoke test.
-- [ ] **[DOC] Inline comments on tools/** — both PS scripts have header comments but could use more inline explanation of the JSON-shape transformations.
+- [x] **[DOC] Update `fixes.md` final state** — added a status banner at the top stating the document is historical; readers are pointed to `TODO.md` for current state. Did not rewrite the body — the per-cluster notes are useful as a snapshot of pre-migration state.
+- [x] **[DOC] Write a `DEPLOY.md`** — done. Full prod deploy runbook at `DEPLOY.md`: pre-flight, freeze, history scrub, code deploy, Umbraco upgrade migration, data conversion script, uSync force-import (run twice — second pass clears the documented "Cannot save a non-current version" race), media bulk-copy from staging to prod storage (the dev `Custom:LoadMediaFromStaging` proxy flips off here), smoke-test checklist, rollback plan, post-deploy follow-ups (rotate the burned `rfk_*` ai-auditor key, queue the deferred TODO items).
+- [ ] **[DOC] Inline comments on tools/** — `Convert-V13-To-V17-Data.ps1` and `Convert-USync-Files-V9-To-V17.ps1` have header comments but the JSON-shape transformations could use more inline narration. The new `Extract-BranchMap-Markup.ps1` is documented well enough.
 
 ## Maybe later / out of scope
 

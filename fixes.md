@@ -1,8 +1,22 @@
 # Roadlab Site - Comprehensive Analysis & Recommendations
 
-**Date:** 2026-04-13
-**Current Stack:** Umbraco 13.2.2 / .NET 8 / Bootstrap 4.3.1
-**Target Stack:** Umbraco 17 LTS / .NET 10 / Bootstrap 5.x
+**Date written:** 2026-04-13
+**Original stack:** Umbraco 13.2.2 / .NET 8 / Bootstrap 4.3.1
+**Target stack:** Umbraco 17.4.1 / .NET 10 / Bootstrap 5.x (BS5 upgrade is deferred — see TODO.md #6)
+
+---
+
+> **Status note (2026-05-22):** This document is historical. The vast majority
+> of the items inventoried here have been addressed during the `upgrade/v17`
+> migration. For the live punch-list — what's still open, what's deferred,
+> what's done — read **`TODO.md`**, not this file. Treat the sections below
+> as background context (what the codebase looked like before the migration)
+> rather than a current to-do list.
+>
+> Items in this file that are still meaningfully open are mirrored into
+> `TODO.md` with current status; everything else (security fixes, CSS dedup,
+> view null-guards, deprecated property editors, SEO, performance, etc.)
+> has already been worked through in this branch's commit history.
 
 ---
 
